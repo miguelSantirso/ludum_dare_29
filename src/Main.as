@@ -20,16 +20,15 @@ package
 			else addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		private function init(e:Event = null):void 
+		private function init(e:Event = null):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			levelManager = new GameLevelManager();
+			levelManager = new GameLevelManager(GameLevelManager.LEVEL_DIG);
 			addChild(levelManager);
 			
 			if (Main.DEBUG)
 				addChild(new Stats());
 		}
 	}
-	
 }
