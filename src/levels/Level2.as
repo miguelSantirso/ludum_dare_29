@@ -2,11 +2,12 @@ package levels
 {
 	import citrus.core.State;
 	import citrus.physics.box2d.Box2D;
+	import citrus.physics.nape.Nape;
 	import flash.display.MovieClip;
-	import citrus.objects.platformer.box2d.Hero;
-	import citrus.objects.platformer.box2d.Platform;
-	import citrus.objects.platformer.box2d.Coin;
-	import citrus.objects.platformer.box2d.Cannon;
+	import citrus.objects.platformer.nape.Hero;
+	import citrus.objects.platformer.nape.Platform;
+	import citrus.objects.platformer.nape.Coin;
+	import citrus.objects.platformer.nape.Cannon;
 	import citrus.utils.objectmakers.ObjectMaker2D;
 	/**
 	 * ...
@@ -26,14 +27,14 @@ package levels
 		
 		override public function initialize():void
 		{
-			/*super.initialize()
+			super.initialize()
 	 
-			var physics:Box2D = new Box2D("physics");
-			physics.timeStep = 1 / 30.0;
+			var physics:Nape = new Nape("physics");
+			physics.timeStep = 1 / 15.0;
 			physics.visible = true;
 			add(physics);
 	 
-			ObjectMaker2D.FromMovieClip(level);*/
+			ObjectMaker2D.FromMovieClip(level);
 			
 			// prueba para obtener objetos de la escena:
 			//var hero:Hero = getObjectByName("hero") as Hero;

@@ -29,7 +29,7 @@ package levels
 			super.initialize()
 	 
 			var physics:Box2D = new Box2D("physics");
-			physics.timeStep = 1 / 30.0;
+			physics.timeStep = 1 / 15.0;
 			physics.visible = true;
 			add(physics);
 	 

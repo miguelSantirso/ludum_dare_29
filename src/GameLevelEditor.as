@@ -4,7 +4,7 @@ package
 	import flash.display.Loader;
 	import flash.events.Event;
 	import flash.net.URLRequest;
-	import levels.Level1;
+	import levels.*;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -17,7 +17,7 @@ package
 			
 			var loader:Loader = new Loader();
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onCurrentLevelLoaded);
-			loader.load(new URLRequest("../levels/Level2.swf")); 
+			loader.load(new URLRequest("../levels/Level1.swf")); 
 		}
 
 		protected function onCurrentLevelLoaded(e:Event):void
