@@ -26,7 +26,7 @@ package
 	public class GameLevel extends State
 	{
 		protected var level:MovieClip;
-		protected var sensors:Array;
+		//protected var sensors:Array;
 		
 		private var _decorations:Vector.<CitrusSprite> = new Vector.<CitrusSprite>();
 		
