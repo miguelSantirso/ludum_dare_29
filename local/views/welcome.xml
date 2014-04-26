@@ -1,0 +1,5724 @@
+<?xml version='1.0' encoding='utf-8'?>
+<view name="welcome" ver="0">
+	<time now="" />
+	<tutorial complete="True" />
+	<core>
+		<settings trade_scout_bills="5" player_name_price_bills="1"
+			player_heal_price_bills="1" ranked_buy_price_bills="1"
+			ranked_buy_amount="3" daily_reward_credits="0" daily_reward_points="0"
+			daily_reward_bills="1" bonus_reward_credits="0" bonus_reward_points="0"
+			bonus_reward_bills="3" topscorer_daily_bills="10"
+			topscorer_daily_credits="100" topscorer_hourly_bills="5"
+			topscorer_hourly_credits="50" injury_major_attribute_percent="50"
+			team_players_min="16" />
+
+		<boosts>
+			<boost tag="teevee">
+				<level step="0" bills="0" effect="0" />
+				<level step="1" bills="20" effect="5" />
+				<level step="2" bills="50" effect="25" />
+				<level step="3" bills="100" effect="100" />
+			</boost>
+			<boost tag="psycho">
+				<level step="0" bills="0" effect="4" />
+				<level step="1" bills="20" effect="4" />
+				<level step="2" bills="50" effect="2" />
+				<level step="3" bills="100" effect="0" />
+			</boost>
+			<boost tag="tactic">
+				<level step="0" bills="0" effect="0" />
+				<level step="1" bills="5" effect="1" />
+				<level step="2" bills="25" effect="3" />
+				<level step="3" bills="100" effect="10" />
+			</boost>
+		</boosts>
+		<steps>
+
+			<step id="1" name="junior" credits="500" promotions="2"
+				relegations="0" ranked_win_points="5" ranked_win_credits="100" />
+
+			<step id="2" name="university" credits="1000" promotions="2"
+				relegations="0" ranked_win_points="10" ranked_win_credits="150" />
+
+			<step id="3" name="amateur" credits="2000" promotions="2"
+				relegations="0" ranked_win_points="20" ranked_win_credits="200" />
+
+			<step id="4" name="professional" credits="3000" promotions="2"
+				relegations="0" ranked_win_points="30" ranked_win_credits="300" />
+
+			<step id="5" name="star" credits="5000" promotions="2"
+				relegations="0" ranked_win_points="50" ranked_win_credits="400" />
+
+			<step id="6" name="champions" credits="6000" promotions="2"
+				relegations="0" ranked_win_points="70" ranked_win_credits="500" />
+
+			<step id="7" name="world cup" credits="8000" promotions="2"
+				relegations="0" ranked_win_points="100" ranked_win_credits="1000" />
+
+			<step id="8" name="moustache" credits="10000" promotions="0"
+				relegations="0" ranked_win_points="150" ranked_win_credits="1500" />
+
+		</steps>
+		<player_levels>
+
+			<player_level stars="1" min="45" max="60" />
+
+			<player_level stars="2" min="50" max="70" />
+
+			<player_level stars="3" min="60" max="80" />
+
+			<player_level stars="4" min="65" max="90" />
+
+			<player_level stars="5" min="70" max="100" />
+
+		</player_levels>
+		<demarcations>
+
+			<demarcation tag="por" />
+
+			<demarcation tag="def" />
+
+			<demarcation tag="cen" />
+
+			<demarcation tag="del" />
+
+		</demarcations>
+		<formations>
+
+			<formation id="0" por="1" por_type="0" def="3" def_type="0"
+
+				cen="4" cen_type="0" del="3" del_type="0">
+
+				<attribute_modifier tag="par" modifier="3" />
+
+			</formation>
+
+			<formation id="1" por="1" por_type="0" def="3" def_type="0"
+
+				cen="4" cen_type="1" del="3" del_type="0">
+
+			</formation>
+
+			<formation id="2" por="1" por_type="0" def="3" def_type="0"
+
+				cen="5" cen_type="0" del="2" del_type="0">
+
+			</formation>
+
+			<formation id="3" por="1" por_type="0" def="3" def_type="0"
+
+				cen="5" cen_type="1" del="2" del_type="0">
+
+			</formation>
+
+			<formation id="4" por="1" por_type="0" def="4" def_type="0"
+
+				cen="3" cen_type="0" del="3" del_type="0">
+
+			</formation>
+
+			<formation id="5" por="1" por_type="0" def="4" def_type="0"
+
+				cen="4" cen_type="0" del="2" del_type="0">
+
+			</formation>
+
+			<formation id="6" por="1" por_type="0" def="4" def_type="0"
+
+				cen="4" cen_type="1" del="2" del_type="0">
+
+			</formation>
+
+			<formation id="7" por="1" por_type="0" def="4" def_type="0"
+
+				cen="5" cen_type="0" del="1" del_type="0">
+
+				<attribute_modifier tag="reg" modifier="7" />
+
+			</formation>
+
+			<formation id="8" por="1" por_type="0" def="4" def_type="0"
+
+				cen="5" cen_type="1" del="1" del_type="0">
+
+			</formation>
+
+			<formation id="9" por="1" por_type="0" def="5" def_type="0"
+
+				cen="2" cen_type="0" del="3" del_type="0">
+
+			</formation>
+
+			<formation id="10" por="1" por_type="0" def="5" def_type="1"
+
+				cen="2" cen_type="0" del="3" del_type="0">
+
+			</formation>
+
+			<formation id="11" por="1" por_type="0" def="5" def_type="0"
+
+				cen="3" cen_type="0" del="2" del_type="0">
+
+			</formation>
+
+			<formation id="12" por="1" por_type="0" def="5" def_type="1"
+
+				cen="3" cen_type="0" del="2" del_type="0">
+
+			</formation>
+
+			<formation id="13" por="1" por_type="0" def="5" def_type="0"
+
+				cen="4" cen_type="0" del="1" del_type="0">
+
+				<attribute_modifier tag="rem" modifier="-5" />
+
+				<attribute_modifier tag="par" modifier="2" />
+
+			</formation>
+
+			<formation id="14" por="1" por_type="0" def="5" def_type="1"
+
+				cen="4" cen_type="0" del="1" del_type="0">
+
+			</formation>
+
+			<formation id="15" por="1" por_type="0" def="5" def_type="0"
+
+				cen="4" cen_type="1" del="1" del_type="0">
+
+			</formation>
+
+			<formation id="16" por="1" por_type="0" def="5" def_type="1"
+
+				cen="4" cen_type="1" del="1" del_type="0">
+
+			</formation>
+
+		</formations>
+		<strategies>
+
+			<strategy id="1" tag="ofensivo" />
+
+			<strategy id="2" tag="equilibrio" />
+
+			<strategy id="3" tag="contragolpe" />
+
+		</strategies>
+		<instructions>
+
+			<instruction id="13" tag="bandas" />
+
+			<instruction id="14" tag="lejanos" />
+
+			<instruction id="15" tag="dejarsecaer" />
+
+			<instruction id="16" tag="cubrircompi" />
+
+			<instruction id="17" tag="juegoaereo" />
+
+			<instruction id="18" tag="jugadaensayada" />
+		</instructions>
+		<attributes>
+
+			<attribute tag="vel" />
+
+			<attribute tag="rob" />
+
+			<attribute tag="pas" />
+
+			<attribute tag="reg" />
+
+			<attribute tag="rem" />
+
+			<attribute tag="aer" />
+
+			<attribute tag="res" />
+
+			<attribute tag="lan" />
+
+			<attribute tag="ref" />
+
+			<attribute tag="col" />
+
+			<attribute tag="ant" />
+
+			<attribute tag="par" />
+
+		</attributes>
+		<achievements>
+			<achievement id="0" tag="buy_player" goal="1" credits="100"
+				tutorial="True" />
+
+			<achievement id="38" tag="buy_player_2_skills" goal="1"
+				credits="500" />
+
+			<achievement id="39" tag="buy_player_3_skills" goal="1"
+				credits="1000" />
+
+			<achievement id="40" tag="buy_player_5_stars" goal="1"
+				credits="2000" />
+
+			<achievement id="20" tag="buy_player_x10" goal="10"
+				credits="1000" />
+
+			<achievement id="33" tag="buy_player_x50" goal="50"
+				credits="3000" />
+
+			<achievement id="41" tag="cause_injury_x5" goal="5"
+				credits="500" />
+
+			<achievement id="42" tag="cause_injury_x50" goal="50"
+				credits="2000" />
+
+			<achievement id="8" tag="five_goals_same_match" goal="1"
+				credits="1000" />
+
+			<achievement id="11" tag="goal_foul" goal="1" credits="250" />
+
+			<achievement id="12" tag="goal_foul_x10" goal="10"
+				credits="1000" />
+
+			<achievement id="13" tag="goal_foul_x100" goal="100"
+				credits="2000" />
+
+			<achievement id="14" tag="goal_head" goal="1" credits="250" />
+
+			<achievement id="15" tag="goal_head_x10" goal="10"
+				credits="1000" />
+
+			<achievement id="16" tag="goal_head_x100" goal="100"
+				credits="2000" />
+
+			<achievement id="17" tag="goal_scissors" goal="1"
+				credits="1000" />
+
+			<achievement id="18" tag="goal_scissors_x10" goal="10"
+				credits="2000" />
+
+			<achievement id="7" tag="goal_x1000" goal="1000" credits="5000" />
+
+			<achievement id="9" tag="hattrick" goal="1" credits="1000" />
+
+			<achievement id="43" tag="hattrick_5_in_10_matches" goal="1"
+				credits="5000" />
+
+			<achievement id="24" tag="league_perfect" goal="1"
+				credits="1000" />
+
+			<achievement id="44" tag="league_play_x3" goal="3"
+				credits="3000" />
+
+			<achievement id="34" tag="league_play_x5" goal="5"
+				credits="5000" />
+
+			<achievement id="45" tag="league_play_x8" goal="8"
+				credits="8000" />
+
+			<achievement id="25" tag="league_win" goal="1" credits="1000" />
+
+			<achievement id="37" tag="league_win_top" goal="1"
+				credits="5000" />
+
+			<achievement id="23" tag="match_win_10_in_a_row" goal="1"
+				credits="2000" />
+
+			<achievement id="22" tag="match_win_5_in_a_row" goal="1"
+				credits="1000" />
+
+			<achievement id="1" tag="penalty_goal" goal="1" credits="500" />
+
+			<achievement id="2" tag="penalty_goal_x10" goal="10"
+				credits="1000" />
+
+			<achievement id="3" tag="penalty_goal_x100" goal="100"
+				credits="2000" />
+
+			<achievement id="4" tag="penalty_save" goal="1" credits="500" />
+
+			<achievement id="5" tag="penalty_save_x10" goal="10"
+				credits="1000" />
+
+			<achievement id="6" tag="penalty_save_x50" goal="50"
+				credits="2000" />
+
+			<achievement id="26" tag="promotion_1" goal="1" credits="500" />
+
+			<achievement id="27" tag="promotion_2" goal="1" credits="500" />
+
+			<achievement id="28" tag="promotion_3" goal="1" credits="1000" />
+
+			<achievement id="29" tag="promotion_4" goal="1" credits="1500" />
+
+			<achievement id="30" tag="promotion_5" goal="1" credits="2000" />
+
+			<achievement id="31" tag="promotion_6" goal="1" credits="2500" />
+
+			<achievement id="32" tag="promotion_7" goal="1" credits="3000" />
+
+			<achievement id="46" tag="recovery_x20" goal="20"
+				credits="2000" />
+
+			<achievement id="47" tag="team_5_stars" goal="1" credits="5000" />
+
+		</achievements>
+		<skills>
+
+			<skill tag="agil" special="True">
+
+				<attribute_modifier tag="reg" modifier="5" />
+
+
+			</skill>
+
+			<skill tag="agresivo" special="True">
+
+				<attribute_modifier tag="rob" modifier="5" />
+
+
+			</skill>
+
+			<skill tag="alto" special="True">
+
+				<attribute_modifier tag="aer" modifier="5" />
+
+
+			</skill>
+
+			<skill tag="ambidiestro" special="False">
+
+				<attribute_modifier tag="pas" modifier="5" />
+
+				<attribute_modifier tag="reg" modifier="5" />
+
+				<attribute_modifier tag="rem" modifier="5" />
+
+
+				<attribute_requirement tag="pas" amount="60" />
+
+				<attribute_requirement tag="rem" amount="60" />
+
+			</skill>
+
+			<skill tag="atento" special="True">
+
+
+			</skill>
+
+			<skill tag="barrera" special="False">
+				
+				<attribute_modifier tag="vel" modifier="5" />
+
+				<attribute_modifier tag="res" modifier="-10" />
+				
+				<attribute_requirement tag="vel" amount="40" />
+				
+				<attribute_requirement tag="res" modifier="40" />
+
+			</skill>
+
+			<skill tag="bregador" special="False">
+
+				<attribute_modifier tag="rob" modifier="5" />
+
+				<attribute_modifier tag="res" modifier="10" />
+
+
+				<attribute_requirement tag="rob" amount="90" />
+
+				<attribute_requirement tag="res" amount="90" />
+
+			</skill>
+
+			<skill tag="cabeceador" special="False">
+
+				<attribute_modifier tag="aer" modifier="5" />
+
+
+				<attribute_requirement tag="aer" amount="80" />
+
+			</skill>
+
+			<skill tag="cambioritmo" special="False">
+
+				<attribute_modifier tag="vel" modifier="5" />
+
+				<attribute_modifier tag="reg" modifier="5" />
+
+
+				<attribute_requirement tag="vel" amount="60" />
+
+			</skill>
+
+			<skill tag="canyo" special="False">
+
+				<attribute_modifier tag="reg" modifier="5" />
+
+
+				<attribute_requirement tag="reg" amount="60" />
+
+			</skill>
+
+			<skill tag="carismatico" special="True">
+
+
+			</skill>
+
+			<skill tag="cazagoles" special="True">
+
+
+			</skill>
+
+			<skill tag="chilena" special="False">
+
+
+				<attribute_requirement tag="rem" amount="70" />
+
+			</skill>
+
+			<skill tag="chupon" special="True">
+
+				<attribute_modifier tag="reg" modifier="5" />
+
+
+			</skill>
+
+			<skill tag="codazo" special="False">
+
+				<attribute_modifier tag="rob" modifier="5" />
+
+
+			</skill>
+
+			<skill tag="colocacionchut" special="False">
+
+				<attribute_modifier tag="rem" modifier="5" />
+
+
+				<attribute_requirement tag="rem" amount="80" />
+
+				<attribute_requirement tag="lan" amount="80" />
+
+			</skill>
+
+			<skill tag="conduccion" special="False">
+
+				<attribute_modifier tag="vel" modifier="5" />
+
+
+				<attribute_requirement tag="vel" amount="60" />
+
+			</skill>
+
+			<skill tag="contundente" special="False">
+
+				<attribute_modifier tag="rob" modifier="5" />
+
+
+				<attribute_requirement tag="vel" amount="60" />
+
+			</skill>
+
+			<skill tag="corpulento" special="False">
+
+				<attribute_modifier tag="vel" modifier="5" />
+
+				<attribute_modifier tag="rob" modifier="5" />
+
+
+			</skill>
+
+			<skill tag="desmarque" special="False">
+
+				<attribute_modifier tag="vel" modifier="5" />
+
+
+				<attribute_requirement tag="vel" amount="60" />
+
+			</skill>
+
+			<skill tag="duro" special="True">
+
+				<attribute_modifier tag="rob" modifier="5" />
+
+
+			</skill>
+
+			<skill tag="electrico" special="True">
+
+				<attribute_modifier tag="vel" modifier="5" />
+
+
+			</skill>
+
+			<skill tag="enclenque" special="True">
+
+
+			</skill>
+
+			<skill tag="fiestero" special="True">
+
+
+			</skill>
+
+			<skill tag="fondon" special="True">
+
+				<attribute_modifier tag="res" modifier="-5" />
+
+
+			</skill>
+
+			<skill tag="fragil" special="True">
+
+
+			</skill>
+
+			<skill tag="fueradejuego" special="False">
+
+
+			</skill>
+
+			<skill tag="glamouroso" special="True">
+
+
+			</skill>
+
+			<skill tag="inagotable" special="False">
+
+				<attribute_modifier tag="rob" modifier="5" />
+
+				<attribute_modifier tag="res" modifier="10" />
+
+
+				<attribute_requirement tag="res" amount="70" />
+
+			</skill>
+
+			<skill tag="intuicion" special="False">
+
+				<attribute_modifier tag="ref" modifier="5" />
+
+				<attribute_modifier tag="par" modifier="5" />
+
+
+				<attribute_requirement tag="ref" amount="90" />
+
+				<attribute_requirement tag="ant" amount="90" />
+
+			</skill>
+
+			<skill tag="killer" special="True">
+
+				<attribute_modifier tag="rem" modifier="10" />
+
+
+			</skill>
+
+			<skill tag="letal1contra1" special="False">
+
+				<attribute_modifier tag="rem" modifier="10" />
+
+				<attribute_modifier tag="aer" modifier="5" />
+
+
+				<attribute_requirement tag="rem" amount="70" />
+
+				<attribute_requirement tag="aer" amount="70" />
+
+			</skill>
+
+			<skill tag="lidernato" special="True">
+
+
+			</skill>
+
+			<skill tag="malperdedor" special="True">
+
+
+			</skill>
+
+			<skill tag="manopla" special="False">
+
+
+				<attribute_requirement tag="par" amount="80" />
+
+			</skill>
+
+			<skill tag="marcaje" special="False">
+
+				<attribute_modifier tag="rob" modifier="5" />
+
+
+				<attribute_requirement tag="rob" amount="70" />
+
+			</skill>
+
+			<skill tag="marrullero" special="True">
+
+
+			</skill>
+
+			<skill tag="ment_defensiva" special="True">
+
+				<attribute_modifier tag="rob" modifier="5" />
+
+				<attribute_modifier tag="rem" modifier="-5" />
+
+
+			</skill>
+
+			<skill tag="ment_ganadora" special="True">
+
+
+			</skill>
+
+			<skill tag="olfato" special="True">
+
+
+			</skill>
+
+			<skill tag="organizador" special="False">
+
+				<attribute_modifier tag="pas" modifier="10" />
+
+
+				<attribute_requirement tag="pas" amount="70" />
+
+			</skill>
+
+			<skill tag="orientado" special="False">
+
+				<attribute_modifier tag="pas" modifier="5" />
+
+				<attribute_modifier tag="reg" modifier="5" />
+
+				<attribute_modifier tag="rem" modifier="5" />
+
+
+				<attribute_requirement tag="vel" amount="60" />
+
+				<attribute_requirement tag="aer" amount="60" />
+
+			</skill>
+
+			<skill tag="palomita" special="False">
+
+
+				<attribute_requirement tag="par" amount="60" />
+
+			</skill>
+
+			<skill tag="panenka" special="False">
+
+
+				<attribute_requirement tag="lan" amount="70" />
+
+			</skill>
+
+			<skill tag="pared" special="False">
+
+
+				<attribute_requirement tag="pas" amount="60" />
+
+			</skill>
+
+			<skill tag="pase40metros" special="False">
+
+				<attribute_modifier tag="pas" modifier="10" />
+
+
+				<attribute_requirement tag="pas" amount="70" />
+
+			</skill>
+
+			<skill tag="pasemilimetrico" special="False">
+
+				<attribute_modifier tag="pas" modifier="5" />
+
+
+				<attribute_requirement tag="pas" amount="80" />
+
+			</skill>
+
+			<skill tag="picardia" special="True">
+
+
+			</skill>
+
+			<skill tag="plancha" special="False">
+
+				<attribute_modifier tag="aer" modifier="10" />
+
+
+				<attribute_requirement tag="aer" amount="70" />
+
+			</skill>
+
+			<skill tag="potenciachut" special="False">
+
+				<attribute_modifier tag="rem" modifier="5" />
+
+
+				<attribute_requirement tag="rem" amount="80" />
+
+				<attribute_requirement tag="lan" amount="80" />
+
+			</skill>
+
+			<skill tag="potenciadesalto" special="True">
+
+				<attribute_modifier tag="aer" modifier="5" />
+
+
+			</skill>
+
+			<skill tag="primertoque" special="False">
+
+				<attribute_modifier tag="pas" modifier="5" />
+
+
+				<attribute_requirement tag="pas" amount="70" />
+
+			</skill>
+
+			<skill tag="punyosdeacero" special="False">
+
+
+				<attribute_requirement tag="aer" amount="70" />
+
+			</skill>
+
+			<skill tag="quejica" special="True">
+
+
+			</skill>
+
+			<skill tag="rabona" special="False">
+
+				<attribute_modifier tag="pas" modifier="10" />
+
+
+				<attribute_requirement tag="pas" amount="70" />
+
+			</skill>
+
+			<skill tag="ref_defensivo" special="False">
+
+
+				<attribute_requirement tag="rob" amount="60" />
+
+			</skill>
+
+			<skill tag="rigor" special="False">
+
+				<attribute_modifier tag="rob" modifier="5" />
+
+
+				<attribute_requirement tag="rob" amount="70" />
+
+			</skill>
+
+			<skill tag="rosca" special="False">
+
+				<attribute_modifier tag="pas" modifier="10" />
+
+
+				<attribute_requirement tag="pas" amount="80" />
+
+				<attribute_requirement tag="lan" amount="80" />
+
+			</skill>
+
+			<skill tag="ruleta" special="False">
+
+				<attribute_modifier tag="reg" modifier="5" />
+
+
+				<attribute_requirement tag="reg" amount="85" />
+
+			</skill>
+
+			<skill tag="sangrefria" special="False">
+
+				<attribute_modifier tag="lan" modifier="5" />
+
+
+				<attribute_requirement tag="lan" amount="75" />
+
+			</skill>
+
+			<skill tag="sinmirar" special="False">
+
+				<attribute_modifier tag="pas" modifier="10" />
+
+
+				<attribute_requirement tag="pas" amount="70" />
+
+			</skill>
+
+			<skill tag="sobrio" special="True">
+
+
+			</skill>
+
+			<skill tag="sombrero" special="False">
+
+				<attribute_modifier tag="reg" modifier="10" />
+
+
+				<attribute_requirement tag="reg" amount="80" />
+
+			</skill>
+
+			<skill tag="sprinter" special="False">
+
+				<attribute_modifier tag="vel" modifier="5" />
+
+
+				<attribute_requirement tag="vel" amount="80" />
+
+			</skill>
+
+			<skill tag="sprinter2" special="False">
+
+
+				<attribute_requirement tag="vel" amount="70" />
+
+			</skill>
+
+			<skill tag="standground" special="False">
+
+				<attribute_modifier tag="ref" modifier="5" />
+
+
+				<attribute_requirement tag="col" amount="70" />
+
+			</skill>
+
+			<skill tag="tecnico" special="True">
+
+				<attribute_modifier tag="lan" modifier="5" />
+
+
+			</skill>
+
+			<skill tag="temperamental" special="True">
+
+
+			</skill>
+
+			<skill tag="velocidadcorte" special="False">
+
+				<attribute_modifier tag="vel" modifier="5" />
+
+
+				<attribute_requirement tag="vel" amount="80" />
+
+			</skill>
+
+			<skill tag="vision" special="False">
+
+				<attribute_modifier tag="pas" modifier="10" />
+
+
+				<attribute_requirement tag="pas" amount="75" />
+
+			</skill>
+
+			<skill tag="voluntarioso" special="True">
+
+				<attribute_modifier tag="res" modifier="5" />
+
+
+			</skill>
+
+			<skill tag="zancada" special="True">
+
+				<attribute_modifier tag="vel" modifier="5" />
+
+
+			</skill>
+
+		</skills>
+		<hairs>
+
+			<part id="1" premium="False" bills="0" credits="0" />
+
+			<part id="2" premium="False" bills="0" credits="0" />
+
+			<part id="3" premium="False" bills="0" credits="0" />
+
+			<part id="4" premium="False" bills="0" credits="0" />
+
+			<part id="5" premium="False" bills="0" credits="0" />
+
+			<part id="6" premium="False" bills="0" credits="0" />
+
+			<part id="7" premium="False" bills="0" credits="0" />
+
+			<part id="8" premium="False" bills="0" credits="0" />
+
+			<part id="9" premium="False" bills="0" credits="0" />
+
+			<part id="10" premium="False" bills="0" credits="0" />
+
+			<part id="11" premium="False" bills="0" credits="0" />
+
+			<part id="12" premium="False" bills="0" credits="0" />
+
+			<part id="13" premium="False" bills="0" credits="0" />
+
+			<part id="14" premium="False" bills="0" credits="0" />
+
+			<part id="15" premium="False" bills="0" credits="0" />
+
+			<part id="16" premium="False" bills="0" credits="0" />
+
+			<part id="17" premium="False" bills="0" credits="0" />
+
+			<part id="18" premium="False" bills="0" credits="0" />
+
+			<part id="19" premium="False" bills="0" credits="0" />
+
+			<part id="20" premium="True" bills="0" credits="100" />
+
+			<part id="21" premium="True" bills="0" credits="100" />
+
+			<part id="22" premium="True" bills="0" credits="100" />
+
+			<part id="23" premium="True" bills="0" credits="100" />
+
+			<part id="24" premium="True" bills="0" credits="100" />
+
+			<part id="25" premium="True" bills="0" credits="100" />
+
+			<part id="26" premium="True" bills="0" credits="100" />
+
+			<part id="27" premium="True" bills="0" credits="100" />
+
+			<part id="28" premium="True" bills="100" credits="0" />
+
+			<part id="29" premium="True" bills="100" credits="0" />
+
+		</hairs>
+		<haircolors>
+
+			<color id="1" rgb="1a1212" premium="False" bills="0" credits="0" />
+
+			<color id="7" rgb="2f1f1a" premium="False" bills="0" credits="0" />
+
+			<color id="5" rgb="362923" premium="False" bills="0" credits="0" />
+
+			<color id="4" rgb="3b1c18" premium="False" bills="0" credits="0" />
+
+			<color id="2" rgb="4d413f" premium="False" bills="0" credits="0" />
+
+			<color id="6" rgb="503926" premium="False" bills="0" credits="0" />
+
+			<color id="10" rgb="572910" premium="False" bills="0" credits="0" />
+
+			<color id="8" rgb="5a3932" premium="False" bills="0" credits="0" />
+
+			<color id="9" rgb="775143" premium="False" bills="0" credits="0" />
+
+			<color id="11" rgb="804922" premium="False" bills="0" credits="0" />
+
+			<color id="16" rgb="99692b" premium="True" bills="0" credits="100" />
+
+			<color id="12" rgb="a85c2e" premium="False" bills="0" credits="0" />
+
+			<color id="17" rgb="b38e3d" premium="True" bills="0" credits="100" />
+
+			<color id="3" rgb="baafa8" premium="False" bills="0" credits="0" />
+
+			<color id="13" rgb="c85a34" premium="False" bills="0" credits="0" />
+
+			<color id="18" rgb="cca551" premium="True" bills="0" credits="100" />
+
+			<color id="19" rgb="d7ba44" premium="True" bills="0" credits="100" />
+
+			<color id="14" rgb="e8832f" premium="False" bills="0" credits="0" />
+
+			<color id="15" rgb="f0a32a" premium="True" bills="0" credits="100" />
+
+			<color id="20" rgb="fedb4c" premium="True" bills="0" credits="10000" />
+
+			<color id="21" rgb="ffee8d" premium="True" bills="0" credits="100" />
+
+		</haircolors>
+		<faces>
+
+			<part id="1" premium="False" bills="0" credits="0" />
+
+			<part id="2" premium="False" bills="0" credits="0" />
+
+			<part id="3" premium="False" bills="0" credits="0" />
+
+			<part id="4" premium="False" bills="0" credits="0" />
+
+			<part id="5" premium="False" bills="0" credits="0" />
+
+			<part id="6" premium="False" bills="0" credits="0" />
+
+			<part id="7" premium="False" bills="0" credits="0" />
+
+			<part id="8" premium="False" bills="0" credits="0" />
+
+			<part id="9" premium="False" bills="0" credits="0" />
+
+			<part id="10" premium="False" bills="0" credits="0" />
+
+			<part id="11" premium="False" bills="0" credits="0" />
+
+			<part id="12" premium="False" bills="0" credits="0" />
+
+			<part id="13" premium="False" bills="0" credits="0" />
+
+			<part id="14" premium="False" bills="0" credits="0" />
+
+			<part id="15" premium="False" bills="0" credits="0" />
+
+			<part id="16" premium="False" bills="0" credits="0" />
+
+			<part id="17" premium="False" bills="0" credits="0" />
+
+			<part id="18" premium="False" bills="0" credits="0" />
+
+			<part id="19" premium="False" bills="0" credits="0" />
+
+			<part id="20" premium="False" bills="0" credits="0" />
+
+			<part id="21" premium="False" bills="0" credits="0" />
+
+			<part id="22" premium="False" bills="0" credits="0" />
+
+			<part id="23" premium="False" bills="0" credits="0" />
+
+			<part id="24" premium="False" bills="0" credits="0" />
+
+			<part id="25" premium="False" bills="0" credits="0" />
+
+			<part id="26" premium="False" bills="0" credits="0" />
+
+			<part id="27" premium="False" bills="0" credits="0" />
+
+			<part id="28" premium="False" bills="0" credits="0" />
+
+			<part id="29" premium="False" bills="0" credits="0" />
+
+			<part id="30" premium="True" bills="0" credits="100" />
+
+			<part id="31" premium="True" bills="0" credits="100" />
+
+			<part id="32" premium="True" bills="0" credits="100" />
+
+			<part id="33" premium="True" bills="0" credits="100" />
+
+			<part id="34" premium="True" bills="0" credits="100" />
+
+			<part id="35" premium="True" bills="0" credits="100" />
+
+			<part id="36" premium="True" bills="0" credits="100" />
+
+			<part id="37" premium="True" bills="0" credits="10000" />
+
+			<part id="38" premium="True" bills="0" credits="100" />
+
+		</faces>
+		<skincolors>
+
+			<color id="1" rgb="fdbbac" premium="False" bills="0" credits="0" />
+
+			<color id="2" rgb="fed0bf" premium="False" bills="0" credits="0" />
+
+			<color id="3" rgb="ffebe3" premium="False" bills="0" credits="0" />
+
+			<color id="4" rgb="eba485" premium="False" bills="0" credits="0" />
+
+			<color id="5" rgb="f7b194" premium="False" bills="0" credits="0" />
+
+			<color id="6" rgb="fce0c7" premium="False" bills="0" credits="0" />
+
+			<color id="7" rgb="e09a6c" premium="False" bills="0" credits="0" />
+
+			<color id="8" rgb="ecbc83" premium="False" bills="0" credits="0" />
+
+			<color id="9" rgb="ffe4a1" premium="False" bills="0" credits="0" />
+
+			<color id="10" rgb="a06552" premium="True" bills="0" credits="100" />
+
+			<color id="11" rgb="be7c63" premium="True" bills="0" credits="100" />
+
+			<color id="12" rgb="e6b080" premium="True" bills="0" credits="100" />
+
+			<color id="13" rgb="5d3924" premium="True" bills="0" credits="100" />
+
+			<color id="14" rgb="744c3d" premium="True" bills="0" credits="100" />
+
+			<color id="15" rgb="a67449" premium="True" bills="0" credits="100" />
+
+			<color id="16" rgb="452516" premium="True" bills="0" credits="100" />
+
+			<color id="17" rgb="5a3729" premium="True" bills="0" credits="100" />
+
+			<color id="18" rgb="88483a" premium="True" bills="0" credits="100" />
+
+			<color id="19" rgb="221511" premium="True" bills="0" credits="100" />
+
+			<color id="20" rgb="311c13" premium="True" bills="500" credits="0" />
+
+			<color id="21" rgb="462a25" premium="True" bills="0" credits="100" />
+
+		</skincolors>
+		<uniformcolors>
+
+			<color id="12" rgb="0" />
+
+			<color id="3" rgb="086634" />
+
+			<color id="21" rgb="0E2B4B" />
+
+			<color id="2" rgb="28438A" />
+
+			<color id="1" rgb="2DAAE2" />
+
+			<color id="24" rgb="3D603E" />
+
+			<color id="10" rgb="4E7FDE" />
+
+			<color id="23" rgb="52B5B7" />
+
+			<color id="15" rgb="7C222C" />
+
+			<color id="7" rgb="82BF79" />
+
+			<color id="9" rgb="8FEFF1" />
+
+			<color id="25" rgb="969ABF" />
+
+			<color id="17" rgb="ACB2B2" />
+
+			<color id="16" rgb="AED3E5" />
+
+			<color id="14" rgb="B9DE51" />
+
+			<color id="20" rgb="D13052" />
+
+			<color id="11" rgb="DF77A8" />
+
+			<color id="13" rgb="E12FA0" />
+
+			<color id="4" rgb="E40613" />
+
+			<color id="22" rgb="F5F16E" />
+
+			<color id="19" rgb="FB7701" />
+
+			<color id="18" rgb="FBD683" />
+
+			<color id="6" rgb="FCAE30" />
+
+			<color id="8" rgb="FEED01" />
+
+			<color id="5" rgb="FFFFFF" />
+
+		</uniformcolors>
+		<shields>
+
+			<shield id="1" premium="False" bills="0" credits="0" />
+
+			<shield id="2" premium="False" bills="0" credits="0" />
+
+			<shield id="3" premium="False" bills="0" credits="0" />
+
+			<shield id="4" premium="True" bills="0" credits="0" />
+
+			<shield id="5" premium="True" bills="0" credits="100" />
+
+			<shield id="6" premium="True" bills="0" credits="200" />
+
+			<shield id="7" premium="True" bills="0" credits="300" />
+
+			<shield id="8" premium="True" bills="0" credits="400" />
+
+			<shield id="9" premium="True" bills="0" credits="500" />
+
+			<shield id="10" premium="True" bills="0" credits="1000" />
+
+			<shield id="11" premium="True" bills="10" credits="0" />
+
+			<shield id="12" premium="True" bills="20" credits="0" />
+
+			<shield id="13" premium="True" bills="30" credits="0" />
+
+			<shield id="14" premium="True" bills="40" credits="0" />
+
+			<shield id="15" premium="True" bills="50" credits="0" />
+
+			<shield id="16" premium="True" bills="60" credits="0" />
+
+			<shield id="17" premium="True" bills="70" credits="0" />
+
+			<shield id="18" premium="True" bills="80" credits="0" />
+
+			<shield id="19" premium="True" bills="90" credits="0" />
+
+			<shield id="20" premium="True" bills="100" credits="0" />
+
+			<shield id="21" premium="True" bills="200" credits="0" />
+
+			<shield id="22" premium="True" bills="300" credits="0" />
+
+			<shield id="23" premium="True" bills="500" credits="0" />
+
+		</shields>
+		<store_products>
+
+			<product tag="scumbag" apple_tag="com.fiveants.footballmaniacs.scumbag"
+				google_tag="com.fiveants.footballpainiacs.scumbag" quantity="20"
+				quantity_real="20" />
+
+			<product tag="handbag" apple_tag="com.fiveants.footballmaniacs.handbag"
+				google_tag="com.fiveants.footballpainiacs.handbag" quantity="50"
+				quantity_real="50" />
+
+			<product tag="superbag" apple_tag="com.fiveants.footballmaniacs.superbag"
+				google_tag="com.fiveants.footballpainiacs.superbag" quantity="125"
+				quantity_real="125" />
+
+			<product tag="megabag" apple_tag="com.fiveants.footballmaniacs.megabag"
+				google_tag="com.fiveants.footballpainiacs.megabag" quantity="300"
+				quantity_real="300" />
+
+			<product tag="hyperbag" apple_tag="com.fiveants.footballmaniacs.hyperbag"
+				google_tag="com.fiveants.footballpainiacs.hyperbag" quantity="800"
+				quantity_real="800" />
+
+			<product tag="ultrabag" apple_tag="com.fiveants.footballmaniacs.ultrabag"
+				google_tag="com.fiveants.footballpainiacs.ultrabag" quantity="2000"
+				quantity_real="2000" />
+
+		</store_products>
+	</core>
+	<team id="576" name="team 1" country="209" ranking_global="86"
+		ranking_country="80" step="1" step_max="1" num_achievements="0"
+		avg_points="53">
+
+		<uniform shield="1">
+			<local color1="11" color2="1" color3="24" />
+			<visitor color1="2" color2="13" color3="23" />
+		</uniform>
+
+
+		<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+			place_3="0" player_most_goals="0" least_goals_against="0">
+
+		</trophies>
+
+		<boosts tactic="0" teevee="0" psycho="0" />
+	</team>
+
+	<economy points="101" credits="2010" bills="10" ranked="3"
+		ranked_free_renewal="0" daily_in="4748" bonus_days="1" bonus_needed="5" />
+	<lineup formation="1">
+
+		<player id="15238" position="0" />
+
+		<player id="15244" position="1" />
+
+		<player id="15241" position="2" />
+
+		<player id="15242" position="3" />
+
+		<player id="15248" position="4" />
+
+		<player id="15252" position="5" />
+
+		<player id="15249" position="6" />
+
+		<player id="15250" position="7" />
+
+		<player id="15255" position="8" />
+
+		<player id="15256" position="9" />
+
+		<player id="15257" position="10" />
+
+
+	</lineup>
+	<tactics strategy="None" instruction1="None" instruction2="None"
+		foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+	<shields_unlocked>
+
+	</shields_unlocked>
+
+	<hairs_unlocked>
+		<part id="29" />
+	</hairs_unlocked>
+
+	<haircolors_unlocked>
+		<color id="21" />
+	</haircolors_unlocked>
+
+	<faces_unlocked>
+		<part id="38" />
+	</faces_unlocked>
+
+	<skins_unlocked>
+		<color id="21" />
+	</skins_unlocked>
+
+	<players>
+
+
+		<player id="15238">
+
+
+			<core country="RU" demarcation="por" level="1" />
+
+
+
+			<appearance name="Oleksandr" surname="Dayev" hair_type="29"
+				hair_color="3" face="19" skin="11" attributes_average="54" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="87" sell="43" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="60" />
+
+				<attribute tag="pas" amount="58" />
+
+				<attribute tag="aer" amount="47" />
+
+				<attribute tag="res" amount="57" />
+
+				<attribute tag="ref" amount="52" />
+
+				<attribute tag="col" amount="49" />
+
+				<attribute tag="ant" amount="56" />
+
+				<attribute tag="par" amount="59" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="2" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15239">
+
+
+			<core country="ES" demarcation="por" level="1" />
+
+
+
+			<appearance name="Julio" surname="Forns" hair_type="29"
+				hair_color="15" face="12" skin="10" attributes_average="53" />
+
+
+
+			<state injury="1" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="78" sell="39" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="62" />
+
+				<attribute tag="pas" amount="50" />
+
+				<attribute tag="aer" amount="48" />
+
+				<attribute tag="res" amount="51" />
+
+				<attribute tag="ref" amount="55" />
+
+				<attribute tag="col" amount="49" />
+
+				<attribute tag="ant" amount="58" />
+
+				<attribute tag="par" amount="59" />
+
+			</attributes>
+
+
+
+			<skills>
+			
+				<skill tag="fondon" active="False" />
+				<skill tag="barrera" active="True" />
+				<skill tag="standground" active="False" />
+
+			</skills>
+
+
+
+			<stats matches_played="37" matches_won="10" goals="2"
+				dailyscorer="5" />
+
+
+		</player>
+
+		<player id="15240">
+
+
+			<core country="NZ" demarcation="por" level="1" />
+
+
+
+			<appearance name="Jeremy" surname="Farnan" hair_type="2"
+				hair_color="1" face="27" skin="21" attributes_average="52" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="112" sell="56" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="46" />
+
+				<attribute tag="pas" amount="45" />
+
+				<attribute tag="aer" amount="57" />
+
+				<attribute tag="res" amount="51" />
+
+				<attribute tag="ref" amount="57" />
+
+				<attribute tag="col" amount="55" />
+
+				<attribute tag="ant" amount="56" />
+
+				<attribute tag="par" amount="52" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="0" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15241">
+
+
+			<core country="ES" demarcation="def" level="1" />
+
+
+
+			<appearance name="Marcelino" surname="Rivilla" hair_type="15"
+				hair_color="21" face="17" skin="15" attributes_average="50" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="96" sell="48" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="56" />
+
+				<attribute tag="rob" amount="49" />
+
+				<attribute tag="pas" amount="55" />
+
+				<attribute tag="reg" amount="49" />
+
+				<attribute tag="rem" amount="48" />
+
+				<attribute tag="aer" amount="48" />
+
+				<attribute tag="res" amount="49" />
+
+				<attribute tag="lan" amount="52" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="2" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15242">
+
+
+			<core country="DK" demarcation="def" level="1" />
+
+
+
+			<appearance name="Per" surname="Busk" hair_type="4"
+				hair_color="9" face="30" skin="1" attributes_average="51" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="103" sell="51" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="45" />
+
+				<attribute tag="rob" amount="56" />
+
+				<attribute tag="pas" amount="60" />
+
+				<attribute tag="reg" amount="58" />
+
+				<attribute tag="rem" amount="45" />
+
+				<attribute tag="aer" amount="48" />
+
+				<attribute tag="res" amount="52" />
+
+				<attribute tag="lan" amount="46" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="2" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15243">
+
+
+			<core country="ES" demarcation="def" level="1" />
+
+
+
+			<appearance name="Marcelino" surname="Esnal" hair_type="16"
+				hair_color="12" face="13" skin="14" attributes_average="51" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="89" sell="44" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="59" />
+
+				<attribute tag="rob" amount="53" />
+
+				<attribute tag="pas" amount="46" />
+
+				<attribute tag="reg" amount="48" />
+
+				<attribute tag="rem" amount="50" />
+
+				<attribute tag="aer" amount="49" />
+
+				<attribute tag="res" amount="55" />
+
+				<attribute tag="lan" amount="48" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="0" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15244">
+
+
+			<core country="DE" demarcation="def" level="3" />
+
+
+
+			<appearance name="Erich" surname="Magath" hair_type="20"
+				hair_color="12" face="18" skin="8" attributes_average="70" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="2471" sell="1235" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="60" />
+
+				<attribute tag="rob" amount="73" />
+
+				<attribute tag="pas" amount="69" />
+
+				<attribute tag="reg" amount="71" />
+
+				<attribute tag="rem" amount="73" />
+
+				<attribute tag="aer" amount="60" />
+
+				<attribute tag="res" amount="74" />
+
+				<attribute tag="lan" amount="80" />
+
+			</attributes>
+
+
+
+			<skills>
+
+				<skill tag="olfato" active="True" />
+
+			</skills>
+
+
+
+			<stats matches_played="2" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15245">
+
+
+			<core country="ES" demarcation="def" level="1" />
+
+
+
+			<appearance name="Domingo" surname="Oubiña" hair_type="9"
+				hair_color="13" face="8" skin="8" attributes_average="54" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="120" sell="60" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="55" />
+
+				<attribute tag="rob" amount="55" />
+
+				<attribute tag="pas" amount="57" />
+
+				<attribute tag="reg" amount="53" />
+
+				<attribute tag="rem" amount="53" />
+
+				<attribute tag="aer" amount="50" />
+
+				<attribute tag="res" amount="59" />
+
+				<attribute tag="lan" amount="55" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="0" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15246">
+
+
+			<core country="PT" demarcation="def" level="1" />
+
+
+
+			<appearance name="Deco" surname="Taí" hair_type="17"
+				hair_color="7" face="17" skin="1" attributes_average="52" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="105" sell="52" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="51" />
+
+				<attribute tag="rob" amount="47" />
+
+				<attribute tag="pas" amount="57" />
+
+				<attribute tag="reg" amount="58" />
+
+				<attribute tag="rem" amount="49" />
+
+				<attribute tag="aer" amount="45" />
+
+				<attribute tag="res" amount="54" />
+
+				<attribute tag="lan" amount="59" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="0" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15247">
+
+
+			<core country="ES" demarcation="def" level="1" />
+
+
+
+			<appearance name="Koldo" surname="Ablanedo" hair_type="24"
+				hair_color="9" face="38" skin="7" attributes_average="50" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="78" sell="39" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="56" />
+
+				<attribute tag="rob" amount="48" />
+
+				<attribute tag="pas" amount="55" />
+
+				<attribute tag="reg" amount="45" />
+
+				<attribute tag="rem" amount="45" />
+
+				<attribute tag="aer" amount="58" />
+
+				<attribute tag="res" amount="46" />
+
+				<attribute tag="lan" amount="51" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="0" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15248">
+
+
+			<core country="HU" demarcation="cen" level="2" />
+
+
+
+			<appearance name="Csaba" surname="Kohut" hair_type="10"
+				hair_color="1" face="34" skin="14" attributes_average="59" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="605" sell="302" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="59" />
+
+				<attribute tag="rob" amount="70" />
+
+				<attribute tag="pas" amount="63" />
+
+				<attribute tag="reg" amount="56" />
+
+				<attribute tag="rem" amount="55" />
+
+				<attribute tag="aer" amount="57" />
+
+				<attribute tag="res" amount="64" />
+
+				<attribute tag="lan" amount="51" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="2" matches_won="0" goals="1"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15249">
+
+
+			<core country="ES" demarcation="cen" level="1" />
+
+
+
+			<appearance name="Heraldo" surname="Padrón" hair_type="5"
+				hair_color="8" face="16" skin="14" attributes_average="52" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="118" sell="59" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="59" />
+
+				<attribute tag="rob" amount="47" />
+
+				<attribute tag="pas" amount="55" />
+
+				<attribute tag="reg" amount="55" />
+
+				<attribute tag="rem" amount="58" />
+
+				<attribute tag="aer" amount="54" />
+
+				<attribute tag="res" amount="50" />
+
+				<attribute tag="lan" amount="45" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="2" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15250">
+
+
+			<core country="GB" demarcation="cen" level="1" />
+
+
+
+			<appearance name="Owen" surname="Baugh" hair_type="28"
+				hair_color="7" face="6" skin="17" attributes_average="49" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="123" sell="61" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="52" />
+
+				<attribute tag="rob" amount="50" />
+
+				<attribute tag="pas" amount="54" />
+
+				<attribute tag="reg" amount="46" />
+
+				<attribute tag="rem" amount="46" />
+
+				<attribute tag="aer" amount="46" />
+
+				<attribute tag="res" amount="48" />
+
+				<attribute tag="lan" amount="51" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="2" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15251">
+
+
+			<core country="ES" demarcation="cen" level="1" />
+
+
+
+			<appearance name="Ernesto" surname="Fusté" hair_type="6"
+				hair_color="8" face="36" skin="11" attributes_average="51" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="70" sell="35" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="48" />
+
+				<attribute tag="rob" amount="59" />
+
+				<attribute tag="pas" amount="60" />
+
+				<attribute tag="reg" amount="45" />
+
+				<attribute tag="rem" amount="52" />
+
+				<attribute tag="aer" amount="51" />
+
+				<attribute tag="res" amount="45" />
+
+				<attribute tag="lan" amount="48" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="0" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15252">
+
+
+			<core country="CH" demarcation="cen" level="2" />
+
+
+
+			<appearance name="Stéphane" surname="Shaqiri" hair_type="8"
+				hair_color="17" face="2" skin="5" attributes_average="60" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="458" sell="229" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="60" />
+
+				<attribute tag="rob" amount="52" />
+
+				<attribute tag="pas" amount="57" />
+
+				<attribute tag="reg" amount="53" />
+
+				<attribute tag="rem" amount="63" />
+
+				<attribute tag="aer" amount="66" />
+
+				<attribute tag="res" amount="69" />
+
+				<attribute tag="lan" amount="60" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="2" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15253">
+
+
+			<core country="ES" demarcation="cen" level="1" />
+
+
+
+			<appearance name="Thiago" surname="Contreras" hair_type="26"
+				hair_color="8" face="38" skin="12" attributes_average="51" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="115" sell="57" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="57" />
+
+				<attribute tag="rob" amount="48" />
+
+				<attribute tag="pas" amount="52" />
+
+				<attribute tag="reg" amount="55" />
+
+				<attribute tag="rem" amount="51" />
+
+				<attribute tag="aer" amount="46" />
+
+				<attribute tag="res" amount="49" />
+
+				<attribute tag="lan" amount="56" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="0" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15254">
+
+
+			<core country="EC" demarcation="cen" level="1" />
+
+
+
+			<appearance name="Felipe" surname="Capurro" hair_type="18"
+				hair_color="10" face="30" skin="15" attributes_average="52" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="126" sell="63" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="57" />
+
+				<attribute tag="rob" amount="58" />
+
+				<attribute tag="pas" amount="53" />
+
+				<attribute tag="reg" amount="48" />
+
+				<attribute tag="rem" amount="59" />
+
+				<attribute tag="aer" amount="50" />
+
+				<attribute tag="res" amount="46" />
+
+				<attribute tag="lan" amount="49" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="0" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15255">
+
+
+			<core country="ES" demarcation="del" level="1" />
+
+
+
+			<appearance name="Cesc" surname="Amor" hair_type="28"
+				hair_color="3" face="18" skin="14" attributes_average="52" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="89" sell="44" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="51" />
+
+				<attribute tag="rob" amount="53" />
+
+				<attribute tag="pas" amount="55" />
+
+				<attribute tag="reg" amount="57" />
+
+				<attribute tag="rem" amount="48" />
+
+				<attribute tag="aer" amount="59" />
+
+				<attribute tag="res" amount="48" />
+
+				<attribute tag="lan" amount="48" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="2" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15256">
+
+
+			<core country="CH" demarcation="del" level="1" />
+
+
+
+			<appearance name="François" surname="Rodríguez" hair_type="19"
+				hair_color="10" face="14" skin="19" attributes_average="50" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="85" sell="42" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="59" />
+
+				<attribute tag="rob" amount="48" />
+
+				<attribute tag="pas" amount="58" />
+
+				<attribute tag="reg" amount="45" />
+
+				<attribute tag="rem" amount="52" />
+
+				<attribute tag="aer" amount="52" />
+
+				<attribute tag="res" amount="46" />
+
+				<attribute tag="lan" amount="47" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="2" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15257">
+
+
+			<core country="ES" demarcation="del" level="1" />
+
+
+
+			<appearance name="Genar" surname="Gil" hair_type="6"
+				hair_color="4" face="15" skin="7" attributes_average="51" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="97" sell="48" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="49" />
+
+				<attribute tag="rob" amount="54" />
+
+				<attribute tag="pas" amount="46" />
+
+				<attribute tag="reg" amount="50" />
+
+				<attribute tag="rem" amount="55" />
+
+				<attribute tag="aer" amount="54" />
+
+				<attribute tag="res" amount="48" />
+
+				<attribute tag="lan" amount="58" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="2" matches_won="0" goals="1"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15258">
+
+
+			<core country="TT" demarcation="del" level="1" />
+
+
+
+			<appearance name="Arnold" surname="Yorke" hair_type="24"
+				hair_color="9" face="29" skin="19" attributes_average="55" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="83" sell="41" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="53" />
+
+				<attribute tag="rob" amount="56" />
+
+				<attribute tag="pas" amount="59" />
+
+				<attribute tag="reg" amount="56" />
+
+				<attribute tag="rem" amount="55" />
+
+				<attribute tag="aer" amount="59" />
+
+				<attribute tag="res" amount="51" />
+
+				<attribute tag="lan" amount="54" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="0" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+		<player id="15259">
+
+
+			<core country="ES" demarcation="del" level="1" />
+
+
+
+			<appearance name="Severino" surname="Pizzi" hair_type="7"
+				hair_color="21" face="10" skin="3" attributes_average="51" />
+
+
+
+			<state injury="0" yellow_cards="0" red_card="False" />
+
+
+
+			<attributes price="105" sell="52" points_upgraded="0"
+				points_sell="0">
+
+				<attribute tag="vel" amount="51" />
+
+				<attribute tag="rob" amount="45" />
+
+				<attribute tag="pas" amount="49" />
+
+				<attribute tag="reg" amount="48" />
+
+				<attribute tag="rem" amount="56" />
+
+				<attribute tag="aer" amount="59" />
+
+				<attribute tag="res" amount="55" />
+
+				<attribute tag="lan" amount="50" />
+
+			</attributes>
+
+
+
+			<skills>
+
+			</skills>
+
+
+
+			<stats matches_played="0" matches_won="0" goals="0"
+				dailyscorer="0" />
+
+
+		</player>
+
+
+	</players>
+
+	<achievements>
+
+		<achievement id="7" quantity="1" status="0" />
+
+	</achievements>
+
+
+
+
+
+
+	<om_teams reset="76197">
+
+
+		<team id="23" name="The Fat Wolves of Wallis and Futuna" country="59"
+			ranking_global="-1" ranking_country="-1" step="2" step_max="1"
+			num_achievements="0" avg_points="53">
+
+			<uniform shield="1">
+				<local color1="10" color2="8" color3="8" />
+				<visitor color1="14" color2="16" color3="3" />
+			</uniform>
+
+
+			<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+				place_3="0" player_most_goals="0" least_goals_against="0">
+
+			</trophies>
+		</team>
+
+
+
+
+		<team id="45" name="The Whispering Lions of Panama" country="216"
+			ranking_global="-1" ranking_country="-1" step="3" step_max="1"
+			num_achievements="0" avg_points="59">
+
+			<uniform shield="1">
+				<local color1="3" color2="19" color3="12" />
+				<visitor color1="17" color2="18" color3="19" />
+			</uniform>
+
+
+			<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+				place_3="0" player_most_goals="0" least_goals_against="0">
+
+			</trophies>
+		</team>
+
+
+
+
+		<team id="67" name="The Worried Frogs of Pitcairn" country="183"
+			ranking_global="-1" ranking_country="-1" step="4" step_max="1"
+			num_achievements="0" avg_points="61">
+
+			<uniform shield="1">
+				<local color1="5" color2="13" color3="16" />
+				<visitor color1="23" color2="16" color3="3" />
+			</uniform>
+
+
+			<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+				place_3="0" player_most_goals="0" least_goals_against="0">
+
+			</trophies>
+		</team>
+
+
+
+
+		<team id="82" name="The Tasteless Dolphins of Saint Barthéle"
+			country="7" ranking_global="-1" ranking_country="-1" step="5"
+			step_max="1" num_achievements="0" avg_points="67">
+
+			<uniform shield="1">
+				<local color1="25" color2="10" color3="24" />
+				<visitor color1="10" color2="23" color3="15" />
+			</uniform>
+
+
+			<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+				place_3="0" player_most_goals="0" least_goals_against="0">
+
+			</trophies>
+		</team>
+
+
+
+
+		<team id="103" name="The Odd Dolphins of Costa Rica" country="236"
+			ranking_global="-1" ranking_country="-1" step="6" step_max="1"
+			num_achievements="0" avg_points="69">
+
+			<uniform shield="1">
+				<local color1="9" color2="25" color3="9" />
+				<visitor color1="23" color2="9" color3="23" />
+			</uniform>
+
+
+			<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+				place_3="0" player_most_goals="0" least_goals_against="0">
+
+			</trophies>
+		</team>
+
+
+
+
+		<team id="134" name="The Noisy Wolves of Angola" country="25"
+			ranking_global="-1" ranking_country="-1" step="7" step_max="1"
+			num_achievements="0" avg_points="74">
+
+			<uniform shield="1">
+				<local color1="16" color2="3" color3="3" />
+				<visitor color1="2" color2="13" color3="14" />
+			</uniform>
+
+
+			<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+				place_3="0" player_most_goals="0" least_goals_against="0">
+
+			</trophies>
+		</team>
+
+
+
+
+		<team id="147" name="The Deafening Foxes of Burundi" country="11"
+			ranking_global="-1" ranking_country="-1" step="8" step_max="1"
+			num_achievements="0" avg_points="76">
+
+			<uniform shield="1">
+				<local color1="18" color2="16" color3="9" />
+				<visitor color1="4" color2="1" color3="14" />
+			</uniform>
+
+
+			<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+				place_3="0" player_most_goals="0" least_goals_against="0">
+
+			</trophies>
+		</team>
+
+
+
+
+		<team id="238" name="tghhj" country="209" ranking_global="368"
+			ranking_country="350" step="1" step_max="1" num_achievements="0"
+			avg_points="53">
+
+			<uniform shield="1">
+				<local color1="6" color2="14" color3="3" />
+				<visitor color1="20" color2="3" color3="24" />
+			</uniform>
+
+
+			<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+				place_3="0" player_most_goals="0" least_goals_against="0">
+
+			</trophies>
+		</team>
+
+
+
+	</om_teams>
+
+
+	<official_league>
+
+
+
+		<league id="37" date="-75747" state="2" step="7" seen="False"
+			collected="False">
+
+			<classification>
+
+
+				<slot points="9" position="6" promotion="0" won="2" lost="5"
+					tie="3" goals="8" goals_against="15" collected="False">
+
+
+					<team id="576" name="team 1" country="209" ranking_global="86"
+						ranking_country="80" step="1" step_max="1" num_achievements="0"
+						avg_points="53">
+
+						<uniform shield="1">
+							<local color1="11" color2="1" color3="24" />
+							<visitor color1="2" color2="13" color3="23" />
+						</uniform>
+
+
+						<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+							place_3="0" player_most_goals="0" least_goals_against="0">
+
+						</trophies>
+					</team>
+
+
+
+					<achievements>
+
+					</achievements>
+
+				</slot>
+				<slot points="0" position="0" promotion="0" won="0" lost="0"
+					tie="0" goals="0" goals_against="0" seen="False" collected="">
+
+
+					<team id="577" name="team 2" country="209" ranking_global="86"
+						ranking_country="80" step="1" step_max="1" num_achievements="0"
+						avg_points="53">
+
+						<uniform shield="1">
+							<local color1="11" color2="1" color3="24" />
+							<visitor color1="2" color2="13" color3="23" />
+						</uniform>
+
+
+						<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+							place_3="0" player_most_goals="0" least_goals_against="0">
+
+						</trophies>
+					</team>
+
+
+
+					<achievements>
+
+					</achievements>
+
+				</slot>
+				<slot points="0" position="0" promotion="0" won="0" lost="0"
+					tie="0" goals="0" goals_against="0" seen="False" collected="">
+
+
+					<team id="578" name="team 3" country="209" ranking_global="86"
+						ranking_country="80" step="1" step_max="1" num_achievements="0"
+						avg_points="53">
+
+						<uniform shield="1">
+							<local color1="11" color2="1" color3="24" />
+							<visitor color1="2" color2="13" color3="23" />
+						</uniform>
+
+
+						<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+							place_3="0" player_most_goals="0" least_goals_against="0">
+
+						</trophies>
+					</team>
+
+
+
+					<achievements>
+
+					</achievements>
+
+				</slot>
+				<slot points="0" position="0" promotion="0" won="0" lost="0"
+					tie="0" goals="0" goals_against="0" seen="False" collected="">
+
+
+					<team id="579" name="team 4" country="209" ranking_global="86"
+						ranking_country="80" step="1" step_max="1" num_achievements="0"
+						avg_points="53">
+
+						<uniform shield="1">
+							<local color1="11" color2="1" color3="24" />
+							<visitor color1="2" color2="13" color3="23" />
+						</uniform>
+
+
+						<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+							place_3="0" player_most_goals="0" least_goals_against="0">
+
+						</trophies>
+					</team>
+
+
+
+					<achievements>
+
+					</achievements>
+
+				</slot>
+				<slot points="0" position="0" promotion="0" won="0" lost="0"
+					tie="0" goals="0" goals_against="0" seen="False" collected="">
+
+
+					<team id="580" name="team 5" country="209" ranking_global="86"
+						ranking_country="80" step="1" step_max="1" num_achievements="0"
+						avg_points="53">
+
+						<uniform shield="1">
+							<local color1="11" color2="1" color3="24" />
+							<visitor color1="2" color2="13" color3="23" />
+						</uniform>
+
+
+						<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+							place_3="0" player_most_goals="0" least_goals_against="0">
+
+						</trophies>
+					</team>
+
+
+
+					<achievements>
+
+					</achievements>
+
+				</slot>
+				<slot points="0" position="0" promotion="0" won="0" lost="0"
+					tie="0" goals="0" goals_against="0" seen="False" collected="">
+
+
+					<team id="581" name="team 6" country="209" ranking_global="86"
+						ranking_country="80" step="1" step_max="1" num_achievements="0"
+						avg_points="53">
+
+						<uniform shield="1">
+							<local color1="11" color2="1" color3="24" />
+							<visitor color1="2" color2="13" color3="23" />
+						</uniform>
+
+
+						<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+							place_3="0" player_most_goals="0" least_goals_against="0">
+
+						</trophies>
+					</team>
+
+
+
+					<achievements>
+
+					</achievements>
+
+				</slot>
+			</classification>
+
+
+
+			<top_scorers>
+
+				<top_scorer goals="7" team="576">
+					<player id="15241">
+
+
+						<core country="ES" demarcation="def" level="1" />
+
+
+
+						<appearance name="Marcelino" surname="Rivilla"
+							hair_type="15" hair_color="21" face="17" skin="15"
+							attributes_average="50" />
+
+
+					</player>
+
+				</top_scorer>
+
+				<top_scorer goals="6" team="577">
+
+					<player id="331">
+
+
+						<core country="FR" demarcation="cen" level="1" />
+
+
+
+						<appearance name="Amara" surname="Sakho" hair_type="5"
+							hair_color="1" face="30" skin="6" attributes_average="51" />
+
+
+
+
+
+
+
+
+
+
+					</player>
+
+				</top_scorer>
+
+				<top_scorer goals="5" team="578">
+
+					<player id="19320">
+
+
+						<core country="ES" demarcation="def" level="2" />
+
+
+
+						<appearance name="Thomas" surname="Angulo" hair_type="8"
+							hair_color="19" face="20" skin="1" attributes_average="60" />
+
+
+
+
+
+
+
+
+
+
+					</player>
+
+				</top_scorer>
+
+				<top_scorer goals="5" team="579">
+
+					<player id="810">
+
+
+						<core country="NZ" demarcation="cen" level="1" />
+
+
+
+						<appearance name="Jeremy" surname="Cresswell"
+							hair_type="3" hair_color="3" face="30" skin="3"
+							attributes_average="48" />
+
+
+
+
+
+
+
+
+
+
+					</player>
+
+				</top_scorer>
+
+				<top_scorer goals="5" team="580">
+
+					<player id="650">
+
+
+						<core country="AR" demarcation="cen" level="1" />
+
+
+
+						<appearance name="Osvaldo Héctor" surname="Bielsa"
+							hair_type="18" hair_color="2" face="1" skin="2"
+							attributes_average="49" />
+
+
+
+
+
+
+
+
+
+
+					</player>
+
+				</top_scorer>
+
+				<top_scorer goals="4" team="581">
+
+					<player id="330">
+
+
+						<core country="RU" demarcation="cen" level="1" />
+
+
+
+						<appearance name="Vladislav" surname="Vorobyov"
+							hair_type="22" hair_color="18" face="5" skin="4"
+							attributes_average="52" />
+
+
+
+
+
+
+
+
+
+
+					</player>
+
+				</top_scorer>
+
+			</top_scorers>
+
+			<trophies>
+				<team_trophies id="577">
+					<trophies place_1="1" />
+				</team_trophies>
+				<team_trophies id="578">
+					<trophies place_2="1" />
+				</team_trophies>
+				<team_trophies id="579">
+					<trophies place_3="1" />
+				</team_trophies>
+				<team_trophies id="576">
+					<trophies player_most_goals="1" />
+				</team_trophies>
+
+				<top_scorer goals="7" team="576">
+					<player id="15241">
+
+
+						<core country="ES" demarcation="def" level="1" />
+
+
+
+						<appearance name="Marcelino" surname="Rivilla"
+							hair_type="15" hair_color="21" face="17" skin="15"
+							attributes_average="50" />
+
+
+					</player>
+
+
+				</top_scorer>
+
+			</trophies>
+
+			<matches>
+
+				<match id="187" type="3" date="-325751" state="3">
+
+
+					<league day="1" />
+
+
+
+
+
+					<match_team team_id="166" goals="0" local="1"
+						avg_points="55">
+
+						<team id="166" name="Maniac1" country="209" ranking_global="9"
+							ranking_country="9" step="1" step_max="1" num_achievements="6"
+							avg_points="55">
+
+							<uniform shield="5">
+								<local color1="19" color2="19" color3="8" />
+								<visitor color1="15" color2="20" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="1" place_1="0"
+								place_2="0" place_3="1" player_most_goals="1"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="2" instruction1="14" instruction2="17"
+							foul_shooter="3631" penalty_shooter="3631" corner_shooter="3631" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="2" goals="1" local="0" avg_points="51">
+
+						<team id="2" name="The Bitter Foxes of Swaziland" country="238"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="51">
+
+							<uniform shield="1">
+								<local color1="12" color2="11" color3="13" />
+								<visitor color1="5" color2="7" color3="14" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+						<event tag="card_1" team_id="2" player="5" name="Nathan"
+							surname="Ryan" minute="1" />
+
+						<event tag="goal" team_id="2" player="11" name="Peter"
+							surname="Enyeama" minute="39" />
+
+						<event tag="injury" team_id="2" player="11" name="Peter"
+							surname="Enyeama" minute="23" days="1" />
+
+						<event tag="injury" team_id="2" player="14" name="Rodrigo"
+							surname="Recoba" minute="78" days="1" />
+
+					</events>
+
+
+				</match>
+
+				<match id="188" type="3" date="-325752" state="3">
+
+
+					<league day="1" />
+
+
+
+
+
+					<match_team team_id="201" goals="1" local="1"
+						avg_points="53">
+
+						<team id="201" name="Yo me lavo las manos" country="209"
+							ranking_global="30" ranking_country="30" step="1" step_max="1"
+							num_achievements="0" avg_points="53">
+
+							<uniform shield="1">
+								<local color1="13" color2="13" color3="14" />
+								<visitor color1="14" color2="23" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="3" goals="2" local="0" avg_points="52">
+
+						<team id="3" name="The Defeated Penguins of Guyana" country="14"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="23" color2="21" color3="13" />
+								<visitor color1="16" color2="2" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+						<event tag="goal" team_id="201" player="4670" name="Sígfrid"
+							surname="Engonga" minute="81" />
+
+						<event tag="goal" team_id="3" player="28" name="Joshua"
+							surname="Halloran" minute="47" />
+
+						<event tag="goal" team_id="3" player="33" name="Florea"
+							surname="Ilie" minute="52" />
+
+					</events>
+
+
+				</match>
+
+				<match id="189" type="3" date="-325752" state="3">
+
+
+					<league day="1" />
+
+
+
+
+
+					<match_team team_id="202" goals="2" local="1"
+						avg_points="52">
+
+						<team id="202" name="chinazo" country="209" ranking_global="29"
+							ranking_country="29" step="1" step_max="1" num_achievements="4"
+							avg_points="52">
+
+							<uniform shield="1">
+								<local color1="21" color2="12" color3="11" />
+								<visitor color1="9" color2="15" color3="7" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="4" goals="0" local="0" avg_points="52">
+
+						<team id="4" name="The Clumsy Geese of Cocos (Keeling) Isla"
+							country="83" ranking_global="-1" ranking_country="-1" step="1"
+							step_max="1" num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="14" color2="3" color3="25" />
+								<visitor color1="20" color2="15" color3="5" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+						<event tag="card_1" team_id="202" player="4704" name="Daniel"
+							surname="Leal" minute="12" />
+
+						<event tag="goal" team_id="202" player="4714" name="László"
+							surname="Geli" minute="60" />
+
+						<event tag="goal_own" team_id="4" player="50" name="Gonzalo"
+							surname="Effenberg" minute="20" />
+
+					</events>
+
+
+				</match>
+
+				<match id="190" type="3" date="-324552" state="3">
+
+
+					<league day="2" />
+
+
+
+
+
+					<match_team team_id="3" goals="1" local="1" avg_points="52">
+
+						<team id="3" name="The Defeated Penguins of Guyana" country="14"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="23" color2="21" color3="13" />
+								<visitor color1="16" color2="2" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="166" goals="1" local="0"
+						avg_points="55">
+
+						<team id="166" name="Maniac1" country="209" ranking_global="9"
+							ranking_country="9" step="1" step_max="1" num_achievements="6"
+							avg_points="55">
+
+							<uniform shield="5">
+								<local color1="19" color2="19" color3="8" />
+								<visitor color1="15" color2="20" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="1" place_1="0"
+								place_2="0" place_3="1" player_most_goals="1"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="2" instruction1="14" instruction2="17"
+							foul_shooter="3631" penalty_shooter="3631" corner_shooter="3631" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+						<event tag="goal" team_id="3" player="35" name="Roger"
+							surname="Sagna" minute="63" />
+
+						<event tag="goal" team_id="166" player="3634" name="Joseba"
+							surname="María" minute="34" />
+
+					</events>
+
+
+				</match>
+
+				<match id="191" type="3" date="-324552" state="3">
+
+
+					<league day="2" />
+
+
+
+
+
+					<match_team team_id="4" goals="2" local="1" avg_points="52">
+
+						<team id="4" name="The Clumsy Geese of Cocos (Keeling) Isla"
+							country="83" ranking_global="-1" ranking_country="-1" step="1"
+							step_max="1" num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="14" color2="3" color3="25" />
+								<visitor color1="20" color2="15" color3="5" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="2" goals="2" local="0" avg_points="51">
+
+						<team id="2" name="The Bitter Foxes of Swaziland" country="238"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="51">
+
+							<uniform shield="1">
+								<local color1="12" color2="11" color3="13" />
+								<visitor color1="5" color2="7" color3="14" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+						<event tag="goal" team_id="4" player="50" name="Gonzalo"
+							surname="Effenberg" minute="33" />
+
+						<event tag="goal" team_id="4" player="63" name="Johann"
+							surname="Prödl" minute="84" />
+
+						<event tag="goal" team_id="2" player="5" name="Nathan"
+							surname="Ryan" minute="42" />
+
+						<event tag="goal" team_id="2" player="12" name="Cristian"
+							surname="Lugano" minute="72" />
+
+					</events>
+
+
+				</match>
+
+				<match id="192" type="3" date="-324553" state="3">
+
+
+					<league day="2" />
+
+
+
+
+
+					<match_team team_id="202" goals="1" local="1"
+						avg_points="52">
+
+						<team id="202" name="chinazo" country="209" ranking_global="29"
+							ranking_country="29" step="1" step_max="1" num_achievements="4"
+							avg_points="52">
+
+							<uniform shield="1">
+								<local color1="21" color2="12" color3="11" />
+								<visitor color1="9" color2="15" color3="7" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="2" instruction1="14" instruction2="17"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="201" goals="0" local="0"
+						avg_points="53">
+
+						<team id="201" name="Yo me lavo las manos" country="209"
+							ranking_global="30" ranking_country="30" step="1" step_max="1"
+							num_achievements="0" avg_points="53">
+
+							<uniform shield="1">
+								<local color1="13" color2="13" color3="14" />
+								<visitor color1="14" color2="23" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+						<event tag="goal" team_id="202" player="4707" name="Stanislav"
+							surname="Markov" minute="27" />
+
+						<event tag="injury" team_id="201" player="4662" name="Manu"
+							surname="Andrinúa" minute="25" days="6" />
+
+					</events>
+
+
+				</match>
+
+				<match id="193" type="3" date="-323353" state="3">
+
+
+					<league day="3" />
+
+
+
+
+
+					<match_team team_id="166" goals="5" local="1"
+						avg_points="55">
+
+						<team id="166" name="Maniac1" country="209" ranking_global="9"
+							ranking_country="9" step="1" step_max="1" num_achievements="6"
+							avg_points="55">
+
+							<uniform shield="5">
+								<local color1="19" color2="19" color3="8" />
+								<visitor color1="15" color2="20" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="1" place_1="0"
+								place_2="0" place_3="1" player_most_goals="1"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="2" instruction1="14" instruction2="17"
+							foul_shooter="3631" penalty_shooter="3631" corner_shooter="3631" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="4" goals="0" local="0" avg_points="52">
+
+						<team id="4" name="The Clumsy Geese of Cocos (Keeling) Isla"
+							country="83" ranking_global="-1" ranking_country="-1" step="1"
+							step_max="1" num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="14" color2="3" color3="25" />
+								<visitor color1="20" color2="15" color3="5" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+						<event tag="goal" team_id="166" player="3622" name="Silvestre"
+							surname="Balmanya" minute="17" />
+
+						<event tag="goal" team_id="166" player="3628" name="Juan Carlos"
+							surname="Llorente" minute="70" />
+
+						<event tag="goal" team_id="166" player="3631" name="Segun"
+							surname="Dike" minute="60" />
+
+						<event tag="goal" team_id="166" player="3631" name="Segun"
+							surname="Dike" minute="65" />
+
+						<event tag="goal" team_id="166" player="3631" name="Segun"
+							surname="Dike" minute="86" />
+
+					</events>
+
+
+				</match>
+
+				<match id="194" type="3" date="-323353" state="3">
+
+
+					<league day="3" />
+
+
+
+
+
+					<match_team team_id="3" goals="1" local="1" avg_points="52">
+
+						<team id="3" name="The Defeated Penguins of Guyana" country="14"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="23" color2="21" color3="13" />
+								<visitor color1="16" color2="2" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="202" goals="0" local="0"
+						avg_points="52">
+
+						<team id="202" name="chinazo" country="209" ranking_global="29"
+							ranking_country="29" step="1" step_max="1" num_achievements="4"
+							avg_points="52">
+
+							<uniform shield="1">
+								<local color1="21" color2="12" color3="11" />
+								<visitor color1="9" color2="15" color3="7" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="2" instruction1="14" instruction2="17"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+						<event tag="card_2" team_id="3" player="27" name="Bodo"
+							surname="Albrecht" minute="50" />
+
+						<event tag="goal" team_id="3" player="28" name="Joshua"
+							surname="Halloran" minute="30" />
+
+					</events>
+
+
+				</match>
+
+				<match id="195" type="3" date="-323353" state="3">
+
+
+					<league day="3" />
+
+
+
+
+
+					<match_team team_id="2" goals="1" local="1" avg_points="51">
+
+						<team id="2" name="The Bitter Foxes of Swaziland" country="238"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="51">
+
+							<uniform shield="1">
+								<local color1="12" color2="11" color3="13" />
+								<visitor color1="5" color2="7" color3="14" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="201" goals="2" local="0"
+						avg_points="53">
+
+						<team id="201" name="Yo me lavo las manos" country="209"
+							ranking_global="30" ranking_country="30" step="1" step_max="1"
+							num_achievements="0" avg_points="53">
+
+							<uniform shield="1">
+								<local color1="13" color2="13" color3="14" />
+								<visitor color1="14" color2="23" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+						<event tag="goal" team_id="2" player="11" name="Peter"
+							surname="Enyeama" minute="85" />
+
+						<event tag="goal" team_id="201" player="4662" name="Manu"
+							surname="Andrinúa" minute="25" />
+
+						<event tag="goal" team_id="201" player="4670" name="Sígfrid"
+							surname="Engonga" minute="19" />
+
+					</events>
+
+
+				</match>
+
+				<match id="196" type="3" date="-322153" state="3">
+
+
+					<league day="4" />
+
+
+
+
+
+					<match_team team_id="202" goals="0" local="1"
+						avg_points="52">
+
+						<team id="202" name="chinazo" country="209" ranking_global="29"
+							ranking_country="29" step="1" step_max="1" num_achievements="4"
+							avg_points="52">
+
+							<uniform shield="1">
+								<local color1="21" color2="12" color3="11" />
+								<visitor color1="9" color2="15" color3="7" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="2" instruction1="14" instruction2="17"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="166" goals="2" local="0"
+						avg_points="55">
+
+						<team id="166" name="Maniac1" country="209" ranking_global="9"
+							ranking_country="9" step="1" step_max="1" num_achievements="6"
+							avg_points="55">
+
+							<uniform shield="5">
+								<local color1="19" color2="19" color3="8" />
+								<visitor color1="15" color2="20" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="1" place_1="0"
+								place_2="0" place_3="1" player_most_goals="1"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="2" instruction1="14" instruction2="17"
+							foul_shooter="3631" penalty_shooter="3631" corner_shooter="3631" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+						<event tag="card_1" team_id="202" player="4700" name="Sebastián"
+							surname="Campo" minute="52" />
+
+						<event tag="goal" team_id="166" player="3631" name="Segun"
+							surname="Dike" minute="18" />
+
+						<event tag="goal" team_id="166" player="3631" name="Segun"
+							surname="Dike" minute="32" />
+
+						<event tag="card_1" team_id="166" player="3635" name="Daouda"
+							surname="Rouamba" minute="50" />
+
+					</events>
+
+
+				</match>
+
+				<match id="197" type="3" date="-322154" state="3">
+
+
+					<league day="4" />
+
+
+
+
+
+					<match_team team_id="201" goals="3" local="1"
+						avg_points="53">
+
+						<team id="201" name="Yo me lavo las manos" country="209"
+							ranking_global="30" ranking_country="30" step="1" step_max="1"
+							num_achievements="0" avg_points="53">
+
+							<uniform shield="1">
+								<local color1="13" color2="13" color3="14" />
+								<visitor color1="14" color2="23" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="4" goals="1" local="0" avg_points="52">
+
+						<team id="4" name="The Clumsy Geese of Cocos (Keeling) Isla"
+							country="83" ranking_global="-1" ranking_country="-1" step="1"
+							step_max="1" num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="14" color2="3" color3="25" />
+								<visitor color1="20" color2="15" color3="5" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="None" instruction1="None" instruction2="None"
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+						<event tag="goal" team_id="201" player="4661" name="Vivinho"
+							surname="Sóbis" minute="52" />
+
+						<event tag="goal" team_id="201" player="4662" name="Manu"
+							surname="Andrinúa" minute="53" />
+
+						<event tag="goal" team_id="201" player="4664" name="László"
+							surname="Amaro" minute="7" />
+
+						<event tag="card_1" team_id="201" player="4670" name="Sígfrid"
+							surname="Engonga" minute="33" />
+
+						<event tag="injury" team_id="4" player="55" name="Guti"
+							surname="Ventolrà" minute="60" days="5" />
+
+						<event tag="goal" team_id="4" player="58" name="Sigfried"
+							surname="Termath" minute="24" />
+
+					</events>
+
+
+				</match>
+
+				<match id="198" type="3" date="-322154" state="2">
+
+
+					<league day="4" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="2" name="The Bitter Foxes of Swaziland" country="238"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="51">
+
+							<uniform shield="1">
+								<local color1="12" color2="11" color3="13" />
+								<visitor color1="5" color2="7" color3="14" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="3" name="The Defeated Penguins of Guyana" country="14"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="23" color2="21" color3="13" />
+								<visitor color1="16" color2="2" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="199" type="3" date="-320954" state="1">
+
+
+					<league day="5" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="166" name="Maniac1" country="209" ranking_global="9"
+							ranking_country="9" step="1" step_max="1" num_achievements="6"
+							avg_points="55">
+
+							<uniform shield="5">
+								<local color1="19" color2="19" color3="8" />
+								<visitor color1="15" color2="20" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="1" place_1="0"
+								place_2="0" place_3="1" player_most_goals="1"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="201" name="Yo me lavo las manos" country="209"
+							ranking_global="30" ranking_country="30" step="1" step_max="1"
+							num_achievements="0" avg_points="53">
+
+							<uniform shield="1">
+								<local color1="13" color2="13" color3="14" />
+								<visitor color1="14" color2="23" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="200" type="3" date="-320954" state="2"><!-- CHANGE THIS 
+						TO SET PLAYED MATCH ON LEAGUE -->
+
+
+					<league day="5" />
+
+
+
+
+
+					<match_team team_id="202" goals="0" local="0"
+						avg_points="">
+
+						<team id="202" name="chinazo" country="209" ranking_global="29"
+							ranking_country="29" step="1" step_max="1" num_achievements="4"
+							avg_points="52">
+
+							<uniform shield="1">
+								<local color1="21" color2="12" color3="11" />
+								<visitor color1="9" color2="15" color3="7" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="2" goals="0" local="0" avg_points="">
+
+						<team id="2" name="The Bitter Foxes of Swaziland" country="238"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="51">
+
+							<uniform shield="1">
+								<local color1="12" color2="11" color3="13" />
+								<visitor color1="5" color2="7" color3="14" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="201" type="3" date="-320954" state="1">
+
+
+					<league day="5" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="4" name="The Clumsy Geese of Cocos (Keeling) Isla"
+							country="83" ranking_global="-1" ranking_country="-1" step="1"
+							step_max="1" num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="14" color2="3" color3="25" />
+								<visitor color1="20" color2="15" color3="5" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="3" name="The Defeated Penguins of Guyana" country="14"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="23" color2="21" color3="13" />
+								<visitor color1="16" color2="2" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="202" type="3" date="-319754" state="1">
+
+
+					<league day="6" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="2" name="The Bitter Foxes of Swaziland" country="238"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="51">
+
+							<uniform shield="1">
+								<local color1="12" color2="11" color3="13" />
+								<visitor color1="5" color2="7" color3="14" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="166" name="Maniac1" country="209" ranking_global="9"
+							ranking_country="9" step="1" step_max="1" num_achievements="6"
+							avg_points="55">
+
+							<uniform shield="5">
+								<local color1="19" color2="19" color3="8" />
+								<visitor color1="15" color2="20" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="1" place_1="0"
+								place_2="0" place_3="1" player_most_goals="1"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="203" type="3" date="-319754" state="1">
+
+
+					<league day="6" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="3" name="The Defeated Penguins of Guyana" country="14"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="23" color2="21" color3="13" />
+								<visitor color1="16" color2="2" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="201" name="Yo me lavo las manos" country="209"
+							ranking_global="30" ranking_country="30" step="1" step_max="1"
+							num_achievements="0" avg_points="53">
+
+							<uniform shield="1">
+								<local color1="13" color2="13" color3="14" />
+								<visitor color1="14" color2="23" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="204" type="3" date="-319755" state="1">
+
+
+					<league day="6" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="4" name="The Clumsy Geese of Cocos (Keeling) Isla"
+							country="83" ranking_global="-1" ranking_country="-1" step="1"
+							step_max="1" num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="14" color2="3" color3="25" />
+								<visitor color1="20" color2="15" color3="5" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="202" name="chinazo" country="209" ranking_global="29"
+							ranking_country="29" step="1" step_max="1" num_achievements="4"
+							avg_points="52">
+
+							<uniform shield="1">
+								<local color1="21" color2="12" color3="11" />
+								<visitor color1="9" color2="15" color3="7" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="205" type="3" date="-318555" state="1">
+
+
+					<league day="7" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="166" name="Maniac1" country="209" ranking_global="9"
+							ranking_country="9" step="1" step_max="1" num_achievements="6"
+							avg_points="55">
+
+							<uniform shield="5">
+								<local color1="19" color2="19" color3="8" />
+								<visitor color1="15" color2="20" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="1" place_1="0"
+								place_2="0" place_3="1" player_most_goals="1"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="3" name="The Defeated Penguins of Guyana" country="14"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="23" color2="21" color3="13" />
+								<visitor color1="16" color2="2" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="206" type="3" date="-318555" state="1">
+
+
+					<league day="7" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="2" name="The Bitter Foxes of Swaziland" country="238"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="51">
+
+							<uniform shield="1">
+								<local color1="12" color2="11" color3="13" />
+								<visitor color1="5" color2="7" color3="14" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="4" name="The Clumsy Geese of Cocos (Keeling) Isla"
+							country="83" ranking_global="-1" ranking_country="-1" step="1"
+							step_max="1" num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="14" color2="3" color3="25" />
+								<visitor color1="20" color2="15" color3="5" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="207" type="3" date="-318555" state="1">
+
+
+					<league day="7" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="201" name="Yo me lavo las manos" country="209"
+							ranking_global="30" ranking_country="30" step="1" step_max="1"
+							num_achievements="0" avg_points="53">
+
+							<uniform shield="1">
+								<local color1="13" color2="13" color3="14" />
+								<visitor color1="14" color2="23" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="202" name="chinazo" country="209" ranking_global="29"
+							ranking_country="29" step="1" step_max="1" num_achievements="4"
+							avg_points="52">
+
+							<uniform shield="1">
+								<local color1="21" color2="12" color3="11" />
+								<visitor color1="9" color2="15" color3="7" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="208" type="3" date="-317355" state="1">
+
+
+					<league day="8" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="4" name="The Clumsy Geese of Cocos (Keeling) Isla"
+							country="83" ranking_global="-1" ranking_country="-1" step="1"
+							step_max="1" num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="14" color2="3" color3="25" />
+								<visitor color1="20" color2="15" color3="5" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="166" name="Maniac1" country="209" ranking_global="9"
+							ranking_country="9" step="1" step_max="1" num_achievements="6"
+							avg_points="55">
+
+							<uniform shield="5">
+								<local color1="19" color2="19" color3="8" />
+								<visitor color1="15" color2="20" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="1" place_1="0"
+								place_2="0" place_3="1" player_most_goals="1"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="209" type="3" date="-317355" state="1">
+
+
+					<league day="8" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="202" name="chinazo" country="209" ranking_global="29"
+							ranking_country="29" step="1" step_max="1" num_achievements="4"
+							avg_points="52">
+
+							<uniform shield="1">
+								<local color1="21" color2="12" color3="11" />
+								<visitor color1="9" color2="15" color3="7" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="3" name="The Defeated Penguins of Guyana" country="14"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="23" color2="21" color3="13" />
+								<visitor color1="16" color2="2" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="210" type="3" date="-317356" state="1">
+
+
+					<league day="8" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="201" name="Yo me lavo las manos" country="209"
+							ranking_global="30" ranking_country="30" step="1" step_max="1"
+							num_achievements="0" avg_points="53">
+
+							<uniform shield="1">
+								<local color1="13" color2="13" color3="14" />
+								<visitor color1="14" color2="23" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="2" name="The Bitter Foxes of Swaziland" country="238"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="51">
+
+							<uniform shield="1">
+								<local color1="12" color2="11" color3="13" />
+								<visitor color1="5" color2="7" color3="14" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="211" type="3" date="-316156" state="1">
+
+
+					<league day="9" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="166" name="Maniac1" country="209" ranking_global="9"
+							ranking_country="9" step="1" step_max="1" num_achievements="6"
+							avg_points="55">
+
+							<uniform shield="5">
+								<local color1="19" color2="19" color3="8" />
+								<visitor color1="15" color2="20" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="1" place_1="0"
+								place_2="0" place_3="1" player_most_goals="1"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="202" name="chinazo" country="209" ranking_global="29"
+							ranking_country="29" step="1" step_max="1" num_achievements="4"
+							avg_points="52">
+
+							<uniform shield="1">
+								<local color1="21" color2="12" color3="11" />
+								<visitor color1="9" color2="15" color3="7" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="212" type="3" date="-316156" state="1">
+
+
+					<league day="9" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="4" name="The Clumsy Geese of Cocos (Keeling) Isla"
+							country="83" ranking_global="-1" ranking_country="-1" step="1"
+							step_max="1" num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="14" color2="3" color3="25" />
+								<visitor color1="20" color2="15" color3="5" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="201" name="Yo me lavo las manos" country="209"
+							ranking_global="30" ranking_country="30" step="1" step_max="1"
+							num_achievements="0" avg_points="53">
+
+							<uniform shield="1">
+								<local color1="13" color2="13" color3="14" />
+								<visitor color1="14" color2="23" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="213" type="3" date="-316156" state="1">
+
+
+					<league day="9" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="3" name="The Defeated Penguins of Guyana" country="14"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="23" color2="21" color3="13" />
+								<visitor color1="16" color2="2" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="2" name="The Bitter Foxes of Swaziland" country="238"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="51">
+
+							<uniform shield="1">
+								<local color1="12" color2="11" color3="13" />
+								<visitor color1="5" color2="7" color3="14" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="214" type="3" date="-314956" state="1">
+
+
+					<league day="10" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="201" name="Yo me lavo las manos" country="209"
+							ranking_global="30" ranking_country="30" step="1" step_max="1"
+							num_achievements="0" avg_points="53">
+
+							<uniform shield="1">
+								<local color1="13" color2="13" color3="14" />
+								<visitor color1="14" color2="23" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="166" name="Maniac1" country="209" ranking_global="9"
+							ranking_country="9" step="1" step_max="1" num_achievements="6"
+							avg_points="55">
+
+							<uniform shield="5">
+								<local color1="19" color2="19" color3="8" />
+								<visitor color1="15" color2="20" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="1" place_1="0"
+								place_2="0" place_3="1" player_most_goals="1"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="215" type="3" date="-314956" state="1">
+
+
+					<league day="10" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="2" name="The Bitter Foxes of Swaziland" country="238"
+							ranking_global="-1" ranking_country="-1" step="1" step_max="1"
+							num_achievements="0" avg_points="51">
+
+							<uniform shield="1">
+								<local color1="12" color2="11" color3="13" />
+								<visitor color1="5" color2="7" color3="14" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="202" name="chinazo" country="209" ranking_global="29"
+							ranking_country="29" step="1" step_max="1" num_achievements="4"
+							avg_points="52">
+
+							<uniform shield="1">
+								<local color1="21" color2="12" color3="11" />
+								<visitor color1="9" color2="15" color3="7" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+				<match id="216" type="3" date="-314957" state="1">
+
+
+					<league day="10" />
+
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="576" name="The Defeated Penguins of Guyana"
+							country="14" ranking_global="-1" ranking_country="-1" step="1"
+							step_max="1" num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="23" color2="21" color3="13" />
+								<visitor color1="16" color2="2" color3="8" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<match_team team_id="" goals="0" local="0" avg_points="">
+
+						<team id="4" name="The Clumsy Geese of Cocos (Keeling) Isla"
+							country="83" ranking_global="-1" ranking_country="-1" step="1"
+							step_max="1" num_achievements="0" avg_points="52">
+
+							<uniform shield="1">
+								<local color1="14" color2="3" color3="25" />
+								<visitor color1="20" color2="15" color3="5" />
+							</uniform>
+
+
+							<trophies total="666" dailyscorer="0" place_1="0"
+								place_2="0" place_3="0" player_most_goals="0"
+								least_goals_against="0">
+
+							</trophies>
+						</team>
+
+						<tactics strategy="" instruction1="" instruction2=""
+							foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+					</match_team>
+
+
+
+
+					<events>
+
+					</events>
+
+
+				</match>
+
+			</matches>
+
+		</league>
+
+	</official_league>
+
+	<uncollected>
+
+		<match id="2123" type="1" date="-10162" state="3">
+
+
+
+
+
+
+			<match_team team_id="576" goals="1" local="0" avg_points="53">
+
+				<team id="576" name="team 1" country="209" ranking_global="86"
+					ranking_country="80" step="1" step_max="1" num_achievements="0"
+					avg_points="53">
+
+					<uniform shield="1">
+						<local color1="11" color2="1" color3="24" />
+						<visitor color1="2" color2="13" color3="23" />
+					</uniform>
+
+
+					<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+						place_3="0" player_most_goals="0" least_goals_against="0">
+
+					</trophies>
+				</team>
+
+				<tactics strategy="None" instruction1="None" instruction2="None"
+					foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+			</match_team>
+
+
+
+
+			<match_team team_id="201" goals="1" local="0" avg_points="53">
+
+				<team id="201" name="Yo me lavo las manos" country="209"
+					ranking_global="52" ranking_country="49" step="1" step_max="1"
+					num_achievements="0" avg_points="53">
+
+					<uniform shield="1">
+						<local color1="13" color2="13" color3="14" />
+						<visitor color1="14" color2="23" color3="8" />
+					</uniform>
+
+
+					<trophies total="0" dailyscorer="0" place_1="0" place_2="0"
+						place_3="0" player_most_goals="0" least_goals_against="0">
+
+					</trophies>
+				</team>
+
+				<tactics strategy="None" instruction1="None" instruction2="None"
+					foul_shooter="None" penalty_shooter="None" corner_shooter="None" />
+
+
+
+
+
+
+
+			</match_team>
+
+
+
+
+			<events>
+
+				<event tag="goal" team_id="576" player="15257" name="Genar"
+					surname="Gil" minute="58" />
+
+				<event tag="goal" team_id="201" player="4661" name="Vivinho"
+					surname="Sóbis" minute="67" />
+
+				<event tag="card_1" team_id="201" player="4669" name="Hrvoje"
+					surname="Pamić" minute="65" />
+
+			</events>
+
+
+		</match>
+
+	</uncollected>
+
+
+
+
+</view>
