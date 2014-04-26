@@ -1,6 +1,7 @@
 package space_digger.levels 
 {
 	import Box2D.Dynamics.Contacts.b2PolygonContact;
+	import citrus.core.State;
 	import flash.display.MovieClip;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.CitrusSpritePool;
@@ -41,6 +42,13 @@ package space_digger.levels
 			super.initialize();
 			
 			var physics:Box2D = new Box2D("physics");
+			physics.timeStep = 1 / 15.0;
+			physics.visible = false;
+			add(physics);
+	 
+			ObjectMaker2D.FromMovieClip(level);
+			
+			var physics:Box2D = new Box2D("physics");
 			physics.timeStep = 1 / 20.0;
 			physics.visible = Main.DEBUG;
 			add(physics);
@@ -75,6 +83,13 @@ package space_digger.levels
 			super.update(timeDelta);
 			
 			//updateDecorationOcclusion();
+		}
+		
+		public override function dispose():void
+		{
+			_decorations.splice(0, _decorations.length);
+			
+			super.dispose();
 		}
 		
 		/*public function updateDecorationOcclusion():void
