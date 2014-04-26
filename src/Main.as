@@ -3,13 +3,14 @@ package
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
+	import managers.GameManager;
+	
 	/**
 	 * ...
 	 * @author 10 2  Live Team
 	 */
 	public class Main extends Sprite 
 	{
-		
 		public function Main():void 
 		{
 			if (stage) init();
@@ -20,6 +21,8 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
+			
+			GameManager.getInstance().test();
 		}
 		
 	}
