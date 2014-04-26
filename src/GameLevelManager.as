@@ -30,7 +30,7 @@ package
 		
 		public function update():void
 		{
-			(state as GameLevel).refreshView();
+			//(state as GameLevel).refreshView();
 		}
 	}
 
