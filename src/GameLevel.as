@@ -15,6 +15,7 @@ package
 	import citrus.utils.objectmakers.ObjectMaker2D;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import traps.TrapSpikes;
 	
 	import space_digger.PlayerCharacter;
 	
@@ -34,7 +35,7 @@ package
 			super();
 			level = _level;
 			
-			var objectsUsed:Array = [Hero, Platform, Coin, Cannon, PlayerCharacter];
+			var objectsUsed:Array = [Hero, Platform, Coin, Cannon, PlayerCharacter, TrapSpikes];
 		}
 		
 		override public function initialize():void
