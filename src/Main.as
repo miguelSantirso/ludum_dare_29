@@ -12,7 +12,7 @@ package
 	{
 		public static const DEBUG:Boolean = true;
 		
-		protected static var levelEditor:GameLevelEditor;
+		protected static var levelManager:GameLevelManager;
 		
 		public function Main():void 
 		{
@@ -24,8 +24,8 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			levelEditor = new GameLevelEditor();
-			addChild(levelEditor);
+			levelManager = new GameLevelManager();
+			addChild(levelManager);
 			
 			if (Main.DEBUG)
 				addChild(new Stats());

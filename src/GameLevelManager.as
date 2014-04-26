@@ -5,14 +5,13 @@ package
 	import flash.display.Loader;
 	import flash.events.Event;
 	import flash.net.URLRequest;
-	import levels.*;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
 	 */
-	public class GameLevelEditor extends CitrusEngine
+	public class GameLevelManager extends CitrusEngine
 	{
-		public function GameLevelEditor() 
+		public function GameLevelManager() 
 		{
 			// setup
 			
@@ -23,10 +22,15 @@ package
 
 		protected function onCurrentLevelLoaded(e:Event):void
 		{
-			state = new Level1(e.target.loader.content);
+			state = new GameLevel(e.target.loader.content);
 			
 			e.target.removeEventListener(Event.COMPLETE, onCurrentLevelLoaded);
 			e.target.loader.unloadAndStop();
+		}
+		
+		public function update():void
+		{
+			(state as GameLevel).refreshView();
 		}
 	}
 
