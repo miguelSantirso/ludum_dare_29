@@ -34,8 +34,8 @@ package space_digger.levels
 			super.initialize();
 			
 			var physics:Box2D = new Box2D("physics");
-			physics.timeStep = 1 / 15.0;
-			physics.visible = false;
+			physics.timeStep = 1 / 20.0;
+			physics.visible = Main.DEBUG;
 			add(physics);
 	 
 			ObjectMaker2D.FromMovieClip(level);

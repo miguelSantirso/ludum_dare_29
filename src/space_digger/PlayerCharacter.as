@@ -11,9 +11,8 @@ package space_digger
 		public function PlayerCharacter(name:String, params:Object=null) 
 		{
 			super(name, params);
-			offsetY = -9;
 			
-			minVelocityY = -3;
+			minVelocityY = -10;
 		}
 		
 	}

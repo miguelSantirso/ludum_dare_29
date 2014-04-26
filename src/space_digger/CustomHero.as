@@ -23,6 +23,10 @@ package space_digger
 	 */
 	public class CustomHero extends Box2DPhysicsObject
 	{
+		private static const JETPACK_DELAY:int = 10;
+		
+		private var _framesToKickJetpack:int;
+		
 		//properties
 		/**
 		 * This is the rate at which the hero speeds up when you move him left and right. 
@@ -264,12 +268,16 @@ package space_digger
 					velocity.y = -jumpHeight;
 					onJump.dispatch();
 					_onGround = false; // also removed in the handleEndContact. Useful here if permanent contact e.g. box on hero.
+					_framesToKickJetpack = JETPACK_DELAY;
 				}
 				
-				if (_ce.input.isDoing("jump", inputChannel) && !_onGround)
+				if (_framesToKickJetpack <= 0 && _ce.input.isDoing("jump", inputChannel))
 				{
 					velocity.y -= jumpAcceleration;
 				}
+				else --_framesToKickJetpack;
+				
+				
 				
 				if (_springOffEnemy != -1)
 				{
