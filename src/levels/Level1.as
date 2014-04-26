@@ -35,6 +35,8 @@ package levels
 	 
 			ObjectMaker2D.FromMovieClip(level);
 			
+			addChild(level);
+			
 			// prueba para obtener objetos de la escena:
 			//var hero:Hero = getObjectByName("hero") as Hero;
 			//hero.acceleration = 0.2;

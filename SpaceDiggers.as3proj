@@ -48,6 +48,7 @@
   <!-- SWC Include Libraries -->
   <includeLibraries>
     <element path="characters\character.swc" />
+    <element path="lib\assets.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>

@@ -1,6 +1,7 @@
 package  
 {
 	import citrus.core.CitrusEngine;
+	import citrus.core.State;
 	import flash.display.Loader;
 	import flash.events.Event;
 	import flash.net.URLRequest;
@@ -17,7 +18,7 @@ package
 			
 			var loader:Loader = new Loader();
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onCurrentLevelLoaded);
-			loader.load(new URLRequest("../levels/Level1.swf")); 
+			loader.load(new URLRequest("../swf/levels/Level1.swf")); 
 		}
 
 		protected function onCurrentLevelLoaded(e:Event):void

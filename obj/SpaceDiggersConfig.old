@@ -36,7 +36,7 @@
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <include-libraries>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\characters\character.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\assets.swc</library>
     </include-libraries>
     <library-path append="true">
       <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\CEV3-1-9-ALL.swc</path-element>
