@@ -1,24 +1,41 @@
 package infrastructure
 {
+	import away3d.core.base.IRenderable;
+	import flash.events.Event;
+	import flash.events.EventDispatcher;
+	import flash.events.IOErrorEvent;
+	import flash.events.HTTPStatusEvent;
 	import flash.net.URLLoader;
+	import flash.net.URLRequest;
+	import flash.net.URLVariables;
 	import org.osflash.signals.Signal;
 	
 	public class RemoteOperation extends EventDispatcher
 	{
-		public static var LOCAL:Boolean = true;
+		public static const TYPE_GET:String = "get";
+		public static const TYPE_POST:String = "post";
+		public static const STATUS_SUCCESS:int = 200;
+		public static const STATUS_INVALID:int = 400;
+		public static const STATUS_UNAUTHORIZED:int = 401;
+		public static const STATUS_BAD_URL:int = 404;
+		public static const STATUS_SERVER_ERROR:int = 500;
 		
-		public static const localURL:String = "views/";
-		public static const serverURL:String = "102.168.99.133/space/";
+		public static var LOCAL:Boolean = false;
+		
+		public static const LOCAL_URL:String = "views/";
+		public static const SERVER_URL:String = "http://192.168.99.133/space/";
 		
 		protected var _tag:String;
 		protected var _url:String;
+		protected var _method:String
 		protected var _loader:URLLoader;
 		protected var _requestObject:Object;
+		protected var _populateStructures:Array;
 		protected var _successCallback:Function;
 		protected var _faultCallback:Function;
-		protected var _errorCallback:Function;
-		protected var _populateStructures:Array; // IPopulatable items
-		protected var _populateCallback:Function;
+		
+		protected var _httpStatusCode:int;
+		protected var _errorMessage:String;
 		
 		public var successSignal:Signal;
 		public var faultSignal:Signal;
@@ -28,219 +45,149 @@ package infrastructure
 										method:String,
 										object:Object = null, 
 										populateStructures:Array = null,
-										populateCallback:Function = null,
 										successCallback:Function = null,
-										faultCallback:Function = null,
-										errorCallback:Function = null,
-										disablesView:Boolean = true)
+										faultCallback:Function = null)
 		{
 			successSignal = new Signal();
 			faultSignal = new Signal();
+			
+			_tag = tag;
 			
 			if(object != null && method == "GET")
 				trace("WARNING - ServerOperation with request object should use the POST method.");
 			
 			_loader = new URLLoader();	
 			_loader.addEventListener(Event.COMPLETE, onSuccessHandler, false, 0, true);
-			_loader.addEventListener(IOErrorEvent.IO_ERROR, onFaultHandler);
-
-			if(!tag)
-				_tag = "anonymous";
-			else
-				_tag = tag;
+			_loader.addEventListener(HTTPStatusEvent.HTTP_STATUS, onHttpStatus, false, 0, true);
+			_loader.addEventListener(IOErrorEvent.IO_ERROR, onFaultHandler, false, 0, true);
 			
 			_url = url;
-			
-			// TODO MIGRATION
-			_service.url = !LOCAL ? serverURL : localURL;
-			
-			_service.method = method;
+			_method = method;
 			_populateStructures = populateStructures;
-			_populateCallback = populateCallback;
 			_successCallback = successCallback;
 			_faultCallback = faultCallback;
-			_errorCallback = errorCallback;
 			_requestObject = object;
 		}
 		
 		public function send():void
 		{
-			_service.send(_requestObject);
+			var request:URLRequest = new URLRequest((!LOCAL ? SERVER_URL : LOCAL_URL) + url + "/");
+			request.method = _method;
+			
+			var variables:URLVariables = new URLVariables();
+			
+			if(_requestObject){
+				for(var id:String in _requestObject) {
+				  var value:Object = _requestObject[id];
+				  variables[id] = value;
+				  trace(id + " = " + value);
+				}
+				request.data = variables;
+			}
+
+			_loader.load(request);
 		}
 		
 		public function cancel():void
 		{
-			//if(_service)
-			//	_service.cancel();
+			_loader.close();
 			
 			_successCallback = null;
 			_faultCallback = null;
-			_errorCallback = null;
 		}
 		
 		public function dispose():void
 		{
+			successSignal.removeAll();
+			successSignal = null;
+			faultSignal.removeAll();
+			faultSignal = null;
+		
 			_tag = null;
 			_url = null;
-			_service.removeEventListener(ResultEvent.RESULT, onSuccessHandler);
-			_service.removeEventListener(FaultEvent.FAULT, onFaultHandler);
-			_service.clearResult();
-			_service.disconnect();
-			_service = null;	
+			_method = null;
+			_loader.removeEventListener(Event.COMPLETE, onSuccessHandler);
+			_loader.removeEventListener(HTTPStatusEvent.HTTP_STATUS, onHttpStatus);
+			_loader.removeEventListener(IOErrorEvent.IO_ERROR, onFaultHandler);
+			_loader.close();
+			_loader = null;
+			
 			_successCallback = null;
-			_faultCallback = null;
-			_errorCallback = null;
+			_faultCallback = null; 
 			_populateStructures = null;
-			_populateCallback = null;
+			
+			_errorMessage = null;
 		}
 		
-		private function onSuccessHandler(event:ResultEvent):void
+		private function onHttpStatus(event:HTTPStatusEvent):void
 		{
+			trace("HTTP status code", event.status);
 			
-			/*var xmlList:XMLList = XML(event.result).view;
-			var xmlListColl:XMLListCollection = new XMLListCollection(xmlList);
-			var text:String = xmlListColl.getItemAt(0).match;*/
+			_httpStatusCode = event.status;
+		}
+		
+		private function onSuccessHandler(event:Event):void
+		{
+			trace("OPERATION",_tag,"success");
 			
-			var serverData:Object = event.result;
-			
-			if(!dataIsWellFormed(serverData))
-			{
-				onMalformedData(event);
-				return;
-			}
-			
-			if(isLogin(serverData))
-			{
-				consoleShow(" OPERATION_LOGIN");
-				// Login handling
-				dispatchEvent(new ServerOperationEvent(ServerOperationEvent.OPERATION_LOGIN));
-				return;
-			}
-			
-			//the server cannot perform the action.
-			if(isError(serverData))
-			{
-				var errorEvent:ServerOperationEvent = new ServerOperationEvent(ServerOperationEvent.OPERATION_ERROR);
-				var code:String = errorCode(serverData);
-				
-				consoleShow(" OPERATION_ERROR "+code);
-				
-				// Error handling
-				if(_errorCallback != null){
-					if(_errorCallback.length > 0)
-						_errorCallback(_requestObject);
+			if (_httpStatusCode == STATUS_SUCCESS) {
+				var jsonObject:Object;
+				if (_loader.data && _loader.data != "") {
+					try{
+						jsonObject = JSON.parse(_loader.data as String);
+						
+						if(jsonObject){
+							for(var id:String in jsonObject) {
+							  var value:Object = jsonObject[id];
+							  trace(id + " = " + value);
+							}
+						}
+					}catch (e:Error) {
+						trace("JSON ", e.message);
+					}
+				}
+				if(_successCallback != null){
+					if(jsonObject && _successCallback.length > 0)
+						_successCallback(jsonObject);
 					else
-						_errorCallback();
+						_successCallback();
 				}
-				
-				if(LanguageManager.get().getErrorObject(_url,code) != null)
-					code = _url+"_"+code;
-				
-				errorEvent.errorCode = code;						
-				dispatchEvent(errorEvent);
 			}
-			
-			
-			//onData well constructed
-			consoleShow(" OPERATION_SUCCESS ");
+			successSignal.dispatch(this);		
+		}
 		
-			if(_populateStructures != null)
-			{
-				for each (var str:IPopulatable in _populateStructures) 
-				{
-					if(str)
-						str.populate(serverData["view"]);
-				}
-			}
+		private function onFaultHandler(event:IOErrorEvent):void
+		{
+			trace("OPERATION",_tag,"fault");
 			
-			if(_populateCallback != null)
-				_populateCallback(serverData["view"]);
-			
-			if(RemoteOperation.defaultPopulateCallback != null && serverData["view"])
-				RemoteOperation.defaultPopulateCallback(serverData["view"]);
-			
-			if(_successCallback != null)
-			{
-				if(_successCallback.length > 0)
-					_successCallback(_requestObject);
-				else
-					_successCallback();
-			}
-			
-			dispatchEvent(new ServerOperationEvent(ServerOperationEvent.OPERATION_SUCCESS));
+			if (_httpStatusCode == STATUS_INVALID) {
+				trace("Invalid operation:", event.text);
+				try{
+					var errorObject:Object = JSON.parse(_loader.data as String);
 					
-		}
-		
-		private function consoleShow(info:String):void
-		{
-			CONFIG::DEBUG
-			{
-				ClientManager.addConsoleMessage(_tag+" OPERATION_LOGIN");
-			}
-		}
-		
-		private function onFaultHandler(event:FaultEvent):void
-		{
-			// Fault handling
-			/*if(!retryResponse())
-				return;*/
-			
-			failedResponse();
-			
-			CONFIG::DEBUG
-			{
-				ClientManager.addConsoleMessage(_tag+" OPERATION_FAULT");
+					if(errorObject){
+						for(var id:String in errorObject) {
+						  var value:Object = errorObject[id];
+						  
+						  if(id == "error") 
+							_errorMessage = value as String;
+						}
+					}
+				}catch (e:Error) {
+					trace("JSON ", e.message);
+				}
+			}else if (_httpStatusCode == STATUS_UNAUTHORIZED) {
+				trace("Unauthorized:", event.text);
+			}else if (_httpStatusCode == STATUS_BAD_URL) {
+				trace("Bad URL:", event.text);
+			}else if (_httpStatusCode == STATUS_SERVER_ERROR) {
+				trace("Server failed: ", event.text);
 			}
 			
-			dispatchEvent(new ServerOperationEvent(ServerOperationEvent.OPERATION_FAULT));
-		}
-		
-		
-		/**
-		 *  resend the request for certain times before complete fail.
-		 */
-	/*	private function retryResponse():Boolean
-		{
-			if(_resendStatus < RESEND_TIMES_FOR_FAIL)
-			{
-				_resendStatus++;
-				send();
-				return false;
-			}
+			if(_faultCallback != null)
+				_faultCallback();
 			
-			failedResponse();
-			return true;
-		}*/
-		
-		/**
-		 * 	Standard behaviour on failed response
-		 * 
-		 */
-		private function failedResponse():void
-		{
-			
-			if(_faultCallback != null){
-				if(_faultCallback.length > 0)
-					_faultCallback(_requestObject);
-				else
-					_faultCallback();
-			}
-			
-		}
-		
-		private function dataIsWellFormed(data:Object):Boolean
-		{
-			return data.hasOwnProperty("view");
-		}
-		
-		public static function isError(data:Object):Boolean
-		{
-			return data["view"]["name"] == "error";
-		}
-		
-		private function errorCode(data:Object):String
-		{
-			return data["view"]["error"].code;
+			faultSignal.dispatch(this);
 		}
 		
 		/* GETTERS */
@@ -254,19 +201,9 @@ package infrastructure
 			return _url;
 		}
 		
-		public function get method():String
-		{
-			return _service.method;
-		}
-		
 		public function get populateStructures():Array
 		{
 			return _populateStructures;
-		}
-		
-		public function get populateCallback():Function
-		{
-			return _populateCallback;
 		}
 		
 		public function get successCallback():Function
@@ -279,14 +216,19 @@ package infrastructure
 			return _faultCallback;
 		}
 		
-		public function get errorCallback():Function
-		{
-			return _errorCallback;
-		}
-		
 		public function get requestObject():Object
 		{
 			return _requestObject;
+		}
+		
+		public function get httpStatusCode():int
+		{
+			return _httpStatusCode;
+		}
+		
+		public function get errorMessage():String
+		{
+			return _errorMessage;
 		}
 	}
 }

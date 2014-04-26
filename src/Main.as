@@ -2,8 +2,9 @@ package
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import utils.Stats;
 	
-	import managers.GameManager;
+	import managers.*;
 	
 	/**
 	 * ...
@@ -11,6 +12,10 @@ package
 	 */
 	public class Main extends Sprite 
 	{
+		public static const DEBUG:Boolean = true;
+		
+		protected static var levelEditor:GameLevelEditor;
+		
 		public function Main():void 
 		{
 			if (stage) init();
@@ -20,11 +25,15 @@ package
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			// entry point
 			
-			GameManager.getInstance().test();
+			levelEditor = new GameLevelEditor();
+			addChild(levelEditor);
+			
+			if (Main.DEBUG)
+				addChild(new Stats());
+
+			GameManager.getInstance().testRemoteOperations();
 		}
-		
 	}
 	
 }

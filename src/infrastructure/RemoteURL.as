@@ -1,9 +1,11 @@
 package infrastructure
 {
-	public class ServerURL
+	public class RemoteURL
 	{
-		public static const SETTINGS:String = "settings";
+		public static const LOGIN:String = "login";
+		public static const LOGOUT:String = "logout";
 		public static const REGISTER:String = "register";
+		public static const CORE:String = "core";
 		public static const SYSTEM:String = "system";
 		public static const LAND:String = "land";
 		public static const TAKE_OFF:String = "takeoff";

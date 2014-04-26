@@ -1,5 +1,7 @@
 package managers 
 {
+	import org.osflash.signals.Signal;
+	import utils.ServerTime;
 	/**
 	 * ...
 	 * @author Luis Miguel Blanco
@@ -9,10 +11,16 @@ package managers
 		private static var instance:GameManager;
 		private static var instantiated:Boolean = false;
 		
+		public var ready:Signal;
+		public var needsRegistration:Signal;
+		
 		public function GameManager() 
 		{
 			if (instantiated) {
 				instantiated = false;
+				
+				ready = new Signal();
+				needsRegistration = new Signal();
 			}else {
 				throw new Error("Use getInstance()");
 			}
@@ -27,9 +35,45 @@ package managers
 			return instance;
 		}
 		
-		public function test():void
+		public function start():void
 		{
-			trace("test");
+			RemoteManager.getInstance().getCore(
+				function():void{
+					if (SessionManager.getInstance().alreadyRegistered) {
+						RemoteManager.getInstance().getSystem(setReady);
+					}else {
+						requestRegistration();
+					}
+				});	
+		}
+		
+		protected function setReady():void
+		{
+			ready.dispatch();
+			// We are ready to play
+		}
+		
+		protected function requestRegistration():void
+		{
+			needsRegistration.dispatch();
+		}
+		
+		public function getState():void 
+		{	
+			RemoteManager.getInstance().getState(
+				function(data:Object):void{
+					DataManager.getInstance().populateState(data);
+					ServerTime.updateDeltaTime(data.time);
+				});
+		}
+		
+		public function testRemoteOperations():void
+		{
+			//RemoteManager.getInstance().logout();
+			//RemoteManager.getInstance().register("Team " + (new Date()).time, 255, 255);
+			getState();
+			//RemoteManager.getInstance().getSystem();
+			//RemoteManager.getInstance().getCore();
 		}
 	}
 

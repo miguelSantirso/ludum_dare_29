@@ -1,5 +1,6 @@
 package managers 
 {
+	import data.Company;
 	/**
 	 * ...
 	 * @author Luis Miguel Blanco
@@ -8,6 +9,8 @@ package managers
 	{
 		private static var instance:DataManager;
 		private static var instantiated:Boolean = false;
+		
+		protected var _myCompany:Company;
 		
 		public function DataManager() 
 		{
@@ -25,6 +28,17 @@ package managers
 				instance = new DataManager();
 			}
 			return instance;
+		}
+		
+		public function populateState(data:Object):void
+		{
+			_myCompany = new Company();
+			_myCompany.populate(data);
+		}
+		
+		public function get myCompany():Company 
+		{
+			return _myCompany;
 		}
 	}
 
