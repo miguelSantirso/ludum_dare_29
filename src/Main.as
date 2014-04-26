@@ -1,5 +1,6 @@
 package 
 {
+	import citrus.utils.LevelManager;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import utils.Stats;
@@ -12,7 +13,7 @@ package
 	{
 		public static const DEBUG:Boolean = true;
 		
-		protected static var levelManager:GameLevelManager;
+		protected static var levelManager:LevelManager;
 		
 		public function Main():void 
 		{
@@ -24,8 +25,8 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			levelManager = new GameLevelManager();
-			addChild(levelManager);
+			levelManager = new LevelManager();
+			//addChild(levelManager);
 			
 			if (Main.DEBUG)
 				addChild(new Stats());
