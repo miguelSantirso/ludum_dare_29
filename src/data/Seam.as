@@ -12,6 +12,8 @@ package data
 		protected var _id:int;
 		protected var _state:SeamState;
 		protected var _plantingDate:Date;
+		protected var _planet:int;
+		protected var _planetName:String; 
 		
 		public function Seam() 
 		{
@@ -25,6 +27,8 @@ package data
 			_id = data.id;
 			_state = data.state;
 			_plantingDate = ServerTime.getDateFromServerTime(data.planting_date);
+			_planet = data.planet;
+			_planetName = data.planet_name;
 		}
 		
 		public function reset():void 
@@ -32,6 +36,8 @@ package data
 			_id = 0;
 			_state = null;
 			_plantingDate = null;
+			_planet = 0;
+			_planetName = null;
 		}
 		
 		public function get id():int 

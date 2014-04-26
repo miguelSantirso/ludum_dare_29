@@ -58,11 +58,11 @@ package managers
 			needsRegistration.dispatch();
 		}
 		
-		public function getState():void 
+		public function getMyState():void 
 		{	
 			RemoteManager.getInstance().getState(
 				function(data:Object):void{
-					DataManager.getInstance().populateState(data);
+					DataManager.getInstance().populateMyState(data);
 					ServerTime.updateDeltaTime(data.time);
 				});
 		}
@@ -71,7 +71,7 @@ package managers
 		{
 			//RemoteManager.getInstance().logout();
 			//RemoteManager.getInstance().register("Team " + (new Date()).time, 255, 255);
-			getState();
+			getMyState();
 			//RemoteManager.getInstance().getSystem();
 			//RemoteManager.getInstance().getCore();
 		}
