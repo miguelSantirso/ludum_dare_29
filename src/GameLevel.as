@@ -21,7 +21,9 @@ package
 	{
 		protected var level:MovieClip;
 		public var lvlEnded:Signal;
+		public var lvlBack:Signal;
 		public var restartLevel:Signal;
+		public var changeLevel:Signal;
 		
 		public function GameLevel(_level:MovieClip) 
 		{
@@ -29,13 +31,15 @@ package
 			
 			level = _level;
 			lvlEnded = new Signal();
+			lvlBack = new Signal();
 			restartLevel = new Signal();
+			changeLevel = new Signal();
 		}
 		
 		override public function initialize():void
 		{
 			super.initialize();
-			
+
 			var physics:Box2D = new Box2D("physics");
 			physics.timeStep = 1 / 15.0;
 			physics.visible = false;

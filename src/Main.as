@@ -14,7 +14,7 @@ package
 	 */
 	public class Main extends CitrusEngine
 	{
-		public static const DEBUG:Boolean = true;
+		public static const DEBUG:Boolean = false;
 		
 		public function Main():void 
 		{
@@ -43,13 +43,21 @@ package
 			state = level;
 			
 			level.lvlEnded.add(nextLevel);
+			level.lvlBack.add(previousLevel);
 			level.restartLevel.add(restartLevel);
+			level.changeLevel.add(changeLevel);
 		}
 		
 		private function nextLevel():void
 		{
 			(levelManager.currentLevel as GameLevel).dispose();
 			levelManager.nextLevel();
+		}
+		
+		private function previousLevel():void
+		{
+			(levelManager.currentLevel as GameLevel).dispose();
+			levelManager.prevLevel();
 		}
 		
 		private function restartLevel():void
@@ -59,7 +67,11 @@ package
 		
 		public function changeLevel(levelIndex:int):void
 		{
-			levelManager.gotoLevel(levelIndex);
+			if (levelIndex != levelManager.currentIndex)
+			{
+				(levelManager.currentLevel as GameLevel).dispose();
+				levelManager.gotoLevel(levelIndex);
+			}
 		}
 	}
 }
