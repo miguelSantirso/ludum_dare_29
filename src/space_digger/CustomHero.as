@@ -125,7 +125,7 @@ package space_digger
 
 		protected var _groundContacts:Array = [];//Used to determine if he's on ground or not.
 		protected var _enemyClass:Class = Enemy;
-		protected var _onGround:Boolean = false;
+		protected var _onGround:Boolean = true;
 		protected var _springOffEnemy:Number = -1;
 		protected var _hurtTimeoutID:uint;
 		protected var _hurt:Boolean = false;

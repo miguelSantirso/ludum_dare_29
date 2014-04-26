@@ -13,6 +13,7 @@ package space_digger
 			super(name, params);
 			
 			minVelocityY = -10;
+			group = 1;
 		}
 		
 	}
