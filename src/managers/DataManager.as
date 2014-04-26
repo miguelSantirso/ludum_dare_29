@@ -30,10 +30,12 @@ package managers
 			return instance;
 		}
 		
-		public function populateState(data:Object):void
+		public function populateMyState(data:Object):void
 		{
 			_myCompany = new Company();
 			_myCompany.populate(data);
+			
+			// populate my seams
 		}
 		
 		public function get myCompany():Company 
