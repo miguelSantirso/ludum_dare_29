@@ -10,6 +10,8 @@ package
 	 */
 	public class Main extends Sprite 
 	{
+		public static const DEBUG:Boolean = true;
+		
 		protected static var levelEditor:GameLevelEditor;
 		
 		public function Main():void 
@@ -25,7 +27,8 @@ package
 			levelEditor = new GameLevelEditor();
 			addChild(levelEditor);
 			
-			addChild(new Stats());
+			if (Main.DEBUG)
+				addChild(new Stats());
 		}
 	}
 	
