@@ -134,7 +134,10 @@ package space_digger
 		protected var _controlsEnabled:Boolean = true;
 		protected var _ducking:Boolean = false;
 		protected var _combinedGroundAngle:Number = 0;
-			
+		
+		protected var _jetpackEnabled:Boolean = false;
+		
+		
 		/**
 		 * Creates a new hero object.
 		 */		
@@ -271,8 +274,10 @@ package space_digger
 					_framesToKickJetpack = JETPACK_DELAY;
 				}
 				
+				_jetpackEnabled = false;
 				if (_framesToKickJetpack <= 0 && _ce.input.isDoing("jump", inputChannel))
 				{
+					_jetpackEnabled = true;
 					velocity.y -= jumpAcceleration;
 				}
 				else --_framesToKickJetpack;
@@ -463,9 +468,13 @@ package space_digger
 			if (_hurt)
 				_animation = "hurt";
 
+			if (_jetpackEnabled)
+			{
+				_animation = "up";
+			}
 			else if (!_onGround) {
 
-				_animation = "jump";
+				_animation = velocity.y < 0 ? "jump" : "down";
 
 				if (walkingSpeed < -acceleration)
 					_inverted = true;

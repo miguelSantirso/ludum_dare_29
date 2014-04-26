@@ -41,23 +41,9 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			var physics:Box2D = new Box2D("physics");
-			physics.timeStep = 1 / 15.0;
-			physics.visible = false;
-			add(physics);
-	 
-			ObjectMaker2D.FromMovieClip(level);
-			
-			var physics:Box2D = new Box2D("physics");
-			physics.timeStep = 1 / 20.0;
-			physics.visible = Main.DEBUG;
-			add(physics);
-	 
-			ObjectMaker2D.FromMovieClip(level);
-			
 			view.camera.setUp(getObjectByName("player_char"));// , new Rectangle(0, 0, 1550, 450), new Point(.25, .05), new Point(stage.stageWidth / 2, stage.stageHeight / 2));
 			
-			createDecorationSprites();
+			//createDecorationSprites();
 			
 			var seams:Vector.<CitrusObject> = getObjectsByName("seam");
 			for each (var seam:Sensor in seams)
