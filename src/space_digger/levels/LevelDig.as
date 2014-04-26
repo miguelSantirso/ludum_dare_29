@@ -1,5 +1,6 @@
 package space_digger.levels 
 {
+	import citrus.core.State;
 	import flash.display.MovieClip;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.CitrusSpritePool;
@@ -33,13 +34,6 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			var physics:Box2D = new Box2D("physics");
-			physics.timeStep = 1 / 15.0;
-			physics.visible = false;
-			add(physics);
-	 
-			ObjectMaker2D.FromMovieClip(level);
-			
 			view.camera.setUp(getObjectByName("player_char"));// , new Rectangle(0, 0, 1550, 450), new Point(.25, .05), new Point(stage.stageWidth / 2, stage.stageHeight / 2));
 			
 			createDecorationSprites();
@@ -50,6 +44,13 @@ package space_digger.levels
 			super.update(timeDelta);
 			
 			//updateDecorationOcclusion();
+		}
+		
+		public override function dispose():void
+		{
+			_decorations.splice(0, _decorations.length);
+			
+			super.dispose();
 		}
 		
 		/*public function updateDecorationOcclusion():void

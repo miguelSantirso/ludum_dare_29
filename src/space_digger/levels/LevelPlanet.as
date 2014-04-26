@@ -10,6 +10,8 @@ package space_digger.levels
 		public function LevelPlanet(_level:MovieClip) 
 		{
 			super(_level);
+			
+			addChild(level);
 		}
 		
 		public override function initialize():void
@@ -20,6 +22,11 @@ package space_digger.levels
 		public override function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
+		}
+		
+		public override function dispose():void
+		{
+			super.dispose();
 		}
 	}
 }
