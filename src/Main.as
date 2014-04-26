@@ -2,7 +2,7 @@ package
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import utils.ProfileTools;
+	import utils.Stats;
 	
 	/**
 	 * ...
@@ -10,8 +10,9 @@ package
 	 */
 	public class Main extends Sprite 
 	{
+		public static const DEBUG:Boolean = true;
+		
 		protected static var levelEditor:GameLevelEditor;
-		private var _profileTools:ProfileTools;
 		
 		public function Main():void 
 		{
@@ -26,15 +27,8 @@ package
 			levelEditor = new GameLevelEditor();
 			addChild(levelEditor);
 			
-			_profileTools = new ProfileTools();
-			addChild(_profileTools);
-			
-			stage.addEventListener(Event.ENTER_FRAME, update);
-		}
-		
-		private function update(e:Event):void
-		{
-			_profileTools.update();
+			if (Main.DEBUG)
+				addChild(new Stats());
 		}
 	}
 	
