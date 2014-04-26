@@ -47,7 +47,7 @@
   </build>
   <!-- SWC Include Libraries -->
   <includeLibraries>
-    <!-- example: <element path="..." /> -->
+    <element path="lib\assets.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
