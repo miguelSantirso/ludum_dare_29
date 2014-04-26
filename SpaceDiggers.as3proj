@@ -47,7 +47,7 @@
   </build>
   <!-- SWC Include Libraries -->
   <includeLibraries>
-    <!-- example: <element path="..." /> -->
+    <element path="characters\character.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
