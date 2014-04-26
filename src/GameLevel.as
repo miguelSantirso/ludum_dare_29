@@ -8,6 +8,9 @@ package
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Cannon;
 	import citrus.utils.objectmakers.ObjectMaker2D;
+	
+	import space_digger.PlayerCharacter;
+	
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -21,7 +24,7 @@ package
 			super();
 			level = _level;
 			
-			var objectsUsed:Array = [Hero, Platform, Coin, Cannon];
+			var objectsUsed:Array = [Hero, Platform, Coin, Cannon, PlayerCharacter];
 		}
 		
 		override public function initialize():void
