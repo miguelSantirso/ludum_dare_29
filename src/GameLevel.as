@@ -5,6 +5,7 @@ package
 	import citrus.math.MathVector;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.CitrusSpritePool;
+	import citrus.objects.platformer.box2d.Sensor;
 	import citrus.physics.box2d.Box2D;
 	import flash.display.MovieClip;
 	import citrus.objects.platformer.box2d.Hero;
@@ -24,6 +25,7 @@ package
 	public class GameLevel extends State
 	{
 		protected var level:MovieClip;
+		protected var sensors:Array;
 		
 		private var _decorations:Vector.<CitrusSprite> = new Vector.<CitrusSprite>();
 		
@@ -37,7 +39,7 @@ package
 		
 		override public function initialize():void
 		{
-			super.initialize()
+			super.initialize();
 	 
 			var physics:Box2D = new Box2D("physics");
 			physics.timeStep = 1 / 15.0;
@@ -64,6 +66,7 @@ package
 			var decor:CitrusSprite;
 			for (var i:int = 0; i < nDecorations; ++i)
 			{
+				var child:MovieClip;
 				decor = _decorations[i];
 				//decor.visible = view.camera.contains(decor.x, decor.y);
 			}
