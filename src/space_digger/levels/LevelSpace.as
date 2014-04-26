@@ -11,7 +11,6 @@ package space_digger.levels
 		public function LevelSpace(_level:MovieClip) 
 		{
 			super(_level);
-			level = _level;
 		}
 		
 		public override function initialize():void
