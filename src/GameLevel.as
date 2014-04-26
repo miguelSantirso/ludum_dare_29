@@ -9,6 +9,7 @@ package
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Cannon;
 	import citrus.utils.objectmakers.ObjectMaker2D;
+	import traps.TrapSpikes;
 	
 	import space_digger.PlayerCharacter;
 	
@@ -28,7 +29,7 @@ package
 			super();
 			level = _level;
 			
-			var objectsUsed:Array = [Hero, Platform, Coin, Cannon, PlayerCharacter];
+			var objectsUsed:Array = [Hero, Platform, Coin, Cannon, PlayerCharacter, TrapSpikes];
 		}
 		
 		override public function initialize():void
@@ -65,9 +66,9 @@ package
 							
 						if (child.name.indexOf(SPIKES) > -1)
 						{
-							//sensor = getObjectByName("") as Sensor;
-							//sensor = ge
-							//sensors.push(child);
+							sensor = getObjectByName("sensor_test") as Sensor;
+							//sensor.onBeginContact.add(
+							sensors.push(child);
 						}
 					}
 				}
