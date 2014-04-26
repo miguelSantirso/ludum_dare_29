@@ -42,7 +42,7 @@ package
 
 			var physics:Box2D = new Box2D("physics");
 			physics.timeStep = 1 / 15.0;
-			physics.visible = false;
+			physics.visible = Main.DEBUG;
 			add(physics);
 			
 			ObjectMaker2D.FromMovieClip(level);
