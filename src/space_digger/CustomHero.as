@@ -486,7 +486,11 @@ package space_digger
 
 			else {
 
-				if (walkingSpeed < -acceleration) {
+				if (!_ce.input.isDoing("left", inputChannel) && !_ce.input.isDoing("right", inputChannel))
+				{
+					_animation = "idle";
+				}
+				else if (walkingSpeed < -acceleration) {
 					_inverted = true;
 					_animation = "walk";
 
