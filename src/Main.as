@@ -8,6 +8,8 @@ package
 	import utils.Stats;
 	import space_digger.levels.*;
 	
+	import managers.*;
+	
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -36,6 +38,8 @@ package
 		
 			if (Main.DEBUG)
 				addChild(new Stats());
+
+			GameManager.getInstance().testRemoteOperations();
 		}
 		
 		private function onLevelChanged(level:GameLevel):void
