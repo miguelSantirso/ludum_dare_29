@@ -97,6 +97,8 @@ package space_digger.levels
 			{
 				endExploration();
 			}
+			
+			_hud.updateCountdown(timeDelta);
 		}
 		
 		public function startExploration():void
@@ -107,7 +109,8 @@ package space_digger.levels
 				return;
 			}*/
 			
-			GameManager.getInstance().play(function(data:Object):void {
+			GameManager.getInstance().play(function(payload:Object):void {
+				
 				view.camera.bounds = null;
 				var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
 				var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
@@ -115,11 +118,15 @@ package space_digger.levels
 				view.camera.camPos.y = ship.y - 40;
 				player.x = ship.x;
 				view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);
+				
+				_hud.startCountdown(payload.stopwatch*1000);
 			});
 		}
 		
 		public function endExploration(takeOff:Boolean = true):void
 		{
+			_hud.stopCountdown();
+			
 			if (takeOff)
 				GameManager.getInstance().takeOff(diggingSession);
 			
