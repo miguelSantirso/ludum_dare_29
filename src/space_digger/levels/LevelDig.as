@@ -35,7 +35,7 @@ package space_digger.levels
 	 */
 	public class LevelDig extends GameLevel
 	{
-		public var startedDigging:Signal = new Signal(int, int);
+		public var startedDigging:Signal = new Signal(Number, Number);
 		
 		private var _ship:SpaceShip;
 		private var _inExitArea:Boolean = false;
