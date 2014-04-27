@@ -1,6 +1,7 @@
 package space_digger 
 {
 	import away3d.events.MouseEvent3D;
+	import data.Planet;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -18,6 +19,7 @@ package space_digger
 	{
 		public static const EVENT_CLOSE:String = "eventClose";
 		private var _asset:AssetPopupPlanet;
+		private var _planet:Planet;
 		
 		public function PopupPlanet() 
 		{
@@ -115,6 +117,11 @@ package space_digger
 		public function set planetVisitedTimes(value:int):void
 		{
 			_asset.label_visited_value.text = value.toString();
+		}
+		
+		public function set planet(value:Planet):void
+		{
+			_planet = value;
 		}
 
 		private function highlightSector(e:MouseEvent):void

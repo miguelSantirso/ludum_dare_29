@@ -184,6 +184,7 @@ package space_digger.levels
 				popupPlanet.planetName = selectedPlanet.name;
 				popupPlanet.planetToxicity = selectedPlanet.toxicity;
 				popupPlanet.planetRichness = selectedPlanet.richness;
+				popupPlanet.planet = selectedPlanet;
 			}
 		}
 		
