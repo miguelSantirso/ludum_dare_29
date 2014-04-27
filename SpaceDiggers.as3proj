@@ -64,6 +64,9 @@
     <element path="lib\nave_animaciones_happy.swc" />
     <element path="lib\happy.swc" />
     <element path="lib\water.swc" />
+    <element path="lib\nave_animaciones_fire.swc" />
+    <element path="lib\nave_animaciones_forest.swc" />
+    <element path="lib\nave_animaciones_water.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>

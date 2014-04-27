@@ -41,29 +41,11 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			setCompanyData();
-			setSystemData();
-			setOngoingOperations();
-			setRecentActivity();
-			
-			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
-			
-			// TEMP:
-			var temp:Array = new Array();
-			var tempObj:Object;
-			
-			for (var i:int = 0; i < 50; i++)
-			{
-				tempObj = new Object()
-				tempObj["message"] = "IR " + i.toString();
-				temp.push(tempObj);
-			}
-			
-			recentActivityScroller = new Scroller(false, 6, ActivityIR, 0, temp);
+			recentActivityScroller = new Scroller(false, 4.2, ActivityIR, 5);
 			recentActivityScroller.init();
 			level.slot_activity_list.addChild(recentActivityScroller);
 			
-			ongoingOpsScroller = new Scroller(false, 3.8, OperationIR, 0, temp);
+			ongoingOpsScroller = new Scroller(false, 3.8, OperationIR);
 			ongoingOpsScroller.init();
 			level.slot_ongoing_list.addChild(ongoingOpsScroller);
 			
@@ -82,6 +64,12 @@ package space_digger.levels
 			popupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
 			popupModal.graphics.endFill();
 			
+			setCompanyData();
+			setSystemData();
+			setOngoingOperations();
+			setRecentActivity();
+			
+			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
 			level.button_view_ranking.addEventListener(MouseEvent.CLICK, setRankingPopupData);
 		}
 		
@@ -193,7 +181,14 @@ package space_digger.levels
 		
 		public function setRecentActivity():void
 		{
-			//
+			var eventsDataProvider:Array = new Array();
+			
+			for each(var activityEvent:String in DataManager.getInstance().myState.events)
+			{
+				eventsDataProvider.push(activityEvent);
+			}
+			
+			recentActivityScroller.dataProvider = eventsDataProvider;
 		}
 		
 		public function setPlanetPopupData(planetIndex:int):void

@@ -2,6 +2,7 @@ package space_digger
 {
 	import flash.events.Event;
 	import utils.scroller.ItemRendererObject;
+	import utils.Text;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -34,7 +35,8 @@ package space_digger
 		{
 			super.data = value;
 
-			//asset.label_message.text = value.message;
+			asset.label_description.text = value;			
+			Text.truncateMultilineText(asset.label_description, 3, "...");
 		}
 
 		public override function get asset():*
