@@ -1,7 +1,10 @@
 package managers 
 {
+	import data.CompanyState;
+	import data.Core;
 	import data.DiggingSession;
 	import data.Mine;
+	import data.System;
 	import infrastructure.RemoteOperation;
 	import infrastructure.RemoteURL;
 	import org.osflash.signals.Signal;
@@ -185,14 +188,14 @@ package managers
 			sendOperation(LOGOUT,RemoteURL.LOGOUT,RemoteOperation.TYPE_POST,null,null,successCallback,faultCallback);
 		}
 		
-		public function getCore(successCallback:Function = null, faultCallback:Function = null ):void
+		public function getCore(core:Core, successCallback:Function = null, faultCallback:Function = null ):void
 		{
-			sendOperation(CORE, RemoteURL.CORE, RemoteOperation.TYPE_POST, null,[DataManager.getInstance().core],successCallback,faultCallback);
+			sendOperation(CORE, RemoteURL.CORE, RemoteOperation.TYPE_POST, null,[core],successCallback,faultCallback);
 		}
 		
-		public function getState(successCallback:Function = null, faultCallback:Function = null ):void
+		public function getState(state:CompanyState, successCallback:Function = null, faultCallback:Function = null ):void
 		{
-			sendOperation(STATE, RemoteURL.STATE, RemoteOperation.TYPE_POST, null,[DataManager.getInstance().myState],successCallback,faultCallback);
+			sendOperation(STATE, RemoteURL.STATE, RemoteOperation.TYPE_POST, null,[state],successCallback,faultCallback);
 		}
 		
 		public function getSystem(successCallback:Function = null, faultCallback:Function = null):void
@@ -200,7 +203,6 @@ package managers
 			sendOperation(SYSTEM, RemoteURL.SYSTEM, RemoteOperation.TYPE_POST, null, [DataManager.getInstance().mySystem], successCallback,faultCallback);
 		}
 		
-		// TODO chdck these operations
 		public function land(mineId:int, mine:Mine,successCallback:Function = null, faultCallback:Function = null):void
 		{
 			var requestObject:Object = { mine_id: mineId };
@@ -210,7 +212,7 @@ package managers
 		
 		public function play(successCallback:Function = null, faultCallback:Function = null):void
 		{
-			sendOperation(LAND, RemoteURL.LAND, RemoteOperation.TYPE_POST, null, null, successCallback, faultCallback);
+			sendOperation(PLAY, RemoteURL.PLAY, RemoteOperation.TYPE_POST, null, null, successCallback, faultCallback);
 		}
 		
 		public function takeOff(diggingSession:DiggingSession, successCallback:Function = null, faultCallback:Function = null):void
@@ -224,6 +226,16 @@ package managers
 			}
 			
 			sendOperation(TAKE_OFF, RemoteURL.TAKE_OFF, RemoteOperation.TYPE_POST, requestObject, null, successCallback, faultCallback);
+		}
+		
+		public function jump(system:System, successCallback:Function = null, faultCallback:Function = null):void
+		{
+			sendOperation(JUMP, RemoteURL.JUMP, RemoteOperation.TYPE_POST, null, [system], successCallback, faultCallback);
+		}
+		
+		public function ranking(rankingFillerCallback:Function, faultCallback:Function = null):void
+		{
+			sendOperation(RANKING, RemoteURL.RANKING, RemoteOperation.TYPE_POST, null, null, rankingFillerCallback, faultCallback);
 		}
 		
 		protected function onLoginFault():void
