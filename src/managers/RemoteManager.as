@@ -110,6 +110,7 @@ package managers
 			switch(operation.httpStatusCode) {
 				case RemoteOperation.STATUS_UNAUTHORIZED : // not logged
 					queueOperation(_currentRemoteOperation, true);
+					_currentRemoteOperation = null;
 					login(null,onLoginFault);
 					break;
 				case RemoteOperation.STATUS_INVALID :
