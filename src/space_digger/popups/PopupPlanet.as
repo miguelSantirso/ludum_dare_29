@@ -1,6 +1,7 @@
 package space_digger.popups 
 {
 	import away3d.events.MouseEvent3D;
+	import data.Mine;
 	import data.Planet;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
@@ -11,6 +12,8 @@ package space_digger.popups
 	import managers.DataManager;
 	import data.PlanetRichness;
 	import data.PlanetToxicity;
+	import managers.GameManager;
+	
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -166,7 +169,14 @@ package space_digger.popups
 		{
 			var mineIndex:int = int( (e.currentTarget as MovieClip).name.charAt((e.currentTarget as MovieClip).name.length - 1));
 			
-			trace("MINE SELECTED: " + mineIndex);
+			var selectedMine:Mine = _planet.mines[mineIndex];
+			
+			GameManager.getInstance().land(selectedMine, 
+				function():void {
+					GameManager.getInstance().changeLevel(selectedMine.map);
+				});
+			
+			//trace("MINE SELECTED: " + mineIndex, _planet.mines[mineIndex].id);
 		}
 		
 		private function onButtonCloseHandler(e:MouseEvent):void
