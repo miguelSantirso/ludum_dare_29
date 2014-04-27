@@ -53,7 +53,7 @@ package space_digger.levels
 		{
 			/*level.label_company_name.text = DataManager.getInstance().myState.company.name.toUpperCase();
 			level.label_company_gold.text = DataManager.getInstance().myState.company.score.toString();
-			level.label_company_rank.text = "#4578"; //+ DataManager.getInstance().myState.company.
+			level.label_company_rank.text = "#99"; // TO-DO
 			
 			Text.truncateText(level.label_company_name);
 			Text.truncateText(level.label_company_gold);
@@ -66,8 +66,18 @@ package space_digger.levels
 			
 			for (var i:int = 0; i < 5; i++)
 			{
+				var iconIndex:int = 1 + Math.round(Math.random() * 4);
+				var iconRadius:int = 32 + Math.round(Math.random() * 64);
+
 				currentPlanetMC = level.getChildByName("planet_" + i) as MovieClip;
-				currentPlanetMC.icon_planet.gotoAndStop(1);
+				currentPlanetMC.icon_planet.gotoAndStop(iconIndex);
+				currentPlanetMC.icon_planet.width = currentPlanetMC.icon_planet.height = iconRadius;
+				currentPlanetMC.label_name.text = DataManager.getInstance().mySystem.planets[i].name;
+				currentPlanetMC.label_toxicity.text = DataManager.getInstance().mySystem.planets[i].toxicity.toString() + "%";
+				currentPlanetMC.label_richness.text = DataManager.getInstance().mySystem.planets[i].richness.toString() + "%";
+				
+				Text.truncateText(currentPlanetMC.label_name);
+				
 				currentPlanetMC.addEventListener(MouseEvent.CLICK, test);
 			}
 		}
