@@ -20,6 +20,8 @@ package data
 		{
 			if (data["state_refresh"])
 				_stateRefreshTime = data["state_refresh"];
+			else
+				_stateRefreshTime = 60; // 1 minute
 
 			if(data["machine_lifetime"])
 				_machineLifetime = data["machine_lifetime"];

@@ -23,6 +23,9 @@ package space_digger.levels
 	import space_digger.enemies.Spike;
 	import space_digger.enemies.SpawnSpot;
 	import citrus.core.CitrusObject;
+	import space_digger.SpaceShip;
+	import managers.GameManager;
+	import flash.utils.setTimeout;
 	
 	/**
 	 * ...
@@ -41,14 +44,14 @@ package space_digger.levels
 		{
 			super(_level);
 			
-			var objectsUsed:Array = [SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper];
+			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper];
 		}
 		
 		public override function initialize():void
 		{
 			super.initialize();
 			
-			view.camera.setUp(getObjectByName("player_char"), new Rectangle(0, 0, 1352, 1963));
+			view.camera.setUp(getObjectByName("ship"), new Rectangle(0, -500, 1000, 530));
 			
 			stage.addChild(_hud);
 		}
@@ -56,6 +59,22 @@ package space_digger.levels
 		public override function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
+		}
+		
+		public function startExploration():void
+		{
+			/*view.camera.bounds = null;
+			var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
+			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
+			view.camera.camPos.x = ship.x;
+			view.camera.camPos.y = ship.y - 40;
+			player.x = ship.x;
+			view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);*/
+			
+			GameManager.getInstance().play(function(data:Object):void {
+				view.camera.switchToTarget(getObjectByName("player_char"));
+				view.camera.bounds = null;
+			});
 		}
 		
 		public override function dispose():void
