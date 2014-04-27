@@ -46,7 +46,8 @@ package space_digger.levels
 			setOngoingOperations();
 			setRecentActivity();
 			
-			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
+			level.button_logout.addEventListener(MouseEvent.CLICK, logout,false,0,true);
+			level.jump_button.addEventListener(MouseEvent.CLICK, jumpToAnotherSystem,false,0,true);
 			
 			// TEMP:
 			var temp:Array = new Array();
@@ -92,6 +93,9 @@ package space_digger.levels
 		
 		public override function dispose():void
 		{
+			level.button_logout.removeEventListener(MouseEvent.CLICK, logout);
+			level.jump_button.removeEventListener(MouseEvent.CLICK, jumpToAnotherSystem);
+			
 			level.slot_activity_list.removeChild(recentActivityScroller);
 			level.slot_ongoing_list.removeChild(ongoingOpsScroller);
 			removeChild(_popupPlanet);
@@ -111,6 +115,11 @@ package space_digger.levels
 		private function logout(e:MouseEvent):void
 		{
 			GameManager.getInstance().logout();
+		}
+		
+		protected function jumpToAnotherSystem(e:MouseEvent):void
+		{
+			GameManager.getInstance().jump();
 		}
 		
 		private function onUpdateMyCompanyRank():void

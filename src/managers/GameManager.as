@@ -149,7 +149,7 @@ package managers
 		
 		public function land(mine:Mine,successCallback:Function = null, faultCallback:Function = null):void
 		{
-			RemoteManager.getInstance().land(mine.id, mine,successCallback,faultCallback); // TODO set the success callback to go to the Mine view 
+			RemoteManager.getInstance().land(mine.id, mine,successCallback,faultCallback);
 		}
 		
 		public function play(stopwatchCallback:Function, faultCallback:Function = null):void
@@ -157,14 +157,14 @@ package managers
 			RemoteManager.getInstance().play(stopwatchCallback,faultCallback);
 		}
 		
-		public function takeOff(diggingSession:DiggingSession):void
+		public function takeOff(diggingSession:DiggingSession,successCallback:Function = null, faultCallback:Function = null):void
 		{
-			RemoteManager.getInstance().takeOff(diggingSession); // TODO set the success callback to go back to System view
+			RemoteManager.getInstance().takeOff(diggingSession,successCallback,faultCallback);
 		}
 		
-		public function jump(system:System):void // dispatchs the systemChange Signal
+		public function jump():void
 		{
-			RemoteManager.getInstance().jump(system, systemChanged.dispatch);
+			RemoteManager.getInstance().jump(DataManager.getInstance().mySystem, systemChanged.dispatch);
 		}
 		
 		public function getRanking():void
