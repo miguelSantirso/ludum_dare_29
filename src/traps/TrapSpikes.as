@@ -9,7 +9,7 @@ package traps
 	{
 		public function TrapSpikes(name:String, params:Object = null) 
 		{
-			super(name, params);
+			super("seam", params);
 		}
 		
 		
