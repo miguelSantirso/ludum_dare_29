@@ -13,6 +13,7 @@ package space_digger.levels
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Cannon;
 	import citrus.utils.objectmakers.ObjectMaker2D;
+	import flash.geom.Rectangle;
 	import space_digger.GameplayHud;
 	import space_digger.PlayerCharacter;
 	import traps.TrapSpikes;
@@ -41,8 +42,8 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			view.camera.setUp(getObjectByName("player_char"));// , new Rectangle(0, 0, 1550, 450), new Point(.25, .05), new Point(stage.stageWidth / 2, stage.stageHeight / 2));
-			
+			//view.camera.setUp(getObjectByName("player_char"));// , new Rectangle(0, 0, 1550, 450), new Point(.25, .05), new Point(stage.stageWidth / 2, stage.stageHeight / 2));
+			view.camera.setUp(getObjectByName("player_char"), new Rectangle(0, 0, 1352, 1963));
 			//createDecorationSprites();
 			
 			var seams:Vector.<CitrusObject> = getObjectsByName("seam");
