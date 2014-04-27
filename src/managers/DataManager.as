@@ -4,6 +4,7 @@ package managers
 	import data.CompanyState;
 	import data.Core;
 	import data.DiggingSession;
+	import data.Mine;
 	import data.RankingEntry;
 	import data.System;
 	import flash.utils.Dictionary;
@@ -20,6 +21,8 @@ package managers
 		protected var _myState:CompanyState;
 		protected var _mySystem:System;
 		protected var _ranking:Vector.<RankingEntry>;
+		
+		public var currentMine:Mine;
 		
 		public function DataManager() 
 		{

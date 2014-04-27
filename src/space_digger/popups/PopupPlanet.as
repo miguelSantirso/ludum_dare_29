@@ -173,7 +173,7 @@ package space_digger.popups
 			
 			GameManager.getInstance().land(selectedMine, 
 				function():void {
-					GameManager.getInstance().changeLevel(selectedMine.map);
+					GameManager.getInstance().changeLevel(selectedMine);
 				});
 			
 			//trace("MINE SELECTED: " + mineIndex, _planet.mines[mineIndex].id);

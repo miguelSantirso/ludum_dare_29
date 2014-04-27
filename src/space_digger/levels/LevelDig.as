@@ -68,9 +68,7 @@ package space_digger.levels
 			(getObjectByName("exit") as Sensor).onBeginContact.add(onEnteredExit);
 			(getObjectByName("exit") as Sensor).onEndContact.add(onExitedExit);
 			
-			var TEMPMine:Mine = DataManager.getInstance().mySystem.planets[1].mines[0]; // replace for the chosen one
-			
-			diggingSession.mine = TEMPMine;
+			diggingSession.mine = DataManager.getInstance().currentMine;
 			
 			stage.addChild(_hud);
 		}
@@ -103,11 +101,11 @@ package space_digger.levels
 		
 		public function startExploration():void
 		{
-			if (!_readyToLand)
+			/*if (!_readyToLand)
 			{
 				endExploration(false);
 				return;
-			}
+			}*/
 			
 			GameManager.getInstance().play(function(data:Object):void {
 				view.camera.bounds = null;

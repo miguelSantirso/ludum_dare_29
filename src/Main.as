@@ -7,6 +7,7 @@ package
 	import flash.events.Event;
 	import utils.Stats;
 	import space_digger.levels.*;
+	import data.Mine;
 	
 	import managers.*;
 	
@@ -22,8 +23,10 @@ package
 		
 		public function Main():void 
 		{
-			if (stage) init();
-			else addEventListener(Event.ADDED_TO_STAGE, init);
+			//if (stage)
+			//	init();
+			//else 
+				addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
 		private function init(e:Event = null):void
@@ -51,7 +54,7 @@ package
 			GameManager.getInstance().ready.add(goToLevelSpace);
 			GameManager.getInstance().loggedOut.add(goToLevelRegister);
 			GameManager.getInstance().startFailed.add(goToLevelRegister);
-			GameManager.getInstance().changeLevelRequest.add(changeLevel);
+			GameManager.getInstance().changeLevelRequest.add(travelToMine);
 			GameManager.getInstance().start();
 		}
 		
@@ -73,6 +76,13 @@ package
 			level.lvlBack.add(previousLevel);	
 			level.restartLevel.add(restartLevel);
 			level.changeLevel.add(changeLevel);*/
+		}
+		
+		protected function travelToMine(mine:Mine):void
+		{
+			DataManager.getInstance().currentMine = mine;
+			
+			changeLevel(GameManager.getInstance().getClientMapIndexFromServerMapId(mine.map));
 		}
 		
 		/*private function nextLevel():void
