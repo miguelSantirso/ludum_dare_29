@@ -7,7 +7,6 @@ package
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import org.osflash.signals.Signal;
-	import traps.TrapSpikes;
 	import citrus.utils.objectmakers.ObjectMaker2D;
 	import citrus.physics.box2d.Box2D;
 	

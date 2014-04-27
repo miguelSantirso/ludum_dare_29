@@ -61,8 +61,6 @@ package managers
 		{
 			ready.dispatch();
 			// We are ready to play
-			
-			trace("READY");
 		}
 		
 		protected function requestRegistration():void
@@ -80,7 +78,10 @@ package managers
 			SessionManager.getInstance().clearRegistration();
 			loggedOut.dispatch();
 			
-			DataManager.getInstance().reset();	
+			DataManager.getInstance().reset();
+			RemoteManager.getInstance().reset();
+			
+			requestRegistration();
 		}
 		
 		public function register(companyName:String, color1:uint, color2:uint):void
