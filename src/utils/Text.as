@@ -16,8 +16,6 @@ package utils
 			
 			if(tf.textWidth > tf.width - margin)
 			{
-				//tf.appendText("...");
-				
 				while(tf.textWidth > tf.width - margin)
 				{
 					tf.text = tf.text.substr(0, (tf.text.charAt(tf.text.length - 10) != " ") ? -9 : -10) + tooltip;

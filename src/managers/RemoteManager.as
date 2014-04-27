@@ -49,6 +49,17 @@ package managers
 			return instance;
 		}
 		
+		public function reset():void
+		{
+			for each(var op:RemoteOperation in _queuedOperations)
+				op.dispose();
+				
+			_queuedOperations.splice(0, _queuedOperations.length);
+			
+			if (_currentRemoteOperation) _currentRemoteOperation.dispose();
+			_currentRemoteOperation = null;
+		}
+		
 		protected function sendOperation(
 			tag:String, 
 			url:String, 
@@ -107,11 +118,23 @@ package managers
 			_currentRemoteOperation.successSignal.remove(onRemoteOperationSuccess);
 			_currentRemoteOperation.faultSignal.remove(onRemoteOperationFault);
 			
+			if (operation.tag == LOGIN) {
+				// this dispatches a signal for game manager to delete all operations
+				_currentRemoteOperation = null;
+				onLoginFault();
+				return;
+			}
+			
 			switch(operation.httpStatusCode) {
-				case RemoteOperation.STATUS_UNAUTHORIZED : // not logged
-					queueOperation(_currentRemoteOperation, true);
-					_currentRemoteOperation = null;
-					login(null,onLoginFault);
+				case RemoteOperation.STATUS_UNAUTHORIZED : // not logged					
+					if (operation.tag == LOGOUT && operation.tag != REGISTER) {
+						queueOperation(_currentRemoteOperation, true);
+						_currentRemoteOperation = null;
+						login();
+					}else {
+						_currentRemoteOperation = null;
+					}
+					
 					break;
 				case RemoteOperation.STATUS_INVALID :
 					_currentRemoteOperation.dispose();

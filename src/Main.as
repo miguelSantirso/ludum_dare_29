@@ -40,16 +40,14 @@ package
 				];
 		
 			if (Main.DEBUG)
-				addChild(new Stats());
+				//addChild(new Stats());
 
-			/*//GameManager.getInstance().testRemoteOperations();
+			//GameManager.getInstance().testRemoteOperations();
 			GameManager.getInstance().needsRegistration.add(goToLevelRegister);
 			GameManager.getInstance().ready.add(goToLevelSpace);
 			GameManager.getInstance().loggedOut.add(goToLevelRegister);
 			GameManager.getInstance().startFailed.add(goToLevelRegister);
-			GameManager.getInstance().start();*/
-			
-			changeLevel(4);
+			GameManager.getInstance().start();
 		}
 		
 		private function goToLevelRegister():void

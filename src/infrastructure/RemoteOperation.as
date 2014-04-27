@@ -142,7 +142,7 @@ package infrastructure
 						if(jsonObject){
 							for(var id:String in jsonObject) {
 							  var value:Object = jsonObject[id];
-							  trace(id + " = " + value);
+							  //trace(id + " = " + value);
 							}
 						}
 					}catch (e:Error) {
