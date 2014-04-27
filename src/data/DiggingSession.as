@@ -15,10 +15,11 @@ package data
 			_death = null;
 		}
 		
-		public function death(deathObject:Death):void
+		public function died(coordX:int, coordY:int):void
 		{
-			if (deathObject)
-				_death = deathObject;
+			var deathObject:Death = new Death({x: coordX, y: coordY});
+			
+			_death = deathObject;
 		}
 		
 		public function deploySeamMachine(seamId:int):void
@@ -42,6 +43,11 @@ package data
 		public function get activatedSeams():Array
 		{
 			return _activatedSeams;
+		}
+		
+		public function get death():Death 
+		{
+			return _death;
 		}
 	}
 
