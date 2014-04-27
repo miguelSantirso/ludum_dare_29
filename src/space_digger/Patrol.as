@@ -26,9 +26,9 @@ package space_digger
 
 			super.update(timeDelta);
 
-			if (kill)
+			if (this._hurt)
 			{
-				destroy();
+				this.body.SetActive(false);
 			}
 		}
 		
