@@ -6,13 +6,14 @@ package space_digger
 	 * ...
 	 * @author ...
 	 */
-	public class Spikes extends Enemy 
+	public class Spike extends Enemy 
 	{
 		
-		public function Spikes(name:String, params:Object=null) 
+		public function Spike(name:String, params:Object=null) 
 		{
 			super(name, params);
 			
+			speed = 0;
 		}
 		
 	}
