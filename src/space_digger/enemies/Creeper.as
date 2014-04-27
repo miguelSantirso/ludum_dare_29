@@ -23,8 +23,9 @@ package space_digger.enemies
 	{
 		public var inputChannel:uint = 0;
 		private var _facingRight:Boolean = true;
-		private var _velocity:b2Vec2;
-		private static var DETECTION_RANGE:int = 100;
+		private var _chasing:Boolean = false;
+		
+		private static var DETECTION_RANGE:int = 350;
 		
 		public function Creeper(name:String, params:Object=null) 
 		{	
@@ -38,26 +39,15 @@ package space_digger.enemies
 			_facingRight = (startingDirection == "right") ? true : false;
 
 			(_ce.state as LevelDig).startedDigging.add(onDigStart);
-			
 			//_ce.input.keyboard.addKeyAction("test", Keyboard.G, inputChannel);
+			
 		}
+
+		private var _firstTime:Boolean = true;
 		
 		override public function update(timeDelta:Number):void {
 
 			super.update(timeDelta);
-
-			/*
-			if (_ce.input.justDid("test", inputChannel))
-			{
-				onDigStart();
-			}
-			*/
-			/*
-			if (_ce.input.hasDone("test"))
-			{
-				onDigEnd();
-			}
-			*/
 		}
 		
 		/**
@@ -72,17 +62,22 @@ package space_digger.enemies
 		public function chasePlayer(flag:Boolean):void
 		{		
 			body.SetLinearVelocity(new b2Vec2((flag) ? 3.0 : 0.0, body.GetLinearVelocity().y));
+			
+			_chasing = flag;
+			
+			if (!flag)
+				_animation = "idle";
 		}
-		
-		public function onDigStart(playerX:int, playerY:int):void
+
+		public function onDigStart(playerX:Number, playerY:Number):void
 		{
-			var dist:int = playerX * playerX + playerY * playerY;
+			var dist:Number = b2Math.Distance(new b2Vec2(playerX, playerY), new b2Vec2(x, y));
 			
 			if (dist < DETECTION_RANGE)
 			{
 				var dx:Number = playerX - x;
 				
-				if (dx < 0) 
+				if (dx > 0) 
 				{
 					if (_facingRight) turnAround();
 				}
@@ -92,6 +87,9 @@ package space_digger.enemies
 				}
 				
 				chasePlayer(true);
+			}
+			else {
+				chasePlayer(false);
 			}
 		}
 		

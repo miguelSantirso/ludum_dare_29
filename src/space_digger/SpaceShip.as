@@ -1,6 +1,7 @@
 package space_digger 
 {
 	import citrus.objects.CitrusSprite;
+	import space_digger.levels.LevelDig;
 	
 	/**
 	 * ...
@@ -23,7 +24,16 @@ package space_digger
 			super.update(timeDelta);
 			
 			if (_animation == "enter" && ++_frameCounter >= 121)
+			{
 				_animation = "idle";
+				(_ce.state as LevelDig).startExploration();
+			}
+		}
+		
+		
+		public function leave():void
+		{
+			_animation = "exit";
 		}
 		
 	}

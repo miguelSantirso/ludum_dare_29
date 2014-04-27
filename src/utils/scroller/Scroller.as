@@ -209,7 +209,7 @@ package utils.scroller
 			switch(e.type)
 			{
 				case MouseEvent.MOUSE_DOWN:
-					//Main.stage.addEventListener(MouseEvent.MOUSE_UP, onMouseHandler, false, 0, true);
+					addEventListener(MouseEvent.MOUSE_UP, onMouseHandler, false, 0, true);
 
 					_isMouseDown = true;
 					_startDragPosition = _scrollerLayout ? _scrollerCanvas.x : _scrollerCanvas.y;
@@ -250,7 +250,7 @@ package utils.scroller
 
 				case MouseEvent.MOUSE_OUT:
 				case MouseEvent.MOUSE_UP:
-					//Main.removeEventListener(MouseEvent.MOUSE_UP, onMouseHandler);
+					removeEventListener(MouseEvent.MOUSE_UP, onMouseHandler);
 
 					if (_isMouseDown)
 					{

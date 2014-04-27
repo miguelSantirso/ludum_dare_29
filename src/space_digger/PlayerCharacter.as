@@ -118,6 +118,8 @@ package space_digger
 				{
 					attackEnemiesInRange();
 					onGiveDamage.dispatch();
+					
+					(_ce.state as LevelDig).startedDigging.dispatch(x, y);
 				}
 			}
 			else
