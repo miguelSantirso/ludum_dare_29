@@ -40,6 +40,8 @@
       <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\ice.swc</library>
       <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\main_char_actions.swc</library>
       <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\Ice_enemy_actions.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\ice_creeper.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\greensock.swc</library>
     </include-libraries>
     <library-path append="true">
       <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\CEV3-1-9-ALL.swc</path-element>

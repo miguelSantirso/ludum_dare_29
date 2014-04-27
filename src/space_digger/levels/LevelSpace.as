@@ -6,6 +6,8 @@ package space_digger.levels
 	import utils.Text;
 	import managers.DataManager;
 	import managers.GameManager;
+	import utils.scroller.Scroller;
+	import space_digger.OperationIR;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -23,10 +25,25 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			setCompanyData(); 
+			setCompanyData();
 			setSystemData();
 			
 			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
+			
+			// TEMP
+			var temp:Array = new Array();
+			var tempObj:Object;
+			
+			for (var i:int = 0; i < 50; i++)
+			{
+				tempObj = new Object()
+				tempObj["message"] = "IR " + i.toString();
+				temp.push(tempObj);
+			}
+			
+			var scroller:Scroller = new Scroller(true, 50, OperationIR, 10, temp);
+			
+			addChild(scroller);
 		}
 		
 		public override function update(timeDelta:Number):void
