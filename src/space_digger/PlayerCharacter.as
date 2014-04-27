@@ -116,7 +116,10 @@ package space_digger
 				_animation = "attack";
 				
 				if (++_attackAnimationFrame == 7)
+				{
 					attackEnemiesInRange();
+					onGiveDamage.dispatch();
+				}
 			}
 			else
 			{

@@ -47,7 +47,7 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			view.camera.setUp(getObjectByName("player_char"), new Rectangle(0, 0, 1352, 1963));
+			view.camera.setUp(getObjectByName("player_char")/*, new Rectangle(0, 0, 1352, 1963)*/);
 			
 			stage.addChild(_hud);
 		}
