@@ -12,6 +12,7 @@ package space_digger
 	import citrus.input.controllers.Keyboard;
 	import citrus.physics.PhysicsCollisionCategories;
 	import citrus.physics.box2d.Box2DUtils;
+	import space_digger.levels.LevelDig;
 	
 	/**
 	 * ...
@@ -19,8 +20,6 @@ package space_digger
 	 */
 	public class PlayerCharacter extends CustomHero 
 	{
-		
-		private var _nLifes:int = 3;
 		private var _attackAnimationFrame:int = 0;
 		
 		private var _attacking:Boolean = false;
@@ -116,7 +115,10 @@ package space_digger
 				_animation = "attack";
 				
 				if (++_attackAnimationFrame == 7)
+				{
 					attackEnemiesInRange();
+					onGiveDamage.dispatch();
+				}
 			}
 			else
 			{
@@ -178,8 +180,6 @@ package space_digger
 		
 		private function onDamageTaken():void
 		{
-			--_nLifes;
-			
 			if (isDead)
 			{
 				_animation = "defeat";

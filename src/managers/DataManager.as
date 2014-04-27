@@ -3,6 +3,7 @@ package managers
 	import data.Company;
 	import data.CompanyState;
 	import data.Core;
+	import data.DiggingSession;
 	import data.RankingEntry;
 	import data.System;
 	/**
@@ -47,7 +48,7 @@ package managers
 			_core.reset();
 			_myState.reset();
 			_mySystem.reset();
-			_ranking.splice(0,_ranking.length);
+			_ranking.splice(0, _ranking.length);
 		}
 		
 		public function populateRanking(data:Object):void
@@ -59,8 +60,7 @@ package managers
 			var entry:RankingEntry;
 			
 			for each(var e:Object in rankingEntries) {
-				entry = new RankingEntry();
-				entry.populate(e);
+				entry = new RankingEntry(e);
 				
 				if (!entry.empty())
 					_ranking.push(entry);
