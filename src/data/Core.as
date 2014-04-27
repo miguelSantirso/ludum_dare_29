@@ -10,9 +10,10 @@ package data
 		protected var _stateRefreshTime:int;
 		protected var _machineLifetime:int;
 		
-		public function Core() 
+		public function Core(data:Object = null) 
 		{
-			
+			if (data)
+				populate(data);
 		}
 		
 		public function populate(data:Object):void 

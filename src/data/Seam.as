@@ -18,9 +18,10 @@ package data
 		protected var _extractionRate:int;
 		protected var _recentGain:int;
 		
-		public function Seam() 
+		public function Seam(data:Object = null) 
 		{
-			
+			if (data)
+				populate(data);
 		}
 		
 		/* INTERFACE infrastructure.interfaces.IPopulatable */
