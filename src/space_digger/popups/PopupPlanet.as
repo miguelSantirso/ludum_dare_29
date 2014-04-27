@@ -1,4 +1,4 @@
-package space_digger 
+package space_digger.popups 
 {
 	import away3d.events.MouseEvent3D;
 	import data.Planet;
@@ -57,6 +57,8 @@ package space_digger
 				sectorMC.removeEventListener(MouseEvent.MOUSE_OUT, dehighlightSector);
 				sectorMC.removeEventListener(MouseEvent.CLICK, onClickMineHandler);
 			}
+			
+			_asset.button_close.removeEventListener(MouseEvent.CLICK, onButtonCloseHandler);
 			
 			removeChild(_asset);
 		}
@@ -130,14 +132,34 @@ package space_digger
 
 		private function highlightSector(e:MouseEvent):void
 		{
-			(e.currentTarget as MovieClip).gotoAndStop(2);
+			var sectorMC:MovieClip = e.currentTarget as MovieClip;
+			var mineIndex:int = int( (e.currentTarget as MovieClip).name.charAt((e.currentTarget as MovieClip).name.length - 1));
+			sectorMC.gotoAndStop(2);
 			
-			//
+			var numOfSeams:int = _planet.mines[mineIndex].seams.length;
+			_asset.label_richness_level_value.text = numOfSeams < 5 ? "poor" : "rich";
+			
+			var numOfDeaths:int = _planet.mines[mineIndex].deaths.length;
+			_asset.label_deaths_value.text = numOfDeaths.toString();
+			
+			_asset.label_richness_level.visible = true;
+			_asset.label_richness_level_value.visible = true;
+			_asset.label_deaths.visible = true;
+			_asset.label_deaths_value.visible = true;
+			_asset.label_occupied.visible = _planet.mines[mineIndex].occupant != null;
+			_asset.label_free.visible = _planet.mines[mineIndex].occupant == null;
 		}
 		
 		private function dehighlightSector(e:MouseEvent):void
 		{
 			(e.currentTarget as MovieClip).gotoAndStop(1);
+			
+			_asset.label_richness_level.visible = false;
+			_asset.label_richness_level_value.visible = false;
+			_asset.label_deaths.visible = false;
+			_asset.label_deaths_value.visible = false;
+			_asset.label_occupied.visible = false;
+			_asset.label_free.visible = false;
 		}
 		
 		private function onClickMineHandler(e:MouseEvent):void

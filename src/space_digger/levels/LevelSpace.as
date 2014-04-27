@@ -8,7 +8,7 @@ package space_digger.levels
 	import flash.geom.Rectangle;
 	import org.osflash.signals.Signal;
 	import flash.events.MouseEvent;
-	import space_digger.PopupPlanet;
+	import space_digger.popups.PopupPlanet;
 	import utils.Text;
 	import managers.DataManager;
 	import managers.GameManager;
