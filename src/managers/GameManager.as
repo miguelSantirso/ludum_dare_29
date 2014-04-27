@@ -61,8 +61,6 @@ package managers
 		{
 			ready.dispatch();
 			// We are ready to play
-			
-			trace("READY");
 		}
 		
 		protected function requestRegistration():void
