@@ -93,7 +93,7 @@ package space_digger.levels
 		{
 			_inExitArea = true;
 		}
-		private function onExitedExit(c:b2ContactID):void
+		private function onExitedExit(c:b2Contact):void
 		{
 			_inExitArea = false;
 		}
