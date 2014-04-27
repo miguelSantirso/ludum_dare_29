@@ -50,6 +50,7 @@
     <element path="lib\assets.swc" />
     <element path="lib\game_hud.swc" />
     <element path="lib\ice.swc" />
+    <element path="lib\main_char_actions.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
