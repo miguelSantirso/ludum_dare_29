@@ -153,7 +153,8 @@ package space_digger
 				ignoreContact = true;
 			}
 
-			var enemy:Enemy = Box2DUtils.CollisionGetOther(this, contact) as Enemy;
+			var other:* = Box2DUtils.CollisionGetOther(this, contact);
+			var enemy:Enemy = other as Enemy;
 			if (enemy && _contactingEnemies.indexOf(enemy) < 0)
 			{
 				_contactingEnemies.push(enemy);
