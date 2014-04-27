@@ -18,6 +18,8 @@ package
 	{
 		public static const DEBUG:Boolean = false;//CONFIG::debug;
 		
+		private var _currentLevelIndex:int = 0;
+		
 		public function Main():void 
 		{
 			if (stage) init();
@@ -64,13 +66,13 @@ package
 		{
 			state = level;
 			
-			level.lvlEnded.add(nextLevel);
-			level.lvlBack.add(previousLevel);
+			/*level.lvlEnded.add(nextLevel);
+			level.lvlBack.add(previousLevel);	
 			level.restartLevel.add(restartLevel);
-			level.changeLevel.add(changeLevel);
+			level.changeLevel.add(changeLevel);*/
 		}
 		
-		private function nextLevel():void
+		/*private function nextLevel():void
 		{
 			(levelManager.currentLevel as GameLevel).dispose();
 			levelManager.nextLevel();
@@ -80,7 +82,7 @@ package
 		{
 			(levelManager.currentLevel as GameLevel).dispose();
 			levelManager.prevLevel();
-		}
+		}*/
 		
 		private function restartLevel():void
 		{
@@ -89,10 +91,10 @@ package
 		
 		public function changeLevel(levelIndex:int):void
 		{
-			if (levelIndex != levelManager.currentIndex)
+			if (levelIndex != _currentLevelIndex)
 			{
-				if(levelManager.currentLevel) (levelManager.currentLevel as GameLevel).dispose();
 				levelManager.gotoLevel(levelIndex);
+				_currentLevelIndex = levelIndex;
 			}
 		}
 	}
