@@ -31,6 +31,7 @@ package space_digger
 		private var _rightSensorShape:b2PolygonShape;
 		
 		private var _contactingEnemies:Vector.<Enemy> = new Vector.<Enemy>();
+		private var _contactingBlocks:Vector.<DestructibleBlock> = new Vector.<DestructibleBlock>();
 		
 		public function PlayerCharacter(name:String, params:Object=null) 
 		{
@@ -117,6 +118,7 @@ package space_digger
 				if (++_attackAnimationFrame == 7)
 				{
 					attackEnemiesInRange();
+					attackBlocksInRange();
 					onGiveDamage.dispatch();
 					
 					(_ce.state as LevelDig).startedDigging.dispatch(x, y);
@@ -142,6 +144,14 @@ package space_digger
 			}
 		}
 		
+		private function attackBlocksInRange():void
+		{
+			for each (var block:DestructibleBlock in _contactingBlocks)
+			{
+				if ((!inverted && block.x > x) || (_inverted && block.x < x))
+					block.destroy();
+			}
+		}
 		override public function handleBeginContact(contact:b2Contact):void 
 		{
 			var ignoreContact:Boolean = false;
@@ -164,6 +174,12 @@ package space_digger
 				_contactingEnemies.push(enemy);
 			}
 			
+			var block:DestructibleBlock = other as DestructibleBlock;
+			if (block)
+			{
+				_contactingBlocks.push(block);
+			}
+			
 			if (!ignoreContact) super.handleBeginContact(contact);
 		}
 		
@@ -177,6 +193,13 @@ package space_digger
 			{
 				var enemyIndex:int = _contactingEnemies.indexOf(enemy);
 				if (enemyIndex >= 0) _contactingEnemies.splice(enemyIndex, 1);
+			}
+			
+			var block:DestructibleBlock = Box2DUtils.CollisionGetOther(this, contact) as DestructibleBlock;
+			if (block)
+			{
+				var blockIndex:int = _contactingBlocks.indexOf(block);
+				if (blockIndex >= 0) _contactingBlocks.splice(blockIndex, 1);
 			}
 		}
 		
