@@ -37,17 +37,19 @@
     </source-path>
     <include-libraries>
       <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\assets.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\game_hud.swc</library>
       <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\ice.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\main_char_actions.swc</library>
     </include-libraries>
     <library-path append="true">
       <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\CEV3-1-9-ALL.swc</path-element>
+      <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\game_hud.swc</path-element>
+      <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\as3-signals-v0.9-BETA.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
     <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\src\Main.as</path-element>
   </file-specs>
-  <default-background-color>#FFFFFF</default-background-color>
+  <default-background-color>#804040</default-background-color>
   <default-frame-rate>30</default-frame-rate>
   <default-size>
     <width>900</width>
