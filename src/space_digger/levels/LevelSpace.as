@@ -23,10 +23,10 @@ package space_digger.levels
 			super.initialize();
 			
 			level.planet_0.addEventListener(MouseEvent.CLICK, test);
-			level.planet_1.addEventListener(MouseEvent.CLICK, test);
+			/*level.planet_1.addEventListener(MouseEvent.CLICK, test);
 			level.planet_2.addEventListener(MouseEvent.CLICK, test);
 			level.planet_3.addEventListener(MouseEvent.CLICK, test);
-			level.planet_4.addEventListener(MouseEvent.CLICK, test);
+			level.planet_4.addEventListener(MouseEvent.CLICK, test);*/
 			
 			// TESTING:
 			//setPlanetData();
@@ -46,7 +46,7 @@ package space_digger.levels
 		
 		private function test(e:MouseEvent):void
 		{
-			changeLevel.dispatch(3); // TEMP!
+			changeLevel.dispatch(4); // TEMP!
 		}
 		
 		public function setCompanyData(name:String, type:String, gold:Number, rank:Number):void

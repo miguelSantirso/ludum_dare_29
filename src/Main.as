@@ -32,6 +32,7 @@ package
 			levelManager.onLevelChanged.add(onLevelChanged);
 			levelManager.levels = 
 				[
+					[LevelRegister, "../swf/levels/LevelEnter.swf"],
 					[LevelRegister, "../swf/levels/LevelRegister.swf"],
 					[LevelSpace, "../swf/levels/LevelSpace.swf"],
 					[LevelDig, "../swf/levels/Level1.swf"],
@@ -44,21 +45,18 @@ package
 			//GameManager.getInstance().testRemoteOperations();
 			GameManager.getInstance().needsRegistration.add(goToLevelRegister);
 			GameManager.getInstance().ready.add(goToLevelSpace);
+			GameManager.getInstance().loggedOut.add(goToLevelRegister);
 			GameManager.getInstance().start();
 		}
 		
 		private function goToLevelRegister():void
 		{
-			changeLevel(1);
-			
-			trace("REGISTER");
+			changeLevel(2);
 		}
 		
 		private function goToLevelSpace():void
 		{
-			changeLevel(2);
-			
-			trace("SPACE");
+			changeLevel(3);
 		}
 		
 		private function onLevelChanged(level:GameLevel):void
