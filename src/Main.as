@@ -34,11 +34,13 @@ package
 			levelManager.onLevelChanged.add(onLevelChanged);
 			levelManager.levels = 
 				[
-					[LevelRegister, "../swf/levels/LevelEnter.swf"],
 					[LevelRegister, "../swf/levels/LevelRegister.swf"],
 					[LevelSpace, "../swf/levels/LevelSpace.swf"],
 					[LevelDig, "../swf/levels/Level1.swf"],
-					[LevelPlanet, "../swf/levels/LevelPlanet.swf"]
+					[LevelDig, "../swf/levels/Level2.swf"],
+					[LevelDig, "../swf/levels/Level3.swf"],
+					[LevelDig, "../swf/levels/Level4.swf"],
+					[LevelDig, "../swf/levels/Level5.swf"],
 				];
 		
 			//if (Main.DEBUG)
@@ -49,17 +51,18 @@ package
 			GameManager.getInstance().ready.add(goToLevelSpace);
 			GameManager.getInstance().loggedOut.add(goToLevelRegister);
 			GameManager.getInstance().startFailed.add(goToLevelRegister);
+			GameManager.getInstance().changeLevelRequest.add(changeLevel);
 			GameManager.getInstance().start();
 		}
 		
 		private function goToLevelRegister():void
 		{
-			changeLevel(2);
+			changeLevel(1);
 		}
 		
 		private function goToLevelSpace():void
 		{
-			changeLevel(3);
+			changeLevel(2);
 		}
 		
 		private function onLevelChanged(level:GameLevel):void

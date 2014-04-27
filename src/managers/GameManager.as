@@ -16,6 +16,8 @@ package managers
 		private static var instance:GameManager;
 		private static var instantiated:Boolean = false;
 		
+		public var changeLevelRequest:Signal;
+		
 		public var ready:Signal;
 		public var startFailed:Signal;
 		public var needsRegistration:Signal;
@@ -30,6 +32,8 @@ package managers
 		{
 			if (instantiated) {
 				instantiated = false;
+				
+				changeLevelRequest = new Signal();
 				
 				ready = new Signal();
 				startFailed = new Signal();
@@ -170,6 +174,21 @@ package managers
 					rankingUpdated.dispatch();
 				}
 			);
+		}
+		
+		public function changeLevel(serverMapId:int):void
+		{
+			changeLevelRequest.dispatch(getClientMapIndexFromServerMapId(serverMapId));
+		}
+		
+		public function displayMessagePopUp(message:String, buttonLabel:String = "Close", closeCallback:Function = null):void
+		{
+			// Albert do your magic
+		}
+		
+		public function getClientMapIndexFromServerMapId(serverMapId:int):int
+		{
+			return serverMapId + 2;
 		}
 		
 		public function testRemoteOperations():void
