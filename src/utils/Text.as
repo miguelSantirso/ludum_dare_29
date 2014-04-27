@@ -18,7 +18,7 @@ package utils
 			{
 				while(tf.textWidth > tf.width - margin)
 				{
-					tf.text = tf.text.substr(0, (tf.text.charAt(tf.text.length - 10) != " ") ? -9 : -10) + tooltip;
+					tf.text = tf.text.substr(0, (tf.text.charAt(tf.text.length - 5) != " ") ? -4 : -5) + tooltip;
 				}
 			}
 		}
