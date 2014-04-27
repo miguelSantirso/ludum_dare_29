@@ -21,14 +21,25 @@ package data
 		
 		public function populate(data:Object):void 
 		{
-			_id = data.id;
-			_name = data.name;
-			_difficulty = data.difficulty;
-			_richness = data.richness;
-			_toxicity = data.toxicity;
-			_skin = data.skin;
+			if(data["id"])
+				_id = data["id"];
+				
+			if(data["name"])
+				_name = data["name"];
 			
-			populateMines(data.mines);
+			if(data["difficulty"])
+				_difficulty = data["difficulty"];
+				
+			if(data["richness"])
+				_richness = data["richness"];
+				
+			if(data["toxicity"])	
+				_toxicity = data.toxicity;
+				
+			if(data["skin"])
+				_skin = data.skin;
+			
+			populateMines(data["mines"]);
 		}
 		
 		public function reset():void 

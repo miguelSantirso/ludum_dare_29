@@ -2,6 +2,7 @@ package managers
 {
 	import infrastructure.RemoteOperation;
 	import infrastructure.RemoteURL;
+	import org.osflash.signals.Signal;
 	/**
 	 * ...
 	 * @author Luis Miguel Blanco
@@ -23,13 +24,17 @@ package managers
 		private static var instance:RemoteManager;
 		private static var instantiated:Boolean = false;
 		
-		protected static var _queuedOperations:Vector.<RemoteOperation> = new Vector.<RemoteOperation>();
-		protected static var _currentRemoteOperation:RemoteOperation;
+		protected var _queuedOperations:Vector.<RemoteOperation> = new Vector.<RemoteOperation>();
+		protected var _currentRemoteOperation:RemoteOperation;
+		
+		public var authorizationFailed:Signal;
 		
 		public function RemoteManager() 
 		{
 			if (instantiated) {
 				instantiated = false;
+				
+				authorizationFailed = new Signal();
 			}else {
 				throw new Error("Use getInstance()");
 			}
@@ -105,7 +110,7 @@ package managers
 			switch(operation.httpStatusCode) {
 				case RemoteOperation.STATUS_UNAUTHORIZED : // not logged
 					queueOperation(_currentRemoteOperation, true);
-					login();
+					login(null,onLoginFault);
 					break;
 				case RemoteOperation.STATUS_INVALID :
 					_currentRemoteOperation.dispose();
@@ -156,17 +161,22 @@ package managers
 		
 		public function getCore(successCallback:Function = null, faultCallback:Function = null ):void
 		{
-			sendOperation(CORE, RemoteURL.CORE, RemoteOperation.TYPE_POST, null,null,successCallback,faultCallback);
+			sendOperation(CORE, RemoteURL.CORE, RemoteOperation.TYPE_POST, null,[DataManager.getInstance().core],successCallback,faultCallback);
 		}
 		
 		public function getState(successCallback:Function = null, faultCallback:Function = null ):void
 		{
-			sendOperation(STATE, RemoteURL.STATE, RemoteOperation.TYPE_POST, null,null,successCallback,faultCallback);
+			sendOperation(STATE, RemoteURL.STATE, RemoteOperation.TYPE_POST, null,[DataManager.getInstance().myState],successCallback,faultCallback);
 		}
 		
 		public function getSystem(successCallback:Function = null, faultCallback:Function = null):void
 		{
-			sendOperation(SYSTEM, RemoteURL.SYSTEM, RemoteOperation.TYPE_POST, null, null, successCallback,faultCallback);
+			sendOperation(SYSTEM, RemoteURL.SYSTEM, RemoteOperation.TYPE_POST, null, [DataManager.getInstance().mySystem], successCallback,faultCallback);
+		}
+		
+		protected function onLoginFault():void
+		{
+			authorizationFailed.dispatch();
 		}
 	}
 

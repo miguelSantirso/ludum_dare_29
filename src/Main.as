@@ -39,7 +39,7 @@ package
 			if (Main.DEBUG)
 				addChild(new Stats());
 
-			GameManager.getInstance().testRemoteOperations();
+			//GameManager.getInstance().testRemoteOperations();
 		}
 		
 		private function onLevelChanged(level:GameLevel):void

@@ -15,7 +15,8 @@ package data
 		
 		public function populate(data:Object):void 
 		{
-			_machineLifetime = data.machine_lifetime;
+			if(data["machine_lifetime"])
+				_machineLifetime = data["machine_lifetime"];
 		}
 		
 		public function reset():void 
