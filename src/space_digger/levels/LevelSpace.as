@@ -113,16 +113,24 @@ package space_digger.levels
 			GameManager.getInstance().logout();
 		}
 		
+		private function onUpdateMyCompanyRank():void
+		{
+			level.label_company_rank.text = "#" + DataManager.getInstance().getCompanyRank(DataManager.getInstance().myState.company.id);
+		}
+		
 		public function setCompanyData():void
 		{
 			level.label_company_name.text = DataManager.getInstance().myState.company.name.toUpperCase();
 			level.label_company_gold.text = DataManager.getInstance().myState.company.score.toString();
-			level.label_company_rank.text = "#99"; // TO-DO
+			level.label_company_rank.text = "";
 			level.badge_workers.label_num.text = DataManager.getInstance().myState.company.workers.toString();
 			
 			Text.truncateText(level.label_company_name);
 			Text.truncateText(level.label_company_gold);
 			Text.truncateText(level.label_company_rank);
+			
+			GameManager.getInstance().rankingUpdated.add(onUpdateMyCompanyRank);
+			GameManager.getInstance().getRanking();
 		}
 		
 		public function setSystemData():void

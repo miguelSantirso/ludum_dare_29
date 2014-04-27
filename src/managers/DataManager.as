@@ -104,6 +104,25 @@ package managers
 		{
 			return _ranking;
 		}
+		
+		public function getCompanyRank(companyID:int):Number
+		{
+			var rank:Number = int.MAX_VALUE;
+			
+			if (_ranking != null && _ranking.length > 0)
+			{
+				for each(var rankingEntry:RankingEntry in _ranking)
+				{
+					if (rankingEntry.company.id == companyID)
+					{
+						rank = rankingEntry.position; 
+						break;
+					}
+				}
+			}
+			
+			return rank;
+		}
 	}
 
 }
