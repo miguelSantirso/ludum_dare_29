@@ -18,6 +18,8 @@ package
 	{
 		public static const DEBUG:Boolean = false;//CONFIG::debug;
 		
+		private var _currentLevelIndex:int = 0;
+		
 		public function Main():void 
 		{
 			if (stage) init();
@@ -32,11 +34,13 @@ package
 			levelManager.onLevelChanged.add(onLevelChanged);
 			levelManager.levels = 
 				[
-					[LevelRegister, "../swf/levels/LevelEnter.swf"],
 					[LevelRegister, "../swf/levels/LevelRegister.swf"],
 					[LevelSpace, "../swf/levels/LevelSpace.swf"],
 					[LevelDig, "../swf/levels/Level1.swf"],
-					[LevelPlanet, "../swf/levels/LevelPlanet.swf"]
+					[LevelDig, "../swf/levels/Level2.swf"],
+					[LevelDig, "../swf/levels/Level3.swf"],
+					[LevelDig, "../swf/levels/Level4.swf"],
+					[LevelDig, "../swf/levels/Level5.swf"],
 				];
 		
 			//if (Main.DEBUG)
@@ -52,25 +56,25 @@ package
 		
 		private function goToLevelRegister():void
 		{
-			changeLevel(2);
+			changeLevel(1);
 		}
 		
 		private function goToLevelSpace():void
 		{
-			changeLevel(3);
+			changeLevel(2);
 		}
 		
 		private function onLevelChanged(level:GameLevel):void
 		{
 			state = level;
 			
-			level.lvlEnded.add(nextLevel);
-			level.lvlBack.add(previousLevel);
+			/*level.lvlEnded.add(nextLevel);
+			level.lvlBack.add(previousLevel);	
 			level.restartLevel.add(restartLevel);
-			level.changeLevel.add(changeLevel);
+			level.changeLevel.add(changeLevel);*/
 		}
 		
-		private function nextLevel():void
+		/*private function nextLevel():void
 		{
 			(levelManager.currentLevel as GameLevel).dispose();
 			levelManager.nextLevel();
@@ -80,7 +84,7 @@ package
 		{
 			(levelManager.currentLevel as GameLevel).dispose();
 			levelManager.prevLevel();
-		}
+		}*/
 		
 		private function restartLevel():void
 		{
@@ -89,10 +93,10 @@ package
 		
 		public function changeLevel(levelIndex:int):void
 		{
-			if (levelIndex != levelManager.currentIndex)
+			if (levelIndex != _currentLevelIndex)
 			{
-				if(levelManager.currentLevel) (levelManager.currentLevel as GameLevel).dispose();
 				levelManager.gotoLevel(levelIndex);
+				_currentLevelIndex = levelIndex;
 			}
 		}
 	}
