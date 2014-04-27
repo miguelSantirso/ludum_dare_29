@@ -34,11 +34,9 @@ package
 			levelManager.onLevelChanged.add(onLevelChanged);
 			levelManager.levels = 
 				[
-					[LevelRegister, "../swf/levels/LevelEnter.swf"],
 					[LevelRegister, "../swf/levels/LevelRegister.swf"],
 					[LevelSpace, "../swf/levels/LevelSpace.swf"],
-					[LevelDig, "../swf/levels/Level1.swf"],
-					[LevelPlanet, "../swf/levels/LevelPlanet.swf"]
+					[LevelDig, "../swf/levels/Level1.swf"]
 				];
 		
 			//if (Main.DEBUG)
@@ -54,12 +52,12 @@ package
 		
 		private function goToLevelRegister():void
 		{
-			changeLevel(2);
+			changeLevel(1);
 		}
 		
 		private function goToLevelSpace():void
 		{
-			changeLevel(3);
+			changeLevel(2);
 		}
 		
 		private function onLevelChanged(level:GameLevel):void
