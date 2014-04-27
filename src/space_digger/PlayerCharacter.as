@@ -111,11 +111,6 @@ package space_digger
 			var prevAnimation:String = _animation;
 			var walkingSpeed:Number = getWalkingSpeed();
 			
-			if (!_hurt && walkingSpeed < -acceleration)
-				_inverted = true;
-			else if (!_hurt && walkingSpeed > acceleration)
-				_inverted = false;
-			
 			if (_attacking)
 			{
 				_animation = "attack";
