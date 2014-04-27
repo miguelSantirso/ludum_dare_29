@@ -47,9 +47,7 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			//view.camera.setUp(getObjectByName("player_char"));// , new Rectangle(0, 0, 1550, 450), new Point(.25, .05), new Point(stage.stageWidth / 2, stage.stageHeight / 2));
 			view.camera.setUp(getObjectByName("player_char"), new Rectangle(0, 0, 1352, 1963));
-			//createDecorationSprites();
 			
 			stage.addChild(_hud);
 		}
@@ -57,8 +55,6 @@ package space_digger.levels
 		public override function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
-			
-			//updateDecorationOcclusion();
 		}
 		
 		public override function dispose():void
@@ -66,41 +62,6 @@ package space_digger.levels
 			_decorations.splice(0, _decorations.length);
 			
 			super.dispose();
-		}
-		
-		/*public function updateDecorationOcclusion():void
-		{
-			var nDecorations:int = _decorations.length;
-			var decor:CitrusSprite;
-			for (var i:int = 0; i < nDecorations; ++i)
-			{
-				var child:MovieClip;
-				decor = _decorations[i];
-				//decor.visible = view.camera.contains(decor.x, decor.y);
-			}
-		}*/
-		
-		public function createDecorationSprites():void
-		{
-			var child:MovieClip;
-			
-			while (level.numChildren > 0)
-			{
-				child = level.getChildAt(0) as MovieClip;
-				level.removeChildAt(0);
-				
-				if (child)
-				{
-					var cs:CitrusSprite = new CitrusSprite("rock");
-					cs.x = child.x;
-					cs.y = child.y;
-					cs.updateCallEnabled = false;
-					child.x = child.y = 0;
-					cs.view = child;
-					add(cs);
-					_decorations.push(cs);
-				}
-			}
 		}
 	}
 }
