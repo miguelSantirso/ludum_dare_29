@@ -1,7 +1,11 @@
 package space_digger 
 {
 	import Box2D.Dynamics.Contacts.b2Contact;
+	import citrus.physics.box2d.Box2DUtils;
 	import citrus.objects.platformer.box2d.Platform;
+	import citrus.math.MathVector;
+	import flash.geom.Point;
+	import citrus.physics.box2d.IBox2DPhysicsObject;
 	
 	/**
 	 * ...
@@ -13,7 +17,6 @@ package space_digger
 		public function DestructibleBlock(name:String, params:Object=null) 
 		{
 			super(name, params);
-			
 		}
 		
 		/**
@@ -21,12 +24,6 @@ package space_digger
 		 */
 		override public function handleBeginContact(contact:b2Contact):void {
 			var collider:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(this, contact);
-
-			if (_body.GetLinearVelocity().x < 0 && (contact.GetFixtureA() == _rightSensorFixture || contact.GetFixtureB() == _rightSensorFixture))
-				return;
-
-			if (_body.GetLinearVelocity().x > 0 && (contact.GetFixtureA() == _leftSensorFixture || contact.GetFixtureB() == _leftSensorFixture))
-				return;
 
 			if (contact.GetManifold().m_localPoint) {
 
