@@ -2,9 +2,11 @@ package space_digger
 {
 	import Box2D.Dynamics.Contacts.b2Contact;
 	import citrus.objects.platformer.box2d.Sensor;
+	import data.SeamData;
 	import flash.utils.setTimeout;
 	import citrus.physics.box2d.Box2DUtils;
 	import space_digger.levels.LevelDig;
+	import data.SeamState;
 	
 	/**
 	 * ...
@@ -15,10 +17,10 @@ package space_digger
 		private static const MAX_LIFES:int = 10;
 		
 		private var _playerInArea:Boolean = false;
-		private var _working:Boolean = false;
+		private var _machineInPlace:Boolean = false;
 		private var _lifes:int = MAX_LIFES;
-		private var _levelIndex:int;
-		private var _serverId:int;
+		public function get index():int { return _index; }
+		private var _index:int;
 		
 		private var _hack_damageSignalAdded:Boolean = false;
 		
@@ -26,20 +28,47 @@ package space_digger
 		{
 			super("seam", params);
 			
+			/*width = 36;
+			height = 67;
+			offsetX = 115;
+			offsetY = 2;*/
+			
 			var nameComponents:Array = name.split('_');
 			if (nameComponents.length != 2 || nameComponents[0] != "seam")
 			{
 				throw new Error("Incorrectly named seam");
 			}
 			
-			_levelIndex = (nameComponents[1] as int);
+			_index = (nameComponents[1] as int);
+		}
+		
+		public function init(seamData:SeamData):void
+		{
+			if (seamData.state == SeamState.MINING)
+			{
+				_machineInPlace = true;
+				_animation = "idle2";
+			}
+			else if (seamData.state == SeamState.BROKEN)
+			{
+				_machineInPlace = true;
+				_animation = "stopped";
+			}
+		}
+		
+		public function setOwner(owner:String):void
+		{
+			if (owner)
+			{
+				
+			}
 		}
 		
 		private function onPlayerDealDamage():void
 		{
 			if (!_playerInArea) return;
 			
-			if (_working)
+			if (_machineInPlace)
 			{
 				if (--_lifes < 0)
 					breakMachine();
@@ -49,9 +78,9 @@ package space_digger
 		
 		private function breakMachine():void
 		{
-			_working = false;
+			_machineInPlace = false;
 			
-			(_ce.state as LevelDig).diggingSession.destroySeamMachine(_serverId);
+			(_ce.state as LevelDig).diggingSession.destroySeamMachine(_index);
 			
 			_animation = "defeat";
 			setTimeout(function():void {
@@ -61,10 +90,10 @@ package space_digger
 		
 		private function appear():void
 		{
-			_working = true;
+			_machineInPlace = true;
 			_lifes = MAX_LIFES;
 			
-			(_ce.state as LevelDig).diggingSession.deploySeamMachine(_serverId);
+			(_ce.state as LevelDig).diggingSession.deploySeamMachine(_index);
 			
 			_animation = "appears";
 			setTimeout(function():void {
@@ -87,7 +116,7 @@ package space_digger
 				
 				_playerInArea = true;
 				updateCallEnabled = true;
-				if (!_working) _animation = "glow";
+				if (!_machineInPlace) _animation = "glow";
 			}
 		}
 		
@@ -99,7 +128,7 @@ package space_digger
 			if (Box2DUtils.CollisionGetOther(this, contact) is PlayerCharacter)
 			{
 				_playerInArea = false;
-				if (!_working) _animation = "idle";
+				if (!_machineInPlace) _animation = "idle";
 			}
 		}
 		

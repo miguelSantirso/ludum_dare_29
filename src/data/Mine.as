@@ -11,12 +11,12 @@ package data
 		protected var _id:int;
 		protected var _occupant:Company;
 		protected var _map:int;
-		protected var _seams:Vector.<Seam>;
+		protected var _seams:Vector.<SeamData>;
 		protected var _deaths:Vector.<Death>;
 		
 		public function Mine(data:Object = null) 
 		{
-			_seams = new Vector.<Seam>();
+			_seams = new Vector.<SeamData>();
 			_deaths = new Vector.<Death>();
 			
 			if (data)
@@ -54,10 +54,10 @@ package data
 				return;
 				
 			var seamArray:Array = data as Array ? data as Array : [data];
-			var tempSeam:Seam;
+			var tempSeam:SeamData;
 			
 			for each(var seamObject:Object in seamArray) {
-				tempSeam = new Seam(seamObject);
+				tempSeam = new SeamData(seamObject);
 				
 				if(!tempSeam.empty())
 					_seams.push(tempSeam);
@@ -100,7 +100,7 @@ package data
 			return _map;
 		}
 		
-		public function get seams():Vector.<Seam> 
+		public function get seams():Vector.<SeamData> 
 		{
 			return _seams;
 		}
