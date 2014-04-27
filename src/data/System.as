@@ -47,6 +47,8 @@ package data
 			var planetArray:Array = data as Array ? data as Array : [data];
 			var tempPlanet:Planet;
 			
+			_planets.splice(0, _planets.length);
+			
 			for each(var planetObject:Object in planetArray) {
 				tempPlanet = new Planet();
 				tempPlanet.populate(planetObject);

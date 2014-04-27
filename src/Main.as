@@ -127,7 +127,9 @@ package
 			if (levelSpace){
 				levelSpace.setCompanyData();
 				levelSpace.setOngoingOperations();
-				levelSpace.setRecentActivity();
+				
+				if(levelSpace.recentActivityScroller)
+					levelSpace.setRecentActivity();
 			}
 		}
 		
@@ -156,7 +158,8 @@ package
 			var levelSpace:LevelSpace = state as LevelSpace;
 			
 			if (levelSpace){
-				//update ranking
+				if (levelSpace.popupRanking && levelSpace.contains(levelSpace.popupRanking))
+					levelSpace.setRankingPopupData();
 			}
 		}
 	}

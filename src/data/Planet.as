@@ -67,6 +67,8 @@ package data
 			var mineArray:Array = data as Array ? data as Array : [data];
 			var tempMine:Mine;
 			
+			_mines.splice(0, _mines.length);
+			
 			for each(var mineObject:Object in mineArray) {
 				tempMine = new Mine();
 				tempMine.populate(mineObject);

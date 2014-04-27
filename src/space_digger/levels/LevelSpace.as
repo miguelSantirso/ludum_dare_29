@@ -24,10 +24,10 @@ package space_digger.levels
 	 */
 	public class LevelSpace extends GameLevel
 	{
-		protected var recentActivityScroller:Scroller;
+		protected var _recentActivityScroller:Scroller;
 		protected var ongoingOpsScroller:Scroller;
 		protected var _popupPlanet:PopupPlanet;
-		protected var popupRanking:PopupRanking;
+		protected var _popupRanking:PopupRanking;
 		private var popupModal:Sprite;
 		
 		public function LevelSpace(_level:MovieClip) 
@@ -41,30 +41,14 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			setCompanyData();
-			setSystemData();
-			setOngoingOperations();
-			setRecentActivity();
+			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
+			level.button_jump.addEventListener(MouseEvent.CLICK, jumpToAnotherSystem,false,0,true);
 			
-			level.button_logout.addEventListener(MouseEvent.CLICK, logout,false,0,true);
-			level.jump_button.addEventListener(MouseEvent.CLICK, jumpToAnotherSystem,false,0,true);
+			_recentActivityScroller = new Scroller(false, 4.2, ActivityIR, 5);
+			_recentActivityScroller.init();
+			level.slot_activity_list.addChild(_recentActivityScroller);
 			
-			// TEMP:
-			var temp:Array = new Array();
-			var tempObj:Object;
-			
-			for (var i:int = 0; i < 50; i++)
-			{
-				tempObj = new Object()
-				tempObj["message"] = "IR " + i.toString();
-				temp.push(tempObj);
-			}
-			
-			recentActivityScroller = new Scroller(false, 6, ActivityIR, 0, temp);
-			recentActivityScroller.init();
-			level.slot_activity_list.addChild(recentActivityScroller);
-			
-			ongoingOpsScroller = new Scroller(false, 3.8, OperationIR, 0, temp);
+			ongoingOpsScroller = new Scroller(false, 3.8, OperationIR);
 			ongoingOpsScroller.init();
 			level.slot_ongoing_list.addChild(ongoingOpsScroller);
 			
@@ -73,16 +57,22 @@ package space_digger.levels
 			_popupPlanet.y = (stage.stageHeight - _popupPlanet.height) * 0.5;
 			_popupPlanet.addEventListener(PopupPlanet.EVENT_CLOSE, closePlanetPopup);
 			
-			popupRanking = new PopupRanking();
-			popupRanking.x = (stage.stageWidth - popupRanking.width) * 0.5;
-			popupRanking.y = (stage.stageHeight - popupRanking.height) * 0.5;
-			popupRanking.addEventListener(PopupRanking.EVENT_CLOSE, closeRankingPopup);
+			_popupRanking = new PopupRanking();
+			_popupRanking.x = (stage.stageWidth - _popupRanking.width) * 0.5;
+			_popupRanking.y = (stage.stageHeight - _popupRanking.height) * 0.5;
+			_popupRanking.addEventListener(PopupRanking.EVENT_CLOSE, closeRankingPopup);
 			
 			popupModal = new Sprite();
 			popupModal.graphics.beginFill(0x000000, 0.85);
 			popupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
 			popupModal.graphics.endFill();
 			
+			setCompanyData();
+			setSystemData();
+			setOngoingOperations();
+			setRecentActivity();
+			
+			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
 			level.button_view_ranking.addEventListener(MouseEvent.CLICK, setRankingPopupData);
 		}
 		
@@ -94,20 +84,20 @@ package space_digger.levels
 		public override function dispose():void
 		{
 			level.button_logout.removeEventListener(MouseEvent.CLICK, logout);
-			level.jump_button.removeEventListener(MouseEvent.CLICK, jumpToAnotherSystem);
+			level.button_jump.removeEventListener(MouseEvent.CLICK, jumpToAnotherSystem);
 			
-			level.slot_activity_list.removeChild(recentActivityScroller);
+			level.slot_activity_list.removeChild(_recentActivityScroller);
 			level.slot_ongoing_list.removeChild(ongoingOpsScroller);
 			removeChild(_popupPlanet);
 			
 			_popupPlanet.dispose();
-			popupRanking.dispose();
+			_popupRanking.dispose();
 			
 			ongoingOpsScroller.dispose();
-			recentActivityScroller.dispose();
+			_recentActivityScroller.dispose();
 			
 			ongoingOpsScroller = null;
-			recentActivityScroller = null;
+			_recentActivityScroller = null;
 			
 			super.dispose();
 		}
@@ -202,7 +192,14 @@ package space_digger.levels
 		
 		public function setRecentActivity():void
 		{
-			//
+			var eventsDataProvider:Array = new Array();
+			
+			for each(var activityEvent:String in DataManager.getInstance().myState.events)
+			{
+				eventsDataProvider.push(activityEvent);
+			}
+			
+			_recentActivityScroller.dataProvider = eventsDataProvider;
 		}
 		
 		public function setPlanetPopupData(planetIndex:int):void
@@ -222,7 +219,7 @@ package space_digger.levels
 		
 		public function setRankingPopupData(e:Event = null):void
 		{
-			if (!contains(popupRanking))
+			if (!contains(_popupRanking))
 			{
 				GameManager.getInstance().rankingUpdated.add(setRankingPopupDataReady);
 				GameManager.getInstance().getRanking();
@@ -233,7 +230,7 @@ package space_digger.levels
 		{
 			GameManager.getInstance().rankingUpdated.remove(setRankingPopupDataReady);
 			
-			popupRanking.ranking = DataManager.getInstance().ranking;
+			_popupRanking.ranking = DataManager.getInstance().ranking;
 			openRankingPopup();
 		}
 		
@@ -261,10 +258,10 @@ package space_digger.levels
 		
 		public function openRankingPopup(e:MouseEvent = null):void
 		{
-			if (!contains(popupRanking))
+			if (!contains(_popupRanking))
 			{
 				addChild(popupModal);
-				addChild(popupRanking);
+				addChild(_popupRanking);
 				
 				setRankingPopupData();
 			}
@@ -272,16 +269,26 @@ package space_digger.levels
 		
 		public function closeRankingPopup(e:Event = null):void
 		{
-			if (contains(popupRanking))
+			if (contains(_popupRanking))
 			{
 				removeChild(popupModal);
-				removeChild(popupRanking);
+				removeChild(_popupRanking);
 			}
 		}
 		
 		public function get popupPlanet():PopupPlanet 
 		{
 			return _popupPlanet;
+		}
+		
+		public function get recentActivityScroller():Scroller 
+		{
+			return _recentActivityScroller;
+		}
+		
+		public function get popupRanking():PopupRanking 
+		{
+			return _popupRanking;
 		}
 	}
 }

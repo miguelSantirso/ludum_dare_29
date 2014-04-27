@@ -56,6 +56,8 @@ package data
 			var seamArray:Array = data as Array ? data as Array : [data];
 			var tempSeam:SeamData;
 			
+			_seams.splice(0, _seams.length);
+			
 			for each(var seamObject:Object in seamArray) {
 				tempSeam = new SeamData(seamObject);
 				
@@ -71,6 +73,8 @@ package data
 				
 			var deathArray:Array = data as Array ? data as Array : [data];
 			var tempDeath:Death;
+			
+			_deaths.splice(0, _deaths.length);
 			
 			for each(var deathObject:Object in deathArray) {
 				tempDeath = new Death(deathObject);
