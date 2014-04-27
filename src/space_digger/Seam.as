@@ -13,12 +13,19 @@ package space_digger
 	{
 		private var _playerInArea:Boolean = false;
 		private var _working:Boolean = false;
+		private var _serverId:int;
 		
 		public function Seam(name:String, params:Object=null) 
 		{
-			super(name, params);
+			super("seam", params);
 			
-			updateCallEnabled = true;
+			var nameComponents:Array = name.split('_');
+			if (nameComponents.length != 2 || nameComponents[0] != "seam")
+			{
+				throw new Error("Incorrectly named seam");
+			}
+			
+			_serverId = (nameComponents[1] as int);
 		}
 		
 		override public function update(timeDelta:Number):void 
