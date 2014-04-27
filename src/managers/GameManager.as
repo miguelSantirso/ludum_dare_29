@@ -128,9 +128,9 @@ package managers
 			RemoteManager.getInstance().land(mine.id, mine); // TODO set the success callback to go to the Mine view 
 		}
 		
-		public function play(stopwatchCallback:Function):void
+		public function play(stopwatchCallback:Function, faultCallback:Function = null):void
 		{
-			RemoteManager.getInstance().play(stopwatchCallback);
+			RemoteManager.getInstance().play(stopwatchCallback,faultCallback);
 		}
 		
 		public function takeOff(diggingSession:DiggingSession):void
