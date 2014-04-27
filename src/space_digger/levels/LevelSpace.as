@@ -72,15 +72,17 @@ package space_digger.levels
 			popupPlanet.y = (stage.stageHeight - popupPlanet.height) * 0.5;
 			popupPlanet.addEventListener(PopupPlanet.EVENT_CLOSE, closePlanetPopup);
 			
-			/*popupPlanet = new PopupRanking();
-			popupPlanet.x = (stage.stageWidth - popupPlanet.width) * 0.5;
-			popupPlanet.y = (stage.stageHeight - popupPlanet.height) * 0.5;
-			popupPlanet.addEventListener(PopupPlanet.EVENT_CLOSE, closePlanetPopup);*/
+			popupRanking = new PopupRanking();
+			popupRanking.x = (stage.stageWidth - popupRanking.width) * 0.5;
+			popupRanking.y = (stage.stageHeight - popupRanking.height) * 0.5;
+			popupRanking.addEventListener(PopupRanking.EVENT_CLOSE, closeRankingPopup);
 			
 			popupModal = new Sprite();
 			popupModal.graphics.beginFill(0x000000, 0.85);
 			popupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
 			popupModal.graphics.endFill();
+			
+			level.button_view_ranking.addEventListener(MouseEvent.CLICK, setRankingPopupData);
 		}
 		
 		public override function update(timeDelta:Number):void
@@ -95,6 +97,13 @@ package space_digger.levels
 			removeChild(popupPlanet);
 			
 			popupPlanet.dispose();
+			popupRanking.dispose();
+			
+			ongoingOpsScroller.dispose();
+			recentActivityScroller.dispose();
+			
+			ongoingOpsScroller = null;
+			recentActivityScroller = null;
 			
 			super.dispose();
 		}
@@ -193,6 +202,23 @@ package space_digger.levels
 			}
 		}
 		
+		public function setRankingPopupData(e:Event = null):void
+		{
+			if (!contains(popupRanking))
+			{
+				GameManager.getInstance().rankingUpdated.add(setRankingPopupDataReady);
+				GameManager.getInstance().getRanking();
+			}
+		}
+		
+		public function setRankingPopupDataReady():void
+		{
+			GameManager.getInstance().rankingUpdated.remove(setRankingPopupDataReady);
+			
+			popupRanking.ranking = DataManager.getInstance().ranking;
+			openRankingPopup();
+		}
+		
 		public function openPlanetPopup(e:MouseEvent):void
 		{
 			if (!contains(popupPlanet))
@@ -212,6 +238,26 @@ package space_digger.levels
 			{
 				removeChild(popupModal);
 				removeChild(popupPlanet);
+			}
+		}
+		
+		public function openRankingPopup(e:MouseEvent = null):void
+		{
+			if (!contains(popupRanking))
+			{
+				addChild(popupModal);
+				addChild(popupRanking);
+				
+				setRankingPopupData();
+			}
+		}
+		
+		public function closeRankingPopup(e:Event = null):void
+		{
+			if (contains(popupRanking))
+			{
+				removeChild(popupModal);
+				removeChild(popupRanking);
 			}
 		}
 	}

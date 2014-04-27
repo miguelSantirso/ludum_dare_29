@@ -19,14 +19,11 @@ package data
 		
 		public function populate(data:Object):void 
 		{
-			// data is an array of the type [position, company]
-			var entry:Array = data ? data as Array : null;
+			// data is an object of the type [position, company]
+			_company = new Company();
+			_company.populate(data["company"]);
 			
-			if (entry && entry.length == 2) {
-				_position = entry[0] as int;
-				_company = new Company();
-				_company.populate(entry[1]);
-			}
+			_position = data["position"];
 		}
 		
 		public function reset():void 

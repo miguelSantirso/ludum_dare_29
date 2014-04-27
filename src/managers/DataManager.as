@@ -6,6 +6,7 @@ package managers
 	import data.DiggingSession;
 	import data.RankingEntry;
 	import data.System;
+	import flash.utils.Dictionary;
 	/**
 	 * ...
 	 * @author Luis Miguel Blanco
@@ -58,7 +59,19 @@ package managers
 				
 			_ranking.splice(0, _ranking.length);
 			
-			var rankingEntries:Array = data as Array ? data as Array : [data];
+			var rankingEntries:Array = new Array();
+			var positionCounter:int = 1;
+			var rankingObject:Object;
+			
+			for each(var o:Object in data)
+			{
+				rankingObject = new Object();
+				rankingObject["position"] = positionCounter;
+				rankingObject["company"] = o;
+				rankingEntries.push(rankingObject);
+				positionCounter++;
+			}
+
 			var entry:RankingEntry;
 			
 			for each(var e:Object in rankingEntries) {
