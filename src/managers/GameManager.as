@@ -144,9 +144,9 @@ package managers
 			RemoteManager.getInstance().getSystem(DataManager.getInstance().mySystem, successCallback, faultCallback);
 		}
 		
-		public function land(mine:Mine):void
+		public function land(mine:Mine,successCallback:Function = null, faultCallback:Function = null):void
 		{
-			RemoteManager.getInstance().land(mine.id, mine); // TODO set the success callback to go to the Mine view 
+			RemoteManager.getInstance().land(mine.id, mine,successCallback,faultCallback); // TODO set the success callback to go to the Mine view 
 		}
 		
 		public function play(stopwatchCallback:Function, faultCallback:Function = null):void
