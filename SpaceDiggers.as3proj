@@ -11,7 +11,7 @@
     <movie version="11" />
     <movie minorVersion="7" />
     <movie platform="Flash Player" />
-    <movie background="#FFFFFF" />
+    <movie background="#804040" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
@@ -24,6 +24,7 @@
     <option allowSourcePathOverlap="False" />
     <option benchmark="False" />
     <option es="False" />
+    <option inline="False" />
     <option locale="" />
     <option loadConfig="" />
     <option optimize="True" />
@@ -48,12 +49,15 @@
   <!-- SWC Include Libraries -->
   <includeLibraries>
     <element path="lib\assets.swc" />
-    <element path="lib\game_hud.swc" />
+    <element path="lib\bricks.swc" />
     <element path="lib\ice.swc" />
+    <element path="lib\main_char_actions.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="lib\CEV3-1-9-ALL.swc" />
+    <element path="lib\game_hud.swc" />
+    <element path="lib\as3-signals-v0.9-BETA.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
@@ -87,6 +91,7 @@
   <options>
     <option showHiddenPaths="False" />
     <option testMovie="Default" />
+    <option testMovieCommand="" />
   </options>
   <!-- Plugin storage -->
   <storage />

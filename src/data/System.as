@@ -19,9 +19,14 @@ package data
 		
 		public function populate(data:Object):void 
 		{
-			_id = data.id;
-			_name = data.name;
-			populatePlanets(data.planets);
+			if(data["id"])
+				_id = data["id"];
+			
+			if(data["name"])
+				_name = data["name"];
+			
+			if(data["planets"])
+				populatePlanets(data["planets"]);
 		}
 		
 		public function reset():void 
