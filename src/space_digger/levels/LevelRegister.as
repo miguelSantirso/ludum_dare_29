@@ -68,7 +68,7 @@ package space_digger.levels
 		// ACTION HANDLERS:
 		private function onStartButtonHandler(e:MouseEvent):void
 		{
-			RemoteManager.getInstance().register(companyNameInput + " " + companyTypeInput, 0x000000, 0x000000);
+			GameManager.getInstance().register(companyNameInput + " " + companyTypeInput, 0x000000, 0x000000);
 		}
 		
 		private function onDebugButtonDigHandler(e:MouseEvent = null):void

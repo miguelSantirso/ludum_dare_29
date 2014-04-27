@@ -61,6 +61,8 @@ package managers
 		{
 			ready.dispatch();
 			// We are ready to play
+			
+			trace("READY");
 		}
 		
 		protected function requestRegistration():void
@@ -79,6 +81,11 @@ package managers
 			loggedOut.dispatch();
 			
 			DataManager.getInstance().reset();	
+		}
+		
+		public function register(companyName:String, color1:uint, color2:uint):void
+		{
+			RemoteManager.getInstance().register(companyName, color1, color2, function(data:Object):void { SessionManager.getInstance().storeRegistration(data); start(); } );
 		}
 		
 		public function testRemoteOperations():void

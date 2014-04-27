@@ -38,7 +38,19 @@ package data
 		
 		protected function populatePlanets(data:Object):void
 		{
-			// TODO
+			if (!data)
+				return;
+				
+			var planetArray:Array = data as Array ? data as Array : [data];
+			var tempPlanet:Planet;
+			
+			for each(var planetObject:Object in planetArray) {
+				tempPlanet = new Planet();
+				tempPlanet.populate(planetObject);
+				
+				if(!tempPlanet.empty())
+					_planets.push(tempPlanet);
+			}
 		}
 		
 		public function get id():int 

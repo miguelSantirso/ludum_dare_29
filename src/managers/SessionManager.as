@@ -47,7 +47,7 @@ package managers
 		
 		public function storeRegistration(regObject:Object):void
 		{
-			_registrationInfo = SharedObject.getLocal("session");
+			_registrationInfo = SharedObject.getLocal("registration");
 			
 			_registrationInfo.data.username = regObject.username;
 			_registrationInfo.data.password = regObject.password;

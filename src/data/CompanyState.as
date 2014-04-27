@@ -1,5 +1,6 @@
 package data 
 {
+	import flash.events.Event;
 	import infrastructure.interfaces.IPopulatable;
 	import utils.ServerTime;
 	/**
@@ -45,12 +46,35 @@ package data
 		
 		protected function populateWorkingSeams(data:Object):void
 		{
-			//TODO
+			if (!data)
+				return;
+				
+			var seamsArray:Array = data as Array ? data as Array : [data];
+			var tempSeam:Seam;
+			
+			for each(var seamObject:Object in seamsArray) {
+				tempSeam = new Seam();
+				tempSeam.populate(seamObject);
+				
+				if(!tempSeam.empty())
+					_workingSeams.push(tempSeam);
+			}
 		}
 		
 		protected function populateEvents(data:Object):void
 		{
-			// TODO
+			if (!data)
+				return;
+				
+			var eventsArray:Array = data as Array ? data as Array : [data];
+			var tempEvent:String;
+			
+			for each(var eventObject:Object in eventsArray) {
+				tempEvent = eventObject as String;
+				
+				if(tempEvent && tempEvent != "")
+					_workingSeams.push(tempEvent);
+			}
 		}
 		
 		public function get company():Company 

@@ -52,17 +52,18 @@ package managers
 		
 		public function populateRanking(data:Object):void
 		{
-			var rankingEntries:Array = data ? data as Array : null;
+			if (!data)
+				return;
+				
+			var rankingEntries:Array = data as Array ? data as Array : [data];
 			var entry:RankingEntry;
 			
-			if (rankingEntries) {
-				for each(var e:Object in rankingEntries) {
-					entry = new RankingEntry();
-					entry.populate(e);
-					
-					if (!entry.empty())
-						_ranking.push(entry);
-				}
+			for each(var e:Object in rankingEntries) {
+				entry = new RankingEntry();
+				entry.populate(e);
+				
+				if (!entry.empty())
+					_ranking.push(entry);
 			}
 		}
 		
