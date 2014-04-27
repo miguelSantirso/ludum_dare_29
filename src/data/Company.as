@@ -30,10 +30,10 @@ package data
 				_name = data["name"];
 			
 			if(data["workers"])
-				_name = data["workers"];
+				_workers = data["workers"];
 			
 			if(data["score"])
-				_name = data["score"];
+				_score = data["score"];
 				
 			if(data["color1"])
 				_color1 = data["color1"];
