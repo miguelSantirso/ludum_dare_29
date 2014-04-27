@@ -11,9 +11,10 @@ package data
 		protected var _position:int;
 		protected var _company:Company;
 		
-		public function RankingEntry() 
+		public function RankingEntry(data:Object = null) 
 		{
-			
+			if (data)
+				populate(data);
 		}
 		
 		public function populate(data:Object):void 

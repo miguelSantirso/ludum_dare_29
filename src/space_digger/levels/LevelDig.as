@@ -18,9 +18,9 @@ package space_digger.levels
 	import space_digger.GameplayHud;
 	import space_digger.PlayerCharacter;
 	import space_digger.Seam;
-	import space_digger.Patrol;
-	import space_digger.Creeper;
-	import space_digger.Spike;
+	import space_digger.enemies.Patrol;
+	import space_digger.enemies.Creeper;
+	import space_digger.enemies.Spike;
 	import citrus.core.CitrusObject;
 	
 	/**
@@ -47,7 +47,7 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			view.camera.setUp(getObjectByName("player_char")/*, new Rectangle(0, 0, 1352, 1963)*/);
+			view.camera.setUp(getObjectByName("player_char"), new Rectangle(0, 0, 1352, 1963));
 			
 			stage.addChild(_hud);
 		}

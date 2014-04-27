@@ -1,4 +1,4 @@
-package space_digger 
+package space_digger.enemies 
 {
 	import adobe.utils.CustomActions;
 	import space_digger.levels.LevelDig;
@@ -13,6 +13,7 @@ package space_digger
 	import citrus.math.MathVector;
 	import flash.geom.Point;
 	import citrus.physics.box2d.IBox2DPhysicsObject;
+	import space_digger.PlayerCharacter;
 	
 	/**
 	 * ...

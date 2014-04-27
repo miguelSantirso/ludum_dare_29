@@ -15,9 +15,10 @@ package data
 		protected var _color1:uint;
 		protected var _color2:uint;
 		
-		public function Company() 
+		public function Company(data:Object = null) 
 		{
-			
+			if (data)
+				populate(data);
 		}
 		
 		public function populate(data:Object):void 

@@ -25,6 +25,9 @@ package space_digger
 	{
 		private static const JETPACK_DELAY:int = 10;
 		
+		public function get nLifes():int { return _nLifes; }
+		protected var _nLifes:int = 3;
+		
 		private var _framesToKickJetpack:int;
 		
 		//properties
@@ -329,6 +332,8 @@ package space_digger
 		public function hurt():void
 		{
 			if (_hurt) return;
+			
+			--_nLifes;
 			
 			_hurt = true;
 			controlsEnabled = false;

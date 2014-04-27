@@ -1,5 +1,6 @@
 package managers 
 {
+	import data.Mine;
 	import infrastructure.RemoteOperation;
 	import infrastructure.RemoteURL;
 	import org.osflash.signals.Signal;
@@ -9,17 +10,17 @@ package managers
 	 */
 	public class RemoteManager 
 	{
-		public static const LOGIN:String = "login";
+		public static const LOGIN:String = "loginOperation";
 		public static const REGISTER:String = "registerOperation";
-		public static const LOGOUT:String = "logout";
+		public static const LOGOUT:String = "logoutOperation";
 		public static const CORE:String = "coreOperation";
-		public static const SYSTEM:String = "system";
-		public static const LAND:String = "land";
-		public static const TAKE_OFF:String = "takeoff";
-		public static const PLANT:String = "plant";
-		public static const STATE:String = "state";
-		public static const LOG:String = "log";
-		public static const RANKING:String = "ranking";
+		public static const SYSTEM:String = "systemOperation";
+		public static const LAND:String = "landOperation";
+		public static const PLAY:String = "playOperation";
+		public static const TAKE_OFF:String = "takeoffOperation";
+		public static const STATE:String = "stateOperation";
+		public static const RANKING:String = "rankingOperation";
+		public static const JUMP:String = "jumpOperation";
 		
 		private static var instance:RemoteManager;
 		private static var instantiated:Boolean = false;
@@ -196,6 +197,24 @@ package managers
 		public function getSystem(successCallback:Function = null, faultCallback:Function = null):void
 		{
 			sendOperation(SYSTEM, RemoteURL.SYSTEM, RemoteOperation.TYPE_POST, null, [DataManager.getInstance().mySystem], successCallback,faultCallback);
+		}
+		
+		// TODO chdck these operations
+		public function land(mineId:int, mine:Mine,successCallback:Function = null, faultCallback:Function = null):void
+		{
+			var requestObject:Object = { mine_id: mineId };
+			
+			sendOperation(LAND, RemoteURL.LAND, RemoteOperation.TYPE_POST, requestObject, [mine], successCallback, faultCallback);
+		}
+		
+		public function play(successCallback:Function = null, faultCallback:Function = null):void
+		{
+			sendOperation(LAND, RemoteURL.LAND, RemoteOperation.TYPE_POST, null, null, successCallback, faultCallback);
+		}
+		
+		public function takeOff(successCallback:Function = null, faultCallback:Function = null):void
+		{
+			sendOperation(TAKE_OFF, RemoteURL.TAKE_OFF, RemoteOperation.TYPE_POST, null, null, successCallback, faultCallback);
 		}
 		
 		protected function onLoginFault():void

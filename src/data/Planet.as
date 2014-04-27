@@ -15,9 +15,12 @@ package data
 		protected var _mines:Vector.<Mine>;
 		protected var _skin:int; //SkinType
 
-		public function Planet() 
+		public function Planet(data:Object = null) 
 		{
 			_mines = new Vector.<Mine>;
+			
+			if (data)
+				populate(data);
 		}
 		
 		public function populate(data:Object):void 

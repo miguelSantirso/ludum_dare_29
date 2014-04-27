@@ -12,9 +12,12 @@ package data
 		protected var _name:String;
 		protected var _planets:Vector.<Planet>;
 
-		public function System() 
+		public function System(data:Object = null) 
 		{
 			_planets = new Vector.<Planet>();
+			
+			if (data)
+				populate(data);
 		}
 		
 		public function populate(data:Object):void 
