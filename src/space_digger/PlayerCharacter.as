@@ -1,7 +1,15 @@
 package space_digger 
 {
+	import Box2D.Collision.Shapes.b2PolygonShape;
+	import Box2D.Collision.Shapes.b2Shape;
+	import Box2D.Common.Math.b2Vec2;
+	import Box2D.Dynamics.b2Fixture;
+	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.Contacts.b2Contact;
 	import flash.utils.setTimeout;
+	import citrus.input.controllers.Keyboard;
+	import citrus.physics.PhysicsCollisionCategories;
+	import citrus.physics.box2d.Box2DUtils;
 	
 	/**
 	 * ...
@@ -12,6 +20,14 @@ package space_digger
 		
 		private var _nLifes:int = 3;
 		
+		private var _attacking:Boolean = false;
+		
+		private var _attackSensorDef:b2FixtureDef
+		private var _leftSensorFixture:b2Fixture;
+		private var _leftSensorShape:b2PolygonShape;
+		private var _rightSensorFixture:b2Fixture;
+		private var _rightSensorShape:b2PolygonShape;
+		
 		public function PlayerCharacter(name:String, params:Object=null) 
 		{
 			super(name, params);
@@ -21,6 +37,49 @@ package space_digger
 			
 			onTakeDamage.add(onDamageTaken);
 			
+			_ce.input.keyboard.addKeyAction("left", Keyboard.A);
+			_ce.input.keyboard.addKeyAction("jump", Keyboard.W);
+			_ce.input.keyboard.addKeyAction("right", Keyboard.D);
+			_ce.input.keyboard.addKeyAction("jump", Keyboard.UP);
+			_ce.input.keyboard.addKeyAction("attack", Keyboard.Z);
+			_ce.input.keyboard.addKeyAction("attack", Keyboard.J);
+		}
+		
+		override protected function createShape():void 
+		{
+			super.createShape();
+			
+			var sensorWidth:Number = 20 / _box2D.scale;
+			var sensorHeight:Number = 2 / _box2D.scale;
+			var sensorOffset:b2Vec2 = new b2Vec2( -_width / 2 - (sensorWidth / 2), _height / 2 - (10 / _box2D.scale));
+			
+			_leftSensorShape = new b2PolygonShape();
+			_leftSensorShape.SetAsOrientedBox(sensorWidth, sensorHeight, sensorOffset);
+
+			sensorOffset.x = -sensorOffset.x;
+			_rightSensorShape = new b2PolygonShape();
+			_rightSensorShape.SetAsOrientedBox(sensorWidth, sensorHeight, sensorOffset);
+		}
+		
+		override protected function defineFixture():void 
+		{
+			super.defineFixture();
+			
+			_attackSensorDef = new b2FixtureDef();
+			_attackSensorDef.shape = _leftSensorShape;
+			_attackSensorDef.isSensor = true;
+			_attackSensorDef.filter.categoryBits = PhysicsCollisionCategories.Get("GoodGuys");
+			_attackSensorDef.filter.maskBits = PhysicsCollisionCategories.Get("BadGuys");
+		}
+		
+		override protected function createFixture():void 
+		{
+			super.createFixture();
+			
+			_leftSensorFixture = body.CreateFixture(_attackSensorDef);
+
+			_attackSensorDef.shape = _rightSensorShape;
+			_rightSensorFixture = body.CreateFixture(_attackSensorDef);
 		}
 		
 		public function get isDead():Boolean
@@ -28,10 +87,57 @@ package space_digger
 			return _nLifes < 0;
 		}
 		
+		override public function update(timeDelta:Number):void 
+		{
+			super.update(timeDelta);
+			
+			if (_onGround && !_attacking && _ce.input.justDid("attack", inputChannel))
+			{
+				_attacking = true;
+				setTimeout(function():void {
+					_attacking = false;
+				}, 400);
+			}
+		}
+		
+		override protected function updateAnimation():void 
+		{
+			var prevAnimation:String = _animation;
+			
+			if (_attacking)
+				_animation = "attack";
+			else
+			{
+				super.updateAnimation();
+				return;
+			}
+			
+			if (prevAnimation != _animation)
+				onAnimationChange.dispatch();
+		}
+		
 		override public function handleBeginContact(contact:b2Contact):void 
 		{
-			if (!isDead)
-				super.handleBeginContact(contact);
+			if (isDead)
+				return;
+			
+			var attack:Boolean = false;
+			var fixtureA:b2Fixture = contact.GetFixtureA();
+			var fixtureB:b2Fixture = contact.GetFixtureB();
+			if (fixtureB == _leftSensorFixture || fixtureA == _leftSensorFixture)
+			{
+				if (_attacking && inverted)
+					attack = true;
+				return;
+			}
+			if (fixtureB == _rightSensorFixture || fixtureA == _rightSensorFixture)
+			{
+				if (_attacking)
+					attack = true;
+				return;
+			}
+			
+			super.handleBeginContact(contact);
 		}
 		
 		private function onDamageTaken():void
