@@ -28,12 +28,19 @@ package space_digger
 				_animation = "idle";
 				(_ce.state as LevelDig).startExploration();
 			}
+			
+			if (_animation == "exit" && ++_frameCounter >= 99)
+			{
+				visible = false;
+				(_ce.state as LevelDig).endMission();
+			}
 		}
 		
 		
 		public function leave():void
 		{
 			_animation = "exit";
+			_frameCounter = 0;
 		}
 		
 	}

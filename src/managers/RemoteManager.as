@@ -217,7 +217,11 @@ package managers
 		
 		public function takeOff(diggingSession:DiggingSession, successCallback:Function = null, faultCallback:Function = null):void
 		{
-			var requestObject:Object = { "seams_activated": diggingSession.activatedSeams, "takeoff": true };
+			var requestObject:Object = { "takeoff": true };
+			
+			if (diggingSession.activatedSeams.length > 0) {
+				requestObject["seams_activated"] = diggingSession.activatedSeams;
+			}
 			
 			if (diggingSession.death){
 				requestObject["death"] = true;
