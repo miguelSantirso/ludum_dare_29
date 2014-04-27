@@ -4,6 +4,7 @@ package space_digger.levels
 	import org.osflash.signals.Signal;
 	import flash.events.MouseEvent;
 	import utils.Text;
+	import managers.DataManager;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -29,6 +30,8 @@ package space_digger.levels
 			
 			// TESTING:
 			//setPlanetData();
+			
+			//level.label_company_name.text = DataManager.getInstance().myState.company.name.toUpperCase();
 		}
 		
 		public override function update(timeDelta:Number):void
