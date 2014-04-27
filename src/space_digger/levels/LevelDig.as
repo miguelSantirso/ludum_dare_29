@@ -44,8 +44,9 @@ package space_digger.levels
 		public var startedDigging:Signal = new Signal(Number, Number);
 		
 		private var _ship:SpaceShip;
+		private var _player:PlayerCharacter;
 		private var _inExitArea:Boolean = false;
-		private var _readyToLand:Boolean = false;
+		private var _exploring:Boolean = false;
 		
 		public var diggingSession:DiggingSession = new DiggingSession();
 		
@@ -58,9 +59,19 @@ package space_digger.levels
 			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
 		}
 		
+		override public function destroy():void 
+		{
+			super.destroy();
+			
+			stage.removeChild(_hud);
+		}
+		
 		public override function initialize():void
 		{
 			super.initialize();
+			
+			_player = getObjectByName("player_char") as PlayerCharacter;
+			_player.onTakeDamage.add(onPlayerTakeDamage);
 			
 			_ship = getObjectByName("ship") as SpaceShip;
 			view.camera.setUp(_ship, new Rectangle(0, -500, 1000, 530));
@@ -71,6 +82,17 @@ package space_digger.levels
 			diggingSession.mine = DataManager.getInstance().currentMine;
 			
 			stage.addChild(_hud);
+		}
+		
+		
+		public function onPlayerTakeDamage():void
+		{
+			_hud.nLifes = _player.nLifes;
+			
+			if (_player.nLifes < 0)
+			{
+				_hud.stopCountdown();
+			}
 		}
 		
 		private function initializeMine():void
@@ -97,17 +119,19 @@ package space_digger.levels
 			{
 				endExploration();
 			}
+			
+			_hud.updateCountdown(timeDelta);
+			
+			if (_exploring && _hud.timeLeft <= 0)
+			{
+				_player.hurt();
+			}
 		}
 		
 		public function startExploration():void
 		{
-			/*if (!_readyToLand)
-			{
-				endExploration(false);
-				return;
-			}*/
-			
-			GameManager.getInstance().play(function(data:Object):void {
+			GameManager.getInstance().play(function(payload:Object):void {
+				
 				view.camera.bounds = null;
 				var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
 				var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
@@ -115,11 +139,18 @@ package space_digger.levels
 				view.camera.camPos.y = ship.y - 40;
 				player.x = ship.x;
 				view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);
+				
+				_hud.startCountdown(payload.stopwatch * 1000);
+				
+				_exploring = true;
 			});
 		}
 		
 		public function endExploration(takeOff:Boolean = true):void
 		{
+			_exploring = false;
+			_hud.stopCountdown();
+			
 			if (takeOff)
 				GameManager.getInstance().takeOff(diggingSession);
 			
@@ -135,6 +166,7 @@ package space_digger.levels
 		public function endMission():void
 		{
 			//GameManager.getInstance().logout();
+			changeLevel.dispatch(2);
 		}
 		
 		

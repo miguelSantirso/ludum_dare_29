@@ -7,6 +7,7 @@ package managers
 	import data.Mine;
 	import data.RankingEntry;
 	import data.System;
+	import flash.utils.Dictionary;
 	/**
 	 * ...
 	 * @author Luis Miguel Blanco
@@ -61,7 +62,19 @@ package managers
 				
 			_ranking.splice(0, _ranking.length);
 			
-			var rankingEntries:Array = data as Array ? data as Array : [data];
+			var rankingEntries:Array = new Array();
+			var positionCounter:int = 1;
+			var rankingObject:Object;
+			
+			for each(var o:Object in data)
+			{
+				rankingObject = new Object();
+				rankingObject["position"] = positionCounter;
+				rankingObject["company"] = o;
+				rankingEntries.push(rankingObject);
+				positionCounter++;
+			}
+
 			var entry:RankingEntry;
 			
 			for each(var e:Object in rankingEntries) {
@@ -90,6 +103,25 @@ package managers
 		public function get ranking():Vector.<RankingEntry> 
 		{
 			return _ranking;
+		}
+		
+		public function getCompanyRank(companyID:int):Number
+		{
+			var rank:Number = int.MAX_VALUE;
+			
+			if (_ranking != null && _ranking.length > 0)
+			{
+				for each(var rankingEntry:RankingEntry in _ranking)
+				{
+					if (rankingEntry.company.id == companyID)
+					{
+						rank = rankingEntry.position; 
+						break;
+					}
+				}
+			}
+			
+			return rank;
 		}
 	}
 
