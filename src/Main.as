@@ -50,11 +50,15 @@ package
 		private function goToLevelRegister():void
 		{
 			changeLevel(1);
+			
+			trace("REGISTER");
 		}
 		
 		private function goToLevelSpace():void
 		{
 			changeLevel(2);
+			
+			trace("SPACE");
 		}
 		
 		private function onLevelChanged(level:GameLevel):void
