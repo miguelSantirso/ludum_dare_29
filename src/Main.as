@@ -16,7 +16,7 @@ package
 	 */
 	public class Main extends CitrusEngine
 	{
-		public static const DEBUG:Boolean = false;//CONFIG::debug;
+		public static const DEBUG:Boolean = CONFIG::debug;
 		
 		public function Main():void 
 		{

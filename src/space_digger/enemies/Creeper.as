@@ -41,18 +41,64 @@ package space_digger.enemies
 			(_ce.state as LevelDig).startedDigging.add(onDigStart);
 			//_ce.input.keyboard.addKeyAction("test", Keyboard.G, inputChannel);
 			
+			chasePlayer(false);
 		}
 
-		private var _firstTime:Boolean = true;
+		public function chasePlayer(flag:Boolean):void
+		{		
+			if (!flag)
+				_animation = "idle";
+		}
 		
+		override public function update(timeDelta:Number):void
+		{
+			super.update(timeDelta);
+		}
+
+		public function onDigStart(playerX:Number, playerY:Number):void
+		{
+			
+		}
+		
+		override public function handleBeginContact(contact:b2Contact):void 
+		{
+			var collider:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(this, contact);
+
+			if (collider is _enemyClass && collider.body.GetLinearVelocity().y > enemyKillVelocity)
+				hurt();
+
+			if (_body.GetLinearVelocity().x < 0 && (contact.GetFixtureA() == _rightSensorFixture || contact.GetFixtureB() == _rightSensorFixture))
+				return;
+
+			if (_body.GetLinearVelocity().x > 0 && (contact.GetFixtureA() == _leftSensorFixture || contact.GetFixtureB() == _leftSensorFixture))
+				return;
+
+			if (contact.GetManifold().m_localPoint) {
+
+				var normalPoint:Point = new Point(contact.GetManifold().m_localPoint.x, contact.GetManifold().m_localPoint.y);
+				var collisionAngle:Number = new MathVector(normalPoint.x, normalPoint.y).angle * 180 / Math.PI;
+
+				if ((collider is Platform && collisionAngle != 90))
+					chasePlayer(false);
+				else if (collider is Foe)
+					turnAround();
+				else if (collider is PlayerCharacter)
+				{
+					var player:PlayerCharacter = _ce.state.getObjectByName("player_char") as PlayerCharacter;
+					if (player.isDead)
+					{
+						turnAround();
+					}
+				}
+			}
+		}
+		
+		/*
 		override public function update(timeDelta:Number):void {
 
 			super.update(timeDelta);
 		}
 		
-		/**
-		 * Change enemy's direction
-		 */
 		override public function  turnAround():void {
 
 			_inverted = !_inverted;
@@ -130,6 +176,7 @@ package space_digger.enemies
 				}
 			}
 		}
+		*/
 	}
 
 }
