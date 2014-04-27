@@ -112,7 +112,7 @@ package infrastructure
 			_loader.removeEventListener(Event.COMPLETE, onSuccessHandler);
 			_loader.removeEventListener(HTTPStatusEvent.HTTP_STATUS, onHttpStatus);
 			_loader.removeEventListener(IOErrorEvent.IO_ERROR, onFaultHandler);
-			_loader.close();
+			//_loader.close();
 			_loader = null;
 			
 			_successCallback = null;
@@ -165,7 +165,8 @@ package infrastructure
 						_successCallback();
 				}
 			}
-			successSignal.dispatch(this);		
+			if(successSignal)
+				successSignal.dispatch(this);		
 		}
 		
 		private function onFaultHandler(event:IOErrorEvent):void
@@ -199,7 +200,8 @@ package infrastructure
 			if(_faultCallback != null)
 				_faultCallback();
 			
-			faultSignal.dispatch(this);
+			if(faultSignal)
+				faultSignal.dispatch(this);
 		}
 		
 		/* GETTERS */

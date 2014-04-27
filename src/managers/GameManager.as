@@ -120,8 +120,6 @@ package managers
 			
 			DataManager.getInstance().reset();
 			RemoteManager.getInstance().reset();
-			
-			requestRegistration();
 		}
 		
 		public function register(companyName:String, color1:uint, color2:uint):void
@@ -131,7 +129,7 @@ package managers
 		
 		public function logout():void
 		{
-			RemoteManager.getInstance().logout();
+			RemoteManager.getInstance().logout(onLoggedOut,onLoggedOut);
 		}
 		
 		public function updateState(successCallback:Function = null, faultCallback:Function = null):void
