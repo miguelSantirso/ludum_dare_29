@@ -55,6 +55,7 @@
     <element path="lib\Ice_enemy_actions.swc" />
     <element path="lib\ice_creeper.swc" />
     <element path="lib\nave_animaciones_hielo.swc" />
+    <element path="lib\greensock.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
