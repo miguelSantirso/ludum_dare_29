@@ -18,6 +18,10 @@ package space_digger.enemies
 		{
 			super(name, params);
 			
+			view = "IceEnemy";
+			height = 45;
+			width = 50;
+			
 			speed = 1.0;
 		}
 		
