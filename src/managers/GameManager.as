@@ -21,8 +21,9 @@ package managers
 		public var needsRegistration:Signal;
 		public var loggedOut:Signal;
 		
-		public var systemChanged:Signal;
 		public var stateUpdated:Signal;
+		public var systemUpdated:Signal;
+		public var systemChanged:Signal;
 		public var rankingUpdated:Signal;
 		
 		public function GameManager() 
@@ -35,9 +36,9 @@ package managers
 				needsRegistration = new Signal();
 				loggedOut = new Signal();
 				
-				// TODO dispatch these
-				systemChanged = new Signal();
 				stateUpdated = new Signal();
+				systemUpdated = new Signal();
+				systemChanged = new Signal();
 				rankingUpdated = new Signal();
 				
 				RemoteManager.getInstance().authorizationFailed.add(reset);
@@ -61,7 +62,11 @@ package managers
 				DataManager.getInstance().core, 
 				function():void{
 					if (SessionManager.getInstance().alreadyRegistered) {
-						updateState( function():void { RemoteManager.getInstance().getSystem(setReady, startFailed.dispatch);} ,startFailed.dispatch);
+						updateState( 
+							function():void { 
+								RemoteManager.getInstance().getSystem(DataManager.getInstance().mySystem, setReady, startFailed.dispatch); 
+							},
+							startFailed.dispatch);
 					}else {
 						requestRegistration();
 					}
@@ -71,18 +76,28 @@ package managers
 		
 		protected function setReady():void
 		{
-			// set timer to update state
-			TweenLite.delayedCall(DataManager.getInstance().core.stateRefreshTime, updateState,
-				[	
-					function():void {
-						TweenLite.delayedCall(DataManager.getInstance().core.stateRefreshTime, updateState, [stateUpdated.dispatch]);
-						stateUpdated.dispatch();
-					}
-				]
-			); 
-			
-			ready.dispatch();
 			// We are ready to play
+			ready.dispatch();
+			
+			// set timer to update state
+			TweenLite.delayedCall(DataManager.getInstance().core.stateRefreshTime, updateState, [onStateUpdated, onStateUpdated]);
+			
+			// set timer to update system
+			TweenLite.delayedCall(DataManager.getInstance().core.systemRefreshTime, updateSystem, [onSystemUpdated, onSystemUpdated]);
+		}
+		
+		protected function onStateUpdated():void
+		{
+			stateUpdated.dispatch();
+			
+			TweenLite.delayedCall(DataManager.getInstance().core.stateRefreshTime, updateState, [onStateUpdated, onStateUpdated]);
+		}
+		
+		protected function onSystemUpdated():void
+		{
+			systemUpdated.dispatch();
+			
+			TweenLite.delayedCall(DataManager.getInstance().core.systemRefreshTime, updateSystem, [onSystemUpdated, onSystemUpdated]);
 		}
 		
 		protected function requestRegistration():void
@@ -93,6 +108,7 @@ package managers
 		protected function reset():void
 		{
 			TweenLite.killDelayedCallsTo(updateState);
+			TweenLite.killDelayedCallsTo(updateSystem);
 			
 			RemoteManager.getInstance().logout(onLoggedOut, onLoggedOut);	
 		}
@@ -121,6 +137,11 @@ package managers
 		public function updateState(successCallback:Function = null, faultCallback:Function = null):void
 		{
 			RemoteManager.getInstance().getState(DataManager.getInstance().myState, successCallback, faultCallback);
+		}
+		
+		public function updateSystem(successCallback:Function = null, faultCallback:Function = null):void
+		{
+			RemoteManager.getInstance().getSystem(DataManager.getInstance().mySystem, successCallback, faultCallback);
 		}
 		
 		public function land(mine:Mine):void
