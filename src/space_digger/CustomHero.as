@@ -245,12 +245,14 @@ package space_digger
 				{
 					velocity.Add(getSlopeBasedMoveAngle());
 					moveKeyPressed = true;
+					_inverted = false;
 				}
 				
 				if (_ce.input.isDoing("left", inputChannel) && !_ducking)
 				{
 					velocity.Subtract(getSlopeBasedMoveAngle());
 					moveKeyPressed = true;
+					_inverted = true;
 				}
 				
 				//If player just started moving the hero this tick.
@@ -395,11 +397,6 @@ package space_digger
 						hurtVelocity.x = -hurtVelocityX;
 					_body.SetLinearVelocity(hurtVelocity);
 				}
-				else
-				{
-					_springOffEnemy = collider.y - height;
-					onGiveDamage.dispatch();
-				}
 			}
 
 			//Collision angle if we don't touch a Sensor.
@@ -477,11 +474,6 @@ package space_digger
 			else if (!_onGround) {
 
 				_animation = velocity.y < 0 ? "jump" : "down";
-
-				if (walkingSpeed < -acceleration)
-					_inverted = true;
-				else if (walkingSpeed > acceleration)
-					_inverted = false;
 
 			} else if (_ducking)
 				_animation = "duck";
