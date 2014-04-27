@@ -50,6 +50,7 @@ package space_digger
 			if (Box2DUtils.CollisionGetOther(this, contact) is PlayerCharacter) {
 				_playerInArea = true;
 				updateCallEnabled = true;
+				if (!_working) _animation = "glow";
 			}
 		}
 		
@@ -59,7 +60,10 @@ package space_digger
 			super.handleEndContact(contact);
 			
 			if (Box2DUtils.CollisionGetOther(this, contact) is PlayerCharacter)
+			{
 				_playerInArea = false;
+				if (!_working) _animation = "idle";
+			}
 		}
 		
 	}
