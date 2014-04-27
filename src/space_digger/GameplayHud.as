@@ -11,16 +11,15 @@ package space_digger
 		public function GameplayHud() 
 		{
 			seamHint.visible = false;
+			nLifes = 3;
 		}
 		
 		
-		public function onSeamEntered():void
+		public function set nLifes(value:int):void
 		{
-			seamHint.visible = true;
-		}
-		public function onSeamExited():void
-		{
-			seamHint.visible = false;
+			value = Math.max(0, value);
+			value = Math.min(3, value);
+			lifes.gotoAndStop("l" + value);
 		}
 		
 	}

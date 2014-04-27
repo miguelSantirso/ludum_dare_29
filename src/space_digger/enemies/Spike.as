@@ -1,4 +1,4 @@
-package space_digger 
+package space_digger.enemies 
 {
 	/**
 	 * ...
