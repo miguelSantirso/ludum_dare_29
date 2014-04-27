@@ -4,6 +4,7 @@ package space_digger
 	import citrus.objects.platformer.box2d.Sensor;
 	import flash.utils.setTimeout;
 	import citrus.physics.box2d.Box2DUtils;
+	import space_digger.levels.LevelDig;
 	
 	/**
 	 * ...
@@ -16,6 +17,7 @@ package space_digger
 		private var _playerInArea:Boolean = false;
 		private var _working:Boolean = false;
 		private var _lifes:int = MAX_LIFES;
+		private var _levelIndex:int;
 		private var _serverId:int;
 		
 		private var _hack_damageSignalAdded:Boolean = false;
@@ -30,7 +32,7 @@ package space_digger
 				throw new Error("Incorrectly named seam");
 			}
 			
-			_serverId = (nameComponents[1] as int);
+			_levelIndex = (nameComponents[1] as int);
 		}
 		
 		private function onPlayerDealDamage():void
@@ -49,6 +51,8 @@ package space_digger
 		{
 			_working = false;
 			
+			(_ce.state as LevelDig).diggingSession.destroySeamMachine(_serverId);
+			
 			_animation = "defeat";
 			setTimeout(function():void {
 				_animation = "idle";
@@ -59,6 +63,8 @@ package space_digger
 		{
 			_working = true;
 			_lifes = MAX_LIFES;
+			
+			(_ce.state as LevelDig).diggingSession.deploySeamMachine(_serverId);
 			
 			_animation = "appears";
 			setTimeout(function():void {

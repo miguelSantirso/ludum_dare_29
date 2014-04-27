@@ -184,6 +184,8 @@ package space_digger
 		{
 			if (isDead)
 			{
+				(_ce.state as LevelDig).diggingSession.died(x, y);
+				
 				_animation = "defeat";
 				updateCallEnabled = false;
 				setTimeout(function():void {
