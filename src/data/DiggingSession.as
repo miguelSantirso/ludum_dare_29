@@ -32,7 +32,7 @@ package data
 			if (seamIndex >= 0 && seamIndex < mine.seams.length) {				
 				if (_activatedSeams.indexOf(mine.seams[seamIndex]) >= 0) return;
 		
-				_activatedSeams.push(mine.seams[seamIndex]);
+				_activatedSeams.push(mine.seams[seamIndex].id);
 			}else
 				return;
 		}

@@ -94,7 +94,7 @@ package space_digger.levels
 		{
 			if (!_readyToLand)
 			{
-				endExploration();
+				endExploration(false);
 			}
 			
 			GameManager.getInstance().play(function(data:Object):void {
@@ -108,7 +108,7 @@ package space_digger.levels
 			});
 		}
 		
-		public function endExploration():void
+		public function endExploration(takeOff:Boolean = true):void
 		{
 			GameManager.getInstance().takeOff(diggingSession);
 			
