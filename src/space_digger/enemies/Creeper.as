@@ -29,6 +29,11 @@ package space_digger.enemies
 		public function Creeper(name:String, params:Object=null) 
 		{	
 			super(name, params);
+			
+			view = "IceCreeper";
+			height = 63;
+			width = 64;
+			offsetY = -16;
 		
 			_facingRight = (startingDirection == "right") ? true : false;
 
