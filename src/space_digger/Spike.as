@@ -14,6 +14,7 @@ package space_digger
 			super(name, params);
 			
 			speed = 0;
+			enemyKillVelocity = 10000;
 		}
 		
 	}
