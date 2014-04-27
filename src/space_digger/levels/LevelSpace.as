@@ -46,7 +46,7 @@ package space_digger.levels
 				temp.push(tempObj);
 			}
 			
-			recentActivityScroller = new Scroller(false, 5.57, ActivityIR, 0, temp);
+			recentActivityScroller = new Scroller(false, 6, ActivityIR, 0, temp);
 			recentActivityScroller.init();
 			level.slot_activity_list.addChild(recentActivityScroller);
 			
