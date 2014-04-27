@@ -56,6 +56,8 @@ package managers
 			if (!data)
 				return;
 				
+			_ranking.splice(0, _ranking.length);
+			
 			var rankingEntries:Array = data as Array ? data as Array : [data];
 			var entry:RankingEntry;
 			
