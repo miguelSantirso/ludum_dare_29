@@ -76,6 +76,7 @@ package
 			level.lvlBack.add(previousLevel);	
 			level.restartLevel.add(restartLevel);
 			level.changeLevel.add(changeLevel);*/
+			level.changeLevel.add(changeLevel);
 		}
 		
 		protected function travelToMine(mine:Mine):void
