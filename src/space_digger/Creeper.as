@@ -117,6 +117,14 @@ package space_digger
 					chasePlayer(false);
 				else if (collider is Enemy)
 					turnAround();
+				else if (collider is PlayerCharacter)
+				{
+					var player:PlayerCharacter = _ce.state.getObjectByName("player_char") as PlayerCharacter;
+					if (player.isDead)
+					{
+						turnAround();
+					}
+				}
 			}
 		}
 	}
