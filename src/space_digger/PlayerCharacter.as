@@ -208,6 +208,7 @@ package space_digger
 			if (isDead)
 			{
 				(_ce.state as LevelDig).diggingSession.died(x, y);
+				(_ce.state as LevelDig).endExploration();
 				
 				_animation = "defeat";
 				updateCallEnabled = false;
