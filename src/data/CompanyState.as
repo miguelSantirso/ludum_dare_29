@@ -74,7 +74,7 @@ package data
 				tempEvent = eventObject as String;
 				
 				if(tempEvent && tempEvent != "")
-					_workingSeams.push(tempEvent);
+					_events.push(tempEvent);
 			}
 		}
 		

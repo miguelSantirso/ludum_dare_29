@@ -112,6 +112,10 @@ package space_digger.levels
 		{
 			GameManager.getInstance().takeOff(diggingSession);
 			
+			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
+			view.camera.camPos.x = player.x; 
+			view.camera.camPos.y = player.y;
+			view.camera.bounds = new Rectangle(0, -500, 1000, 530);
 			view.camera.switchToTarget(_ship, 10, function():void {
 				_ship.leave();
 			});
