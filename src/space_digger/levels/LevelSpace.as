@@ -21,13 +21,14 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			level.button_test.addEventListener(MouseEvent.CLICK, test);
+			level.planet_0.addEventListener(MouseEvent.CLICK, test);
+			level.planet_1.addEventListener(MouseEvent.CLICK, test);
+			level.planet_2.addEventListener(MouseEvent.CLICK, test);
+			level.planet_3.addEventListener(MouseEvent.CLICK, test);
+			level.planet_4.addEventListener(MouseEvent.CLICK, test);
 			
 			// TESTING:
-			companyName = "APETECAUNJASJDASJDAJSDsdasdasdasd";
-			companyType = "SL";
-			companyGold = 9999;
-			companyRank = 9999;
+			//setPlanetData();
 		}
 		
 		public override function update(timeDelta:Number):void
@@ -42,30 +43,28 @@ package space_digger.levels
 		
 		private function test(e:MouseEvent):void
 		{
-			changeLevel.dispatch(2); // TEMP!
+			changeLevel.dispatch(3); // TEMP!
 		}
 		
-		public function set companyName(name:String):void
+		public function setCompanyData(name:String, type:String, gold:Number, rank:Number):void
 		{
-			level.label_company_name.text = name;
-			Text.truncateText(level.label_company_name);
-		}
-		
-		public function set companyType(type:String):void
-		{
+			/*level.label_company_name.text = name;
 			level.label_company_name.text += " " + type;
-		}
-		
-		public function set companyGold(value:Number):void
-		{
 			level.label_company_gold.text = value.toString();
+			level.label_company_rank.text = "#" + value.toString();
+			
+			Text.truncateText(level.label_company_name);
 			Text.truncateText(level.label_company_gold);
+			Text.truncateText(level.label_company_rank);*/
 		}
 		
-		public function set companyRank(value:Number):void
+		public function setPlanetData(index:int, name:String, toxicity:Number, richness:Number):void
 		{
-			level.label_company_rank.text = "#" + value.toString();
-			Text.truncateText(level.label_company_rank);
+			if (index < 0) index = 0;
+			if (index > 5) index = 4;
+			
+			//var planetAsset:MovieClip = level.getChildByName("planet_" + index);
+			//planetAsset.
 		}
 	}
 }
