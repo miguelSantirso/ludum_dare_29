@@ -89,7 +89,12 @@ package managers
 		{
 			RemoteManager.getInstance().register(companyName, color1, color2, function(data:Object):void { SessionManager.getInstance().storeRegistration(data); start(); } );
 		}
-	
+		
+		public function logout():void
+		{
+			RemoteManager.getInstance().logout();
+		}
+		
 		public function takeOff(diggingSession:DiggingSession):void
 		{
 			RemoteManager.getInstance().takeOff(diggingSession); // set the success callback to go back to System view
