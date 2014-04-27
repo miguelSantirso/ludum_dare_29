@@ -19,6 +19,19 @@ package utils
 				}
 			}
 		}
+		
+		public static function truncateMultilineText(textfield:TextField, maxLines:int, tooltip:String = "."):TextField
+		{
+			if (textfield.numLines > maxLines)
+			{
+				var char:int = textfield.getLineOffset(maxLines);
+				char -= tooltip.length;
+				char = textfield.text.substring(0, char + 1).search(/\S\s*$/);
+				
+				textfield.text = textfield.text.substring(0, char) + tooltip;
+			}
+			
+			return textfield;
+		}
 	}
-
 }

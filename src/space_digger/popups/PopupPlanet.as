@@ -23,6 +23,7 @@ package space_digger.popups
 		public static const EVENT_CLOSE:String = "eventClose";
 		private var _asset:AssetPopupPlanet;
 		private var _planet:Planet;
+		public var planetIndex:int;
 		
 		public function PopupPlanet() 
 		{
@@ -171,12 +172,13 @@ package space_digger.popups
 			
 			var selectedMine:Mine = _planet.mines[mineIndex];
 			
-			GameManager.getInstance().land(selectedMine, 
-				function():void {
-					GameManager.getInstance().changeLevel(selectedMine);
-				});
-			
-			//trace("MINE SELECTED: " + mineIndex, _planet.mines[mineIndex].id);
+			if (selectedMine.occupant == null)
+			{
+				GameManager.getInstance().land(selectedMine, 
+					function():void {
+						GameManager.getInstance().changeLevel(selectedMine);
+					});
+			}
 		}
 		
 		private function onButtonCloseHandler(e:MouseEvent):void

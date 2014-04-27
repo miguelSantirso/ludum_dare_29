@@ -2,16 +2,15 @@ package space_digger
 {
 	import flash.events.Event;
 	import utils.scroller.ItemRendererObject;
-	import utils.Text;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
 	 */
-	public class ActivityIR extends ItemRendererObject
+	public class RankingPositionIR extends ItemRendererObject
 	{
-		public function ActivityIR() 
+		public function RankingPositionIR() 
 		{
-			asset = new IRRecentActivity();
+			asset = new IRRankingPosition();
 			
 			addChild(asset);
 		}
@@ -35,13 +34,14 @@ package space_digger
 		{
 			super.data = value;
 
-			asset.label_description.text = value;			
-			Text.truncateMultilineText(asset.label_description, 3, "...");
+			asset.label_company_position.text = "#" + value.position.toString();
+			asset.label_company_name.text = value.company.name;
+			asset.label_company_gold.text = value.company.score.toString();
 		}
 
 		public override function get asset():*
 		{
-			return super.asset as IRRecentActivity;
+			return super.asset as IRRankingPosition;
 		}
 	}
 

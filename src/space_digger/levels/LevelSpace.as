@@ -26,7 +26,7 @@ package space_digger.levels
 	{
 		protected var recentActivityScroller:Scroller;
 		protected var ongoingOpsScroller:Scroller;
-		protected var popupPlanet:PopupPlanet;
+		protected var _popupPlanet:PopupPlanet;
 		protected var popupRanking:PopupRanking;
 		private var popupModal:Sprite;
 		
@@ -41,46 +41,36 @@ package space_digger.levels
 		{
 			super.initialize();
 			
+			recentActivityScroller = new Scroller(false, 4.2, ActivityIR, 5);
+			recentActivityScroller.init();
+			level.slot_activity_list.addChild(recentActivityScroller);
+			
+			ongoingOpsScroller = new Scroller(false, 3.8, OperationIR);
+			ongoingOpsScroller.init();
+			level.slot_ongoing_list.addChild(ongoingOpsScroller);
+			
+			_popupPlanet = new PopupPlanet();
+			_popupPlanet.x = (stage.stageWidth - _popupPlanet.width) * 0.5;
+			_popupPlanet.y = (stage.stageHeight - _popupPlanet.height) * 0.5;
+			_popupPlanet.addEventListener(PopupPlanet.EVENT_CLOSE, closePlanetPopup);
+			
+			popupRanking = new PopupRanking();
+			popupRanking.x = (stage.stageWidth - popupRanking.width) * 0.5;
+			popupRanking.y = (stage.stageHeight - popupRanking.height) * 0.5;
+			popupRanking.addEventListener(PopupRanking.EVENT_CLOSE, closeRankingPopup);
+			
+			popupModal = new Sprite();
+			popupModal.graphics.beginFill(0x000000, 0.85);
+			popupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+			popupModal.graphics.endFill();
+			
 			setCompanyData();
 			setSystemData();
 			setOngoingOperations();
 			setRecentActivity();
 			
 			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
-			
-			// TEMP:
-			var temp:Array = new Array();
-			var tempObj:Object;
-			
-			for (var i:int = 0; i < 50; i++)
-			{
-				tempObj = new Object()
-				tempObj["message"] = "IR " + i.toString();
-				temp.push(tempObj);
-			}
-			
-			recentActivityScroller = new Scroller(false, 6, ActivityIR, 0, temp);
-			recentActivityScroller.init();
-			level.slot_activity_list.addChild(recentActivityScroller);
-			
-			ongoingOpsScroller = new Scroller(false, 3.8, OperationIR, 0, temp);
-			ongoingOpsScroller.init();
-			level.slot_ongoing_list.addChild(ongoingOpsScroller);
-			
-			popupPlanet = new PopupPlanet();
-			popupPlanet.x = (stage.stageWidth - popupPlanet.width) * 0.5;
-			popupPlanet.y = (stage.stageHeight - popupPlanet.height) * 0.5;
-			popupPlanet.addEventListener(PopupPlanet.EVENT_CLOSE, closePlanetPopup);
-			
-			/*popupPlanet = new PopupRanking();
-			popupPlanet.x = (stage.stageWidth - popupPlanet.width) * 0.5;
-			popupPlanet.y = (stage.stageHeight - popupPlanet.height) * 0.5;
-			popupPlanet.addEventListener(PopupPlanet.EVENT_CLOSE, closePlanetPopup);*/
-			
-			popupModal = new Sprite();
-			popupModal.graphics.beginFill(0x000000, 0.85);
-			popupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
-			popupModal.graphics.endFill();
+			level.button_view_ranking.addEventListener(MouseEvent.CLICK, setRankingPopupData);
 		}
 		
 		public override function update(timeDelta:Number):void
@@ -92,9 +82,16 @@ package space_digger.levels
 		{
 			level.slot_activity_list.removeChild(recentActivityScroller);
 			level.slot_ongoing_list.removeChild(ongoingOpsScroller);
-			removeChild(popupPlanet);
+			removeChild(_popupPlanet);
 			
-			popupPlanet.dispose();
+			_popupPlanet.dispose();
+			popupRanking.dispose();
+			
+			ongoingOpsScroller.dispose();
+			recentActivityScroller.dispose();
+			
+			ongoingOpsScroller = null;
+			recentActivityScroller = null;
 			
 			super.dispose();
 		}
@@ -104,16 +101,24 @@ package space_digger.levels
 			GameManager.getInstance().logout();
 		}
 		
+		private function onUpdateMyCompanyRank():void
+		{
+			level.label_company_rank.text = "#" + DataManager.getInstance().getCompanyRank(DataManager.getInstance().myState.company.id);
+		}
+		
 		public function setCompanyData():void
 		{
 			level.label_company_name.text = DataManager.getInstance().myState.company.name.toUpperCase();
 			level.label_company_gold.text = DataManager.getInstance().myState.company.score.toString();
-			level.label_company_rank.text = "#99"; // TO-DO
+			level.label_company_rank.text = "";
 			level.badge_workers.label_num.text = DataManager.getInstance().myState.company.workers.toString();
 			
 			Text.truncateText(level.label_company_name);
 			Text.truncateText(level.label_company_gold);
 			Text.truncateText(level.label_company_rank);
+			
+			GameManager.getInstance().rankingUpdated.add(onUpdateMyCompanyRank);
+			GameManager.getInstance().getRanking();
 		}
 		
 		public function setSystemData():void
@@ -171,12 +176,30 @@ package space_digger.levels
 		
 		public function setOngoingOperations():void
 		{
-			//
+			// TEMP!
+			var temp:Array = new Array();
+			var tempObj:Object;
+			
+			for (var i:int = 0; i < 50; i++)
+			{
+				tempObj = new Object()
+				tempObj["message"] = "IR " + i.toString();
+				temp.push(tempObj);
+			}
+			
+			ongoingOpsScroller.dataProvider = temp;
 		}
 		
 		public function setRecentActivity():void
 		{
-			//
+			var eventsDataProvider:Array = new Array();
+			
+			for each(var activityEvent:String in DataManager.getInstance().myState.events)
+			{
+				eventsDataProvider.push(activityEvent);
+			}
+			
+			recentActivityScroller.dataProvider = eventsDataProvider;
 		}
 		
 		public function setPlanetPopupData(planetIndex:int):void
@@ -186,19 +209,37 @@ package space_digger.levels
 			
 			var selectedPlanet:Planet;
 			
-			if (contains(popupPlanet))
+			if (contains(_popupPlanet))
 			{
 				selectedPlanet = DataManager.getInstance().mySystem.planets[planetIndex];
-				popupPlanet.planet = selectedPlanet;
+				_popupPlanet.planetIndex = planetIndex;
+				_popupPlanet.planet = selectedPlanet;
 			}
+		}
+		
+		public function setRankingPopupData(e:Event = null):void
+		{
+			if (!contains(popupRanking))
+			{
+				GameManager.getInstance().rankingUpdated.add(setRankingPopupDataReady);
+				GameManager.getInstance().getRanking();
+			}
+		}
+		
+		public function setRankingPopupDataReady():void
+		{
+			GameManager.getInstance().rankingUpdated.remove(setRankingPopupDataReady);
+			
+			popupRanking.ranking = DataManager.getInstance().ranking;
+			openRankingPopup();
 		}
 		
 		public function openPlanetPopup(e:MouseEvent):void
 		{
-			if (!contains(popupPlanet))
+			if (!contains(_popupPlanet))
 			{
 				addChild(popupModal);
-				addChild(popupPlanet);
+				addChild(_popupPlanet);
 				
 				var planetIndex:int = e.currentTarget.name.charAt(e.currentTarget.name.length - 1);
 
@@ -208,11 +249,36 @@ package space_digger.levels
 		
 		public function closePlanetPopup(e:Event = null):void
 		{
-			if (contains(popupPlanet))
+			if (contains(_popupPlanet))
 			{
 				removeChild(popupModal);
-				removeChild(popupPlanet);
+				removeChild(_popupPlanet);
 			}
+		}
+		
+		public function openRankingPopup(e:MouseEvent = null):void
+		{
+			if (!contains(popupRanking))
+			{
+				addChild(popupModal);
+				addChild(popupRanking);
+				
+				setRankingPopupData();
+			}
+		}
+		
+		public function closeRankingPopup(e:Event = null):void
+		{
+			if (contains(popupRanking))
+			{
+				removeChild(popupModal);
+				removeChild(popupRanking);
+			}
+		}
+		
+		public function get popupPlanet():PopupPlanet 
+		{
+			return _popupPlanet;
 		}
 	}
 }
