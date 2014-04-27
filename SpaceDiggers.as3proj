@@ -53,22 +53,21 @@
     <element path="lib\ice.swc" />
     <element path="lib\main_char_actions.swc" />
     <element path="lib\Ice_enemy_actions.swc" />
+    <element path="lib\game_hud.swc" />
     <element path="lib\ice_creeper.swc" />
-    <element path="lib\nave_animaciones_hielo.swc" />
     <element path="lib\greensock.swc" />
     <element path="lib\nave_animaciones_hielo.swc" />
     <element path="lib\fire.swc" />
     <element path="lib\forest.swc" />
-    <element path="lib\happy.swc" />
+    <element path="lib\fx_exit.swc" />
     <element path="lib\mineral1.swc" />
     <element path="lib\nave_animaciones_happy.swc" />
+    <element path="lib\happy.swc" />
     <element path="lib\water.swc" />
-    <element path="lib\fx_exit.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="lib\CEV3-1-9-ALL.swc" />
-    <element path="lib\game_hud.swc" />
     <element path="lib\as3-signals-v0.9-BETA.swc" />
   </libraryPaths>
   <!-- External Libraries -->

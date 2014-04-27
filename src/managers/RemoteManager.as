@@ -145,6 +145,8 @@ package managers
 					_currentRemoteOperation.dispose();
 					_currentRemoteOperation = null;
 					// show popup with error
+					
+					GameManager.getInstance().displayMessagePopUp(operation.errorMessage);
 					trace(operation.errorMessage);
 					break;
 				case RemoteOperation.STATUS_BAD_URL :
@@ -156,6 +158,8 @@ package managers
 					_currentRemoteOperation.dispose();
 					_currentRemoteOperation = null;
 					// show popup with server is down
+					
+					GameManager.getInstance().displayMessagePopUp(operation.errorMessage);
 					break;
 				default:
 					_currentRemoteOperation.dispose();

@@ -104,6 +104,11 @@ package data
 		{
 			return _seams;
 		}
+		
+		public function get deaths():Vector.<Death> 
+		{
+			return _deaths;
+		}
 	}
 
 }
