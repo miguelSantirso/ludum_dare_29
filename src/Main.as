@@ -47,6 +47,7 @@ package
 			GameManager.getInstance().ready.add(goToLevelSpace);
 			GameManager.getInstance().loggedOut.add(goToLevelRegister);
 			GameManager.getInstance().startFailed.add(goToLevelRegister);
+			GameManager.getInstance().changeLevelRequest.add(changeLevel);
 			GameManager.getInstance().start();
 		}
 		

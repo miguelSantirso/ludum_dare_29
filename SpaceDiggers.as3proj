@@ -57,6 +57,12 @@
     <element path="lib\nave_animaciones_hielo.swc" />
     <element path="lib\greensock.swc" />
     <element path="lib\nave_animaciones_hielo.swc" />
+    <element path="lib\fire.swc" />
+    <element path="lib\forest.swc" />
+    <element path="lib\happy.swc" />
+    <element path="lib\mineral1.swc" />
+    <element path="lib\nave_animaciones_happy.swc" />
+    <element path="lib\water.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
