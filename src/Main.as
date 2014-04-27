@@ -42,11 +42,14 @@ package
 			if (Main.DEBUG)
 				addChild(new Stats());
 
-			//GameManager.getInstance().testRemoteOperations();
+			/*//GameManager.getInstance().testRemoteOperations();
 			GameManager.getInstance().needsRegistration.add(goToLevelRegister);
 			GameManager.getInstance().ready.add(goToLevelSpace);
 			GameManager.getInstance().loggedOut.add(goToLevelRegister);
-			GameManager.getInstance().start();
+			GameManager.getInstance().startFailed.add(goToLevelRegister);
+			GameManager.getInstance().start();*/
+			
+			changeLevel(4);
 		}
 		
 		private function goToLevelRegister():void
