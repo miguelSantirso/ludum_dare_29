@@ -5,6 +5,7 @@ package space_digger.levels
 	import flash.events.MouseEvent;
 	import utils.Text;
 	import managers.DataManager;
+	import managers.GameManager;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -23,12 +24,9 @@ package space_digger.levels
 			super.initialize();
 			
 			setCompanyData(); 
+			setSystemData();
 			
-			level.planet_0.addEventListener(MouseEvent.CLICK, test);
-			level.planet_1.addEventListener(MouseEvent.CLICK, test);
-			level.planet_2.addEventListener(MouseEvent.CLICK, test);
-			level.planet_3.addEventListener(MouseEvent.CLICK, test);
-			level.planet_4.addEventListener(MouseEvent.CLICK, test);
+			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
 		}
 		
 		public override function update(timeDelta:Number):void
@@ -46,6 +44,11 @@ package space_digger.levels
 			changeLevel.dispatch(4); // TEMP!
 		}
 		
+		private function logout(e:MouseEvent):void
+		{
+			GameManager.getInstance().logout();
+		}
+		
 		public function setCompanyData():void
 		{
 			level.label_company_name.text = DataManager.getInstance().myState.company.name.toUpperCase();
@@ -57,13 +60,25 @@ package space_digger.levels
 			Text.truncateText(level.label_company_rank);
 		}
 		
-		public function setPlanetData(index:int, name:String, toxicity:Number, richness:Number):void
+		public function setSystemData():void
+		{
+			var currentPlanetMC:MovieClip;
+			
+			for (var i:int = 0; i < 5; i++)
+			{
+				currentPlanetMC = level.getChildByName("planet_" + i) as MovieClip;
+				currentPlanetMC.icon_planet.gotoAndStop(1);
+				currentPlanetMC.addEventListener(MouseEvent.CLICK, test);
+			}
+		}
+		
+		/*public function setPlanetData(index:int, name:String, toxicity:Number, richness:Number):void
 		{
 			if (index < 0) index = 0;
 			if (index > 5) index = 4;
 			
 			//var planetAsset:MovieClip = level.getChildByName("planet_" + index);
 			//planetAsset.
-		}
+		}*/
 	}
 }
