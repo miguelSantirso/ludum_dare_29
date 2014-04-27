@@ -7,10 +7,10 @@ package data
 	 * ...
 	 * @author Luis Miguel Blanco
 	 */
-	public class Seam implements IPopulatable 
+	public class SeamData implements IPopulatable 
 	{
 		protected var _id:int;
-		protected var _state:SeamState;
+		protected var _state:int; // Seamstate
 		protected var _owner:Company;
 		protected var _plantingDate:Date;
 		protected var _planet:int;
@@ -18,7 +18,7 @@ package data
 		protected var _extractionRate:int;
 		protected var _recentGain:int;
 		
-		public function Seam(data:Object = null) 
+		public function SeamData(data:Object = null) 
 		{
 			if (data)
 				populate(data);
@@ -57,7 +57,7 @@ package data
 		public function reset():void 
 		{
 			_id = 0;
-			_state = null;
+			_state = 0;
 			_owner = null;
 			_plantingDate = null;
 			_planet = 0;
@@ -76,7 +76,7 @@ package data
 			return _id;
 		}
 		
-		public function get state():SeamState 
+		public function get state():int 
 		{
 			return _state;
 		}
