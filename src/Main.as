@@ -23,8 +23,10 @@ package
 		
 		public function Main():void 
 		{
-			if (stage) init();
-			else addEventListener(Event.ADDED_TO_STAGE, init);
+			//if (stage)
+			//	init();
+			//else 
+				addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
 		private function init(e:Event = null):void
@@ -78,6 +80,8 @@ package
 		
 		protected function travelToMine(mine:Mine):void
 		{
+			DataManager.getInstance().currentMine = mine;
+			
 			changeLevel(GameManager.getInstance().getClientMapIndexFromServerMapId(mine.map));
 		}
 		
