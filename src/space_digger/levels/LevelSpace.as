@@ -8,7 +8,8 @@ package space_digger.levels
 	import flash.geom.Rectangle;
 	import org.osflash.signals.Signal;
 	import flash.events.MouseEvent;
-	import space_digger.PopupPlanet;
+	import space_digger.popups.PopupPlanet;
+	import space_digger.popups.PopupRanking;
 	import utils.Text;
 	import managers.DataManager;
 	import managers.GameManager;
@@ -26,7 +27,8 @@ package space_digger.levels
 		protected var recentActivityScroller:Scroller;
 		protected var ongoingOpsScroller:Scroller;
 		protected var popupPlanet:PopupPlanet;
-		private var popupPlanetModal:Sprite;
+		protected var popupRanking:PopupRanking;
+		private var popupModal:Sprite;
 		
 		public function LevelSpace(_level:MovieClip) 
 		{
@@ -69,10 +71,16 @@ package space_digger.levels
 			popupPlanet.x = (stage.stageWidth - popupPlanet.width) * 0.5;
 			popupPlanet.y = (stage.stageHeight - popupPlanet.height) * 0.5;
 			popupPlanet.addEventListener(PopupPlanet.EVENT_CLOSE, closePlanetPopup);
-			popupPlanetModal = new Sprite();
-			popupPlanetModal.graphics.beginFill(0x000000, 0.85);
-			popupPlanetModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
-			popupPlanetModal.graphics.endFill();
+			
+			/*popupPlanet = new PopupRanking();
+			popupPlanet.x = (stage.stageWidth - popupPlanet.width) * 0.5;
+			popupPlanet.y = (stage.stageHeight - popupPlanet.height) * 0.5;
+			popupPlanet.addEventListener(PopupPlanet.EVENT_CLOSE, closePlanetPopup);*/
+			
+			popupModal = new Sprite();
+			popupModal.graphics.beginFill(0x000000, 0.85);
+			popupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+			popupModal.graphics.endFill();
 		}
 		
 		public override function update(timeDelta:Number):void
@@ -189,7 +197,7 @@ package space_digger.levels
 		{
 			if (!contains(popupPlanet))
 			{
-				addChild(popupPlanetModal);
+				addChild(popupModal);
 				addChild(popupPlanet);
 				
 				var planetIndex:int = e.currentTarget.name.charAt(e.currentTarget.name.length - 1);
@@ -202,7 +210,7 @@ package space_digger.levels
 		{
 			if (contains(popupPlanet))
 			{
-				removeChild(popupPlanetModal);
+				removeChild(popupModal);
 				removeChild(popupPlanet);
 			}
 		}

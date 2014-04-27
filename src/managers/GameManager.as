@@ -183,7 +183,7 @@ package managers
 		
 		public function displayMessagePopUp(message:String, buttonLabel:String = "Close", closeCallback:Function = null):void
 		{
-			// Albert do your magic
+			
 		}
 		
 		public function getClientMapIndexFromServerMapId(serverMapId:int):int
