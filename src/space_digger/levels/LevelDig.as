@@ -31,9 +31,6 @@ package space_digger.levels
 	{
 		public var startedDigging:Signal = new Signal(int, int);
 		
-		private var _decorations:Vector.<CitrusSprite> = new Vector.<CitrusSprite>();
-		//protected var sensors:Array;
-		
 		private var _hud:GameplayHud = new GameplayHud();
 		
 		public function LevelDig(_level:MovieClip) 
@@ -50,18 +47,6 @@ package space_digger.levels
 			view.camera.setUp(getObjectByName("player_char")/*, new Rectangle(0, 0, 1352, 1963)*/);
 			
 			stage.addChild(_hud);
-		}
-		
-		public override function update(timeDelta:Number):void
-		{
-			super.update(timeDelta);
-		}
-		
-		public override function dispose():void
-		{
-			_decorations.splice(0, _decorations.length);
-			
-			super.dispose();
 		}
 	}
 }

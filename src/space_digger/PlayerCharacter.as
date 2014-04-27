@@ -12,6 +12,7 @@ package space_digger
 	import citrus.input.controllers.Keyboard;
 	import citrus.physics.PhysicsCollisionCategories;
 	import citrus.physics.box2d.Box2DUtils;
+	import space_digger.levels.LevelDig;
 	
 	/**
 	 * ...
