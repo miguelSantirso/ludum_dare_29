@@ -181,9 +181,6 @@ package space_digger.levels
 			if (contains(popupPlanet))
 			{
 				selectedPlanet = DataManager.getInstance().mySystem.planets[planetIndex];
-				popupPlanet.planetName = selectedPlanet.name;
-				popupPlanet.planetToxicity = selectedPlanet.toxicity;
-				popupPlanet.planetRichness = selectedPlanet.richness;
 				popupPlanet.planet = selectedPlanet;
 			}
 		}
