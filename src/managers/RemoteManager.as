@@ -205,7 +205,7 @@ package managers
 		
 		public function land(mineId:int, mine:Mine,successCallback:Function = null, faultCallback:Function = null):void
 		{
-			var requestObject:Object = { mine_id: mineId };
+			var requestObject:Object = { mine: mineId };
 			
 			sendOperation(LAND, RemoteURL.LAND, RemoteOperation.TYPE_POST, requestObject, [mine], successCallback, faultCallback);
 		}
@@ -217,7 +217,11 @@ package managers
 		
 		public function takeOff(diggingSession:DiggingSession, successCallback:Function = null, faultCallback:Function = null):void
 		{
-			var requestObject:Object = { "seams_activated": diggingSession.activatedSeams, "takeoff": true };
+			var requestObject:Object = { "takeoff": true };
+			
+			if (diggingSession.activatedSeams.length > 0) {
+				requestObject["seams_activated"] = diggingSession.activatedSeams;
+			}
 			
 			if (diggingSession.death){
 				requestObject["death"] = true;

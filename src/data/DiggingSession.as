@@ -8,6 +8,8 @@ package data
 	{
 		protected var _activatedSeams:Array;
 		protected var _death:Death;
+		
+		public var mine:Mine;
 
 		public function DiggingSession() 
 		{
@@ -22,22 +24,31 @@ package data
 			_death = deathObject;
 		}
 		
-		public function deploySeamMachine(seamId:int):void
+		public function deploySeamMachine(seamIndex:int):void
 		{
-			for each(var s:int in _activatedSeams) {
-				if (s == seamId)
-					return;
-			}
-			_activatedSeams.push(seamId);
+			if (!mine)
+				throw new Error("You didn't set the mine object!");
+				
+			if (seamIndex >= 0 && seamIndex < mine.seams.length) {				
+				if (_activatedSeams.indexOf(mine.seams[seamIndex]) >= 0) return;
+		
+				_activatedSeams.push(mine.seams[seamIndex].id);
+			}else
+				return;
 		}
 		
-		public function destroySeamMachine(seamId:int):void
+		public function destroySeamMachine(seamIndex:int):void
 		{
-			for (var i:int = _activatedSeams.length - 1; i >= 0; i--) {
-				if (_activatedSeams[i] == seamId)
-					_activatedSeams.splice(i, 1);
-				return;
-			} 
+			if (!mine)
+				throw new Error("You didn't set the mine object!");
+			
+			if (seamIndex >= 0 && seamIndex < mine.seams.length) {
+				var index:int = _activatedSeams.indexOf(mine.seams[seamIndex]);
+				
+				if (index >= 0)
+					_activatedSeams.splice(index, 1);
+			}else
+				return;	
 		}
 		
 		public function get activatedSeams():Array

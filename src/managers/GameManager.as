@@ -120,8 +120,6 @@ package managers
 			
 			DataManager.getInstance().reset();
 			RemoteManager.getInstance().reset();
-			
-			requestRegistration();
 		}
 		
 		public function register(companyName:String, color1:uint, color2:uint):void
@@ -131,7 +129,7 @@ package managers
 		
 		public function logout():void
 		{
-			RemoteManager.getInstance().logout();
+			RemoteManager.getInstance().logout(onLoggedOut,onLoggedOut);
 		}
 		
 		public function updateState(successCallback:Function = null, faultCallback:Function = null):void
@@ -144,9 +142,9 @@ package managers
 			RemoteManager.getInstance().getSystem(DataManager.getInstance().mySystem, successCallback, faultCallback);
 		}
 		
-		public function land(mine:Mine):void
+		public function land(mine:Mine,successCallback:Function = null, faultCallback:Function = null):void
 		{
-			RemoteManager.getInstance().land(mine.id, mine); // TODO set the success callback to go to the Mine view 
+			RemoteManager.getInstance().land(mine.id, mine,successCallback,faultCallback); // TODO set the success callback to go to the Mine view 
 		}
 		
 		public function play(stopwatchCallback:Function, faultCallback:Function = null):void

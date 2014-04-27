@@ -34,8 +34,9 @@ package data
 			if(data["state"])	
 				_state = data["state"];
 				
-			if(data["owner"])	
-				_state = data["owner"];
+			if (data["owner"]) {
+				_owner = new Company(data["owner"]);
+			}
 				
 			if(data["planting_date"])	
 				_plantingDate = ServerTime.getDateFromServerTime(data["planting_date"]);

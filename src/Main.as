@@ -39,8 +39,8 @@ package
 					[LevelPlanet, "../swf/levels/LevelPlanet.swf"]
 				];
 		
-			if (Main.DEBUG)
-				//addChild(new Stats());
+			//if (Main.DEBUG)
+			//	addChild(new Stats());
 
 			//GameManager.getInstance().testRemoteOperations();
 			GameManager.getInstance().needsRegistration.add(goToLevelRegister);

@@ -4,6 +4,8 @@ package space_digger.levels
 	import Box2D.Dynamics.Contacts.b2Contact;
 	import Box2D.Dynamics.Contacts.b2PolygonContact;
 	import citrus.core.State;
+	import data.DiggingSession;
+	import data.Mine;
 	import flash.display.MovieClip;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.CitrusSpritePool;
@@ -29,6 +31,8 @@ package space_digger.levels
 	import managers.GameManager;
 	import flash.utils.setTimeout;
 	import space_digger.DestructibleBlock;
+	import managers.GameManager;
+	import managers.DataManager;
 	
 	/**
 	 * ...
@@ -40,6 +44,9 @@ package space_digger.levels
 		
 		private var _ship:SpaceShip;
 		private var _inExitArea:Boolean = false;
+		private var _readyToLand:Boolean = false;
+		
+		public var diggingSession:DiggingSession = new DiggingSession();
 		
 		private var _hud:GameplayHud = new GameplayHud();
 		
@@ -60,6 +67,16 @@ package space_digger.levels
 			(getObjectByName("exit") as Sensor).onBeginContact.add(onEnteredExit);
 			(getObjectByName("exit") as Sensor).onEndContact.add(onExitedExit);
 			
+			var TEMPMine:Mine = DataManager.getInstance().mySystem.planets[0].mines[0]; // replace for the chosen one
+			
+			diggingSession.mine = TEMPMine;
+			
+			GameManager.getInstance().land(
+				TEMPMine, 
+				function():void {
+					_readyToLand = true;
+				});
+			
 			stage.addChild(_hud);
 		}
 		
@@ -69,25 +86,46 @@ package space_digger.levels
 			
 			if (_inExitArea && _ce.input.justDid("attack"))
 			{
-				_ship.leave();
+				endExploration();
 			}
 		}
 		
 		public function startExploration():void
 		{
-			view.camera.bounds = null;
-			var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
-			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
-			view.camera.camPos.x = ship.x;
-			view.camera.camPos.y = ship.y - 40;
-			player.x = ship.x;
-			view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);
+			if (!_readyToLand)
+			{
+				endExploration(false);
+			}
 			
 			GameManager.getInstance().play(function(data:Object):void {
-				view.camera.switchToTarget(getObjectByName("player_char"));
 				view.camera.bounds = null;
+				var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
+				var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
+				view.camera.camPos.x = ship.x;
+				view.camera.camPos.y = ship.y - 40;
+				player.x = ship.x;
+				view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);
 			});
 		}
+		
+		public function endExploration(takeOff:Boolean = true):void
+		{
+			GameManager.getInstance().takeOff(diggingSession);
+			
+			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
+			view.camera.camPos.x = player.x; 
+			view.camera.camPos.y = player.y;
+			view.camera.bounds = new Rectangle(0, -500, 1000, 530);
+			view.camera.switchToTarget(_ship, 10, function():void {
+				_ship.leave();
+			});
+		}
+		
+		public function endMission():void
+		{
+			// TODO...
+		}
+		
 		
 		private function onEnteredExit(c:b2Contact):void
 		{
