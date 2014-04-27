@@ -1,5 +1,6 @@
 package data 
 {
+	import infrastructure.interfaces.IPopulatable;
 	/**
 	 * ...
 	 * @author Luis Miguel Blanco
@@ -15,7 +16,8 @@ package data
 		
 		public function populate(data:Object):void 
 		{
-			_machineLifetime = data.machine_lifetime;
+			if(data["machine_lifetime"])
+				_machineLifetime = data["machine_lifetime"];
 		}
 		
 		public function reset():void 

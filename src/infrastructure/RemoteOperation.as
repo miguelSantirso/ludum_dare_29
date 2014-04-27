@@ -9,6 +9,7 @@ package infrastructure
 	import flash.net.URLRequest;
 	import flash.net.URLVariables;
 	import org.osflash.signals.Signal;
+	import infrastructure.interfaces.IPopulatable;
 	
 	public class RemoteOperation extends EventDispatcher
 	{
@@ -23,7 +24,8 @@ package infrastructure
 		public static var LOCAL:Boolean = false;
 		
 		public static const LOCAL_URL:String = "views/";
-		public static const SERVER_URL:String = "http://space.basedos.com";// "http://192.168.99.133/space/";
+		public static const SERVER_URL:String = "http://192.168.99.133/space/";
+		//"http://space.basedos.com";
 		
 		protected var _tag:String;
 		protected var _url:String;
@@ -146,6 +148,15 @@ package infrastructure
 						trace("JSON ", e.message);
 					}
 				}
+				// populate the structures
+				if(_populateStructures != null){
+					for each (var structure:IPopulatable in _populateStructures) 
+					{
+						if(structure)
+							structure.populate(jsonObject);
+					}
+				}
+				// execute the callback
 				if(_successCallback != null){
 					if(jsonObject && _successCallback.length > 0)
 						_successCallback(jsonObject);

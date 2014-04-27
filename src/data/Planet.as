@@ -1,12 +1,13 @@
 package data 
 {
+	import infrastructure.interfaces.IPopulatable;
 	/**
 	 * ...
 	 * @author Luis Miguel Blanco
 	 */
 	public class Planet implements IPopulatable 
 	{
-		protected var _id:
+		protected var _id:int;
 		protected var _name:String;
 		protected var _difficulty:int; //PlanetDifficulty
 		protected var _richness:int; // number of seams
@@ -21,14 +22,26 @@ package data
 		
 		public function populate(data:Object):void 
 		{
-			_id = data.id;
-			_name = data.name;
-			_difficulty = data.difficulty;
-			_richness = data.richness;
-			_toxicity = data.toxicity;
-			_skin = data.skin;
+			if(data["id"])
+				_id = data["id"];
+				
+			if(data["name"])
+				_name = data["name"];
 			
-			populateMines(data.mines);
+			if(data["difficulty"])
+				_difficulty = data["difficulty"];
+				
+			if(data["richness"])
+				_richness = data["richness"];
+				
+			if(data["toxicity"])	
+				_toxicity = data["toxicity"];
+				
+			if(data["skin"])
+				_skin = data["skin"];
+			
+			if(data["mines"])
+				populateMines(data["mines"]);
 		}
 		
 		public function reset():void 
@@ -48,7 +61,7 @@ package data
 			// TODO
 		}
 		
-		public function get id(): 
+		public function get id():int
 		{
 			return _id;
 		}

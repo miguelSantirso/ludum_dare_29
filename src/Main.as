@@ -16,7 +16,7 @@ package
 	 */
 	public class Main extends CitrusEngine
 	{
-		public static const DEBUG:Boolean = true;
+		public static const DEBUG:Boolean = CONFIG::debug;
 		
 		public function Main():void 
 		{
@@ -31,15 +31,34 @@ package
 			levelManager = new LevelManager(GameLevel);
 			levelManager.onLevelChanged.add(onLevelChanged);
 			levelManager.levels = 
-				[[LevelSpace, "../swf/levels/LevelSpace.swf"],
-				[LevelDig, "../swf/levels/Level1.swf"],
-				[LevelPlanet, "../swf/levels/LevelPlanet.swf"]];
-			levelManager.gotoLevel();
+				[
+					[LevelRegister, "../swf/levels/LevelRegister.swf"],
+					[LevelSpace, "../swf/levels/LevelSpace.swf"],
+					[LevelDig, "../swf/levels/Level1.swf"],
+					[LevelPlanet, "../swf/levels/LevelPlanet.swf"]
+				];
 		
 			if (Main.DEBUG)
 				addChild(new Stats());
 
-			GameManager.getInstance().testRemoteOperations();
+			//GameManager.getInstance().testRemoteOperations();
+			GameManager.getInstance().needsRegistration.add(goToLevelRegister);
+			GameManager.getInstance().ready.add(goToLevelSpace);
+			GameManager.getInstance().start();
+		}
+		
+		private function goToLevelRegister():void
+		{
+			changeLevel(1);
+			
+			trace("REGISTER");
+		}
+		
+		private function goToLevelSpace():void
+		{
+			changeLevel(2);
+			
+			trace("SPACE");
 		}
 		
 		private function onLevelChanged(level:GameLevel):void
@@ -47,13 +66,21 @@ package
 			state = level;
 			
 			level.lvlEnded.add(nextLevel);
+			level.lvlBack.add(previousLevel);
 			level.restartLevel.add(restartLevel);
+			level.changeLevel.add(changeLevel);
 		}
 		
 		private function nextLevel():void
 		{
 			(levelManager.currentLevel as GameLevel).dispose();
 			levelManager.nextLevel();
+		}
+		
+		private function previousLevel():void
+		{
+			(levelManager.currentLevel as GameLevel).dispose();
+			levelManager.prevLevel();
 		}
 		
 		private function restartLevel():void
@@ -63,7 +90,11 @@ package
 		
 		public function changeLevel(levelIndex:int):void
 		{
-			levelManager.gotoLevel(levelIndex);
+			if (levelIndex != levelManager.currentIndex)
+			{
+				if(levelManager.currentLevel) (levelManager.currentLevel as GameLevel).dispose();
+				levelManager.gotoLevel(levelIndex);
+			}
 		}
 	}
 }
