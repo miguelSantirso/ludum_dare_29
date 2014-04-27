@@ -41,6 +41,11 @@ package space_digger
 
 			super.update(timeDelta);
 
+			if (this._hurt)
+			{
+				this.body.SetActive(false);
+			}
+			
 			/*
 			if (_ce.input.justDid("test", inputChannel))
 			{
