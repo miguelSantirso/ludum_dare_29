@@ -36,7 +36,11 @@ package
 				[
 					[LevelRegister, "../swf/levels/LevelRegister.swf"],
 					[LevelSpace, "../swf/levels/LevelSpace.swf"],
-					[LevelDig, "../swf/levels/Level1.swf"]
+					[LevelDig, "../swf/levels/Level1.swf"],
+					[LevelDig, "../swf/levels/Level2.swf"],
+					[LevelDig, "../swf/levels/Level3.swf"],
+					[LevelDig, "../swf/levels/Level4.swf"],
+					[LevelDig, "../swf/levels/Level5.swf"],
 				];
 		
 			//if (Main.DEBUG)
