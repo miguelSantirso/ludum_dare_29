@@ -14,6 +14,7 @@ package space_digger.levels
 	import citrus.objects.platformer.box2d.Cannon;
 	import citrus.utils.objectmakers.ObjectMaker2D;
 	import flash.geom.Rectangle;
+	import org.osflash.signals.Signal;
 	import space_digger.GameplayHud;
 	import space_digger.PlayerCharacter;
 	import traps.TrapSpikes;
@@ -28,6 +29,8 @@ package space_digger.levels
 	 */
 	public class LevelDig extends GameLevel
 	{
+		public var startedDigging:Signal = new Signal(int, int);
+		
 		private var _decorations:Vector.<CitrusSprite> = new Vector.<CitrusSprite>();
 		//protected var sensors:Array;
 		
