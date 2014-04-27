@@ -9,6 +9,7 @@ package infrastructure
 	import flash.net.URLRequest;
 	import flash.net.URLVariables;
 	import org.osflash.signals.Signal;
+	import infrastructure.interfaces.IPopulatable;
 	
 	public class RemoteOperation extends EventDispatcher
 	{
@@ -147,6 +148,15 @@ package infrastructure
 						trace("JSON ", e.message);
 					}
 				}
+				// populate the structures
+				if(_populateStructures != null){
+					for each (var structure:IPopulatable in _populateStructures) 
+					{
+						if(structure)
+							structure.populate(jsonObject);
+					}
+				}
+				// execute the callback
 				if(_successCallback != null){
 					if(jsonObject && _successCallback.length > 0)
 						_successCallback(jsonObject);

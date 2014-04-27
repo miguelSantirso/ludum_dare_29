@@ -22,15 +22,19 @@ package data
 		
 		public function populate(data:Object):void 
 		{
-			_id = data.id;
-			_map = data.map;
-			if(data.occupant){ 
+			if(data["id"])
+				_id = data["id"];
+			
+			if(data["map"])
+				_map = data["map"];
+			
+			if(data["occupant"]){ 
 				_occupant = new Company();
-				_occupant.populate(data.occupant);
+				_occupant.populate(data["occupant"]);
 			}else{
 				_occupant = null;
 			}
-			populateSeams(data.seams);
+			populateSeams(data["seams"]);
 		}
 		
 		public function reset():void 
