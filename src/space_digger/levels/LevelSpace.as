@@ -4,6 +4,7 @@ package space_digger.levels
 	import data.Planet;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.geom.Rectangle;
 	import org.osflash.signals.Signal;
 	import flash.events.MouseEvent;
@@ -14,6 +15,8 @@ package space_digger.levels
 	import utils.scroller.Scroller;
 	import space_digger.OperationIR;
 	import space_digger.ActivityIR;
+	import data.PlanetToxicity;
+	import data.PlanetRichness;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -65,6 +68,7 @@ package space_digger.levels
 			popupPlanet = new PopupPlanet();
 			popupPlanet.x = (stage.stageWidth - popupPlanet.width) * 0.5;
 			popupPlanet.y = (stage.stageHeight - popupPlanet.height) * 0.5;
+			popupPlanet.addEventListener(PopupPlanet.EVENT_CLOSE, closePlanetPopup);
 			popupPlanetModal = new Sprite();
 			popupPlanetModal.graphics.beginFill(0x000000, 0.85);
 			popupPlanetModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
@@ -82,6 +86,8 @@ package space_digger.levels
 			level.slot_ongoing_list.removeChild(ongoingOpsScroller);
 			removeChild(popupPlanet);
 			
+			popupPlanet.dispose();
+			
 			super.dispose();
 		}
 		
@@ -95,6 +101,7 @@ package space_digger.levels
 			level.label_company_name.text = DataManager.getInstance().myState.company.name.toUpperCase();
 			level.label_company_gold.text = DataManager.getInstance().myState.company.score.toString();
 			level.label_company_rank.text = "#99"; // TO-DO
+			level.badge_workers.label_num.text = DataManager.getInstance().myState.company.workers.toString();
 			
 			Text.truncateText(level.label_company_name);
 			Text.truncateText(level.label_company_gold);
@@ -109,13 +116,44 @@ package space_digger.levels
 			{
 				var iconIndex:int = 1 + Math.round(Math.random() * 4);
 				var iconRadius:int = 32 + Math.round(Math.random() * 64);
-
+				var toxicityValue:String;
+				var richnessValue:String;
+				
 				currentPlanetMC = level.getChildByName("planet_" + i) as MovieClip;
 				currentPlanetMC.icon_planet.gotoAndStop(iconIndex);
 				currentPlanetMC.icon_planet.width = currentPlanetMC.icon_planet.height = iconRadius;
 				currentPlanetMC.label_name.text = DataManager.getInstance().mySystem.planets[i].name;
-				currentPlanetMC.label_toxicity.text = DataManager.getInstance().mySystem.planets[i].toxicity.toString() + "%";
-				currentPlanetMC.label_richness.text = DataManager.getInstance().mySystem.planets[i].richness.toString() + "%";
+				
+				switch(DataManager.getInstance().mySystem.planets[i].toxicity)
+				{
+					case PlanetToxicity.LOW:
+						toxicityValue = "low";
+						break;
+						
+					case PlanetToxicity.MEDIUM:
+						toxicityValue = "med";
+						break;
+						
+					case PlanetToxicity.HIGH:
+					default:
+						toxicityValue = "high";
+						break;
+				}
+
+				switch(DataManager.getInstance().mySystem.planets[i].richness)
+				{
+					case PlanetRichness.POOR:
+						richnessValue = "poor";
+						break;
+						
+					case PlanetRichness.RICH:
+					default:
+						richnessValue = "rich";
+						break;
+				}
+				
+				currentPlanetMC.label_toxicity.text = toxicityValue;
+				currentPlanetMC.label_richness.text = richnessValue;
 				
 				Text.truncateText(currentPlanetMC.label_name);
 				
@@ -162,7 +200,7 @@ package space_digger.levels
 			}
 		}
 		
-		public function closePlanetPopup(e:MouseEvent = null):void
+		public function closePlanetPopup(e:Event = null):void
 		{
 			if (contains(popupPlanet))
 			{
