@@ -64,6 +64,11 @@ package data
 			_recentGain = 0;
 		}
 		
+		public function empty():Boolean
+		{
+			return _id <= 0;
+		}
+		
 		public function get id():int 
 		{
 			return _id;

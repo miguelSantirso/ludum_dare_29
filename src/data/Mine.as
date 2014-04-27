@@ -18,8 +18,6 @@ package data
 			_seams = new Vector.<Seam>();
 		}
 		
-		/* INTERFACE infrastructure.interfaces.IPopulatable */
-		
 		public function populate(data:Object):void 
 		{
 			if(data["id"])
@@ -47,7 +45,24 @@ package data
 		
 		protected function populateSeams(data:Object):void
 		{
-			// TODO
+			if (!data)
+				return;
+				
+			var seamArray:Array = data as Array ? data as Array : [data];
+			var tempSeam:Seam;
+			
+			for each(var seamObject:Object in seamArray) {
+				tempSeam = new Seam();
+				tempSeam.populate(seamObject);
+				
+				if(!tempSeam.empty())
+					_seams.push(tempSeam);
+			}
+		}
+		
+		public function empty():Boolean
+		{
+			return _id <= 0;
 		}
 		
 		public function get id():int 
