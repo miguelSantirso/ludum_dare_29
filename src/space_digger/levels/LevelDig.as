@@ -44,8 +44,9 @@ package space_digger.levels
 		public var startedDigging:Signal = new Signal(Number, Number);
 		
 		private var _ship:SpaceShip;
+		private var _player:PlayerCharacter;
 		private var _inExitArea:Boolean = false;
-		private var _readyToLand:Boolean = false;
+		private var _exploring:Boolean = false;
 		
 		public var diggingSession:DiggingSession = new DiggingSession();
 		
@@ -62,6 +63,9 @@ package space_digger.levels
 		{
 			super.initialize();
 			
+			_player = getObjectByName("player_char") as PlayerCharacter;
+			_player.onTakeDamage.add(onPlayerTakeDamage);
+			
 			_ship = getObjectByName("ship") as SpaceShip;
 			view.camera.setUp(_ship, new Rectangle(0, -500, 1000, 530));
 			
@@ -71,6 +75,17 @@ package space_digger.levels
 			diggingSession.mine = DataManager.getInstance().currentMine;
 			
 			stage.addChild(_hud);
+		}
+		
+		
+		public function onPlayerTakeDamage():void
+		{
+			_hud.nLifes = _player.nLifes;
+			
+			if (_player.nLifes < 0)
+			{
+				_hud.stopCountdown();
+			}
 		}
 		
 		private function initializeMine():void
@@ -99,16 +114,15 @@ package space_digger.levels
 			}
 			
 			_hud.updateCountdown(timeDelta);
+			
+			if (_exploring && _hud.timeLeft <= 0)
+			{
+				_player.hurt();
+			}
 		}
 		
 		public function startExploration():void
 		{
-			/*if (!_readyToLand)
-			{
-				endExploration(false);
-				return;
-			}*/
-			
 			GameManager.getInstance().play(function(payload:Object):void {
 				
 				view.camera.bounds = null;
@@ -119,7 +133,9 @@ package space_digger.levels
 				player.x = ship.x;
 				view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);
 				
-				_hud.startCountdown(payload.stopwatch*1000);
+				_hud.startCountdown(payload.stopwatch * 1000);
+				
+				_exploring = true;
 			});
 		}
 		

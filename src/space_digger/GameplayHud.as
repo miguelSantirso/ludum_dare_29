@@ -58,6 +58,11 @@ package space_digger
 			lifes.gotoAndStop("l" + value);
 		}
 		
+		public function get timeLeft():Number 
+		{
+			return _timeLeft;
+		}
+		
 	}
 
 }
