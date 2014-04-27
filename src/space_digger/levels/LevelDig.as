@@ -101,11 +101,11 @@ package space_digger.levels
 		
 		public function startExploration():void
 		{
-			if (!_readyToLand)
+			/*if (!_readyToLand)
 			{
 				endExploration(false);
 				return;
-			}
+			}*/
 			
 			GameManager.getInstance().play(function(data:Object):void {
 				view.camera.bounds = null;
