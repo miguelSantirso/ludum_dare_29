@@ -1,8 +1,13 @@
 package space_digger.levels 
 {
+	import away3d.events.MouseEvent3D;
+	import data.Planet;
 	import flash.display.MovieClip;
+	import flash.display.Sprite;
+	import flash.geom.Rectangle;
 	import org.osflash.signals.Signal;
 	import flash.events.MouseEvent;
+	import space_digger.PopupPlanet;
 	import utils.Text;
 	import managers.DataManager;
 	import managers.GameManager;
@@ -17,6 +22,8 @@ package space_digger.levels
 	{
 		protected var recentActivityScroller:Scroller;
 		protected var ongoingOpsScroller:Scroller;
+		protected var popupPlanet:PopupPlanet;
+		private var popupPlanetModal:Sprite;
 		
 		public function LevelSpace(_level:MovieClip) 
 		{
@@ -32,6 +39,7 @@ package space_digger.levels
 			setCompanyData();
 			setSystemData();
 			setOngoingOperations();
+			setRecentActivity();
 			
 			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
 			
@@ -53,6 +61,14 @@ package space_digger.levels
 			ongoingOpsScroller = new Scroller(false, 3.8, OperationIR, 0, temp);
 			ongoingOpsScroller.init();
 			level.slot_ongoing_list.addChild(ongoingOpsScroller);
+			
+			popupPlanet = new PopupPlanet();
+			popupPlanet.x = (stage.stageWidth - popupPlanet.width) * 0.5;
+			popupPlanet.y = (stage.stageHeight - popupPlanet.height) * 0.5;
+			popupPlanetModal = new Sprite();
+			popupPlanetModal.graphics.beginFill(0x000000, 0.85);
+			popupPlanetModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+			popupPlanetModal.graphics.endFill();
 		}
 		
 		public override function update(timeDelta:Number):void
@@ -62,12 +78,11 @@ package space_digger.levels
 		
 		public override function dispose():void
 		{
+			level.slot_activity_list.removeChild(recentActivityScroller);
+			level.slot_ongoing_list.removeChild(ongoingOpsScroller);
+			removeChild(popupPlanet);
+			
 			super.dispose();
-		}
-		
-		private function test(e:MouseEvent):void
-		{
-			changeLevel.dispatch(4); // TEMP!
 		}
 		
 		private function logout(e:MouseEvent):void
@@ -104,13 +119,56 @@ package space_digger.levels
 				
 				Text.truncateText(currentPlanetMC.label_name);
 				
-				currentPlanetMC.addEventListener(MouseEvent.CLICK, test);
+				currentPlanetMC.addEventListener(MouseEvent.CLICK, openPlanetPopup);
 			}
 		}
 		
 		public function setOngoingOperations():void
 		{
-			level.slot
+			//
+		}
+		
+		public function setRecentActivity():void
+		{
+			//
+		}
+		
+		public function setPlanetPopupData(planetIndex:int):void
+		{
+			if (planetIndex < 0) planetIndex = 0;
+			else if (planetIndex > 4) planetIndex = 4;
+			
+			var selectedPlanet:Planet;
+			
+			if (contains(popupPlanet))
+			{
+				selectedPlanet = DataManager.getInstance().mySystem.planets[planetIndex];
+				popupPlanet.planetName = selectedPlanet.name;
+				popupPlanet.planetToxicity = selectedPlanet.toxicity;
+				popupPlanet.planetRichness = selectedPlanet.richness;
+			}
+		}
+		
+		public function openPlanetPopup(e:MouseEvent):void
+		{
+			if (!contains(popupPlanet))
+			{
+				addChild(popupPlanetModal);
+				addChild(popupPlanet);
+				
+				var planetIndex:int = e.currentTarget.name.charAt(e.currentTarget.name.length - 1);
+
+				setPlanetPopupData(planetIndex);
+			}
+		}
+		
+		public function closePlanetPopup(e:MouseEvent = null):void
+		{
+			if (contains(popupPlanet))
+			{
+				removeChild(popupPlanetModal);
+				removeChild(popupPlanet);
+			}
 		}
 	}
 }
