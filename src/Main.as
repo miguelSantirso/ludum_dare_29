@@ -126,7 +126,9 @@ package
 			
 			if (levelSpace){
 				levelSpace.setCompanyData();
-				levelSpace.setOngoingOperations();
+				
+				if(levelSpace.ongoingOpsScroller)
+					levelSpace.setOngoingOperations();
 				
 				if(levelSpace.recentActivityScroller)
 					levelSpace.setRecentActivity();

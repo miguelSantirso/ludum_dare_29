@@ -25,7 +25,7 @@ package space_digger.levels
 	public class LevelSpace extends GameLevel
 	{
 		protected var _recentActivityScroller:Scroller;
-		protected var ongoingOpsScroller:Scroller;
+		protected var _ongoingOpsScroller:Scroller;
 		protected var _popupPlanet:PopupPlanet;
 		protected var _popupRanking:PopupRanking;
 		private var popupModal:Sprite;
@@ -48,9 +48,9 @@ package space_digger.levels
 			_recentActivityScroller.init();
 			level.slot_activity_list.addChild(_recentActivityScroller);
 			
-			ongoingOpsScroller = new Scroller(false, 3.8, OperationIR);
-			ongoingOpsScroller.init();
-			level.slot_ongoing_list.addChild(ongoingOpsScroller);
+			_ongoingOpsScroller = new Scroller(false, 3.8, OperationIR);
+			_ongoingOpsScroller.init();
+			level.slot_ongoing_list.addChild(_ongoingOpsScroller);
 			
 			_popupPlanet = new PopupPlanet();
 			_popupPlanet.x = (stage.stageWidth - _popupPlanet.width) * 0.5;
@@ -87,16 +87,16 @@ package space_digger.levels
 			level.button_jump.removeEventListener(MouseEvent.CLICK, jumpToAnotherSystem);
 			
 			level.slot_activity_list.removeChild(_recentActivityScroller);
-			level.slot_ongoing_list.removeChild(ongoingOpsScroller);
+			level.slot_ongoing_list.removeChild(_ongoingOpsScroller);
 			removeChild(_popupPlanet);
 			
 			_popupPlanet.dispose();
 			_popupRanking.dispose();
 			
-			ongoingOpsScroller.dispose();
+			_ongoingOpsScroller.dispose();
 			_recentActivityScroller.dispose();
 			
-			ongoingOpsScroller = null;
+			_ongoingOpsScroller = null;
 			_recentActivityScroller = null;
 			
 			super.dispose();
@@ -198,7 +198,7 @@ package space_digger.levels
 				temp.push(tempObj);
 			}
 			
-			ongoingOpsScroller.dataProvider = temp;
+			_ongoingOpsScroller.dataProvider = temp;
 		}
 		
 		public function setRecentActivity():void
@@ -300,6 +300,11 @@ package space_digger.levels
 		public function get popupRanking():PopupRanking 
 		{
 			return _popupRanking;
+		}
+		
+		public function get ongoingOpsScroller():Scroller 
+		{
+			return _ongoingOpsScroller;
 		}
 	}
 }
