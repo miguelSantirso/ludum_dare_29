@@ -22,6 +22,16 @@ package space_digger
 			speed = 1.0;
 		}
 		
+		override public function update(timeDelta:Number):void {
+
+			super.update(timeDelta);
+
+			if (this._hurt)
+			{
+				this.body.SetActive(false);
+			}
+		}
+		
 		override public function handleBeginContact(contact:b2Contact):void {
 
 			var collider:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(this, contact);

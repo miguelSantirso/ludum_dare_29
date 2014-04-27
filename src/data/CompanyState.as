@@ -13,10 +13,13 @@ package data
 		protected var _workingSeams:Vector.<Seam>;
 		protected var _events:Vector.<String>;
 		
-		public function CompanyState() 
+		public function CompanyState(data:Object = null) 
 		{
 			_workingSeams = new Vector.<Seam>();
 			_events = new Vector.<String>();
+			
+			if (data)
+				populate(data);
 		}
 		
 		public function populate(data:Object):void 
@@ -25,8 +28,7 @@ package data
 				ServerTime.updateDeltaTime(data["time"]);
 			
 			if(data["company"]){
-				_company = new Company(); 
-				_company.populate(data["company"]);
+				_company = new Company(data["company"]);
 			}
 				
 			if (data["working_seams"])
@@ -53,8 +55,7 @@ package data
 			var tempSeam:Seam;
 			
 			for each(var seamObject:Object in seamsArray) {
-				tempSeam = new Seam();
-				tempSeam.populate(seamObject);
+				tempSeam = new Seam(seamObject);
 				
 				if(!tempSeam.empty())
 					_workingSeams.push(tempSeam);

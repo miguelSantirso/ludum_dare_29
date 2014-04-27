@@ -111,17 +111,15 @@ package space_digger
 			var prevAnimation:String = _animation;
 			var walkingSpeed:Number = getWalkingSpeed();
 			
-			if (!_hurt && walkingSpeed < -acceleration)
-				_inverted = true;
-			else if (!_hurt && walkingSpeed > acceleration)
-				_inverted = false;
-			
 			if (_attacking)
 			{
 				_animation = "attack";
 				
 				if (++_attackAnimationFrame == 7)
+				{
 					attackEnemiesInRange();
+					onGiveDamage.dispatch();
+				}
 			}
 			else
 			{
@@ -158,7 +156,8 @@ package space_digger
 				ignoreContact = true;
 			}
 
-			var enemy:Enemy = Box2DUtils.CollisionGetOther(this, contact) as Enemy;
+			var other:* = Box2DUtils.CollisionGetOther(this, contact);
+			var enemy:Enemy = other as Enemy;
 			if (enemy && _contactingEnemies.indexOf(enemy) < 0)
 			{
 				_contactingEnemies.push(enemy);
