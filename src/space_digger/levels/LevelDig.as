@@ -29,6 +29,8 @@ package space_digger.levels
 	import managers.GameManager;
 	import flash.utils.setTimeout;
 	import space_digger.DestructibleBlock;
+	import managers.GameManager;
+	import managers.DataManager;
 	
 	/**
 	 * ...
@@ -40,6 +42,7 @@ package space_digger.levels
 		
 		private var _ship:SpaceShip;
 		private var _inExitArea:Boolean = false;
+		private var _readyToLand:Boolean = false;
 		
 		private var _hud:GameplayHud = new GameplayHud();
 		
@@ -60,6 +63,12 @@ package space_digger.levels
 			(getObjectByName("exit") as Sensor).onBeginContact.add(onEnteredExit);
 			(getObjectByName("exit") as Sensor).onEndContact.add(onExitedExit);
 			
+			GameManager.getInstance().land(
+				DataManager.getInstance().mySystem.planets[0].mines[0], 
+				function():void {
+					_readyToLand = true;
+				});
+			
 			stage.addChild(_hud);
 		}
 		
@@ -75,17 +84,17 @@ package space_digger.levels
 		
 		public function startExploration():void
 		{
-			view.camera.bounds = null;
-			var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
-			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
-			view.camera.camPos.x = ship.x;
-			view.camera.camPos.y = ship.y - 40;
-			player.x = ship.x;
-			view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);
+			if (!_readyToLand)
+				return;
 			
 			GameManager.getInstance().play(function(data:Object):void {
-				view.camera.switchToTarget(getObjectByName("player_char"));
 				view.camera.bounds = null;
+				var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
+				var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
+				view.camera.camPos.x = ship.x;
+				view.camera.camPos.y = ship.y - 40;
+				player.x = ship.x;
+				view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);
 			});
 		}
 		
