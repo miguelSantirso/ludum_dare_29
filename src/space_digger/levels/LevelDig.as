@@ -51,23 +51,7 @@ package space_digger.levels
 			view.camera.setUp(getObjectByName("player_char"), new Rectangle(0, 0, 1352, 1963));
 			//createDecorationSprites();
 			
-			var seams:Vector.<CitrusObject> = getObjectsByName("seam");
-			for each (var seam:Sensor in seams)
-			{
-				seam.onBeginContact.add(onSeamEnter);
-				seam.onEndContact.add(onSeamExit);
-			}
-			
 			stage.addChild(_hud);
-		}
-		
-		private function onSeamEnter(contact:b2PolygonContact):void
-		{
-			_hud.onSeamEntered();
-		}
-		private function onSeamExit(contact:b2PolygonContact):void
-		{
-			_hud.onSeamExited();
 		}
 		
 		public override function update(timeDelta:Number):void
