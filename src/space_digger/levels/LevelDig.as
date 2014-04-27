@@ -72,13 +72,6 @@ package space_digger.levels
 			
 			diggingSession.mine = TEMPMine;
 			
-			GameManager.getInstance().land(
-				TEMPMine, 
-				function():void {
-					_readyToLand = true;
-					initializeMine();
-				});
-			
 			stage.addChild(_hud);
 		}
 		
