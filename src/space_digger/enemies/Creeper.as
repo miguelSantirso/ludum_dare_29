@@ -24,6 +24,8 @@ package space_digger.enemies
 		public var inputChannel:uint = 0;
 		private var _facingRight:Boolean = true;
 		private var _chasing:Boolean = false;
+		private var _chasingTarget:b2Vec2 = new b2Vec2();
+		private var _player:PlayerCharacter = null;
 		
 		private static var DETECTION_RANGE:int = 350;
 		
@@ -42,6 +44,8 @@ package space_digger.enemies
 			//_ce.input.keyboard.addKeyAction("test", Keyboard.G, inputChannel);
 			
 			chasePlayer(false);
+			
+			_player = _ce.state.getObjectByName("player_char") as PlayerCharacter;
 		}
 
 		public function chasePlayer(flag:Boolean):void
@@ -53,11 +57,48 @@ package space_digger.enemies
 		override public function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
+			
+			if (_chasing)
+			{
+				if ((this.x < _chasingTarget.x && !_facingRight) || (_chasingTarget.x < this.x && _facingRight))
+				{
+					turnAround();
+				}
+				
+				_animation = "walk";
+			}
+			else
+			{
+				stop();
+			}
 		}
 
+		public function walk():void
+		{
+			body.SetLinearVelocity(new b2Vec2(3.0, body.GetLinearVelocity().y));
+			
+			_animation = "walk";			
+		}
+		public function stop():void
+		{
+			body.SetLinearVelocity(new b2Vec2(0.0, body.GetLinearVelocity().y));
+			
+			_animation = "idle";
+		}
+		
+		override public function  turnAround():void
+		{
+			_inverted = !_inverted;
+			_facingRight = !_facingRight;
+		}
+		
 		public function onDigStart(playerX:Number, playerY:Number):void
 		{
+			// Start chasing the player
+			_chasing = true;
 			
+			_chasingTarget.x = playerX;
+			_chasingTarget.y = playerY;
 		}
 		
 		override public function handleBeginContact(contact:b2Contact):void 
@@ -79,7 +120,7 @@ package space_digger.enemies
 				var collisionAngle:Number = new MathVector(normalPoint.x, normalPoint.y).angle * 180 / Math.PI;
 
 				if ((collider is Platform && collisionAngle != 90))
-					chasePlayer(false);
+					stop();
 				else if (collider is Foe)
 					turnAround();
 				else if (collider is PlayerCharacter)
