@@ -1,6 +1,10 @@
 package managers 
 {
 	import data.Company;
+	import data.CompanyState;
+	import data.Core;
+	import data.RankingEntry;
+	import data.System;
 	/**
 	 * ...
 	 * @author Luis Miguel Blanco
@@ -10,12 +14,20 @@ package managers
 		private static var instance:DataManager;
 		private static var instantiated:Boolean = false;
 		
-		protected var _myCompany:Company;
+		protected var _core:Core;
+		protected var _myState:CompanyState;
+		protected var _mySystem:System;
+		protected var _ranking:Vector.<RankingEntry>;
 		
 		public function DataManager() 
 		{
 			if (instantiated) {
 				instantiated = false;
+				
+				_core = new Core();
+				_myState = new CompanyState();
+				_mySystem = new System();
+				_ranking = new Vector.<RankingEntry>();
 			}else {
 				throw new Error("Use getInstance()");
 			}
@@ -30,17 +42,48 @@ package managers
 			return instance;
 		}
 		
-		public function populateMyState(data:Object):void
+		public function reset():void
 		{
-			_myCompany = new Company();
-			_myCompany.populate(data);
-			
-			// populate my seams
+			_core.reset();
+			_myState.reset();
+			_mySystem.reset();
+			_ranking.splice(0,_ranking.length);
 		}
 		
-		public function get myCompany():Company 
+		public function populateRanking(data:Object):void
 		{
-			return _myCompany;
+			var rankingEntries:Array = data ? data as Array : null;
+			var entry:RankingEntry;
+			
+			if (rankingEntries) {
+				for each(var e:Object in rankingEntries) {
+					entry = new RankingEntry();
+					entry.populate(e);
+					
+					if (!entry.empty())
+						_ranking.push(entry);
+				}
+			}
+		}
+		
+		public function get core():Core 
+		{
+			return _core;
+		}
+		
+		public function get myState():CompanyState 
+		{
+			return _myState;
+		}
+		
+		public function get mySystem():System 
+		{
+			return _mySystem;
+		}
+		
+		public function get ranking():Vector.<RankingEntry> 
+		{
+			return _ranking;
 		}
 	}
 
