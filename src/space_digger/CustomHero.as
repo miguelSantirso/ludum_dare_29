@@ -395,11 +395,6 @@ package space_digger
 						hurtVelocity.x = -hurtVelocityX;
 					_body.SetLinearVelocity(hurtVelocity);
 				}
-				else
-				{
-					_springOffEnemy = collider.y - height;
-					onGiveDamage.dispatch();
-				}
 			}
 
 			//Collision angle if we don't touch a Sensor.
