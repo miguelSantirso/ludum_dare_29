@@ -1,12 +1,10 @@
 package space_digger 
 {
-	import citrus.objects.platformer.box2d.Enemy;
-	
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class Spike extends Enemy 
+	public class Spike extends Foe 
 	{
 		
 		public function Spike(name:String, params:Object=null) 

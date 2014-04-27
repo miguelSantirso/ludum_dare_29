@@ -1,7 +1,5 @@
 package space_digger 
 {
-	import citrus.objects.platformer.box2d.Enemy;
-
 	import Box2D.Dynamics.Contacts.b2Contact;
 	import citrus.physics.box2d.Box2DUtils;
 	import citrus.objects.platformer.box2d.Platform;
@@ -13,7 +11,7 @@ package space_digger
 	 * ...
 	 * @author ...
 	 */
-	public class Patrol  extends Enemy
+	public class Patrol  extends Foe
 	{
 		public function Patrol(name:String, params:Object=null) 
 		{
@@ -25,11 +23,6 @@ package space_digger
 		override public function update(timeDelta:Number):void {
 
 			super.update(timeDelta);
-
-			if (this._hurt)
-			{
-				this.body.SetActive(false);
-			}
 		}
 		
 		override public function handleBeginContact(contact:b2Contact):void {
@@ -52,7 +45,7 @@ package space_digger
 
 				if ((collider is Platform && collisionAngle != 90))
 					turnAround();
-				else if (collider is Enemy)
+				else if (collider is Foe)
 					turnAround();
 				else if (collider is PlayerCharacter)
 				{

@@ -1,7 +1,6 @@
 package space_digger 
 {
 	import adobe.utils.CustomActions;
-	import citrus.objects.platformer.box2d.Enemy;
 	import space_digger.levels.LevelDig;
 	import space_digger.PlayerCharacter;
 	import Box2D.Common.Math.b2Math;
@@ -19,7 +18,7 @@ package space_digger
 	 * ...
 	 * @author ...
 	 */
-	public class Creeper extends Enemy
+	public class Creeper extends Foe
 	{
 		public var inputChannel:uint = 0;
 		private var _facingRight:Boolean = true;
@@ -41,11 +40,6 @@ package space_digger
 
 			super.update(timeDelta);
 
-			if (this._hurt)
-			{
-				this.body.SetActive(false);
-			}
-			
 			/*
 			if (_ce.input.justDid("test", inputChannel))
 			{
@@ -120,7 +114,7 @@ package space_digger
 
 				if ((collider is Platform && collisionAngle != 90))
 					chasePlayer(false);
-				else if (collider is Enemy)
+				else if (collider is Foe)
 					turnAround();
 				else if (collider is PlayerCharacter)
 				{
