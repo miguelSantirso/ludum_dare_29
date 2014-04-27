@@ -187,7 +187,18 @@ package space_digger.levels
 		
 		public function setOngoingOperations():void
 		{
-			//
+			// TEMP!
+			var temp:Array = new Array();
+			var tempObj:Object;
+			
+			for (var i:int = 0; i < 50; i++)
+			{
+				tempObj = new Object()
+				tempObj["message"] = "IR " + i.toString();
+				temp.push(tempObj);
+			}
+			
+			ongoingOpsScroller.dataProvider = temp;
 		}
 		
 		public function setRecentActivity():void
