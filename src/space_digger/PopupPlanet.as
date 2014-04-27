@@ -38,6 +38,7 @@ package space_digger
 				sectorMC.gotoAndStop(1);
 				sectorMC.addEventListener(MouseEvent.MOUSE_OVER, highlightSector);
 				sectorMC.addEventListener(MouseEvent.MOUSE_OUT, dehighlightSector);
+				sectorMC.addEventListener(MouseEvent.CLICK, onClickMineHandler);
 			}
 			
 			_asset.button_close.addEventListener(MouseEvent.CLICK, onButtonCloseHandler);
@@ -52,6 +53,7 @@ package space_digger
 				sectorMC = _asset.planet_sectors.getChildByName("sector_" + i) as MovieClip;
 				sectorMC.removeEventListener(MouseEvent.MOUSE_OVER, highlightSector);
 				sectorMC.removeEventListener(MouseEvent.MOUSE_OUT, dehighlightSector);
+				sectorMC.removeEventListener(MouseEvent.CLICK, onClickMineHandler);
 			}
 			
 			removeChild(_asset);
@@ -114,20 +116,24 @@ package space_digger
 		{
 			_asset.label_visited_value.text = value.toString();
 		}
-		
-		public function set occupied(value:Boolean):void
-		{
-			
-		}
-		
+
 		private function highlightSector(e:MouseEvent):void
 		{
 			(e.currentTarget as MovieClip).gotoAndStop(2);
+			
+			//
 		}
 		
 		private function dehighlightSector(e:MouseEvent):void
 		{
 			(e.currentTarget as MovieClip).gotoAndStop(1);
+		}
+		
+		private function onClickMineHandler(e:MouseEvent):void
+		{
+			var mineIndex:int = int( (e.currentTarget as MovieClip).name.charAt((e.currentTarget as MovieClip).name.length - 1));
+			
+			trace("MINE SELECTED: " + mineIndex);
 		}
 		
 		private function onButtonCloseHandler(e:MouseEvent):void
