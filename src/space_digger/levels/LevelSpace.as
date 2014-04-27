@@ -67,10 +67,11 @@ package space_digger.levels
 			for (var i:int = 0; i < 5; i++)
 			{
 				var iconIndex:int = 1 + Math.round(Math.random() * 4);
-				//var iconRadius:int = 
-				
+				var iconRadius:int = 32 + Math.round(Math.random() * 64);
+
 				currentPlanetMC = level.getChildByName("planet_" + i) as MovieClip;
 				currentPlanetMC.icon_planet.gotoAndStop(iconIndex);
+				currentPlanetMC.icon_planet.width = currentPlanetMC.icon_planet.height = iconRadius;
 				currentPlanetMC.label_name.text = DataManager.getInstance().mySystem.planets[i].name;
 				currentPlanetMC.label_toxicity.text = DataManager.getInstance().mySystem.planets[i].toxicity.toString() + "%";
 				currentPlanetMC.label_richness.text = DataManager.getInstance().mySystem.planets[i].richness.toString() + "%";
