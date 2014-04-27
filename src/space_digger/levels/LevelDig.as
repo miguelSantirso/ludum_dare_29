@@ -17,6 +17,8 @@ package space_digger.levels
 	import space_digger.GameplayHud;
 	import space_digger.PlayerCharacter;
 	import traps.TrapSpikes;
+	import space_digger.Patrol;
+	import space_digger.Creeper;
 	
 	import citrus.core.CitrusObject;
 	
@@ -35,7 +37,7 @@ package space_digger.levels
 		{
 			super(_level);
 			
-			var objectsUsed:Array = [Hero, Platform, Coin, Cannon, PlayerCharacter, TrapSpikes];
+			var objectsUsed:Array = [Hero, Platform, Coin, Cannon, PlayerCharacter, TrapSpikes, Patrol, Creeper];
 		}
 		
 		public override function initialize():void
