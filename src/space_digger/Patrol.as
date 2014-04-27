@@ -12,8 +12,8 @@ package space_digger
 		{
 			super(name, params);
 			
+			speed = 1.0;
 		}
-		
 	}
 
 }
