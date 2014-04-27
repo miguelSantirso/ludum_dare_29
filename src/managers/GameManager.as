@@ -74,7 +74,8 @@ package managers
 					}else {
 						requestRegistration();
 					}
-				}
+				},
+				startFailed.dispatch
 			);	
 		}
 		

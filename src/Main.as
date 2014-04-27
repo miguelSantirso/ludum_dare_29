@@ -23,9 +23,9 @@ package
 		
 		public function Main():void 
 		{
-			//if (stage)
-			//	init();
-			//else 
+			if (stage)
+				init();
+			else 
 				addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
@@ -49,13 +49,17 @@ package
 			//if (Main.DEBUG)
 			//	addChild(new Stats());
 
-			//GameManager.getInstance().testRemoteOperations();
 			GameManager.getInstance().needsRegistration.add(goToLevelRegister);
 			GameManager.getInstance().ready.add(goToLevelSpace);
 			GameManager.getInstance().loggedOut.add(goToLevelRegister);
 			GameManager.getInstance().startFailed.add(goToLevelRegister);
 			GameManager.getInstance().changeLevelRequest.add(travelToMine);
 			GameManager.getInstance().start();
+			
+			GameManager.getInstance().stateUpdated.add(onStateUpdated);
+			GameManager.getInstance().systemUpdated.add(onSystemUpdated);
+			GameManager.getInstance().systemChanged.add(onSystemChanged);
+			GameManager.getInstance().rankingUpdated.add(onRankingUpdated);
 		}
 		
 		private function goToLevelRegister():void
@@ -76,6 +80,11 @@ package
 			level.lvlBack.add(previousLevel);	
 			level.restartLevel.add(restartLevel);
 			level.changeLevel.add(changeLevel);*/
+			
+			onStateUpdated();
+			onSystemUpdated();
+			onSystemChanged();
+			onRankingUpdated();
 		}
 		
 		protected function travelToMine(mine:Mine):void
@@ -108,6 +117,46 @@ package
 			{
 				levelManager.gotoLevel(levelIndex);
 				_currentLevelIndex = levelIndex;
+			}
+		}
+		
+		protected function onStateUpdated():void
+		{
+			var levelSpace:LevelSpace = state as LevelSpace;
+			
+			if (levelSpace){
+				levelSpace.setCompanyData();
+				levelSpace.setOngoingOperations();
+				levelSpace.setRecentActivity();
+			}
+		}
+		
+		protected function onSystemUpdated():void
+		{
+			var levelSpace:LevelSpace = state as LevelSpace;
+			
+			if (levelSpace){
+				levelSpace.setSystemData();
+				if (levelSpace.popupPlanet && levelSpace.contains(levelSpace.popupPlanet))
+					levelSpace.setPlanetPopupData(levelSpace.popupPlanet.planetIndex);
+			}
+		}
+		
+		protected function onSystemChanged():void
+		{
+			var levelSpace:LevelSpace = state as LevelSpace;
+			
+			if (levelSpace){
+				levelSpace.setSystemData();
+			}
+		}
+		
+		protected function onRankingUpdated():void
+		{
+			var levelSpace:LevelSpace = state as LevelSpace;
+			
+			if (levelSpace){
+				//update ranking
 			}
 		}
 	}
