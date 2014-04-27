@@ -28,6 +28,7 @@ package space_digger.levels
 	import space_digger.SpaceShip;
 	import managers.GameManager;
 	import flash.utils.setTimeout;
+	import space_digger.DestructibleBlock;
 	
 	/**
 	 * ...
@@ -46,7 +47,7 @@ package space_digger.levels
 		{
 			super(_level);
 			
-			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper];
+			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
 		}
 		
 		public override function initialize():void
