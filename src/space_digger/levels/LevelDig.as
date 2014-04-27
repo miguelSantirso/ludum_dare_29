@@ -33,6 +33,7 @@ package space_digger.levels
 	import space_digger.DestructibleBlock;
 	import managers.GameManager;
 	import managers.DataManager;
+	import data.SeamData;
 	
 	/**
 	 * ...
@@ -67,7 +68,7 @@ package space_digger.levels
 			(getObjectByName("exit") as Sensor).onBeginContact.add(onEnteredExit);
 			(getObjectByName("exit") as Sensor).onEndContact.add(onExitedExit);
 			
-			var TEMPMine:Mine = DataManager.getInstance().mySystem.planets[0].mines[0]; // replace for the chosen one
+			var TEMPMine:Mine = DataManager.getInstance().mySystem.planets[1].mines[0]; // replace for the chosen one
 			
 			diggingSession.mine = TEMPMine;
 			
@@ -75,9 +76,26 @@ package space_digger.levels
 				TEMPMine, 
 				function():void {
 					_readyToLand = true;
+					initializeMine();
 				});
 			
 			stage.addChild(_hud);
+		}
+		
+		private function initializeMine():void
+		{
+			var seams:Vector.<CitrusObject> = getObjectsByName("seam");
+			
+			var seamsData:Vector.<SeamData> = diggingSession.mine.seams;
+			for (var i:int = 0; i < seams.length; ++i)
+			{
+				var seam:Seam = seams[i] as Seam;
+				
+				if (i < seamsData.length) 
+					seam.init(seamsData[i]);
+				else 
+					seam.visible = false;
+			}
 		}
 		
 		public override function update(timeDelta:Number):void
@@ -95,6 +113,7 @@ package space_digger.levels
 			if (!_readyToLand)
 			{
 				endExploration(false);
+				return;
 			}
 			
 			GameManager.getInstance().play(function(data:Object):void {
@@ -110,7 +129,8 @@ package space_digger.levels
 		
 		public function endExploration(takeOff:Boolean = true):void
 		{
-			GameManager.getInstance().takeOff(diggingSession);
+			if (takeOff)
+				GameManager.getInstance().takeOff(diggingSession);
 			
 			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
 			view.camera.camPos.x = player.x; 
@@ -123,7 +143,7 @@ package space_digger.levels
 		
 		public function endMission():void
 		{
-			// TODO...
+			//GameManager.getInstance().logout();
 		}
 		
 		

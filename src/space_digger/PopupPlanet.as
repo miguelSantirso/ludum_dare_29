@@ -122,6 +122,10 @@ package space_digger
 		public function set planet(value:Planet):void
 		{
 			_planet = value;
+			
+			planetName = _planet.name;
+			planetToxicity = _planet.toxicity;
+			planetRichness = _planet.richness;
 		}
 
 		private function highlightSector(e:MouseEvent):void

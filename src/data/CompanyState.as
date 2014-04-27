@@ -10,12 +10,12 @@ package data
 	public class CompanyState implements IPopulatable 
 	{
 		protected var _company:Company;
-		protected var _workingSeams:Vector.<Seam>;
+		protected var _workingSeams:Vector.<SeamData>;
 		protected var _events:Vector.<String>;
 		
 		public function CompanyState(data:Object = null) 
 		{
-			_workingSeams = new Vector.<Seam>();
+			_workingSeams = new Vector.<SeamData>();
 			_events = new Vector.<String>();
 			
 			if (data)
@@ -52,10 +52,10 @@ package data
 				return;
 				
 			var seamsArray:Array = data as Array ? data as Array : [data];
-			var tempSeam:Seam;
+			var tempSeam:SeamData;
 			
 			for each(var seamObject:Object in seamsArray) {
-				tempSeam = new Seam(seamObject);
+				tempSeam = new SeamData(seamObject);
 				
 				if(!tempSeam.empty())
 					_workingSeams.push(tempSeam);
@@ -88,7 +88,7 @@ package data
 			return _events;
 		}
 		
-		public function get workingSeams():Vector.<Seam> 
+		public function get workingSeams():Vector.<SeamData> 
 		{
 			return _workingSeams;
 		}
