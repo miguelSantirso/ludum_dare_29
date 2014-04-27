@@ -59,6 +59,13 @@ package space_digger.levels
 			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
 		}
 		
+		override public function destroy():void 
+		{
+			super.destroy();
+			
+			stage.removeChild(_hud);
+		}
+		
 		public override function initialize():void
 		{
 			super.initialize();
@@ -141,6 +148,7 @@ package space_digger.levels
 		
 		public function endExploration(takeOff:Boolean = true):void
 		{
+			_exploring = false;
 			_hud.stopCountdown();
 			
 			if (takeOff)
@@ -158,6 +166,7 @@ package space_digger.levels
 		public function endMission():void
 		{
 			//GameManager.getInstance().logout();
+			changeLevel.dispatch(2);
 		}
 		
 		
