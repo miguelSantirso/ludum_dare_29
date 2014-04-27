@@ -20,8 +20,6 @@ package space_digger
 	 */
 	public class PlayerCharacter extends CustomHero 
 	{
-		
-		private var _nLifes:int = 3;
 		private var _attackAnimationFrame:int = 0;
 		
 		private var _attacking:Boolean = false;
@@ -182,8 +180,6 @@ package space_digger
 		
 		private function onDamageTaken():void
 		{
-			--_nLifes;
-			
 			if (isDead)
 			{
 				_animation = "defeat";
