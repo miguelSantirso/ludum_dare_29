@@ -24,6 +24,8 @@ package space_digger.levels
 	import space_digger.enemies.SpawnSpot;
 	import citrus.core.CitrusObject;
 	import space_digger.SpaceShip;
+	import managers.GameManager;
+	import flash.utils.setTimeout;
 	
 	/**
 	 * ...
@@ -31,7 +33,7 @@ package space_digger.levels
 	 */
 	public class LevelDig extends GameLevel
 	{
-		public var startedDigging:Signal = new Signal(int, int);
+		public var startedDigging:Signal = new Signal(Number, Number);
 		
 		private var _decorations:Vector.<CitrusSprite> = new Vector.<CitrusSprite>();
 		//protected var sensors:Array;
@@ -49,7 +51,7 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			view.camera.setUp(getObjectByName("player_char")/*, new Rectangle(0, 0, 1352, 1963)*/);
+			view.camera.setUp(getObjectByName("ship"), new Rectangle(0, -500, 1000, 530));
 			
 			stage.addChild(_hud);
 		}
@@ -57,6 +59,22 @@ package space_digger.levels
 		public override function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
+		}
+		
+		public function startExploration():void
+		{
+			/*view.camera.bounds = null;
+			var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
+			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
+			view.camera.camPos.x = ship.x;
+			view.camera.camPos.y = ship.y - 40;
+			player.x = ship.x;
+			view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);*/
+			
+			GameManager.getInstance().play(function(data:Object):void {
+				view.camera.switchToTarget(getObjectByName("player_char"));
+				view.camera.bounds = null;
+			});
 		}
 		
 		public override function dispose():void
