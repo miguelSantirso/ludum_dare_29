@@ -1,5 +1,7 @@
 package space_digger.levels 
 {
+	import Box2D.Collision.b2ContactID;
+	import Box2D.Dynamics.Contacts.b2Contact;
 	import Box2D.Dynamics.Contacts.b2PolygonContact;
 	import citrus.core.State;
 	import flash.display.MovieClip;
@@ -26,6 +28,7 @@ package space_digger.levels
 	import space_digger.SpaceShip;
 	import managers.GameManager;
 	import flash.utils.setTimeout;
+	import space_digger.DestructibleBlock;
 	
 	/**
 	 * ...
@@ -35,8 +38,8 @@ package space_digger.levels
 	{
 		public var startedDigging:Signal = new Signal(Number, Number);
 		
-		private var _decorations:Vector.<CitrusSprite> = new Vector.<CitrusSprite>();
-		//protected var sensors:Array;
+		private var _ship:SpaceShip;
+		private var _inExitArea:Boolean = false;
 		
 		private var _hud:GameplayHud = new GameplayHud();
 		
@@ -44,14 +47,18 @@ package space_digger.levels
 		{
 			super(_level);
 			
-			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper];
+			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
 		}
 		
 		public override function initialize():void
 		{
 			super.initialize();
 			
-			view.camera.setUp(getObjectByName("ship"), new Rectangle(0, -500, 1000, 530));
+			_ship = getObjectByName("ship") as SpaceShip;
+			view.camera.setUp(_ship, new Rectangle(0, -500, 1000, 530));
+			
+			(getObjectByName("exit") as Sensor).onBeginContact.add(onEnteredExit);
+			(getObjectByName("exit") as Sensor).onEndContact.add(onExitedExit);
 			
 			stage.addChild(_hud);
 		}
@@ -59,17 +66,22 @@ package space_digger.levels
 		public override function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
+			
+			if (_inExitArea && _ce.input.justDid("attack"))
+			{
+				_ship.leave();
+			}
 		}
 		
 		public function startExploration():void
 		{
-			/*view.camera.bounds = null;
+			view.camera.bounds = null;
 			var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
 			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
 			view.camera.camPos.x = ship.x;
 			view.camera.camPos.y = ship.y - 40;
 			player.x = ship.x;
-			view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);*/
+			view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);
 			
 			GameManager.getInstance().play(function(data:Object):void {
 				view.camera.switchToTarget(getObjectByName("player_char"));
@@ -77,11 +89,14 @@ package space_digger.levels
 			});
 		}
 		
-		public override function dispose():void
+		private function onEnteredExit(c:b2Contact):void
 		{
-			_decorations.splice(0, _decorations.length);
-			
-			super.dispose();
+			_inExitArea = true;
 		}
+		private function onExitedExit(c:b2ContactID):void
+		{
+			_inExitArea = false;
+		}
+		
 	}
 }
