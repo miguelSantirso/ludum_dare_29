@@ -7,6 +7,7 @@ package data
 	 */
 	public class Core implements IPopulatable 
 	{
+		protected var _stateRefreshTime:int;
 		protected var _machineLifetime:int;
 		
 		public function Core() 
@@ -16,6 +17,9 @@ package data
 		
 		public function populate(data:Object):void 
 		{
+			if (data["state_refresh"])
+				_stateRefreshTime = data["state_refresh"];
+
 			if(data["machine_lifetime"])
 				_machineLifetime = data["machine_lifetime"];
 		}
@@ -28,6 +32,11 @@ package data
 		public function get machineLifetime():int 
 		{
 			return _machineLifetime;
+		}
+		
+		public function get stateRefreshTime():int 
+		{
+			return _stateRefreshTime;
 		}
 		
 	}

@@ -58,7 +58,24 @@ package data
 		
 		protected function populateMines(data:Object):void
 		{
-			// TODO
+			if (!data)
+				return;
+				
+			var mineArray:Array = data as Array ? data as Array : [data];
+			var tempMine:Mine;
+			
+			for each(var mineObject:Object in mineArray) {
+				tempMine = new Mine();
+				tempMine.populate(mineObject);
+				
+				if(!tempMine.empty())
+					_mines.push(tempMine);
+			}
+		}
+		
+		public function empty():Boolean
+		{
+			return _id <= 0;
 		}
 		
 		public function get id():int

@@ -36,7 +36,7 @@ package data
 		
 		public function empty():Boolean
 		{
-			return _position > 0 && _company != null;
+			return _position <= 0 || !_company;
 		}
 		
 		public function get position():int 
