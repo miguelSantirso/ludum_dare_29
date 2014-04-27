@@ -2,6 +2,7 @@ package space_digger.enemies
 {
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.box2d.Enemy;
+	import org.osflash.signals.Signal;
 	import space_digger.enemies.EnemyType;
 	
 	/**
@@ -30,14 +31,12 @@ package space_digger.enemies
 				throw new Error("Incorrectly named spawn");
 			}
 			
-			_serverId = (nameComponents[1] as int);
-			
-			_enemyType = type;
+			//_enemyType = nameComponents[1];
 		}
 		
 		public function addFoe(foe:Foe):void
 		{
-			_ce.stage.addChild(foe);
+			_ce.state.add(foe);
 			foe.justHurt.add(removeFoe);
 			foe.updateCallEnabled = true;
 			
@@ -65,17 +64,17 @@ package space_digger.enemies
 			{
 				case EnemyType.PATROL:
 				{
-					addFoe(new Patrol());
+					addFoe(new Patrol(""));
 					break;
 				}
 				case EnemyType.CREEPER:
 				{
-					addFoe(new Creeper());
+					addFoe(new Creeper(""));
 					break;
 				}
 				case EnemyType.SPIKE:
 				{
-					addFoe(new Spike());
+					addFoe(new Spike(""));
 					break;
 				}
 			}

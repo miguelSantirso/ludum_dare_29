@@ -21,6 +21,7 @@ package space_digger.levels
 	import space_digger.enemies.Patrol;
 	import space_digger.enemies.Creeper;
 	import space_digger.enemies.Spike;
+	import space_digger.enemies.SpawnSpot;
 	import citrus.core.CitrusObject;
 	
 	/**
@@ -40,7 +41,7 @@ package space_digger.levels
 		{
 			super(_level);
 			
-			var objectsUsed:Array = [Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper];
+			var objectsUsed:Array = [SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper];
 		}
 		
 		public override function initialize():void
