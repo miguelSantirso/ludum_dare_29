@@ -178,7 +178,7 @@ package managers
 		
 		public function changeLevel(selectedMine:Mine):void
 		{
-			changeLevelRequest.dispatch(getClientMapIndexFromServerMapId(selectedMine.map));
+			changeLevelRequest.dispatch(selectedMine);// getClientMapIndexFromServerMapId(selectedMine.map));
 		}
 		
 		public function displayMessagePopUp(message:String, buttonLabel:String = "Close", closeCallback:Function = null):void
