@@ -18,9 +18,9 @@ package space_digger.levels
 	import space_digger.GameplayHud;
 	import space_digger.PlayerCharacter;
 	import space_digger.Seam;
-	import space_digger.Patrol;
-	import space_digger.Creeper;
-	import space_digger.Spike;
+	import space_digger.enemies.Patrol;
+	import space_digger.enemies.Creeper;
+	import space_digger.enemies.Spike;
 	import citrus.core.CitrusObject;
 	
 	/**
@@ -31,8 +31,10 @@ package space_digger.levels
 	{
 		public var startedDigging:Signal = new Signal(int, int);
 		
+		private var _decorations:Vector.<CitrusSprite> = new Vector.<CitrusSprite>();
+		//protected var sensors:Array;
+		
 		private var _hud:GameplayHud = new GameplayHud();
-		private var _player:PlayerCharacter;
 		
 		public function LevelDig(_level:MovieClip) 
 		{
@@ -45,18 +47,21 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			_player = getObjectByName("player_char") as PlayerCharacter;
-			view.camera.setUp(_player/*, new Rectangle(0, 0, 1352, 1963)*/);
-			_player.onTakeDamage.add(onPlayerTakeDamage);
+			view.camera.setUp(getObjectByName("player_char"), new Rectangle(0, 0, 1352, 1963));
 			
 			stage.addChild(_hud);
 		}
 		
-		
-		public function onPlayerTakeDamage():void
+		public override function update(timeDelta:Number):void
 		{
-			_hud.nLifes = _player.nLifes;
+			super.update(timeDelta);
 		}
 		
+		public override function dispose():void
+		{
+			_decorations.splice(0, _decorations.length);
+			
+			super.dispose();
+		}
 	}
 }
