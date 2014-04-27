@@ -1,5 +1,6 @@
 package managers 
 {
+	import data.DiggingSession;
 	import data.Mine;
 	import infrastructure.RemoteOperation;
 	import infrastructure.RemoteURL;
@@ -212,9 +213,17 @@ package managers
 			sendOperation(LAND, RemoteURL.LAND, RemoteOperation.TYPE_POST, null, null, successCallback, faultCallback);
 		}
 		
-		public function takeOff(successCallback:Function = null, faultCallback:Function = null):void
+		public function takeOff(diggingSession:DiggingSession, successCallback:Function = null, faultCallback:Function = null):void
 		{
-			sendOperation(TAKE_OFF, RemoteURL.TAKE_OFF, RemoteOperation.TYPE_POST, null, null, successCallback, faultCallback);
+			var requestObject:Object = { "seams_activated": diggingSession.activatedSeams, "takeoff": true };
+			
+			if (diggingSession.death){
+				requestObject["death"] = true;
+				requestObject["x"] = diggingSession.death.x;
+				requestObject["y"] = diggingSession.death.y;
+			}
+			
+			sendOperation(TAKE_OFF, RemoteURL.TAKE_OFF, RemoteOperation.TYPE_POST, requestObject, null, successCallback, faultCallback);
 		}
 		
 		protected function onLoginFault():void

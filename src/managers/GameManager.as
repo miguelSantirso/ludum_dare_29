@@ -1,5 +1,6 @@
 package managers 
 {
+	import data.DiggingSession;
 	import org.osflash.signals.Signal;
 	import utils.ServerTime;
 	/**
@@ -92,6 +93,11 @@ package managers
 		public function logout():void
 		{
 			RemoteManager.getInstance().logout();
+		}
+		
+		public function takeOff(diggingSession:DiggingSession):void
+		{
+			RemoteManager.getInstance().takeOff(diggingSession); // set the success callback to go back to System view
 		}
 		
 		public function testRemoteOperations():void
