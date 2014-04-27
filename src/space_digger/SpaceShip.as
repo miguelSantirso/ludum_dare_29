@@ -30,6 +30,12 @@ package space_digger
 			}
 		}
 		
+		
+		public function leave():void
+		{
+			_animation = "exit";
+		}
+		
 	}
 
 }

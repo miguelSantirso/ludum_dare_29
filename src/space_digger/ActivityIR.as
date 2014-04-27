@@ -6,11 +6,11 @@ package space_digger
 	 * ...
 	 * @author 10 2  Live Team
 	 */
-	public class OperationIR extends ItemRendererObject
+	public class ActivityIR extends ItemRendererObject
 	{
-		public function OperationIR() 
+		public function ActivityIR() 
 		{
-			asset = new IROngoingOp();
+			asset = new IRRecentActivity();
 			
 			addChild(asset);
 		}
@@ -39,7 +39,7 @@ package space_digger
 
 		public override function get asset():*
 		{
-			return super.asset as IROngoingOp;
+			return super.asset as IRRecentActivity;
 		}
 	}
 

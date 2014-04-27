@@ -8,12 +8,16 @@ package space_digger.levels
 	import managers.GameManager;
 	import utils.scroller.Scroller;
 	import space_digger.OperationIR;
+	import space_digger.ActivityIR;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
 	 */
 	public class LevelSpace extends GameLevel
 	{
+		protected var recentActivityScroller:Scroller;
+		protected var ongoingOpsScroller:Scroller;
+		
 		public function LevelSpace(_level:MovieClip) 
 		{
 			super(_level);
@@ -27,10 +31,11 @@ package space_digger.levels
 			
 			setCompanyData();
 			setSystemData();
+			setOngoingOperations();
 			
 			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
 			
-			// TEMP
+			// TEMP:
 			var temp:Array = new Array();
 			var tempObj:Object;
 			
@@ -41,9 +46,13 @@ package space_digger.levels
 				temp.push(tempObj);
 			}
 			
-			var scroller:Scroller = new Scroller(true, 50, OperationIR, 10, temp);
+			recentActivityScroller = new Scroller(false, 5.57, ActivityIR, 0, temp);
+			recentActivityScroller.init();
+			level.slot_activity_list.addChild(recentActivityScroller);
 			
-			addChild(scroller);
+			ongoingOpsScroller = new Scroller(false, 3.8, OperationIR, 0, temp);
+			ongoingOpsScroller.init();
+			level.slot_ongoing_list.addChild(ongoingOpsScroller);
 		}
 		
 		public override function update(timeDelta:Number):void
@@ -68,13 +77,13 @@ package space_digger.levels
 		
 		public function setCompanyData():void
 		{
-			/*level.label_company_name.text = DataManager.getInstance().myState.company.name.toUpperCase();
+			level.label_company_name.text = DataManager.getInstance().myState.company.name.toUpperCase();
 			level.label_company_gold.text = DataManager.getInstance().myState.company.score.toString();
 			level.label_company_rank.text = "#99"; // TO-DO
 			
 			Text.truncateText(level.label_company_name);
 			Text.truncateText(level.label_company_gold);
-			Text.truncateText(level.label_company_rank);*/
+			Text.truncateText(level.label_company_rank);
 		}
 		
 		public function setSystemData():void
@@ -99,13 +108,9 @@ package space_digger.levels
 			}
 		}
 		
-		/*public function setPlanetData(index:int, name:String, toxicity:Number, richness:Number):void
+		public function setOngoingOperations():void
 		{
-			if (index < 0) index = 0;
-			if (index > 5) index = 4;
-			
-			//var planetAsset:MovieClip = level.getChildByName("planet_" + index);
-			//planetAsset.
-		}*/
+			level.slot
+		}
 	}
 }

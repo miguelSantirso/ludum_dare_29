@@ -1,5 +1,6 @@
 package space_digger 
 {
+	import Box2D.Dynamics.Contacts.b2Contact;
 	import citrus.objects.platformer.box2d.Platform;
 	
 	/**
