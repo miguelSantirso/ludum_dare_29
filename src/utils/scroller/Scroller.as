@@ -274,7 +274,7 @@ package utils.scroller
 								inertiaFactor = SCROLLER_SPEED_FACTOR_X;
 							}
 
-							if (_scrollerLayout)
+							/*if (_scrollerLayout)
 							{
 								var toX:Number = _currentDragPosition + (deltaPosition * inertiaFactor);
 
@@ -287,7 +287,7 @@ package utils.scroller
 
 								TweenMax.to(_scrollerCanvas, _scrollerInertiaMaxDuration, 
 									{ x:_scrollerCanvas.x, y:toY, onUpdateParams: ["_scrollerCanvas"], onUpdate: onUpdateTween } );
-							}
+							}*/
 						}
 					}
 
