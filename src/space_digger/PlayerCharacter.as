@@ -1,5 +1,7 @@
 package space_digger 
 {
+	import Box2D.Dynamics.Contacts.b2Contact;
+	import flash.utils.setTimeout;
 	
 	/**
 	 * ...
@@ -21,18 +23,28 @@ package space_digger
 			
 		}
 		
-		override public function update(timeDelta:Number):void 
+		public function get isDead():Boolean
 		{
-			if (_nLifes >= 0)
-				super.update(timeDelta);
-			
+			return _nLifes < 0;
+		}
+		
+		override public function handleBeginContact(contact:b2Contact):void 
+		{
+			if (!isDead)
+				super.handleBeginContact(contact);
 		}
 		
 		private function onDamageTaken():void
 		{
-			if (--_nLifes < 0)
+			--_nLifes;
+			
+			if (isDead)
 			{
 				_animation = "defeat";
+				updateCallEnabled = false;
+				setTimeout(function():void {
+					_animation = "dead";
+				}, 2700);
 			}
 		}
 		
