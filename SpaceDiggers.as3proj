@@ -52,6 +52,7 @@
     <element path="lib\bricks.swc" />
     <element path="lib\ice.swc" />
     <element path="lib\main_char_actions.swc" />
+    <element path="lib\Ice_enemy_actions.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>

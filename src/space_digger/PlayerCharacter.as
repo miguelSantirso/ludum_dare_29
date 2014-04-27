@@ -6,6 +6,7 @@ package space_digger
 	import Box2D.Dynamics.b2Fixture;
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.Contacts.b2Contact;
+	import citrus.objects.platformer.box2d.Enemy;
 	import flash.utils.setTimeout;
 	import citrus.input.controllers.Keyboard;
 	import citrus.physics.PhysicsCollisionCategories;
@@ -49,9 +50,9 @@ package space_digger
 		{
 			super.createShape();
 			
-			var sensorWidth:Number = 20 / _box2D.scale;
+			var sensorWidth:Number = 35 / _box2D.scale;
 			var sensorHeight:Number = 2 / _box2D.scale;
-			var sensorOffset:b2Vec2 = new b2Vec2( -_width / 2 - (sensorWidth / 2), _height / 2 - (10 / _box2D.scale));
+			var sensorOffset:b2Vec2 = new b2Vec2( -_width / 2 - (sensorWidth / 2), _height / 2 - (30 / _box2D.scale));
 			
 			_leftSensorShape = new b2PolygonShape();
 			_leftSensorShape.SetAsOrientedBox(sensorWidth, sensorHeight, sensorOffset);
@@ -103,6 +104,12 @@ package space_digger
 		override protected function updateAnimation():void 
 		{
 			var prevAnimation:String = _animation;
+			var walkingSpeed:Number = getWalkingSpeed();
+			
+			if (!_hurt && walkingSpeed < -acceleration)
+				_inverted = true;
+			else if (!_hurt && walkingSpeed > acceleration)
+				_inverted = false;
 			
 			if (_attacking)
 				_animation = "attack";
@@ -118,26 +125,34 @@ package space_digger
 		
 		override public function handleBeginContact(contact:b2Contact):void 
 		{
+			var ignoreContact:Boolean = false;
+			
 			if (isDead)
-				return;
+				ignoreContact = true;
 			
 			var attack:Boolean = false;
 			var fixtureA:b2Fixture = contact.GetFixtureA();
 			var fixtureB:b2Fixture = contact.GetFixtureB();
 			if (fixtureB == _leftSensorFixture || fixtureA == _leftSensorFixture)
 			{
-				if (_attacking && inverted)
+				ignoreContact = true;
+				if (_attacking)
 					attack = true;
-				return;
 			}
 			if (fixtureB == _rightSensorFixture || fixtureA == _rightSensorFixture)
 			{
+				ignoreContact = true;
 				if (_attacking)
 					attack = true;
-				return;
 			}
 			
-			super.handleBeginContact(contact);
+			if (attack)
+			{
+				var enemy:Enemy = Box2DUtils.CollisionGetOther(this, contact) as Enemy;
+				if (enemy) enemy.hurt();
+			}
+			
+			if (!ignoreContact) super.handleBeginContact(contact);
 		}
 		
 		private function onDamageTaken():void
