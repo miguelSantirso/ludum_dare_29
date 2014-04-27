@@ -10,8 +10,8 @@ package data
 		protected var _id:int;
 		protected var _name:String;
 		protected var _difficulty:int; //PlanetDifficulty
-		protected var _richness:int; // number of seams
-		protected var _toxicity:int; // number of active machines
+		protected var _richness:int; // PlanetRichness (number of seams)
+		protected var _toxicity:int; // PlanetToxicity (number of active machines)
 		protected var _mines:Vector.<Mine>;
 		protected var _skin:int; //SkinType
 
