@@ -26,7 +26,7 @@ package space_digger.levels
 	{
 		protected var recentActivityScroller:Scroller;
 		protected var ongoingOpsScroller:Scroller;
-		protected var popupPlanet:PopupPlanet;
+		protected var _popupPlanet:PopupPlanet;
 		protected var popupRanking:PopupRanking;
 		private var popupModal:Sprite;
 		
@@ -49,10 +49,10 @@ package space_digger.levels
 			ongoingOpsScroller.init();
 			level.slot_ongoing_list.addChild(ongoingOpsScroller);
 			
-			popupPlanet = new PopupPlanet();
-			popupPlanet.x = (stage.stageWidth - popupPlanet.width) * 0.5;
-			popupPlanet.y = (stage.stageHeight - popupPlanet.height) * 0.5;
-			popupPlanet.addEventListener(PopupPlanet.EVENT_CLOSE, closePlanetPopup);
+			_popupPlanet = new PopupPlanet();
+			_popupPlanet.x = (stage.stageWidth - _popupPlanet.width) * 0.5;
+			_popupPlanet.y = (stage.stageHeight - _popupPlanet.height) * 0.5;
+			_popupPlanet.addEventListener(PopupPlanet.EVENT_CLOSE, closePlanetPopup);
 			
 			popupRanking = new PopupRanking();
 			popupRanking.x = (stage.stageWidth - popupRanking.width) * 0.5;
@@ -82,9 +82,9 @@ package space_digger.levels
 		{
 			level.slot_activity_list.removeChild(recentActivityScroller);
 			level.slot_ongoing_list.removeChild(ongoingOpsScroller);
-			removeChild(popupPlanet);
+			removeChild(_popupPlanet);
 			
-			popupPlanet.dispose();
+			_popupPlanet.dispose();
 			popupRanking.dispose();
 			
 			ongoingOpsScroller.dispose();
@@ -198,10 +198,11 @@ package space_digger.levels
 			
 			var selectedPlanet:Planet;
 			
-			if (contains(popupPlanet))
+			if (contains(_popupPlanet))
 			{
 				selectedPlanet = DataManager.getInstance().mySystem.planets[planetIndex];
-				popupPlanet.planet = selectedPlanet;
+				_popupPlanet.planetIndex = planetIndex;
+				_popupPlanet.planet = selectedPlanet;
 			}
 		}
 		
@@ -224,10 +225,10 @@ package space_digger.levels
 		
 		public function openPlanetPopup(e:MouseEvent):void
 		{
-			if (!contains(popupPlanet))
+			if (!contains(_popupPlanet))
 			{
 				addChild(popupModal);
-				addChild(popupPlanet);
+				addChild(_popupPlanet);
 				
 				var planetIndex:int = e.currentTarget.name.charAt(e.currentTarget.name.length - 1);
 
@@ -237,10 +238,10 @@ package space_digger.levels
 		
 		public function closePlanetPopup(e:Event = null):void
 		{
-			if (contains(popupPlanet))
+			if (contains(_popupPlanet))
 			{
 				removeChild(popupModal);
-				removeChild(popupPlanet);
+				removeChild(_popupPlanet);
 			}
 		}
 		
@@ -262,6 +263,11 @@ package space_digger.levels
 				removeChild(popupModal);
 				removeChild(popupRanking);
 			}
+		}
+		
+		public function get popupPlanet():PopupPlanet 
+		{
+			return _popupPlanet;
 		}
 	}
 }

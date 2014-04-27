@@ -23,6 +23,7 @@ package space_digger.popups
 		public static const EVENT_CLOSE:String = "eventClose";
 		private var _asset:AssetPopupPlanet;
 		private var _planet:Planet;
+		public var planetIndex:int;
 		
 		public function PopupPlanet() 
 		{
