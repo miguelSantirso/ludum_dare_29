@@ -15,7 +15,7 @@ package space_digger.enemies
 		
 		private var _elapsedTime:Number = 0;
 		private var _nextSpawnTime:Number = 0;
-		private var _enemyType:EnemyType;
+		private var _enemyType:int;
 		private var _CntFoes:int = 0;
 		
 		private static const MAX_FOES:int = 5;
@@ -31,12 +31,15 @@ package space_digger.enemies
 				throw new Error("Incorrectly named spawn");
 			}
 			
-			//_enemyType = nameComponents[1];
+			updateCallEnabled = true;
+			
+			_enemyType = EnemyType.fromString(nameComponents[1]);
 		}
 		
 		public function addFoe(foe:Foe):void
 		{
 			_ce.state.add(foe);
+			foe.x = x; foe.y = y;
 			foe.justHurt.add(removeFoe);
 			foe.updateCallEnabled = true;
 			
@@ -57,7 +60,7 @@ package space_digger.enemies
 			if (MAX_FOES <= _CntFoes)
 				return;
 				
-			if (_elapsedTime < _nextSpawnTime)
+			if (_nextSpawnTime!= 0 && _elapsedTime < _nextSpawnTime)
 				return;
 			
 			switch(_enemyType)
