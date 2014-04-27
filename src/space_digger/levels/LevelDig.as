@@ -23,6 +23,7 @@ package space_digger.levels
 	import space_digger.enemies.Spike;
 	import space_digger.enemies.SpawnSpot;
 	import citrus.core.CitrusObject;
+	import space_digger.SpaceShip;
 	
 	/**
 	 * ...
@@ -41,14 +42,14 @@ package space_digger.levels
 		{
 			super(_level);
 			
-			var objectsUsed:Array = [SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper];
+			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper];
 		}
 		
 		public override function initialize():void
 		{
 			super.initialize();
 			
-			view.camera.setUp(getObjectByName("player_char"), new Rectangle(0, 0, 1352, 1963));
+			view.camera.setUp(getObjectByName("player_char")/*, new Rectangle(0, 0, 1352, 1963)*/);
 			
 			stage.addChild(_hud);
 		}

@@ -68,13 +68,13 @@ package space_digger.levels
 		
 		public function setCompanyData():void
 		{
-			level.label_company_name.text = DataManager.getInstance().myState.company.name.toUpperCase();
+			/*level.label_company_name.text = DataManager.getInstance().myState.company.name.toUpperCase();
 			level.label_company_gold.text = DataManager.getInstance().myState.company.score.toString();
 			level.label_company_rank.text = "#99"; // TO-DO
 			
 			Text.truncateText(level.label_company_name);
 			Text.truncateText(level.label_company_gold);
-			Text.truncateText(level.label_company_rank);
+			Text.truncateText(level.label_company_rank);*/
 		}
 		
 		public function setSystemData():void
