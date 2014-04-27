@@ -326,6 +326,8 @@ package space_digger
 		 */		
 		public function hurt():void
 		{
+			if (_hurt) return;
+			
 			_hurt = true;
 			controlsEnabled = false;
 			_hurtTimeoutID = setTimeout(endHurtState, hurtDuration);
@@ -468,7 +470,7 @@ package space_digger
 			if (_hurt)
 				_animation = "hurt";
 
-			if (_jetpackEnabled)
+			else if (_jetpackEnabled)
 			{
 				_animation = "up";
 			}
