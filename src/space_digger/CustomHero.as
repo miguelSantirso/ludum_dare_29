@@ -495,11 +495,11 @@ package space_digger
 				{
 					_animation = "idle";
 				}
-				else if (walkingSpeed < -acceleration) {
+				else if (walkingSpeed < 0) {
 					_inverted = true;
 					_animation = "walk";
 
-				} else if (walkingSpeed > acceleration) {
+				} else if (walkingSpeed > 0) {
 
 					_inverted = false;
 					_animation = "walk";
