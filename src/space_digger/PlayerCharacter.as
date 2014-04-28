@@ -149,7 +149,7 @@ package space_digger
 			for each (var block:DestructibleBlock in _contactingBlocks)
 			{
 				if ((!inverted && block.x > x) || (_inverted && block.x < x))
-					block.destroy();
+					block.explode();
 			}
 		}
 		override public function handleBeginContact(contact:b2Contact):void 
