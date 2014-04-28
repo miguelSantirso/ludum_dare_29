@@ -15,6 +15,8 @@ package space_digger
 			nLifes = 3;
 			
 			mineral_hud.visible = false;
+			claim_hint.visible = false;
+			leave_planet_hint.visible = false;
 		}
 		
 		
@@ -61,6 +63,24 @@ package space_digger
 		public function hideMineralHud():void
 		{
 			mineral_hud.visible = false;
+		}
+		
+		public function showLeavePlanetHint():void
+		{
+			leave_planet_hint.visible = true;
+		}
+		public function hideLeavePlanetHint():void
+		{
+			leave_planet_hint.visible = false;
+		}
+		
+		public function showClaimHint():void
+		{
+			claim_hint.visible = true;
+		}
+		public function hideClaimHint():void
+		{
+			claim_hint.visible = false;
 		}
 		
 		
