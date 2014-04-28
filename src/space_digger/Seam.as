@@ -144,7 +144,8 @@ package space_digger
 			
 			if (Box2DUtils.CollisionGetOther(this, contact) is PlayerCharacter)
 			{
-				(_ce.state as LevelDig).hud.hideMineralHud();
+				if((_ce.state is LevelDig))
+					(_ce.state as LevelDig).hud.hideMineralHud();
 				
 				_playerInArea = false;
 				if (!_machineInPlace) _animation = "idle";

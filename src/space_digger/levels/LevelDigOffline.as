@@ -2,6 +2,7 @@ package space_digger.levels
 {
 	import data.Mine;
 	import flash.display.MovieClip;
+	import managers.GameManager;
 	
 	/**
 	 * ...
@@ -9,13 +10,13 @@ package space_digger.levels
 	 */
 	public class LevelDigOffline extends LevelDig 
 	{
-		protected var _claimedSeams:int;
+		protected var _claimedSeamIndexes:Array;
 		
 		public function LevelDigOffline(_level:MovieClip) 
 		{
 			super(_level);
 			
-			_claimedSeams = 0;
+			_claimedSeamIndexes = new Array();
 		}
 		
 		protected override function setDiggingSession():void
@@ -45,26 +46,44 @@ package space_digger.levels
 		
 		public override function endMission():void
 		{
+			showResults();
+		}
+		
+		protected function showResults():void
+		{
+				var numClaimed:int = _claimedSeamIndexes.length;
+			var message:String = "";
+			
+			if (diggingSession.death){
+				if (numClaimed > 0)
+					message = "The worker didn't make it, but at least he deployed " + numClaimed + " machine"+(numClaimed > 1 ? "s" : "")+" before passing. We are lucky this was just training.";
+				else
+					message = "What a shame. Your worker didn't deploy any machines. Try again, you'll get better at it.";
+			}else {
+				if (numClaimed > 2)
+					message = "You deployed " + _claimedSeamIndexes.length + " machines. Great job, you are totally ready for Online mode!";
+				else
+					message = "You deployed " + _claimedSeamIndexes.length + " machines. You can do better."
+			}
+			
+			GameManager.getInstance().displayMessagePopUp(message, "Got it", goToRegister); // exit here is really important
+		}
+		
+		protected function goToRegister():void
+		{
 			changeLevel.dispatch(1);
 		}
 		
-		
-		public override function deployMachine(seamIndex:int):Boolean
+		public override function deploySeamMachine(seamIndex:int):void
 		{
-			var deployment:Boolean = super.deploySeamMachine(seamIndex);
-			
-			//if(deployment
-			
-			return deployment;
+			if (_claimedSeamIndexes.indexOf(seamIndex) < 0)
+				_claimedSeamIndexes.push(seamIndex);
 		}
 		
-		public override function destroySeamMachine(seamIndex:int):Boolean
-		{
-			var destroyed:Boolean = super.destroySeamMachine(seamIndex);
-			
-			//if(deployment
-			
-			return destroyed;
+		public override function destroySeamMachine(seamIndex:int):void
+		{	
+			if (_claimedSeamIndexes.indexOf(seamIndex) >= 0)
+				_claimedSeamIndexes.splice(_claimedSeamIndexes.indexOf(seamIndex),1);
 		}
 	}
 

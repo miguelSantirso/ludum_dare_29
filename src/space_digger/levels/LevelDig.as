@@ -64,6 +64,14 @@ package space_digger.levels
 		{
 			super.destroy();
 			
+			var seams:Vector.<CitrusObject> = getObjectsByName("seam");
+			for (var i:int = 0; i < seams.length; ++i)
+			{
+				var seam:Seam = seams[i] as Seam;
+				
+				seam.destroy();
+			}
+			
 			stage.removeChild(_hud);
 			
 			TweenLite.killDelayedCallsTo(endExploration);
@@ -213,14 +221,14 @@ package space_digger.levels
 			return _hud;
 		}
 		
-		public function deploySeamMachine(seamIndex:int):Boolean
+		public function deploySeamMachine(seamIndex:int):void
 		{
-			return diggingSession.deploySeamMachine(seamIndex);
+			diggingSession.deploySeamMachine(seamIndex);
 		}
 		
-		public function destroySeamMachine(seamIndex:int):Boolean
+		public function destroySeamMachine(seamIndex:int):void
 		{
-			return diggingSession.destroySeamMachine(seamIndex);
+			diggingSession.destroySeamMachine(seamIndex);
 		}
 		
 	}
