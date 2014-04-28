@@ -4,6 +4,8 @@ package space_digger.levels
 	import Box2D.Dynamics.Contacts.b2Contact;
 	import Box2D.Dynamics.Contacts.b2PolygonContact;
 	import citrus.core.State;
+	import citrus.objects.Box2DPhysicsObject;
+	import data.Death;
 	import data.DiggingSession;
 	import data.Mine;
 	import flash.display.MovieClip;
@@ -18,6 +20,7 @@ package space_digger.levels
 	import citrus.objects.platformer.box2d.Cannon;
 	import citrus.utils.objectmakers.ObjectMaker2D;
 	import flash.geom.Rectangle;
+	import infrastructure.RemoteOperation;
 	import org.osflash.signals.Signal;
 	import space_digger.GameplayHud;
 	import space_digger.PlayerCharacter;
@@ -106,6 +109,7 @@ package space_digger.levels
 			diggingSession.mine = DataManager.getInstance().currentMine;
 			
 			initializeMine();
+			initializeCorpses();
 		}
 		
 		
@@ -118,6 +122,20 @@ package space_digger.levels
 				_hud.stopCountdown();
 			}
 		}
+		
+		private function initializeCorpses():void
+		{
+			for each (var corpseData:Death in diggingSession.mine.deaths)
+			{
+				var corpse:CitrusSprite = new CitrusSprite("corpse");
+				corpse.view = new Corpse();
+				corpse.offsetX += 10;
+				corpse.offsetY += 34;
+				corpse.x = corpseData.x; corpse.y = corpseData.y;
+				add(corpse);
+			}
+		}
+		
 		
 		private function initializeMine():void
 		{
