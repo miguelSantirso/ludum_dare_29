@@ -29,7 +29,7 @@ package space_digger
 				(_ce.state as LevelDig).startExploration();
 			}
 			
-			if (_animation == "exit" && ++_frameCounter >= 99)
+			if (_animation == "exit" && ++_frameCounter >= 99 && visible)
 			{
 				visible = false;
 				(_ce.state as LevelDig).endMission();

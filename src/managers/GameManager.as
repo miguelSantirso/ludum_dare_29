@@ -93,12 +93,25 @@ package managers
 		{
 			// We are ready to play
 			ready.dispatch();
+		
+			startRefreshCalls();
+		}
+		
+		public function startRefreshCalls():void
+		{
+			stopRefreshCalls();
 			
 			// set timer to update state
 			TweenLite.delayedCall(DataManager.getInstance().core.stateRefreshTime, updateState, [onStateUpdated, onStateUpdated]);
 			
 			// set timer to update system
 			TweenLite.delayedCall(DataManager.getInstance().core.systemRefreshTime, updateSystem, [onSystemUpdated, onSystemUpdated]);
+		}
+		
+		public function stopRefreshCalls():void
+		{
+			TweenLite.killDelayedCallsTo(updateState);
+			TweenLite.killDelayedCallsTo(updateSystem);
 		}
 		
 		protected function onStateUpdated():void
@@ -122,8 +135,7 @@ package managers
 		
 		protected function reset():void
 		{
-			TweenLite.killDelayedCallsTo(updateState);
-			TweenLite.killDelayedCallsTo(updateSystem);
+			stopRefreshCalls();
 			
 			RemoteManager.getInstance().logout(onLoggedOut, onLoggedOut);	
 		}

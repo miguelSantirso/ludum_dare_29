@@ -33,8 +33,7 @@ package data
 				if (_activatedSeams.indexOf(mine.seams[seamIndex]) >= 0) return;
 		
 				_activatedSeams.push(mine.seams[seamIndex].id);
-			}else
-				return;
+			}
 		}
 		
 		public function destroySeamMachine(seamIndex:int):void
@@ -45,10 +44,10 @@ package data
 			if (seamIndex >= 0 && seamIndex < mine.seams.length) {
 				var index:int = _activatedSeams.indexOf(mine.seams[seamIndex].id);
 				
-				if (index >= 0)
+				if (index >= 0){
 					_activatedSeams.splice(index, 1);
-			}else
-				return;	
+				}
+			}
 		}
 		
 		public function get activatedSeams():Array

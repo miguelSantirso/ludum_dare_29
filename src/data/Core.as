@@ -11,14 +11,21 @@ package data
 		protected var _systemRefreshTime:int;
 		protected var _machineLifetime:int;
 		
+		protected var _companySuffixes:Vector.<String>;
+		
 		public function Core(data:Object = null) 
 		{
+			_companySuffixes = new Vector.<String>();
+			
 			if (data)
 				populate(data);
 		}
 		
 		public function populate(data:Object):void 
 		{
+			if (data["company_suffixes"])
+				populateCompanySuffixes(data["company_suffixes"]);
+				
 			if (data["state_refresh"])
 				_stateRefreshTime = data["state_refresh"];
 			else
@@ -44,6 +51,21 @@ package data
 			_machineLifetime = 0;
 		}
 		
+		protected function populateCompanySuffixes(data:Object):void
+		{
+			if (!data)
+				return;
+				
+			var suffixesArray:Array = data as Array ? data as Array : [data];
+			
+			_companySuffixes.splice(0, _companySuffixes.length);
+
+			for each(var tempSuffix:String in suffixesArray) {				
+				if(tempSuffix != "")
+					_companySuffixes.push(tempSuffix);
+			}
+		}
+		
 		public function get machineLifetime():int 
 		{
 			return _machineLifetime;
@@ -57,6 +79,11 @@ package data
 		public function get systemRefreshTime():int 
 		{
 			return _systemRefreshTime;
+		}
+		
+		public function get companySuffixes():Vector.<String> 
+		{
+			return _companySuffixes;
 		}
 		
 	}
