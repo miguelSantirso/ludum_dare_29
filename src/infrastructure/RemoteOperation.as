@@ -42,6 +42,8 @@ package infrastructure
 		
 		protected var _disablesView:Boolean;
 		
+		protected var _earlySuccessDispatch:Boolean;
+		
 		public var successSignal:Signal;
 		public var faultSignal:Signal;
 		
@@ -52,7 +54,8 @@ package infrastructure
 										populateStructures:Array = null,
 										successCallback:Function = null,
 										faultCallback:Function = null,
-										disablesView:Boolean = false)
+										disablesView:Boolean = false,
+										earlySuccessDispatch:Boolean = false )
 		{
 			successSignal = new Signal();
 			faultSignal = new Signal();
@@ -74,6 +77,7 @@ package infrastructure
 			_faultCallback = faultCallback;
 			_requestObject = object;
 			_disablesView = disablesView;
+			_earlySuccessDispatch = earlySuccessDispatch;
 		}
 		
 		public function send():void
@@ -105,11 +109,6 @@ package infrastructure
 		
 		public function dispose():void
 		{
-			successSignal.removeAll();
-			successSignal = null;
-			faultSignal.removeAll();
-			faultSignal = null;
-		
 			_tag = null;
 			_url = null;
 			_method = null;
@@ -161,6 +160,10 @@ package infrastructure
 							structure.populate(jsonObject);
 					}
 				}
+				
+				if(_earlySuccessDispatch)
+					successSignal.dispatch(this);
+				
 				// execute the callback
 				if(_successCallback != null){
 					if(jsonObject && _successCallback.length > 0)
@@ -169,8 +172,8 @@ package infrastructure
 						_successCallback();
 				}
 			}
-			if(successSignal)
-				successSignal.dispatch(this);	
+			if(!_earlySuccessDispatch && successSignal)
+				successSignal.dispatch(this);
 		}
 		
 		private function onFaultHandler(event:IOErrorEvent):void

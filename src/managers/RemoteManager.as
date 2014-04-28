@@ -60,9 +60,6 @@ package managers
 				op.dispose();
 				
 			_queuedOperations.splice(0, _queuedOperations.length);
-			
-			if (_currentRemoteOperation) _currentRemoteOperation.dispose();
-			_currentRemoteOperation = null;
 		}
 		
 		protected function sendOperation(
@@ -74,9 +71,11 @@ package managers
 			successCallback:Function = null,
 			faultCallback:Function = null,
 			disablesView:Boolean = false,
-			highPriority:Boolean = false):void
+			highPriority:Boolean = false,
+			earlySuccessDispatch:Boolean = false):void
 		{
-			var remoteOperation:RemoteOperation = new RemoteOperation(tag, url, method, object, populateStructures, successCallback, faultCallback,disablesView);
+			var remoteOperation:RemoteOperation = 
+				new RemoteOperation(tag, url, method, object, populateStructures, successCallback, faultCallback, disablesView,earlySuccessDispatch);
 													
 			queueOperation(remoteOperation, highPriority);
 			
@@ -198,7 +197,7 @@ package managers
 		
 		public function logout(successCallback:Function = null, faultCallback:Function = null):void
 		{
-			sendOperation(LOGOUT,RemoteURL.LOGOUT,RemoteOperation.TYPE_POST,null,null,successCallback,faultCallback,true);
+			sendOperation(LOGOUT,RemoteURL.LOGOUT,RemoteOperation.TYPE_POST,null,null,successCallback,faultCallback,true,true);
 		}
 		
 		public function getCore(core:Core, successCallback:Function = null, faultCallback:Function = null ):void
@@ -211,9 +210,9 @@ package managers
 			sendOperation(STATE, RemoteURL.STATE, RemoteOperation.TYPE_POST, null,[state],successCallback,faultCallback,false);
 		}
 		
-		public function getSystem(system:System, successCallback:Function = null, faultCallback:Function = null):void
+		public function getSystem(system:System, successCallback:Function = null, faultCallback:Function = null, disableView:Boolean = false):void
 		{
-			sendOperation(SYSTEM, RemoteURL.SYSTEM, RemoteOperation.TYPE_POST, null, [system], successCallback,faultCallback,false);
+			sendOperation(SYSTEM, RemoteURL.SYSTEM, RemoteOperation.TYPE_POST, null, [system], successCallback,faultCallback,disableView);
 		}
 		
 		public function land(mineId:int, mine:Mine,successCallback:Function = null, faultCallback:Function = null):void

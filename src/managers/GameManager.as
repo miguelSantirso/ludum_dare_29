@@ -78,7 +78,7 @@ package managers
 					if (SessionManager.getInstance().alreadyRegistered) {
 						updateState( 
 							function():void { 
-								RemoteManager.getInstance().getSystem(DataManager.getInstance().mySystem, setReady, startFailed.dispatch); 
+								RemoteManager.getInstance().getSystem(DataManager.getInstance().mySystem, setReady, startFailed.dispatch,true); 
 							},
 							startFailed.dispatch);
 					}else {
@@ -144,7 +144,7 @@ package managers
 		
 		public function logout():void
 		{
-			RemoteManager.getInstance().logout(onLoggedOut,onLoggedOut);
+			reset();
 		}
 		
 		public function updateState(successCallback:Function = null, faultCallback:Function = null):void
