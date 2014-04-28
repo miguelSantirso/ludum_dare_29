@@ -12,12 +12,12 @@ package space_digger.popups
 	public class PopupSettings extends Sprite
 	{
 		public var closePopup:Signal;
-		private var _asset:AssetPopupGeneric;
+		private var _asset:AssetPopupSettings;
 		protected var _closeCallback:Function;
 		
 		public function PopupSettings() 
 		{
-			//_asset = new AssetPopupSettings();
+			_asset = new AssetPopupSettings();
 			closePopup = new Signal();
 			
 			addChild(_asset);
