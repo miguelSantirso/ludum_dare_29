@@ -209,11 +209,15 @@ package space_digger.levels
 		
 		private function onEnteredExit(c:b2Contact):void
 		{
+			if (!_exploring) return;
+			
 			_inExitArea = true;
+			_hud.showLeavePlanetHint();
 		}
 		private function onExitedExit(c:b2Contact):void
 		{
 			_inExitArea = false;
+			_hud.hideLeavePlanetHint();
 		}
 		
 		public function get hud():GameplayHud 
