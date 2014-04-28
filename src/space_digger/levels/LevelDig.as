@@ -157,17 +157,17 @@ package space_digger.levels
 			_exploring = false;
 			_hud.stopCountdown();
 			
-			if (takeOff)
-				GameManager.getInstance().takeOff(diggingSession, exit, 
-					function():void
-					{
-						if (retryCounter <= 3)
-							TweenLite.delayedCall(retrySeconds, endExploration, [takeOff]);
-						else
-							exit();
-							
-						retryCounter++;
-					});
+			if (!takeOff)
+				return;
+				
+			GameManager.getInstance().takeOff(diggingSession, exit, function():void	{
+				if (retryCounter <= 3)
+					TweenLite.delayedCall(retrySeconds, endExploration, [takeOff]);
+				else
+					exit();
+				
+				retryCounter++;
+			});
 			
 		}
 		
