@@ -175,8 +175,6 @@ package space_digger.levels
 			
 			if (_exploring && _hud.timeLeft <= 0)
 			{
-				// INSERT_SOUND PLAYER HERIDO POR TIMEOUT
-				
 				_player.hurt();
 			}
 		}

@@ -144,7 +144,6 @@ package
 			//sound added with asset manager
 			sound.addSound("BasementFloor", { sound:"../res/sounds/basement_floor.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
 			sound.addSound("Hypnothis", { sound:"../res/sounds/hypnothis.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
-			sound.addSound("JetPack", { sound:"../res/sounds/jetpack.mp3" , permanent:true, volume:0.2 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
 
 			//sounds added with url
 			sound.addSound("Aterrizaje", { sound:"../res/sounds/aterrizaje.mp3" , group:CitrusSoundGroup.SFX } );
@@ -154,6 +153,7 @@ package
 			sound.addSound("DestroySeam", { sound:"../res/sounds/destroy_seam.mp3" , group:CitrusSoundGroup.SFX } );
 			sound.addSound("GetHit", { sound:"../res/sounds/get_hit.mp3" , group:CitrusSoundGroup.SFX } );
 			sound.addSound("HitEnemy", { sound:"../res/sounds/hit_enemy.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("JetPack", { sound:"../res/sounds/jetpack.mp3" , permanent:true, volume:0.2 , loops:int.MAX_VALUE , group:CitrusSoundGroup.SFX } );
 
 			sound.getGroup(CitrusSoundGroup.SFX).addEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED, function(e:CitrusSoundEvent):void
 			{
