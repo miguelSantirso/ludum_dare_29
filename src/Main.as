@@ -158,11 +158,12 @@ package
 			var numberOfLevels:int = 25;
 			var randomLevel:int = Math.ceil(Math.random()*numberOfLevels);
 			
-			randomLevel = offlineLevel;
+			// Uncomment to get ordered offline levels
+			//randomLevel = offlineLevel;
+			//offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
+			//trace("current offline level",offlineLevel);
 			
 			changeLevel(numberOfLevels + 2 + randomLevel);
-			
-			offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
 		}
 		
 		private function restartLevel():void
