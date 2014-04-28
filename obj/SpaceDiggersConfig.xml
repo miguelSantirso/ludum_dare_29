@@ -8,11 +8,11 @@
   <compiler>
     <define append="true">
       <name>CONFIG::debug</name>
-      <value>false</value>
+      <value>true</value>
     </define>
     <define append="true">
       <name>CONFIG::release</name>
-      <value>true</value>
+      <value>false</value>
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
@@ -30,50 +30,48 @@
       <name>CONFIG::desktop</name>
       <value>false</value>
     </define>
-    <optimize>true</optimize>
-    <omit-trace-statements>true</omit-trace-statements>
-    <verbose-stacktraces>false</verbose-stacktraces>
+    <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\src</path-element>
+      <path-element>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <include-libraries>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\assets.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\ice.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\main_char_actions.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\Ice_enemy_actions.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\game_hud.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\ice_creeper.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\nave_animaciones_hielo.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\fire.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\forest.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\fx_exit.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\mineral1.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\nave_animaciones_happy.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\happy.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\water.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\nave_animaciones_fire.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\nave_animaciones_forest.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\nave_animaciones_water.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\fire_creeper.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\Fire_enemy_actions.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\forest_creeper.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\Forest_enemy_actions.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\happy_creeper.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\Happy_enemy_actions.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\water_creeper.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\Water_enemy_actions.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\loading_icon.swc</library>
-      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\main_char_actions_water.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\assets.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\ice.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\main_char_actions.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\Ice_enemy_actions.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\game_hud.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\ice_creeper.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\nave_animaciones_hielo.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\fire.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\forest.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\fx_exit.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\mineral1.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\nave_animaciones_happy.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\happy.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\water.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\nave_animaciones_fire.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\nave_animaciones_forest.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\nave_animaciones_water.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\fire_creeper.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\Fire_enemy_actions.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\forest_creeper.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\Forest_enemy_actions.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\happy_creeper.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\Happy_enemy_actions.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\water_creeper.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\Water_enemy_actions.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\loading_icon.swc</library>
+      <library>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\main_char_actions_water.swc</library>
     </include-libraries>
     <library-path append="true">
-      <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\greensock.swc</path-element>
-      <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\CEV3-1-9-ALL.swc</path-element>
-      <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\as3-signals-v0.9-BETA.swc</path-element>
+      <path-element>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\greensock.swc</path-element>
+      <path-element>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\CEV3-1-9-ALL.swc</path-element>
+      <path-element>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\lib\as3-signals-v0.9-BETA.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\src\Main.as</path-element>
+    <path-element>C:\Users\berzerk\Desktop\Workspace\ludum_dare_29\src\Main.as</path-element>
   </file-specs>
   <default-background-color>#29313E</default-background-color>
   <default-frame-rate>30</default-frame-rate>

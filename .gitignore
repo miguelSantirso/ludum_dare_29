@@ -1,5 +1,6 @@
 # Random
 *.orig
+*Thumbs.db
 
 # Build and Release Folders
 bin/

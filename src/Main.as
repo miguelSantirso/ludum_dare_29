@@ -142,14 +142,18 @@ package
 			CitrusSoundInstance.startPositionOffset = 80;
 
 			//sound added with asset manager
+			sound.addSound("BasementFloor", { sound:"../res/sounds/basement_floor.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
 			sound.addSound("Hypnothis", { sound:"../res/sounds/hypnothis.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
 			sound.addSound("JetPack", { sound:"../res/sounds/jetpack.mp3" , permanent:true, volume:0.2 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
 
 			//sounds added with url
+			sound.addSound("Aterrizaje", { sound:"../res/sounds/aterrizaje.mp3" , group:CitrusSoundGroup.SFX } );
 			sound.addSound("BreakBlock", { sound:"../res/sounds/break_block.mp3" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("HitEnemy", { sound:"../res/sounds/hit_enemy.mp3" , group:CitrusSoundGroup.SFX } );
 			sound.addSound("Deploy", { sound:"../res/sounds/deploy.mp3" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("Landing", { sound:"../res/sounds/landing.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("Despegue", { sound:"../res/sounds/despegue.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("DestroySeam", { sound:"../res/sounds/destroy_seam.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("GetHit", { sound:"../res/sounds/get_hit.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("HitEnemy", { sound:"../res/sounds/hit_enemy.mp3" , group:CitrusSoundGroup.SFX } );
 
 			sound.getGroup(CitrusSoundGroup.SFX).addEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED, function(e:CitrusSoundEvent):void
 			{

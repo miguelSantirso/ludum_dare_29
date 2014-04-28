@@ -37,8 +37,6 @@ package space_digger.enemies
 
 			if (collider is _enemyClass && collider.body.GetLinearVelocity().y > enemyKillVelocity)
 			{
-				// INSERT_SOUND PLAYER HERIDO POR ENEMIGO
-				
 				hurt();
 			}
 			

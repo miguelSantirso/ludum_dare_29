@@ -95,6 +95,7 @@ package space_digger
 		private function breakMachine():void
 		{
 			// INSERT_SOUND MAQUINA DESTRUIDA
+			_ce.sound.playSound("DestroySeam");
 			
 			_machineInPlace = false;
 			

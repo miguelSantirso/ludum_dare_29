@@ -102,6 +102,12 @@ package space_digger.levels
 			setDiggingSession();
 			
 			stage.addChild(_hud);
+			
+			_ce.sound.stopAllPlayingSounds();
+			_ce.sound.playSound("Hypnothis");
+			
+			// INSERT_SOUND ENTRAR AL NIVEL
+			_ce.sound.playSound("Aterrizaje");
 		}
 		
 		protected function setDiggingSession():void
@@ -149,7 +155,10 @@ package space_digger.levels
 				if (i < seamsData.length) 
 					seam.init(seamsData[i]);
 				else 
+				{
 					seam.visible = false;
+					seam.kill = true;
+				}
 			}
 		}
 		
@@ -174,9 +183,6 @@ package space_digger.levels
 		
 		public function startExploration():void
 		{
-			// INSERT_SOUND ENTRAR AL NIVEL
-			_ce.sound.playSound("Landing");
-			
 			GameManager.getInstance().play(onPlaySuccess);
 		}
 		
@@ -211,9 +217,7 @@ package space_digger.levels
 			GameManager.getInstance().takeOff(diggingSession, exit, function():void	{
 				if (retryCounter <= 3)
 					TweenLite.delayedCall(retrySeconds, endExploration, [takeOff]);
-				else {
-					// INSERT_SOUND SALIR DEL NIVEL
-					
+				else {				
 					exit();
 				}
 				
@@ -236,6 +240,9 @@ package space_digger.levels
 			view.camera.switchToTarget(_ship, 10, function():void {
 				_ship.leave();
 			});
+			
+			// INSERT_SOUND SALIR DEL NIVEL
+			_ce.sound.playSound("Despegue");
 		}
 		
 		public function endMission():void
