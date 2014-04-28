@@ -127,19 +127,18 @@ package managers
 		
 		public function isPlanetInCurrentSystem(planetID:int):Boolean
 		{
-			var planetIndex:int = -1;
+			var planetFound:Boolean = false;
 			
 			for each(var planet:Planet in _mySystem.planets)
 			{
 				if (planet.id == planetID)
 				{
+					planetFound = true;
 					break;
 				}
-				
-				planetIndex++;
 			}
 			
-			return planetIndex > -1;
+			return planetFound;
 		}
 	}
 
