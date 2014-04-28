@@ -44,6 +44,8 @@ package
 					[LevelDig, "../swf/levels/Level3.swf"],
 					[LevelDig, "../swf/levels/Level4.swf"],
 					[LevelDig, "../swf/levels/Level5.swf"],
+					
+					[LevelDigOffline, "../swf/levels/Level1.swf"],
 				];
 		
 			//if (Main.DEBUG)
@@ -54,6 +56,7 @@ package
 			GameManager.getInstance().loggedOut.add(goToLevelRegister);
 			GameManager.getInstance().startFailed.add(goToLevelRegister);
 			GameManager.getInstance().changeLevelRequest.add(travelToMine);
+			GameManager.getInstance().changeOfflineRequest.add(travelToOfflineMine);
 			GameManager.getInstance().start();
 			
 			GameManager.getInstance().stateUpdated.add(onStateUpdated);
@@ -78,8 +81,8 @@ package
 			
 			/*level.lvlEnded.add(nextLevel);
 			level.lvlBack.add(previousLevel);	
-			level.restartLevel.add(restartLevel);
-			level.changeLevel.add(changeLevel);*/
+			level.restartLevel.add(restartLevel);*/
+			level.changeLevel.add(changeLevel);
 			
 			onStateUpdated();
 			onSystemUpdated();
@@ -93,6 +96,12 @@ package
 			
 			changeLevel(GameManager.getInstance().getClientMapIndexFromServerMapId(mine.map));
 		}
+		
+		private function travelToOfflineMine():void
+		{
+			changeLevel(8);
+		}
+		
 		
 		/*private function nextLevel():void
 		{
