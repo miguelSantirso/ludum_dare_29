@@ -49,6 +49,10 @@ package
 					[LevelDig, "../swf/levels/Level5.swf"],
 					
 					[LevelDigOffline, "../swf/levels/Level1.swf"],
+					[LevelDigOffline, "../swf/levels/Level2.swf"],
+					[LevelDigOffline, "../swf/levels/Level3.swf"],
+					[LevelDigOffline, "../swf/levels/Level4.swf"],
+					[LevelDigOffline, "../swf/levels/Level5.swf"],
 				];
 		
 			//if (Main.DEBUG)
@@ -112,7 +116,10 @@ package
 		
 		private function travelToOfflineMine():void
 		{
-			changeLevel(8);
+			var numberOfLevels:int = 5;
+			var randomLevel:int = Math.ceil(Math.random()*numberOfLevels);
+			
+			changeLevel(numberOfLevels + 2 + randomLevel);
 		}
 		
 		private function restartLevel():void
