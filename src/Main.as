@@ -23,9 +23,9 @@ package
 		
 		public function Main():void 
 		{
-			if (stage)
-				init();
-			else 
+			//if (stage)
+			//	init();
+			//else 
 				addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
@@ -149,7 +149,8 @@ package
 			var levelSpace:LevelSpace = state as LevelSpace;
 			
 			if (levelSpace){
-				levelSpace.setSystemData();
+				levelSpace.setSystemData(false);
+				
 				if (levelSpace.popupPlanet && levelSpace.contains(levelSpace.popupPlanet))
 					levelSpace.setPlanetPopupData(levelSpace.popupPlanet.planetIndex);
 			}
