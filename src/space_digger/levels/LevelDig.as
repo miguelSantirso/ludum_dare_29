@@ -213,5 +213,15 @@ package space_digger.levels
 			return _hud;
 		}
 		
+		public function deploySeamMachine(seamIndex:int):Boolean
+		{
+			return diggingSession.deploySeamMachine(seamIndex);
+		}
+		
+		public function destroySeamMachine(seamIndex:int):Boolean
+		{
+			return diggingSession.destroySeamMachine(seamIndex);
+		}
+		
 	}
 }

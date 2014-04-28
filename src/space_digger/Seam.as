@@ -102,7 +102,7 @@ package space_digger
 		{
 			_machineInPlace = false;
 			
-			(_ce.state as LevelDig).diggingSession.destroySeamMachine(_index);
+			(_ce.state as LevelDig).destroySeamMachine(_index);
 			
 			_animation = "defeat";
 			setTimeout(function():void {
@@ -116,7 +116,7 @@ package space_digger
 			_machineInPlace = true;
 			_lifes = MAX_LIFES;
 			
-			(_ce.state as LevelDig).diggingSession.deploySeamMachine(_index);
+			(_ce.state as LevelDig).deploySeamMachine(_index);
 			
 			_owner = DataManager.getInstance().myState.company ? DataManager.getInstance().myState.company.name : "It's 'mine'";
 			(_ce.state as LevelDig).hud.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);

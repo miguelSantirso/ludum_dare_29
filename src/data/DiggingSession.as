@@ -24,20 +24,23 @@ package data
 			_death = deathObject;
 		}
 		
-		public function deploySeamMachine(seamIndex:int):void
+		public function deploySeamMachine(seamIndex:int):Boolean
 		{
 			if (!mine)
 				throw new Error("You didn't set the mine object!");
 				
 			if (seamIndex >= 0 && seamIndex < mine.seams.length) {				
-				if (_activatedSeams.indexOf(mine.seams[seamIndex]) >= 0) return;
+				if (_activatedSeams.indexOf(mine.seams[seamIndex]) >= 0) 
+					return false;
 		
 				_activatedSeams.push(mine.seams[seamIndex].id);
+				
+				return true;
 			}else
-				return;
+				return false;
 		}
 		
-		public function destroySeamMachine(seamIndex:int):void
+		public function destroySeamMachine(seamIndex:int):Boolean
 		{
 			if (!mine)
 				throw new Error("You didn't set the mine object!");
@@ -45,10 +48,13 @@ package data
 			if (seamIndex >= 0 && seamIndex < mine.seams.length) {
 				var index:int = _activatedSeams.indexOf(mine.seams[seamIndex].id);
 				
-				if (index >= 0)
+				if (index >= 0){
 					_activatedSeams.splice(index, 1);
+					return true;
+				}else
+					return false;
 			}else
-				return;	
+				return false;	
 		}
 		
 		public function get activatedSeams():Array
