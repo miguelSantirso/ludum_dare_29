@@ -7,6 +7,7 @@ package space_digger
 	import citrus.physics.box2d.Box2DUtils;
 	import space_digger.levels.LevelDig;
 	import data.SeamState;
+	import managers.DataManager;
 	
 	/**
 	 * ...
@@ -14,13 +15,14 @@ package space_digger
 	 */
 	public class Seam extends Sensor 
 	{
-		private static const MAX_LIFES:int = 10;
+		private static const MAX_LIFES:int = 5;
 		
 		private var _playerInArea:Boolean = false;
 		private var _machineInPlace:Boolean = false;
 		private var _lifes:int = MAX_LIFES;
 		public function get index():int { return _index; }
 		private var _index:int;
+		private var _owner:String = "unclaimed";
 		
 		private var _hack_damageSignalAdded:Boolean = false;
 		
@@ -44,15 +46,19 @@ package space_digger
 		
 		public function init(seamData:SeamData):void
 		{
+			_owner = "unclaimed";
+			
 			if (seamData.state == SeamState.MINING)
 			{
 				_machineInPlace = true;
 				_animation = "idle2";
+				_owner = seamData.owner.name;
 			}
 			else if (seamData.state == SeamState.BROKEN)
 			{
 				_machineInPlace = true;
 				_animation = "stopped";
+				_owner = seamData.owner.name;
 			}
 		}
 		
@@ -70,8 +76,12 @@ package space_digger
 			
 			if (_machineInPlace)
 			{
-				if (--_lifes < 0)
+				if (--_lifes <= 0)
+				{
 					breakMachine();
+				}
+				else
+					(_ce.state as LevelDig).hud.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
 			}
 			else appear();
 		}
@@ -96,6 +106,9 @@ package space_digger
 			
 			(_ce.state as LevelDig).diggingSession.deploySeamMachine(_index);
 			
+			_owner = DataManager.getInstance().myState.company.name;
+			(_ce.state as LevelDig).hud.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
+			
 			_animation = "appears";
 			setTimeout(function():void {
 				_animation = "idle2";
@@ -109,6 +122,8 @@ package space_digger
 			var player:PlayerCharacter = Box2DUtils.CollisionGetOther(this, contact) as PlayerCharacter;
 			if (player)
 			{
+				(_ce.state as LevelDig).hud.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
+				
 				if (!_hack_damageSignalAdded)
 				{
 					player.onGiveDamage.add(onPlayerDealDamage);
@@ -128,6 +143,8 @@ package space_digger
 			
 			if (Box2DUtils.CollisionGetOther(this, contact) is PlayerCharacter)
 			{
+				(_ce.state as LevelDig).hud.hideMineralHud();
+				
 				_playerInArea = false;
 				if (!_machineInPlace) _animation = "idle";
 			}
