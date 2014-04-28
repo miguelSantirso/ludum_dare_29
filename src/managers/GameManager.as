@@ -23,6 +23,7 @@ package managers
 		public var startFailed:Signal;
 		public var needsRegistration:Signal;
 		public var loggedOut:Signal;
+		public var displayPopup:Signal;
 		
 		public var stateUpdated:Signal;
 		public var systemUpdated:Signal;
@@ -41,6 +42,7 @@ package managers
 				startFailed = new Signal();
 				needsRegistration = new Signal();
 				loggedOut = new Signal();
+				displayPopup = new Signal();
 				
 				stateUpdated = new Signal();
 				systemUpdated = new Signal();
@@ -184,9 +186,9 @@ package managers
 			changeLevelRequest.dispatch(selectedMine);// getClientMapIndexFromServerMapId(selectedMine.map));
 		}
 		
-		public function displayMessagePopUp(message:String, buttonLabel:String = "Close", closeCallback:Function = null):void
+		public function displayMessagePopUp(message:String, buttonLabel:String = "Close", closeCallback:Function = null, overlaid:Boolean = false):void
 		{
-			
+			displayPopup.dispatch(message, buttonLabel, closeCallback, overlaid);
 		}
 		
 		public function getClientMapIndexFromServerMapId(serverMapId:int):int

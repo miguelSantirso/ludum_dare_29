@@ -5,7 +5,7 @@ package utils.scroller
 	import flash.events.Event;
 	/**
 	 * ...
-	 * @author Albert Badosa Solé
+	 * @author Albert Badosa Solé, 2014!
 	 */
 	public class ItemRendererObject extends Sprite
 	{
