@@ -117,11 +117,6 @@ package space_digger
 		public var onGiveDamage:Signal;
 
 		/**
-		 * Dispatched whenever the hero deploys a seam. 
-		 */		
-		public var onDeploySeam:Signal;
-		
-		/**
 		 * Dispatched whenever the hero takes damage from an enemy. 
 		 */		
 		public var onTakeDamage:Signal;
@@ -158,7 +153,6 @@ package space_digger
 			
 			super(name, params);
 			
-			onDeploySeam = new Signal();
 			onJump = new Signal();
 			onGiveDamage = new Signal();
 			onTakeDamage = new Signal();
@@ -168,7 +162,6 @@ package space_digger
 		override public function destroy():void
 		{
 			clearTimeout(_hurtTimeoutID);
-			onDeploySeam.removeAll();
 			onJump.removeAll();
 			onGiveDamage.removeAll();
 			onTakeDamage.removeAll();
