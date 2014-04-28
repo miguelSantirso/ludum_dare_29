@@ -19,13 +19,14 @@ package
 	{
 		public static const DEBUG:Boolean = CONFIG::debug;
 		
-		private var _currentLevelIndex:int = 0;
+		public static var currentLevelIndex:int;
+		public static var loadingClip:Sprite;
 		
 		public function Main():void 
 		{
-			//if (stage)
-			//	init();
-			//else 
+			if (stage)
+				init();
+			else 
 				addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
@@ -63,6 +64,14 @@ package
 			GameManager.getInstance().systemUpdated.add(onSystemUpdated);
 			GameManager.getInstance().systemChanged.add(onSystemChanged);
 			GameManager.getInstance().rankingUpdated.add(onRankingUpdated);
+			
+			GameManager.getInstance().enableView.add(enableLevel);
+			GameManager.getInstance().disableView.add(disableLevel);
+			
+			loadingClip = new Sprite();
+			loadingClip.graphics.beginFill(0xff0000,0.75);
+			loadingClip.graphics.drawCircle(0, 0, 20);
+			loadingClip.graphics.endFill();
 		}
 		
 		private function goToLevelRegister():void
@@ -122,10 +131,10 @@ package
 		
 		public function changeLevel(levelIndex:int):void
 		{
-			if (levelIndex != _currentLevelIndex)
+			if (levelIndex != currentLevelIndex)
 			{
 				levelManager.gotoLevel(levelIndex);
-				_currentLevelIndex = levelIndex;
+				currentLevelIndex = levelIndex;
 			}
 		}
 		
@@ -173,6 +182,29 @@ package
 				if (levelSpace.popupRanking && levelSpace.contains(levelSpace.popupRanking))
 					levelSpace.setRankingPopupData();
 			}
+		}
+		
+		protected function enableLevel():void
+		{
+			if (state is GameLevel)
+				(state as GameLevel).enableInput();
+			
+			if(stage.contains(loadingClip))
+				stage.removeChild(loadingClip);
+		}
+		
+		protected function disableLevel():void
+		{
+			if (state is GameLevel)
+				(state as GameLevel).disableInput();
+				
+			var clipWidth:Number = 40;
+			var clipHeight:Number = 40;
+			
+			loadingClip.x =  900 - clipWidth;
+			loadingClip.y = clipHeight;
+			
+			stage.addChildAt(loadingClip, stage.numChildren);
 		}
 	}
 }
