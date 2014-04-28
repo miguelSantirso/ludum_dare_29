@@ -150,8 +150,15 @@ package space_digger.popups
 			_asset.label_richness_level_value.visible = true;
 			_asset.label_deaths.visible = true;
 			_asset.label_deaths_value.visible = true;
-			_asset.label_occupied.visible = _planet.mines[mineIndex].occupant != null;
+			_asset.label_occupied.visible =
+				_asset.label_occupied_company.visible = _planet.mines[mineIndex].occupant != null;
 			_asset.label_free.visible = _planet.mines[mineIndex].occupant == null;
+			
+			if (_planet.mines[mineIndex].occupant != null)
+			{
+				_asset.label_occupied_company.text = _planet.mines[mineIndex].occupant.name;
+				Text.truncateText(_asset.label_occupied_company);
+			}
 		}
 		
 		private function dehighlightSector(e:MouseEvent):void
@@ -162,7 +169,7 @@ package space_digger.popups
 			_asset.label_richness_level_value.visible = false;
 			_asset.label_deaths.visible = false;
 			_asset.label_deaths_value.visible = false;
-			_asset.label_occupied.visible = false;
+			_asset.label_occupied.visible = _asset.label_occupied_company.visible = false;
 			_asset.label_free.visible = false;
 		}
 		
@@ -178,6 +185,10 @@ package space_digger.popups
 					function():void {
 						GameManager.getInstance().changeLevel(selectedMine);
 					});
+			}
+			else
+			{
+				GameManager.getInstance().displayMessagePopUp("This mine is currently being digged by '" + selectedMine.occupant.name + "'!");
 			}
 		}
 		
