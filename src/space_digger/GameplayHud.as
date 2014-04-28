@@ -63,6 +63,15 @@ package space_digger
 			mineral_hud.visible = false;
 		}
 		
+		public function showClaimHint():void
+		{
+			claim_hint.visible = true;
+		}
+		public function hideClaimHint():void
+		{
+			claim_hint.visible = false;
+		}
+		
 		
 		public function set nLifes(value:int):void
 		{
