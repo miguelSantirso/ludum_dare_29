@@ -217,10 +217,7 @@ package space_digger.levels
 			GameManager.getInstance().takeOff(diggingSession, exit, function():void	{
 				if (retryCounter <= 3)
 					TweenLite.delayedCall(retrySeconds, endExploration, [takeOff]);
-				else {
-					// INSERT_SOUND SALIR DEL NIVEL
-					_ce.sound.playSound("Despegue");
-					
+				else {				
 					exit();
 				}
 				
@@ -243,6 +240,9 @@ package space_digger.levels
 			view.camera.switchToTarget(_ship, 10, function():void {
 				_ship.leave();
 			});
+			
+			// INSERT_SOUND SALIR DEL NIVEL
+			_ce.sound.playSound("Despegue");
 		}
 		
 		public function endMission():void
