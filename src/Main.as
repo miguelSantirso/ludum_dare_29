@@ -40,6 +40,15 @@ package
 				addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
+		override protected function handleStageActivated(e:Event):void 
+		{
+			
+		}
+		override protected function handleStageDeactivated(e:Event):void 
+		{
+			
+		}
+		
 		private function init(e:Event = null):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
