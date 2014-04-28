@@ -149,7 +149,7 @@ package space_digger.levels
 			Text.truncateText(level.label_company_rank);
 			
 			GameManager.getInstance().rankingUpdated.add(onUpdateMyCompanyRank);
-			GameManager.getInstance().getRanking();
+			//GameManager.getInstance().getRanking();
 		}
 		
 		public function setSystemData(refreshPlanetMC:Boolean = true):void
