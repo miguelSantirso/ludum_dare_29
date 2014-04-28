@@ -279,12 +279,14 @@ package space_digger
 					_framesToKickJetpack = JETPACK_DELAY;
 					
 					// INSERT_SOUND PLAY JETPACK SOUND
+					_ce.sound.playSound("JetPack");
 				}
 				
 				_jetpackEnabled = false;
 				if (_framesToKickJetpack <= 0 && _ce.input.isDoing("jump", inputChannel))
 				{
 					// INSERT_SOUND STOP JETPACK SOUND
+					_ce.sound.stopSound("JetPack");
 					
 					_jetpackEnabled = true;
 					velocity.y -= jumpAcceleration;
