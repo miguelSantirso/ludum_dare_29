@@ -9,15 +9,15 @@ package space_digger.popups
 	 * ...
 	 * @author 10 2  Live Team
 	 */
-	public class PopupSettings extends Sprite
+	public class PopupInfo extends Sprite
 	{
 		public var closePopup:Signal;
-		private var _asset:AssetPopupGeneric;
+		private var _asset:AssetPopupSettings;
 		protected var _closeCallback:Function;
 		
-		public function PopupSettings() 
+		public function PopupInfo() 
 		{
-			//_asset = new AssetPopupSettings();
+			_asset = new AssetPopupSettings();
 			closePopup = new Signal();
 			
 			addChild(_asset);
@@ -27,12 +27,12 @@ package space_digger.popups
 		
 		public function init():void
 		{
-			_asset.button_generic.addEventListener(MouseEvent.CLICK, onButtonCloseHandler);
+			_asset.button_close.addEventListener(MouseEvent.CLICK, onButtonCloseHandler);
 		}
 		
 		public function dispose():void
 		{
-			_asset.button_generic.removeEventListener(MouseEvent.CLICK, onButtonCloseHandler);
+			_asset.button_close.removeEventListener(MouseEvent.CLICK, onButtonCloseHandler);
 			
 			closePopup.removeAll();
 			closePopup = null;

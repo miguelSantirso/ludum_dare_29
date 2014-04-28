@@ -255,6 +255,8 @@ package
 			
 			if(stage.contains(loadingClip))
 				stage.removeChild(loadingClip);
+				
+			
 		}
 		
 		protected function disableLevel():void
@@ -266,7 +268,7 @@ package
 			var clipHeight:Number = loadingClip.height;
 			
 			loadingClip.x =  width - clipWidth*0.5 - 25;
-			loadingClip.y = clipHeight*0.5 + 25;
+			loadingClip.y = clipHeight * 0.5 + 25;
 			
 			stage.addChildAt(loadingClip, stage.numChildren);
 		}
