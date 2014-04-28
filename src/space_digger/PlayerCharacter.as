@@ -55,8 +55,8 @@ package space_digger
 			super.createShape();
 			
 			var sensorWidth:Number = 35 / _box2D.scale;
-			var sensorHeight:Number = 2 / _box2D.scale;
-			var sensorOffset:b2Vec2 = new b2Vec2( -_width / 2 - (sensorWidth / 2), _height / 2 - (30 / _box2D.scale));
+			var sensorHeight:Number = 30 / _box2D.scale;
+			var sensorOffset:b2Vec2 = new b2Vec2( -_width / 2 - (sensorWidth / 2), _height / 2 - (20 / _box2D.scale));
 			
 			_leftSensorShape = new b2PolygonShape();
 			_leftSensorShape.SetAsOrientedBox(sensorWidth, sensorHeight, sensorOffset);
