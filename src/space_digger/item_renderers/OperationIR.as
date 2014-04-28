@@ -1,9 +1,10 @@
-package space_digger 
+package space_digger.item_renderers 
 {
 	import away3d.events.MouseEvent3D;
 	import data.SeamData;
 	import flash.events.Event;
 	import org.osflash.signals.Signal;
+	import space_digger.OngoingOpEvent;
 	import utils.scroller.ItemRendererObject;
 	import flash.events.MouseEvent;
 	import managers.DataManager;
@@ -39,9 +40,9 @@ package space_digger
 			super.dispose();
 		}
 
-		public override function set data(value:Object):void
+		public override function set dataValue(value:Object):void
 		{
-			super.data = value;
+			super.dataValue = value;
 
 			asset.label_name.text = value["planetName"];
 			asset.label_gold_per_hour.text = value["extractionRate"].toString() + " gold/h";

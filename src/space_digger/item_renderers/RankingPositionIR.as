@@ -1,4 +1,4 @@
-package space_digger 
+package space_digger.item_renderers 
 {
 	import flash.events.Event;
 	import utils.scroller.ItemRendererObject;
@@ -30,9 +30,9 @@ package space_digger
 			super.dispose();
 		}
 
-		public override function set data(value:Object):void
+		public override function set dataValue(value:Object):void
 		{
-			super.data = value;
+			super.dataValue = value;
 
 			asset.label_company_position.text = "#" + value.position.toString();
 			asset.label_company_name.text = value.company.name;
