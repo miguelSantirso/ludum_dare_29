@@ -159,7 +159,7 @@ package space_digger.levels
 				view.camera.camPos.x = ship.x;
 				view.camera.camPos.y = ship.y - 40;
 				player.x = ship.x;
-				view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 3);
+				view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 2.3);
 				
 				_hud.startCountdown(payload.stopwatch * 1000);
 				
@@ -192,10 +192,13 @@ package space_digger.levels
 		
 		protected function exit():void
 		{
+			_hud.hideLeavePlanetHint();
 			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
 			view.camera.camPos.x = player.x; 
 			view.camera.camPos.y = player.y;
-			view.camera.bounds = new Rectangle(0, -500, 1000, 530);
+			//view.camera.bounds = new Rectangle(0, -500, 1000, 530);
+			view.camera.allowZoom = true;
+			view.camera.zoom(1.2);
 			view.camera.switchToTarget(_ship, 10, function():void {
 				_ship.leave();
 			});
