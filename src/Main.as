@@ -5,6 +5,8 @@ package
 	import citrus.utils.LevelManager;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	import space_digger.popups.PopupGeneric;
 	import utils.Stats;
 	import space_digger.levels.*;
@@ -19,10 +21,13 @@ package
 	public class Main extends CitrusEngine
 	{
 		public static const DEBUG:Boolean = CONFIG::debug;
+		public static const SPLASH_SCREEN_DURATION_IN_SECS:Number = 1;
 		
 		public static var currentLevelIndex:int;
 		public static var loadingClip:LoadingIcon;
 		private var _genericPopup:PopupGeneric;
+		private var _splashScreen:AssetSplashScreen;
+		private var _splashScreenTimer:Timer;
 		
 		public function Main():void 
 		{
@@ -104,7 +109,6 @@ package
 			GameManager.getInstance().startFailed.add(goToLevelRegister);
 			GameManager.getInstance().changeLevelRequest.add(travelToMine);
 			GameManager.getInstance().changeOfflineRequest.add(travelToOfflineMine);
-			GameManager.getInstance().start();
 			
 			GameManager.getInstance().stateUpdated.add(onStateUpdated);
 			GameManager.getInstance().systemUpdated.add(onSystemUpdated);
@@ -117,6 +121,22 @@ package
 			GameManager.getInstance().disableView.add(disableLevel);
 			
 			loadingClip = new LoadingIcon();
+			
+			_splashScreen = new AssetSplashScreen();
+			addChild(_splashScreen);
+			
+			_splashScreenTimer = new Timer(SPLASH_SCREEN_DURATION_IN_SECS * 1000, 1);
+			_splashScreenTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onStartGame, false, 0, true);
+			_splashScreenTimer.start();
+			
+			enableLoading();
+		}
+		
+		private function onStartGame(e:TimerEvent = null):void
+		{
+			if (e) _splashScreenTimer.removeEventListener(TimerEvent.TIMER_COMPLETE, onStartGame);
+			
+			GameManager.getInstance().start();
 		}
 		
 		private function goToLevelRegister():void
@@ -176,6 +196,12 @@ package
 			{
 				levelManager.gotoLevel(levelIndex);
 				currentLevelIndex = levelIndex;
+				
+				if (contains(_splashScreen))
+				{
+					disableLoading();
+					removeChild(_splashScreen);
+				}
 			}
 		}
 		
@@ -252,17 +278,19 @@ package
 			if (state is GameLevel)
 				(state as GameLevel).enableInput();
 			
-			if(stage.contains(loadingClip))
-				stage.removeChild(loadingClip);
-				
-			
+			disableLoading();
 		}
 		
 		protected function disableLevel():void
 		{
 			if (state is GameLevel)
 				(state as GameLevel).disableInput();
-				
+			
+			enableLoading();
+		}
+		
+		protected function enableLoading():void
+		{
 			var clipWidth:Number = loadingClip.width;
 			var clipHeight:Number = loadingClip.height;
 			
@@ -270,6 +298,12 @@ package
 			loadingClip.y = clipHeight * 0.5 + 25;
 			
 			stage.addChildAt(loadingClip, stage.numChildren);
+		}
+		
+		protected function disableLoading():void
+		{
+			if(stage.contains(loadingClip))
+				stage.removeChild(loadingClip);
 		}
 	}
 }
