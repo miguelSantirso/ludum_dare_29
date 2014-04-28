@@ -13,7 +13,7 @@ package utils.scroller
 	import com.greensock.TweenMax;
 	/**
 	 * ...
-	 * @author Albert Badosa Solé
+	 * @author Albert Badosa Solé, 2014!
 	 */
 	public class Scroller extends Sprite
 	{
