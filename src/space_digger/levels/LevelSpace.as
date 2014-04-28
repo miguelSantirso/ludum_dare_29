@@ -86,6 +86,12 @@ package space_digger.levels
 			level.button_view_ranking.addEventListener(MouseEvent.CLICK, setRankingPopupData);
 			
 			level.button_info.addEventListener(MouseEvent.CLICK, openInfoPopup);
+			
+			if (!_ce.sound.soundIsPlaying("BasementFloor"))
+			{
+				_ce.sound.stopAllPlayingSounds();
+				_ce.sound.playSound("BasementFloor");
+			}
 		}
 		
 		public override function update(timeDelta:Number):void

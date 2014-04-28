@@ -33,6 +33,12 @@ package space_digger.levels
 			
 			level.button_start.label_text.text = "LAUNCH";
 			level.button_offline.label_text.text = "TRAIN";
+			
+			if (!_ce.sound.soundIsPlaying("BasementFloor"))
+			{
+				_ce.sound.stopAllPlayingSounds();
+				_ce.sound.playSound("BasementFloor");
+			}
 		}
 		
 		public override function update(timeDelta:Number):void
