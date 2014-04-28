@@ -47,6 +47,8 @@ package
 			add(physics);
 			
 			ObjectMaker2D.FromMovieClip(level);
+			
+			_ce.sound.playSound("ShowYourMoves");
 		}
 		
 		public override function update(timeDelta:Number):void

@@ -2,9 +2,14 @@ package
 {
 	import citrus.core.CitrusEngine;
 	import citrus.core.IState;
+	import citrus.sounds.CitrusSoundGroup;
+	import citrus.sounds.CitrusSoundInstance;
+	import citrus.events.CitrusSoundEvent;
 	import citrus.utils.LevelManager;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	import space_digger.popups.PopupGeneric;
 	import utils.Stats;
 	import space_digger.levels.*;
@@ -19,10 +24,13 @@ package
 	public class Main extends CitrusEngine
 	{
 		public static const DEBUG:Boolean = CONFIG::debug;
+		public static const SPLASH_SCREEN_DURATION_IN_SECS:Number = 1;
 		
 		public static var currentLevelIndex:int;
 		public static var loadingClip:LoadingIcon;
 		private var _genericPopup:PopupGeneric;
+		private var _splashScreen:AssetSplashScreen;
+		private var _splashScreenTimer:Timer;
 		
 		public function Main():void 
 		{
@@ -30,6 +38,15 @@ package
 				init();
 			else 
 				addEventListener(Event.ADDED_TO_STAGE, init);
+		}
+		
+		override protected function handleStageActivated(e:Event):void 
+		{
+			
+		}
+		override protected function handleStageDeactivated(e:Event):void 
+		{
+			
 		}
 		
 		private function init(e:Event = null):void
@@ -94,7 +111,8 @@ package
 					[LevelDigOffline, "../swf/levels/Level24.swf"],
 					[LevelDigOffline, "../swf/levels/Level25.swf"],
 				];
-		
+			
+			
 			//if (Main.DEBUG)
 			//	addChild(new Stats());
 
@@ -104,7 +122,6 @@ package
 			GameManager.getInstance().startFailed.add(goToLevelRegister);
 			GameManager.getInstance().changeLevelRequest.add(travelToMine);
 			GameManager.getInstance().changeOfflineRequest.add(travelToOfflineMine);
-			GameManager.getInstance().start();
 			
 			GameManager.getInstance().stateUpdated.add(onStateUpdated);
 			GameManager.getInstance().systemUpdated.add(onSystemUpdated);
@@ -117,6 +134,48 @@ package
 			GameManager.getInstance().disableView.add(disableLevel);
 			
 			loadingClip = new LoadingIcon();
+			
+			_splashScreen = new AssetSplashScreen();
+			addChild(_splashScreen);
+
+			//offset the sounds (less gap in the looping sound)
+			CitrusSoundInstance.startPositionOffset = 80;
+
+			//sound added with asset manager
+			sound.addSound("Hypnothis", { sound:"../res/sounds/hypnothis.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
+			sound.addSound("JetPack", { sound:"../res/sounds/jetpack.mp3" , group:CitrusSoundGroup.SFX, loops:int.MAX_VALUE } );
+
+			//sounds added with url
+			sound.addSound("BreakBlock", { sound:"../res/sounds/break_block.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("HitEnemy", { sound:"../res/sounds/hit_enemy.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("Deploy", { sound:"../res/sounds/deploy.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("Landing", { sound:"../res/sounds/landing.mp3" , group:CitrusSoundGroup.SFX } );
+
+			sound.getGroup(CitrusSoundGroup.SFX).addEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED, function(e:CitrusSoundEvent):void
+			{
+				e.currentTarget.removeEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED,arguments.callee);
+				trace("SOUND EFFECTS ARE PRELOADED");
+
+				//state = new AdvancedSoundsState();
+				onStartGame();
+			});
+
+			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.5;
+			sound.getGroup(CitrusSoundGroup.SFX).preloadSounds();
+
+			
+			//_splashScreenTimer = new Timer(SPLASH_SCREEN_DURATION_IN_SECS * 1000, 1);
+			//_splashScreenTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onStartGame, false, 0, true);
+			//_splashScreenTimer.start();
+			
+			enableLoading();
+		}
+		
+		private function onStartGame(e:TimerEvent = null):void
+		{
+			if (e) _splashScreenTimer.removeEventListener(TimerEvent.TIMER_COMPLETE, onStartGame);
+			
+			GameManager.getInstance().start();
 		}
 		
 		private function goToLevelRegister():void
@@ -179,6 +238,12 @@ package
 			{
 				levelManager.gotoLevel(levelIndex);
 				currentLevelIndex = levelIndex;
+				
+				if (contains(_splashScreen))
+				{
+					disableLoading();
+					removeChild(_splashScreen);
+				}
 			}
 		}
 		
@@ -255,17 +320,19 @@ package
 			if (state is GameLevel)
 				(state as GameLevel).enableInput();
 			
-			if(stage.contains(loadingClip))
-				stage.removeChild(loadingClip);
-				
-			
+			disableLoading();
 		}
 		
 		protected function disableLevel():void
 		{
 			if (state is GameLevel)
 				(state as GameLevel).disableInput();
-				
+			
+			enableLoading();
+		}
+		
+		protected function enableLoading():void
+		{
 			var clipWidth:Number = loadingClip.width;
 			var clipHeight:Number = loadingClip.height;
 			
@@ -273,6 +340,12 @@ package
 			loadingClip.y = clipHeight * 0.5 + 25;
 			
 			stage.addChildAt(loadingClip, stage.numChildren);
+		}
+		
+		protected function disableLoading():void
+		{
+			if(stage.contains(loadingClip))
+				stage.removeChild(loadingClip);
 		}
 	}
 }

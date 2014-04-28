@@ -147,7 +147,12 @@ package space_digger
 			for each (var enemy:Enemy in _contactingEnemies)
 			{
 				if ((!inverted && enemy.x > x) || (_inverted && enemy.x < x))
+				{
+					// INSERT_SOUND ENEMIGO HERIDO
+					_ce.sound.playSound("HitEnemy");
+					
 					enemy.hurt();
+				}
 			}
 		}
 		
@@ -214,6 +219,8 @@ package space_digger
 		{
 			if (isDead)
 			{
+				// INSERT_SOUND PLAYER MUERE
+				
 				(_ce.state as LevelDig).diggingSession.died(x, y);
 				(_ce.state as LevelDig).endExploration();
 				

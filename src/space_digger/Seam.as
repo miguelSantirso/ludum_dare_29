@@ -94,6 +94,8 @@ package space_digger
 
 		private function breakMachine():void
 		{
+			// INSERT_SOUND MAQUINA DESTRUIDA
+			
 			_machineInPlace = false;
 			
 			(_ce.state as LevelDig).destroySeamMachine(_index);
@@ -115,6 +117,9 @@ package space_digger
 			_owner = DataManager.getInstance().myState.company ? DataManager.getInstance().myState.company.name : "It's 'mine'";
 			hudRef.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
 			hudRef.hideClaimHint();
+			
+			// INSERT_SOUND MAQUINA DEPLOYADA
+			_ce.sound.playSound("Deploy");
 			
 			_animation = "appears";
 			setTimeout(function():void {

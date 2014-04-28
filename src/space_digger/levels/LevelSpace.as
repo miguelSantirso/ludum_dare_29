@@ -146,7 +146,7 @@ package space_digger.levels
 			Text.truncateText(level.label_company_rank);
 			
 			GameManager.getInstance().rankingUpdated.add(onUpdateMyCompanyRank);
-			//GameManager.getInstance().getRanking();
+			GameManager.getInstance().getRanking();
 		}
 		
 		public function setSystemData(refreshPlanetMC:Boolean = true):void
@@ -202,7 +202,9 @@ package space_digger.levels
 				
 				Text.truncateText(currentPlanetMC.label_name);
 				
-				currentPlanetMC.addEventListener(MouseEvent.CLICK, openPlanetPopup);
+				currentPlanetMC.addEventListener(MouseEvent.CLICK, openPlanetPopup, false, 0, true);
+				currentPlanetMC.addEventListener(MouseEvent.MOUSE_OVER, onMouseOverPlanet, false, 0, true);
+				currentPlanetMC.addEventListener(MouseEvent.MOUSE_OUT, onMouseOutPlanet, false, 0, true);
 			}
 		}
 		
@@ -371,6 +373,20 @@ package space_digger.levels
 		public function get ongoingOpsScroller():Scroller 
 		{
 			return _ongoingOpsScroller;
+		}
+		
+		private function onMouseOverPlanet(e:MouseEvent):void
+		{
+			(e.currentTarget as MovieClip).scaleX = 
+			(e.currentTarget as MovieClip).scaleY = 
+				(e.currentTarget as MovieClip).scaleX * 1.1;
+		}
+		
+		private function onMouseOutPlanet(e:MouseEvent):void
+		{
+			(e.currentTarget as MovieClip).scaleX = 
+			(e.currentTarget as MovieClip).scaleY = 
+				(e.currentTarget as MovieClip).scaleX / 1.1;
 		}
 	}
 }
