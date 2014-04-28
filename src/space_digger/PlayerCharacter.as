@@ -37,19 +37,43 @@ package space_digger
 		{
 			super(name, params);
 			
-			// Forest config
+			// Happy config
 			minVelocityY = -10;
-			maxVelocity = 5;
-			acceleration = 20;
-			friction = 20;
+			maxVelocity = 3.5;
+			acceleration = 40;
+			friction = 80;
 			jumpAcceleration = 2;
 			jumpHeight = 10;
 			
 			// Ice config
 			minVelocityY = -10;
-			maxVelocity = 7;
+			maxVelocity = 6;
 			acceleration = 1;
 			friction = 0.25;
+			jumpAcceleration = 2;
+			jumpHeight = 10;
+			
+			// Water config
+			minVelocityY = -10;
+			maxVelocity = 2.5;
+			acceleration = 2;
+			friction = 1;
+			jumpAcceleration = 5;
+			jumpHeight = 25;
+			
+			// Fire config
+			minVelocityY = -10;
+			maxVelocity = 4;
+			acceleration = 50;
+			friction = 40;
+			jumpAcceleration = 5;
+			jumpHeight = 10;
+			
+			// Forest config BASE
+			minVelocityY = -10;
+			maxVelocity = 4;
+			acceleration = 50;
+			friction = 40;
 			jumpAcceleration = 2;
 			jumpHeight = 10;
 			
