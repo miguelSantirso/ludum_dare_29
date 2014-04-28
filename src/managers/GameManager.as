@@ -184,9 +184,9 @@ package managers
 			RemoteManager.getInstance().takeOff(diggingSession,successCallback,faultCallback);
 		}
 		
-		public function jump():void
+		public function jump(planetID:int = 0):void
 		{
-			RemoteManager.getInstance().jump(DataManager.getInstance().mySystem, 0, systemChanged.dispatch);
+			RemoteManager.getInstance().jump(DataManager.getInstance().mySystem, planetID, systemChanged.dispatch);
 		}
 		
 		public function getRanking():void

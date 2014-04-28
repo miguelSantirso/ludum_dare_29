@@ -145,6 +145,9 @@ package
 				
 				if(levelSpace.recentActivityScroller)
 					levelSpace.setRecentActivity();
+					
+				if (levelSpace.popupPlanet)
+					levelSpace.setPlanetPopupData(levelSpace.popupPlanet.planetIndex);
 			}
 		}
 		

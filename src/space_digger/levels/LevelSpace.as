@@ -11,6 +11,7 @@ package space_digger.levels
 	import flash.events.MouseEvent;
 	import space_digger.popups.PopupPlanet;
 	import space_digger.popups.PopupRanking;
+	import space_digger.popups.PopupSettings;
 	import space_digger.Seam;
 	import utils.Text;
 	import managers.DataManager;
@@ -31,6 +32,7 @@ package space_digger.levels
 		protected var _ongoingOpsScroller:Scroller;
 		protected var _popupPlanet:PopupPlanet;
 		protected var _popupRanking:PopupRanking;
+		protected var _popupSettings:PopupSettings;
 		private var popupModal:Sprite;
 		
 		public function LevelSpace(_level:MovieClip) 
@@ -122,19 +124,7 @@ package space_digger.levels
 		
 		private function onVisitOngoingPlanet(e:OngoingOpEvent):void
 		{
-			/*var planetIndex:int = -1;
-			
-			for (var i:int = 0; i < DataManager.getInstance().mySystem.planets.length; i++)
-			{
-				if (DataManager.getInstance().mySystem.planets[i].id == e.planetID)
-				{
-					planetIndex = i;
-					break;
-				}
-			}*/
-			
-			//if (planetIndex > -1)
-			//	openPlanetPopup(null, planetIndex);
+			GameManager.getInstance().jump(e.planetID);
 		}
 		
 		public function setCompanyData():void
