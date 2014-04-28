@@ -48,6 +48,7 @@ package space_digger.levels
 		protected var _player:PlayerCharacter;
 		protected var _inExitArea:Boolean = false;
 		protected var _exploring:Boolean = false;
+		protected var _exit:Sensor;
 		
 		public var diggingSession:DiggingSession = new DiggingSession();
 		
@@ -87,8 +88,13 @@ package space_digger.levels
 			_ship = getObjectByName("ship") as SpaceShip;
 			view.camera.setUp(_ship, new Rectangle(0, -500, 1000, 530));
 			
-			(getObjectByName("exit") as Sensor).onBeginContact.add(onEnteredExit);
-			(getObjectByName("exit") as Sensor).onEndContact.add(onExitedExit);
+			_exit = getObjectByName("exit") as Sensor;
+			_exit.view = "FxExit";
+			_exit.onBeginContact.add(onEnteredExit);
+			_exit.onEndContact.add(onExitedExit);
+			_exit.animation = "empty";
+			_exit.offsetY = 70;
+			_exit.offsetX = 9;
 			
 			setDiggingSession();
 			
@@ -192,7 +198,9 @@ package space_digger.levels
 		
 		protected function exit():void
 		{
+			_exit.animation = "empty";
 			_hud.hideLeavePlanetHint();
+			
 			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
 			view.camera.camPos.x = player.x; 
 			view.camera.camPos.y = player.y;
@@ -216,11 +224,13 @@ package space_digger.levels
 			
 			_inExitArea = true;
 			_hud.showLeavePlanetHint();
+			_exit.animation = "exit";
 		}
 		private function onExitedExit(c:b2Contact):void
 		{
 			_inExitArea = false;
 			_hud.hideLeavePlanetHint();
+			_exit.animation = "empty";
 		}
 		
 		public function get hud():GameplayHud 
