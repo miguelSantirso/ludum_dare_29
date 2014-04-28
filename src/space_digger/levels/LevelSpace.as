@@ -120,11 +120,28 @@ package space_digger.levels
 			level.label_company_rank.text = "#" + DataManager.getInstance().getCompanyRank(DataManager.getInstance().myState.company.id);
 		}
 		
+		private function onVisitOngoingPlanet(e:OngoingOpEvent):void
+		{
+			/*var planetIndex:int = -1;
+			
+			for (var i:int = 0; i < DataManager.getInstance().mySystem.planets.length; i++)
+			{
+				if (DataManager.getInstance().mySystem.planets[i].id == e.planetID)
+				{
+					planetIndex = i;
+					break;
+				}
+			}*/
+			
+			//if (planetIndex > -1)
+			//	openPlanetPopup(null, planetIndex);
+		}
+		
 		public function setCompanyData():void
 		{
 			level.label_company_name.text = DataManager.getInstance().myState.company.name.toUpperCase();
 			level.label_company_gold.text = DataManager.getInstance().myState.company.score.toString();
-			level.label_company_rank.text = "";
+			level.label_company_rank.text = ""; // set later when the ranking is loaded
 			level.badge_workers.label_num.text = DataManager.getInstance().myState.company.workers.toString();
 			
 			Text.truncateText(level.label_company_name);
@@ -226,12 +243,7 @@ package space_digger.levels
 			}
 			
 			_ongoingOpsScroller.dataProvider = goldPerPlanet;
-			_ongoingOpsScroller.addEventListener(OngoingOpEvent.VISIT_PLANET, apetecaun);
-		}
-		
-		private function apetecaun(e:OngoingOpEvent):void
-		{
-			trace("JSJDSJDJJJDJSDJJJJJJJJJJJJJJJJJJJJ: " + e.planetID);
+			_ongoingOpsScroller.addEventListener(OngoingOpEvent.VISIT_PLANET, onVisitOngoingPlanet);
 		}
 		
 		public function setRecentActivity():void
@@ -278,14 +290,16 @@ package space_digger.levels
 			openRankingPopup();
 		}
 		
-		public function openPlanetPopup(e:MouseEvent):void
+		public function openPlanetPopup(e:MouseEvent = null, forcePlanetIndex:int = -1):void
 		{
 			if (!contains(_popupPlanet))
 			{
 				addChild(popupModal);
 				addChild(_popupPlanet);
 				
-				var planetIndex:int = e.currentTarget.name.charAt(e.currentTarget.name.length - 1);
+				var planetIndex:int = forcePlanetIndex > -1 
+					? forcePlanetIndex 
+					: e.currentTarget.name.charAt(e.currentTarget.name.length - 1);
 
 				setPlanetPopupData(planetIndex);
 			}

@@ -6,18 +6,16 @@ package space_digger
 	import org.osflash.signals.Signal;
 	import utils.scroller.ItemRendererObject;
 	import flash.events.MouseEvent;
+	import managers.DataManager;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
 	 */
 	public class OperationIR extends ItemRendererObject
 	{
-		public var visitPlanet:Signal;
-		
 		public function OperationIR() 
 		{
 			asset = new IROngoingOp();
-			visitPlanet = new Signal();
 			
 			addChild(asset);
 			
@@ -48,6 +46,8 @@ package space_digger
 			asset.label_name.text = value["planetName"];
 			asset.label_gold_per_hour.text = value["extractionRate"].toString() + " gold/h";
 			asset.label_num_machines.text = value["machines"].toString() + " extracting machines";
+			
+			asset.button_visit.visible = !DataManager.getInstance().isPlanetInCurrentSystem(value["planetID"]);
 		}
 
 		public override function get asset():*

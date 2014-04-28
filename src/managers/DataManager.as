@@ -5,6 +5,7 @@ package managers
 	import data.Core;
 	import data.DiggingSession;
 	import data.Mine;
+	import data.Planet;
 	import data.RankingEntry;
 	import data.System;
 	import flash.utils.Dictionary;
@@ -122,6 +123,23 @@ package managers
 			}
 			
 			return rank;
+		}
+		
+		public function isPlanetInCurrentSystem(planetID:int):Boolean
+		{
+			var planetIndex:int = -1;
+			
+			for each(var planet:Planet in _mySystem.planets)
+			{
+				if (planet.id == planetID)
+				{
+					break;
+				}
+				
+				planetIndex++;
+			}
+			
+			return planetIndex > -1;
 		}
 	}
 
