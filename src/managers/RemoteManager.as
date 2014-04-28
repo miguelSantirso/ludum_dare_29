@@ -152,12 +152,11 @@ package managers
 					
 					break;
 				case RemoteOperation.STATUS_INVALID :
+					// show popup with error
+					GameManager.getInstance().displayMessagePopUp(operation.errorMessage);
+					
 					_currentRemoteOperation.dispose();
 					_currentRemoteOperation = null;
-					// show popup with error
-					
-					GameManager.getInstance().displayMessagePopUp(operation.errorMessage);
-					trace(operation.errorMessage);
 					break;
 				case RemoteOperation.STATUS_BAD_URL :
 					_currentRemoteOperation.dispose();

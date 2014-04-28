@@ -66,6 +66,11 @@ package data
 			_recentGain = 0;
 		}
 		
+		public function get owner():Company
+		{
+			return _owner;
+		}
+		
 		public function empty():Boolean
 		{
 			return _id <= 0;

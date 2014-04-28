@@ -13,7 +13,7 @@ package utils.scroller
 	import com.greensock.TweenMax;
 	/**
 	 * ...
-	 * @author Albert Badosa Solé
+	 * @author Albert Badosa Solé, 2014!
 	 */
 	public class Scroller extends Sprite
 	{
@@ -183,7 +183,7 @@ package utils.scroller
 			{
 				var newIR:Sprite = new _scrollerItemRenderer();
 
-				(newIR as _scrollerItemRenderer).data = _scrollerContent[i];
+				(newIR as _scrollerItemRenderer).dataValue = _scrollerContent[i];
 
 				if (_scrollerLayout)
 				{

@@ -208,5 +208,10 @@ package space_digger.levels
 			_inExitArea = false;
 		}
 		
+		public function get hud():GameplayHud 
+		{
+			return _hud;
+		}
+		
 	}
 }

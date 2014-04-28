@@ -5,6 +5,7 @@ package
 	import citrus.utils.LevelManager;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import space_digger.popups.PopupGeneric;
 	import utils.Stats;
 	import space_digger.levels.*;
 	import data.Mine;
@@ -21,6 +22,8 @@ package
 		
 		public static var currentLevelIndex:int;
 		public static var loadingClip:Sprite;
+		private var _genericPopup:PopupGeneric;
+		private var _genericPopupModal:Sprite;
 		
 		public function Main():void 
 		{
@@ -64,6 +67,8 @@ package
 			GameManager.getInstance().systemUpdated.add(onSystemUpdated);
 			GameManager.getInstance().systemChanged.add(onSystemChanged);
 			GameManager.getInstance().rankingUpdated.add(onRankingUpdated);
+			
+			GameManager.getInstance().displayPopup.add(openGenericPopup);
 			
 			GameManager.getInstance().enableView.add(enableLevel);
 			GameManager.getInstance().disableView.add(disableLevel);
@@ -110,19 +115,6 @@ package
 		{
 			changeLevel(8);
 		}
-		
-		
-		/*private function nextLevel():void
-		{
-			(levelManager.currentLevel as GameLevel).dispose();
-			levelManager.nextLevel();
-		}
-		
-		private function previousLevel():void
-		{
-			(levelManager.currentLevel as GameLevel).dispose();
-			levelManager.prevLevel();
-		}*/
 		
 		private function restartLevel():void
 		{
@@ -182,6 +174,37 @@ package
 				if (levelSpace.popupRanking && levelSpace.contains(levelSpace.popupRanking))
 					levelSpace.setRankingPopupData();
 			}
+		}
+		
+		protected function openGenericPopup(message:String, buttonLabel:String, closeCallback:Function, overlaid:Boolean = false):void
+		{
+			_genericPopup = new PopupGeneric(message, buttonLabel, closeCallback, overlaid);
+			addChild(_genericPopup);
+			
+			if (overlaid)
+			{
+				_genericPopupModal = new Sprite();
+				addChild(_genericPopupModal);
+				
+				_genericPopupModal.x = _genericPopupModal.y = 0;
+				_genericPopupModal.graphics.beginFill(0x000000, 0.85);
+				_genericPopupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+				_genericPopupModal.graphics.endFill();
+			}
+			
+			_genericPopup.x = (stage.stageWidth - _genericPopup.width) * 0.5;
+			_genericPopup.y = (stage.stageHeight - _genericPopup.height) * 0.5;
+			
+			_genericPopup.closePopup.add(closeGenericPopup);
+		}
+		
+		protected function closeGenericPopup():void
+		{
+			if(_genericPopup.closeCallback != null) _genericPopup.closeCallback();
+			_genericPopup.dispose();
+			
+			removeChild(_genericPopup);
+			if(_genericPopup.overlaid) removeChild(_genericPopupModal);
 		}
 		
 		protected function enableLevel():void

@@ -16,8 +16,8 @@ package space_digger.levels
 	import managers.DataManager;
 	import managers.GameManager;
 	import utils.scroller.Scroller;
-	import space_digger.OperationIR;
-	import space_digger.ActivityIR;
+	import space_digger.item_renderers.OperationIR;
+	import space_digger.item_renderers.ActivityIR;
 	import data.PlanetToxicity;
 	import data.PlanetRichness;
 	import space_digger.OngoingOpEvent;

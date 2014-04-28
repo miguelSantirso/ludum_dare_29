@@ -1,5 +1,6 @@
 package space_digger 
 {
+	import away3d.animators.data.VertexAnimationMode;
 	import flash.display.MovieClip;
 	/**
 	 * ...
@@ -11,8 +12,9 @@ package space_digger
 		
 		public function GameplayHud() 
 		{
-			seamHint.visible = false;
 			nLifes = 3;
+			
+			mineral_hud.visible = false;
 		}
 		
 		
@@ -49,6 +51,17 @@ package space_digger
 							+ (milliseconds < 100 ? "0" : "") + milliseconds;
 		}
 		
+		
+		public function showMineralHud(owner:String, lifePercent:int):void
+		{
+			mineral_hud.visible = true;
+			mineral_hud.owner.text = owner;
+			mineral_hud.life.gotoAndStop(lifePercent);
+		}
+		public function hideMineralHud():void
+		{
+			mineral_hud.visible = false;
+		}
 		
 		
 		public function set nLifes(value:int):void

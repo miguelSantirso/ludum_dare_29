@@ -6,7 +6,7 @@ package space_digger.popups
 	import flash.events.MouseEvent;
 	import utils.scroller.Scroller;
 	import utils.Text;
-	import space_digger.RankingPositionIR;
+	import space_digger.item_renderers.RankingPositionIR;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
