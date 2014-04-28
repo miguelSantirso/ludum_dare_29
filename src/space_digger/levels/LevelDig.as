@@ -203,6 +203,9 @@ package space_digger.levels
 		
 		public function endMission():void
 		{
+			GameManager.getInstance().updateState();
+			GameManager.getInstance().updateSystem();
+			
 			changeLevel.dispatch(2);
 		}
 		
