@@ -149,7 +149,7 @@ package space_digger.levels
 			for (var i:int = 0; i < 5; i++)
 			{
 				var iconIndex:int = 1 + Math.round(Math.random() * 4);
-				var iconRadius:int = 35 + Math.round(Math.random() * 55);
+				var iconRadiusScale:Number = 0.65 + (Math.random() * 0.75);
 				var toxicityValue:String;
 				var richnessValue:String;
 				
@@ -157,7 +157,7 @@ package space_digger.levels
 					
 				if(refreshPlanetMC){
 					currentPlanetMC.icon_planet.gotoAndStop(iconIndex);
-					currentPlanetMC.icon_planet.width = currentPlanetMC.icon_planet.height = iconRadius;
+					currentPlanetMC.icon_planet.scaleX = currentPlanetMC.icon_planet.scaleY = iconRadiusScale;
 				}
 				
 				currentPlanetMC.label_name.text = DataManager.getInstance().mySystem.planets[i].name;
