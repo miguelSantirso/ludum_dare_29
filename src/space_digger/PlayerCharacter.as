@@ -21,8 +21,10 @@ package space_digger
 	public class PlayerCharacter extends CustomHero 
 	{
 		private var _attackAnimationFrame:int = 0;
+		private var _deployAnimationFrame:int = 0;
 		
 		private var _attacking:Boolean = false;
+		private var _deploying:Boolean = false;
 		
 		private var _attackSensorDef:b2FixtureDef
 		private var _leftSensorFixture:b2Fixture;
@@ -47,6 +49,7 @@ package space_digger
 			_ce.input.keyboard.addKeyAction("right", Keyboard.D);
 			_ce.input.keyboard.addKeyAction("jump", Keyboard.UP);
 			_ce.input.keyboard.addKeyAction("attack", Keyboard.Z);
+			_ce.input.keyboard.addKeyAction("deploy", Keyboard.X);
 			_ce.input.keyboard.addKeyAction("attack", Keyboard.J);
 		}
 		
@@ -103,6 +106,13 @@ package space_digger
 				setTimeout(function():void {
 					_attacking = false;
 				}, 400);
+			} else if (_onGround && !_deploying && _ce.input.justDid("deploy", inputChannel))
+			{
+				_deploying = true;
+				_deployAnimationFrame = 0;
+				setTimeout(function():void {
+					_deploying = false;
+				}, 700);
 			}
 		}
 		
@@ -119,9 +129,17 @@ package space_digger
 				{
 					attackEnemiesInRange();
 					attackBlocksInRange();
-					onGiveDamage.dispatch();
 					
 					(_ce.state as LevelDig).startedDigging.dispatch(x, y);
+				}
+			}
+			else if (_deploying)
+			{
+				_animation = "dig";
+				
+				if (++_deployAnimationFrame == 21)
+				{
+					onDeploySeam.dispatch();
 				}
 			}
 			else
