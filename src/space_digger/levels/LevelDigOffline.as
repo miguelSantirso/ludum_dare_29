@@ -33,6 +33,9 @@ package space_digger.levels
 		
 		public override function endExploration(takeOff:Boolean = true):void
 		{
+			_exploring = false;
+			_hud.stopCountdown();
+			
 			exit();
 		}
 		

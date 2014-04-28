@@ -44,14 +44,14 @@ package space_digger.levels
 	{
 		public var startedDigging:Signal = new Signal(Number, Number);
 		
-		private var _ship:SpaceShip;
-		private var _player:PlayerCharacter;
-		private var _inExitArea:Boolean = false;
-		private var _exploring:Boolean = false;
+		protected var _ship:SpaceShip;
+		protected var _player:PlayerCharacter;
+		protected var _inExitArea:Boolean = false;
+		protected var _exploring:Boolean = false;
 		
 		public var diggingSession:DiggingSession = new DiggingSession();
 		
-		private var _hud:GameplayHud = new GameplayHud();
+		protected var _hud:GameplayHud = new GameplayHud();
 		
 		public function LevelDig(_level:MovieClip) 
 		{
