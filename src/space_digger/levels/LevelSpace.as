@@ -35,7 +35,7 @@ package space_digger.levels
 		protected var _popupSettings:PopupSettings;
 		private var popupModal:Sprite;
 		
-		public function LevelSpace(_level:MovieClip) 
+		public function LevelSpace(_level:MovieClip)
 		{
 			super(_level);
 			

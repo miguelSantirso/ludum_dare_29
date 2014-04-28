@@ -17,7 +17,7 @@ package space_digger.popups
 		
 		public function PopupSettings() 
 		{
-			//_asset = new AssetPopupSettings();
+			_asset = new AssetPopupSettings();
 			closePopup = new Signal();
 			
 			addChild(_asset);
