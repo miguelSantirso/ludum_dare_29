@@ -152,7 +152,8 @@ package managers
 					break;
 				case RemoteOperation.STATUS_INVALID :
 					// show popup with error
-					GameManager.getInstance().displayMessagePopUp(operation.errorMessage);
+					if(operation.errorMessage)
+						GameManager.getInstance().displayMessagePopUp(operation.errorMessage);
 					
 					_currentRemoteOperation.dispose();
 					_currentRemoteOperation = null;
@@ -244,9 +245,14 @@ package managers
 			sendOperation(TAKE_OFF, RemoteURL.TAKE_OFF, RemoteOperation.TYPE_POST, requestObject, null, successCallback, faultCallback,true);
 		}
 		
-		public function jump(system:System, successCallback:Function = null, faultCallback:Function = null):void
+		public function jump(system:System, planetId:int = 0, successCallback:Function = null, faultCallback:Function = null):void
 		{
-			sendOperation(JUMP, RemoteURL.JUMP, RemoteOperation.TYPE_POST, null, [system], successCallback, faultCallback,true);
+			var requestObject:Object = { jump: true };
+										
+			if (planetId > 0)
+				requestObject["planet"] = planetId;
+			
+			sendOperation(JUMP, RemoteURL.JUMP, RemoteOperation.TYPE_POST, requestObject, [system], successCallback, faultCallback,true);
 		}
 		
 		public function ranking(rankingFillerCallback:Function, faultCallback:Function = null):void
