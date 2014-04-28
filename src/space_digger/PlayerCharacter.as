@@ -37,7 +37,22 @@ package space_digger
 		{
 			super(name, params);
 			
+			// Forest config
 			minVelocityY = -10;
+			maxVelocity = 5;
+			acceleration = 20;
+			friction = 20;
+			jumpAcceleration = 2;
+			jumpHeight = 10;
+			
+			// Ice config
+			minVelocityY = -10;
+			maxVelocity = 7;
+			acceleration = 1;
+			friction = 0.25;
+			jumpAcceleration = 2;
+			jumpHeight = 10;
+			
 			group = 1;
 			
 			onTakeDamage.add(onDamageTaken);
