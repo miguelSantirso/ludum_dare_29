@@ -142,6 +142,8 @@ package space_digger
 				if ((!inverted && enemy.x > x) || (_inverted && enemy.x < x))
 				{
 					// INSERT_SOUND ENEMIGO HERIDO
+					_ce.sound.playSound("HitEnemy");
+					
 					enemy.hurt();
 				}
 			}

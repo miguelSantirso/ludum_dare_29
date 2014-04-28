@@ -19,6 +19,7 @@ package space_digger
 			_animation = "explosion";
 			
 			// INSERT_SOUND BLOQUE DESTRUIDO
+			_ce.sound.playSound("BreakBlock");
 			
 			setTimeout(function():void {
 				die();
