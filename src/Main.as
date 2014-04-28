@@ -3,6 +3,7 @@ package
 	import citrus.core.CitrusEngine;
 	import citrus.core.IState;
 	import citrus.sounds.CitrusSoundGroup;
+	import citrus.sounds.CitrusSoundInstance;
 	import citrus.events.CitrusSoundEvent;
 	import citrus.utils.LevelManager;
 	import flash.display.Sprite;
@@ -102,25 +103,6 @@ package
 					[LevelDigOffline, "../swf/levels/Level25.swf"],
 				];
 			
-			// Load sounds
-			//sound.addSound("", { sound:"../res/sounds/break_block.wav" } );
-			//sound.addSound("", { sound:"../res/sounds/landing.mp3" } );
-			
-			//sounds added with url
-			sound.addSound("BreakBlock", { sound:"../res/sounds/break_block.wav" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("Landing", { sound:"../res/sounds/landing.mp3" , group:CitrusSoundGroup.SFX } );
-
-			sound.getGroup(CitrusSoundGroup.SFX).addEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED, function(e:CitrusSoundEvent):void
-			{
-				e.currentTarget.removeEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED,arguments.callee);
-				trace("SOUND EFFECTS ARE PRELOADED");
-
-				//state = new AdvancedSoundsState();
-			});
-
-			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.05;
-			sound.getGroup(CitrusSoundGroup.SFX).preloadSounds();
-			
 			
 			//if (Main.DEBUG)
 			//	addChild(new Stats());
@@ -146,10 +128,35 @@ package
 			
 			_splashScreen = new AssetSplashScreen();
 			addChild(_splashScreen);
+
+			//offset the sounds (less gap in the looping sound)
+			CitrusSoundInstance.startPositionOffset = 80;
+
+			//sound added with asset manager
+			sound.addSound("ShowYourMoves", { sound:"../res/sounds/show_your_moves.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
+
+			//sounds added with url
+			//sound.addSound("BreakBlock", { sound:"../res/sounds/break_block.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("HitEnemy", { sound:"../res/sounds/hit_enemy.mp3" , group:CitrusSoundGroup.SFX } );
+			//sound.addSound("Deploy", { sound:"../res/sounds/deploy.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("Landing", { sound:"../res/sounds/landing.mp3" , group:CitrusSoundGroup.SFX } );
+
+			sound.getGroup(CitrusSoundGroup.SFX).addEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED, function(e:CitrusSoundEvent):void
+			{
+				e.currentTarget.removeEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED,arguments.callee);
+				trace("SOUND EFFECTS ARE PRELOADED");
+
+				//state = new AdvancedSoundsState();
+				onStartGame();
+			});
+
+			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.5;
+			sound.getGroup(CitrusSoundGroup.SFX).preloadSounds();
+
 			
-			_splashScreenTimer = new Timer(SPLASH_SCREEN_DURATION_IN_SECS * 1000, 1);
-			_splashScreenTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onStartGame, false, 0, true);
-			_splashScreenTimer.start();
+			//_splashScreenTimer = new Timer(SPLASH_SCREEN_DURATION_IN_SECS * 1000, 1);
+			//_splashScreenTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onStartGame, false, 0, true);
+			//_splashScreenTimer.start();
 			
 			enableLoading();
 		}

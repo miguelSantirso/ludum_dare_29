@@ -119,6 +119,7 @@ package space_digger
 			hudRef.hideClaimHint();
 			
 			// INSERT_SOUND MAQUINA DEPLOYADA
+			_ce.sound.playSound("Deploy");
 			
 			_animation = "appears";
 			setTimeout(function():void {
