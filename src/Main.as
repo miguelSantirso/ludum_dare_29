@@ -47,12 +47,52 @@ package
 					[LevelDig, "../swf/levels/Level3.swf"],
 					[LevelDig, "../swf/levels/Level4.swf"],
 					[LevelDig, "../swf/levels/Level5.swf"],
+					[LevelDig, "../swf/levels/Level6.swf"],
+					[LevelDig, "../swf/levels/Level7.swf"],
+					[LevelDig, "../swf/levels/Level8.swf"],
+					[LevelDig, "../swf/levels/Level9.swf"],
+					[LevelDig, "../swf/levels/Level10.swf"],
+					[LevelDig, "../swf/levels/Level11.swf"],
+					[LevelDig, "../swf/levels/Level12.swf"],
+					[LevelDig, "../swf/levels/Level13.swf"],
+					[LevelDig, "../swf/levels/Level14.swf"],
+					[LevelDig, "../swf/levels/Level15.swf"],
+					[LevelDig, "../swf/levels/Level16.swf"],
+					[LevelDig, "../swf/levels/Level17.swf"],
+					[LevelDig, "../swf/levels/Level18.swf"],
+					[LevelDig, "../swf/levels/Level19.swf"],
+					[LevelDig, "../swf/levels/Level20.swf"],
+					[LevelDig, "../swf/levels/Level21.swf"],
+					[LevelDig, "../swf/levels/Level22.swf"],
+					[LevelDig, "../swf/levels/Level23.swf"],
+					[LevelDig, "../swf/levels/Level24.swf"],
+					[LevelDig, "../swf/levels/Level25.swf"],
 					
 					[LevelDigOffline, "../swf/levels/Level1.swf"],
 					[LevelDigOffline, "../swf/levels/Level2.swf"],
 					[LevelDigOffline, "../swf/levels/Level3.swf"],
 					[LevelDigOffline, "../swf/levels/Level4.swf"],
 					[LevelDigOffline, "../swf/levels/Level5.swf"],
+					[LevelDigOffline, "../swf/levels/Level6.swf"],
+					[LevelDigOffline, "../swf/levels/Level7.swf"],
+					[LevelDigOffline, "../swf/levels/Level8.swf"],
+					[LevelDigOffline, "../swf/levels/Level9.swf"],
+					[LevelDigOffline, "../swf/levels/Level10.swf"],
+					[LevelDigOffline, "../swf/levels/Level11.swf"],
+					[LevelDigOffline, "../swf/levels/Level12.swf"],
+					[LevelDigOffline, "../swf/levels/Level13.swf"],
+					[LevelDigOffline, "../swf/levels/Level14.swf"],
+					[LevelDigOffline, "../swf/levels/Level15.swf"],
+					[LevelDigOffline, "../swf/levels/Level16.swf"],
+					[LevelDigOffline, "../swf/levels/Level17.swf"],
+					[LevelDigOffline, "../swf/levels/Level18.swf"],
+					[LevelDigOffline, "../swf/levels/Level19.swf"],
+					[LevelDigOffline, "../swf/levels/Level20.swf"],
+					[LevelDigOffline, "../swf/levels/Level21.swf"],
+					[LevelDigOffline, "../swf/levels/Level22.swf"],
+					[LevelDigOffline, "../swf/levels/Level23.swf"],
+					[LevelDigOffline, "../swf/levels/Level24.swf"],
+					[LevelDigOffline, "../swf/levels/Level25.swf"],
 				];
 		
 			//if (Main.DEBUG)
@@ -111,12 +151,18 @@ package
 			changeLevel(GameManager.getInstance().getClientMapIndexFromServerMapId(mine.map));
 		}
 		
+		protected var offlineLevel:int = 1;
+		
 		private function travelToOfflineMine():void
 		{
-			var numberOfLevels:int = 5;
+			var numberOfLevels:int = 25;
 			var randomLevel:int = Math.ceil(Math.random()*numberOfLevels);
 			
+			randomLevel = offlineLevel;
+			
 			changeLevel(numberOfLevels + 2 + randomLevel);
+			
+			offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
 		}
 		
 		private function restartLevel():void
