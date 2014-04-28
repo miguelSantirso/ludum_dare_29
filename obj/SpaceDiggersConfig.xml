@@ -53,6 +53,14 @@
       <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\nave_animaciones_fire.swc</library>
       <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\nave_animaciones_forest.swc</library>
       <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\nave_animaciones_water.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\fire_creeper.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\Fire_enemy_actions.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\forest_creeper.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\Forest_enemy_actions.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\happy_creeper.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\Happy_enemy_actions.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\water_creeper.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\Water_enemy_actions.swc</library>
     </include-libraries>
     <library-path append="true">
       <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\greensock.swc</path-element>
