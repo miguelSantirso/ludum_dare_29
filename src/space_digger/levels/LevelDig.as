@@ -157,6 +157,7 @@ package space_digger.levels
 		public function startExploration():void
 		{
 			// INSERT_SOUND ENTRAR AL NIVEL
+			_ce.sound.playSound("Landing");
 			
 			GameManager.getInstance().play(onPlaySuccess);
 		}
@@ -256,6 +257,11 @@ package space_digger.levels
 		public function destroySeamMachine(seamIndex:int):void
 		{
 			diggingSession.destroySeamMachine(seamIndex);
+		}
+		
+		public function playBreakBlock():void
+		{
+			
 		}
 		
 	}
