@@ -23,9 +23,9 @@ package
 		
 		public function Main():void 
 		{
-			//if (stage)
-			//	init();
-			//else 
+			if (stage)
+				init();
+			else 
 				addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
@@ -81,8 +81,8 @@ package
 			
 			/*level.lvlEnded.add(nextLevel);
 			level.lvlBack.add(previousLevel);	
-			level.restartLevel.add(restartLevel);
-			level.changeLevel.add(changeLevel);*/
+			level.restartLevel.add(restartLevel);*/
+			level.changeLevel.add(changeLevel);
 			
 			onStateUpdated();
 			onSystemUpdated();

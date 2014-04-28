@@ -34,6 +34,7 @@ package space_digger.levels
 	import managers.GameManager;
 	import managers.DataManager;
 	import data.SeamData;
+	import com.greensock.TweenLite;
 	
 	/**
 	 * ...
@@ -64,6 +65,8 @@ package space_digger.levels
 			super.destroy();
 			
 			stage.removeChild(_hud);
+			
+			TweenLite.killDelayedCallsTo(endExploration);
 		}
 		
 		public override function initialize():void
@@ -151,16 +154,34 @@ package space_digger.levels
 				_hud.startCountdown(payload.stopwatch * 1000);
 				
 				_exploring = true;
+				
+				retryCounter = 0;
 		}
+		
+		protected var retryCounter:int = 0;
 		
 		public function endExploration(takeOff:Boolean = true):void
 		{
+			var retrySeconds:int = 5;
 			_exploring = false;
 			_hud.stopCountdown();
 			
-			if (takeOff)
-				GameManager.getInstance().takeOff(diggingSession);
+			if (!takeOff)
+				return;
+				
+			GameManager.getInstance().takeOff(diggingSession, exit, function():void	{
+				if (retryCounter <= 3)
+					TweenLite.delayedCall(retrySeconds, endExploration, [takeOff]);
+				else
+					exit();
+				
+				retryCounter++;
+			});
 			
+		}
+		
+		protected function exit():void
+		{
 			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
 			view.camera.camPos.x = player.x; 
 			view.camera.camPos.y = player.y;
@@ -172,7 +193,6 @@ package space_digger.levels
 		
 		public function endMission():void
 		{
-			//GameManager.getInstance().logout();
 			changeLevel.dispatch(2);
 		}
 		

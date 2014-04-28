@@ -33,23 +33,12 @@ package space_digger.levels
 		
 		public override function endExploration(takeOff:Boolean = true):void
 		{
-			// TODO
-			return;
-			
-			//old
-			/*_exploring = false;
-			_hud.stopCountdown();
-			
-			if (takeOff)
-				GameManager.getInstance().takeOff(diggingSession);
-			
-			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
-			view.camera.camPos.x = player.x; 
-			view.camera.camPos.y = player.y;
-			view.camera.bounds = new Rectangle(0, -500, 1000, 530);
-			view.camera.switchToTarget(_ship, 10, function():void {
-				_ship.leave();
-			});*/
+			exit();
+		}
+		
+		public override function endMission():void
+		{
+			changeLevel.dispatch(1);
 		}
 	}
 
