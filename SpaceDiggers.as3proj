@@ -75,6 +75,7 @@
     <element path="lib\water_creeper.swc" />
     <element path="lib\Water_enemy_actions.swc" />
     <element path="lib\loading_icon.swc" />
+    <element path="lib\main_char_actions_water.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
