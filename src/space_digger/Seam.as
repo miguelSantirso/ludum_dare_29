@@ -39,7 +39,7 @@ package space_digger
 				throw new Error("Incorrectly named seam");
 			}
 			
-			_index = (nameComponents[1] as int);
+			_index = int(nameComponents[1]);
 		}
 		
 		public function init(seamData:SeamData):void
