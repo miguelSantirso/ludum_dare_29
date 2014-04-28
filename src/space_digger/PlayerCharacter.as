@@ -228,6 +228,7 @@ package space_digger
 			if (isDead)
 			{
 				// INSERT_SOUND PLAYER MUERE
+				_ce.sound.playSound("Death");
 				
 				(_ce.state as LevelDig).diggingSession.died(x, y);
 				(_ce.state as LevelDig).endExploration();

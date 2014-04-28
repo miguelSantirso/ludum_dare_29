@@ -148,6 +148,7 @@ package
 			//sounds added with url
 			sound.addSound("Aterrizaje", { sound:"../res/sounds/aterrizaje.mp3" , group:CitrusSoundGroup.SFX } );
 			sound.addSound("BreakBlock", { sound:"../res/sounds/break_block.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("Death", { sound:"../res/sounds/death.mp3" , group:CitrusSoundGroup.SFX } );
 			sound.addSound("Deploy", { sound:"../res/sounds/deploy.mp3" , group:CitrusSoundGroup.SFX } );
 			sound.addSound("Despegue", { sound:"../res/sounds/despegue.mp3" , group:CitrusSoundGroup.SFX } );
 			sound.addSound("DestroySeam", { sound:"../res/sounds/destroy_seam.mp3" , group:CitrusSoundGroup.SFX } );
