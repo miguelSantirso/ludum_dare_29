@@ -31,8 +31,8 @@ package data
 				_company = new Company(data["company"]);
 			}
 				
-			if (data["working_seams"])
-				populateWorkingSeams(data["working_seams"]);
+			if (data["seams_working"])
+				populateWorkingSeams(data["seams_working"]);
 				
 			if (data["events"])
 				populateEvents(data["events"]);
@@ -54,11 +54,14 @@ package data
 			var seamsArray:Array = data as Array ? data as Array : [data];
 			var tempSeam:SeamData;
 			
-			for each(var seamObject:Object in seamsArray) {
-				tempSeam = new SeamData(seamObject);
-				
-				if(!tempSeam.empty())
-					_workingSeams.push(tempSeam);
+			if (seamsArray)
+			{
+				for each(var seamObject:Object in seamsArray) {
+					tempSeam = new SeamData(seamObject);
+					
+					if(!tempSeam.empty())
+						_workingSeams.push(tempSeam);
+				}
 			}
 		}
 		

@@ -2,6 +2,7 @@ package space_digger.levels
 {
 	import away3d.events.MouseEvent3D;
 	import data.Planet;
+	import data.SeamData;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -10,6 +11,7 @@ package space_digger.levels
 	import flash.events.MouseEvent;
 	import space_digger.popups.PopupPlanet;
 	import space_digger.popups.PopupRanking;
+	import space_digger.Seam;
 	import utils.Text;
 	import managers.DataManager;
 	import managers.GameManager;
@@ -187,18 +189,48 @@ package space_digger.levels
 		
 		public function setOngoingOperations():void
 		{
-			// TEMP!
-			var temp:Array = new Array();
-			var tempObj:Object;
+			/*var operationsDataProvider:Array = new Array();
 			
-			for (var i:int = 0; i < 50; i++)
+			for each(var operation:SeamData in DataManager.getInstance().myState.workingSeams)
 			{
-				tempObj = new Object()
-				tempObj["message"] = "IR " + i.toString();
-				temp.push(tempObj);
+				operationsDataProvider.push(operation);
+			}*/
+			
+			var goldPerPlanet:Array = new Array();
+			var goldPerPlanetObject:Object;
+			var existed:Boolean;
+			
+			for each(var seam:SeamData in DataManager.getInstance().myState.workingSeams)
+			{
+				existed = false;
+				
+				for each(var gpp:Object in goldPerPlanet)
+				{
+					if (gpp["planet"] == seam.planetName)
+					{
+						gpp["extractionRate"] += seam.extractionRate;
+						gpp["machines"]++;
+						gpp["lastDate"] = seam.plantingDate;
+						
+						existed = true;
+						
+						break;
+					}
+				}
+				
+				if (!existed)
+				{
+					goldPerPlanetObject = new Object();
+					goldPerPlanetObject["planet"] = seam.planetName;
+					goldPerPlanetObject["lastDate"] = seam.plantingDate;
+					goldPerPlanetObject["extractionRate"] = seam.extractionRate;
+					goldPerPlanetObject["machines"] = 1;
+					
+					goldPerPlanet.push(goldPerPlanetObject);
+				}
 			}
 			
-			_ongoingOpsScroller.dataProvider = temp;
+			_ongoingOpsScroller.dataProvider = goldPerPlanet;
 		}
 		
 		public function setRecentActivity():void

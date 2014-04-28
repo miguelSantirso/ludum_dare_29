@@ -48,7 +48,7 @@ package data
 				_planetName = data["planet_name"];
 			
 			if(data["extraction_rate"])
-				_planetName = data["extraction_rate"];
+				_extractionRate = data["extraction_rate"];
 				
 			if (data["recent_gain"])
 				_recentGain = data["recent_gain"];

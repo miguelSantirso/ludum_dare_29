@@ -1,5 +1,6 @@
 package space_digger 
 {
+	import data.SeamData;
 	import flash.events.Event;
 	import utils.scroller.ItemRendererObject;
 	/**
@@ -34,7 +35,9 @@ package space_digger
 		{
 			super.data = value;
 
-			//asset.label_message.text = value.message;
+			/*asset.label_name.text = (value as SeamData).planetName;
+			asset.label_gold_per_hour.text = (value as SeamData).extractionRate + " gold/h";
+			asset.label_num_machines.text = 3;// (value as SeamData).*/
 		}
 
 		public override function get asset():*
