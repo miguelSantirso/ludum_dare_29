@@ -28,7 +28,7 @@ package utils.scroller
 		{
 		}
 
-		public function set data(value:Object):void
+		public function set dataValue(value:Object):void
 		{
 			_data = value;
 		}

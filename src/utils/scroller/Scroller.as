@@ -183,7 +183,7 @@ package utils.scroller
 			{
 				var newIR:Sprite = new _scrollerItemRenderer();
 
-				(newIR as _scrollerItemRenderer).data = _scrollerContent[i];
+				(newIR as _scrollerItemRenderer).dataValue = _scrollerContent[i];
 
 				if (_scrollerLayout)
 				{
