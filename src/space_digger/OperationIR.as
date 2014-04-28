@@ -1,24 +1,34 @@
 package space_digger 
 {
+	import away3d.events.MouseEvent3D;
 	import data.SeamData;
 	import flash.events.Event;
+	import org.osflash.signals.Signal;
 	import utils.scroller.ItemRendererObject;
+	import flash.events.MouseEvent;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
 	 */
 	public class OperationIR extends ItemRendererObject
 	{
+		public var visitPlanet:Signal;
+		
 		public function OperationIR() 
 		{
 			asset = new IROngoingOp();
+			visitPlanet = new Signal();
 			
 			addChild(asset);
+			
+			init();
 		}
 		
 		public override function init(event:Event = null):void
 		{
 			super.init();
+			
+			asset.addEventListener(MouseEvent.CLICK, onVisitPlanetClick);
 		}
 
 		public override function update(event:Event = null):void
@@ -35,14 +45,19 @@ package space_digger
 		{
 			super.data = value;
 
-			/*asset.label_name.text = (value as SeamData).planetName;
-			asset.label_gold_per_hour.text = (value as SeamData).extractionRate + " gold/h";
-			asset.label_num_machines.text = 3;// (value as SeamData).*/
+			asset.label_name.text = value["planetName"];
+			asset.label_gold_per_hour.text = value["extractionRate"].toString() + " gold/h";
+			asset.label_num_machines.text = value["machines"].toString() + " extracting machines";
 		}
 
 		public override function get asset():*
 		{
 			return super.asset as IROngoingOp;
+		}
+		
+		private function onVisitPlanetClick(e:MouseEvent):void
+		{
+			dispatchEvent(new OngoingOpEvent(data["planetID"], OngoingOpEvent.VISIT_PLANET, true));
 		}
 	}
 

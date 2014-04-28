@@ -20,6 +20,7 @@ package space_digger.levels
 	import space_digger.ActivityIR;
 	import data.PlanetToxicity;
 	import data.PlanetRichness;
+	import space_digger.OngoingOpEvent;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -189,13 +190,6 @@ package space_digger.levels
 		
 		public function setOngoingOperations():void
 		{
-			/*var operationsDataProvider:Array = new Array();
-			
-			for each(var operation:SeamData in DataManager.getInstance().myState.workingSeams)
-			{
-				operationsDataProvider.push(operation);
-			}*/
-			
 			var goldPerPlanet:Array = new Array();
 			var goldPerPlanetObject:Object;
 			var existed:Boolean;
@@ -206,7 +200,7 @@ package space_digger.levels
 				
 				for each(var gpp:Object in goldPerPlanet)
 				{
-					if (gpp["planet"] == seam.planetName)
+					if (gpp["planetID"] == seam.planet)
 					{
 						gpp["extractionRate"] += seam.extractionRate;
 						gpp["machines"]++;
@@ -221,7 +215,8 @@ package space_digger.levels
 				if (!existed)
 				{
 					goldPerPlanetObject = new Object();
-					goldPerPlanetObject["planet"] = seam.planetName;
+					goldPerPlanetObject["planetName"] = seam.planetName;
+					goldPerPlanetObject["planetID"] = seam.planet;
 					goldPerPlanetObject["lastDate"] = seam.plantingDate;
 					goldPerPlanetObject["extractionRate"] = seam.extractionRate;
 					goldPerPlanetObject["machines"] = 1;
@@ -231,6 +226,12 @@ package space_digger.levels
 			}
 			
 			_ongoingOpsScroller.dataProvider = goldPerPlanet;
+			_ongoingOpsScroller.addEventListener(OngoingOpEvent.VISIT_PLANET, apetecaun);
+		}
+		
+		private function apetecaun(e:OngoingOpEvent):void
+		{
+			trace("JSJDSJDJJJDJSDJJJJJJJJJJJJJJJJJJJJ: " + e.planetID);
 		}
 		
 		public function setRecentActivity():void
