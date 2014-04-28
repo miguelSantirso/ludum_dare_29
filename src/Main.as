@@ -21,7 +21,7 @@ package
 		public static const DEBUG:Boolean = CONFIG::debug;
 		
 		public static var currentLevelIndex:int;
-		public static var loadingClip:Sprite;
+		public static var loadingClip:LoadingIcon;
 		private var _genericPopup:PopupGeneric;
 		
 		public function Main():void 
@@ -76,10 +76,7 @@ package
 			GameManager.getInstance().enableView.add(enableLevel);
 			GameManager.getInstance().disableView.add(disableLevel);
 			
-			loadingClip = new Sprite();
-			loadingClip.graphics.beginFill(0xff0000,0.75);
-			loadingClip.graphics.drawCircle(0, 0, 20);
-			loadingClip.graphics.endFill();
+			loadingClip = new LoadingIcon();
 		}
 		
 		private function goToLevelRegister():void
@@ -215,11 +212,11 @@ package
 			if (state is GameLevel)
 				(state as GameLevel).disableInput();
 				
-			var clipWidth:Number = 40;
-			var clipHeight:Number = 40;
+			var clipWidth:Number = loadingClip.width;
+			var clipHeight:Number = loadingClip.height;
 			
-			loadingClip.x =  900 - clipWidth;
-			loadingClip.y = clipHeight;
+			loadingClip.x =  width - clipWidth*0.5 - 25;
+			loadingClip.y = clipHeight*0.5 + 25;
 			
 			stage.addChildAt(loadingClip, stage.numChildren);
 		}
