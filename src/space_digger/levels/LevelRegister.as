@@ -30,6 +30,9 @@ package space_digger.levels
 			
 			(level.input_company_name as TextField).maxChars = 16;
 			level.input_company_type.text = DataManager.getInstance().core.companySuffixes[_suffixIndex];
+			
+			level.button_start.label_text.text = "LAUNCH";
+			level.button_offline.label_text.text = "TRAIN";
 		}
 		
 		public override function update(timeDelta:Number):void

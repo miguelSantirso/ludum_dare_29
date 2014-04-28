@@ -124,19 +124,7 @@ package space_digger.levels
 		
 		private function onVisitOngoingPlanet(e:OngoingOpEvent):void
 		{
-			/*var planetIndex:int = -1;
-			
-			for (var i:int = 0; i < DataManager.getInstance().mySystem.planets.length; i++)
-			{
-				if (DataManager.getInstance().mySystem.planets[i].id == e.planetID)
-				{
-					planetIndex = i;
-					break;
-				}
-			}*/
-			
-			//if (planetIndex > -1)
-			//	openPlanetPopup(null, planetIndex);
+			GameManager.getInstance().jump(e.planetID);
 		}
 		
 		public function setCompanyData():void
