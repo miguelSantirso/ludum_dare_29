@@ -45,7 +45,7 @@ package space_digger.item_renderers
 			super.dataValue = value;
 
 			asset.label_name.text = value["planetName"];
-			asset.label_gold_per_hour.text = value["extractionRate"].toString() + " gold/h";
+			asset.label_gold_per_hour.text = value["extractionRate"].toString() + " gold/s";
 			asset.label_num_machines.text = value["machines"].toString() + " extracting machines";
 			
 			asset.button_visit.visible = !DataManager.getInstance().isPlanetInCurrentSystem(value["planetID"]);

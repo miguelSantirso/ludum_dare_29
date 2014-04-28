@@ -78,6 +78,12 @@ package utils.scroller
 			_dragDeltaTimer = new Timer(50, 0);
 			_dragDeltaTimer.addEventListener(TimerEvent.TIMER, onCalculateCurrentDragDelta, false, 0, true);
 		}
+		
+		public function set enableInteractions(value:Boolean):void
+		{
+			this.mouseEnabled = value;
+			this.mouseChildren = value;
+		}
 
 		public function update(event:Event = null):void
 		{

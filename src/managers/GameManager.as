@@ -192,9 +192,9 @@ package managers
 			changeLevelRequest.dispatch(selectedMine);// getClientMapIndexFromServerMapId(selectedMine.map));
 		}
 		
-		public function displayMessagePopUp(message:String, buttonLabel:String = "Close", closeCallback:Function = null, overlaid:Boolean = false):void
+		public function displayMessagePopUp(message:String, buttonLabel:String = "Close", closeCallback:Function = null):void
 		{
-			displayPopup.dispatch(message, buttonLabel, closeCallback, overlaid);
+			displayPopup.dispatch(message, buttonLabel, closeCallback);
 		}
 		
 		public function getClientMapIndexFromServerMapId(serverMapId:int):int

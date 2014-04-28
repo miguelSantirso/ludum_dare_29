@@ -23,7 +23,6 @@ package
 		public static var currentLevelIndex:int;
 		public static var loadingClip:Sprite;
 		private var _genericPopup:PopupGeneric;
-		private var _genericPopupModal:Sprite;
 		
 		public function Main():void 
 		{
@@ -176,21 +175,10 @@ package
 			}
 		}
 		
-		protected function openGenericPopup(message:String, buttonLabel:String, closeCallback:Function, overlaid:Boolean = false):void
+		protected function openGenericPopup(message:String, buttonLabel:String, closeCallback:Function):void
 		{
-			_genericPopup = new PopupGeneric(message, buttonLabel, closeCallback, overlaid);
+			_genericPopup = new PopupGeneric(message, buttonLabel, closeCallback);
 			addChild(_genericPopup);
-			
-			if (overlaid)
-			{
-				_genericPopupModal = new Sprite();
-				addChild(_genericPopupModal);
-				
-				_genericPopupModal.x = _genericPopupModal.y = 0;
-				_genericPopupModal.graphics.beginFill(0x000000, 0.85);
-				_genericPopupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
-				_genericPopupModal.graphics.endFill();
-			}
 			
 			_genericPopup.x = (stage.stageWidth - _genericPopup.width) * 0.5;
 			_genericPopup.y = (stage.stageHeight - _genericPopup.height) * 0.5;
@@ -204,7 +192,6 @@ package
 			_genericPopup.dispose();
 			
 			removeChild(_genericPopup);
-			if(_genericPopup.overlaid) removeChild(_genericPopupModal);
 		}
 		
 		protected function enableLevel():void

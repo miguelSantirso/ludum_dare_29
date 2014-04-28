@@ -159,7 +159,7 @@ package space_digger.levels
 			for (var i:int = 0; i < 5; i++)
 			{
 				var iconIndex:int = 1 + Math.round(Math.random() * 4);
-				var iconRadius:int = 32 + Math.round(Math.random() * 64);
+				var iconRadius:int = 35 + Math.round(Math.random() * 55);
 				var toxicityValue:String;
 				var richnessValue:String;
 				
