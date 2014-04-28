@@ -31,7 +31,7 @@ package space_digger
 			
 			if (_animation == "exit" && ++_frameCounter >= 99 && visible)
 			{
-				visible = false;
+				_animation = "empty";
 				(_ce.state as LevelDig).endMission();
 			}
 		}
