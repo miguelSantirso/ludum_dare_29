@@ -37,7 +37,14 @@ package space_digger
 		{
 			super(name, params);
 			
+			maxVelocity = 10;
 			minVelocityY = -10;
+			acceleration = 12;
+			friction = 15;
+			
+			jumpAcceleration = 12;
+			jumpHeight = 60;
+			
 			group = 1;
 			
 			onTakeDamage.add(onDamageTaken);
