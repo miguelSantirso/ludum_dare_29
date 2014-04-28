@@ -148,12 +148,16 @@ package space_digger.levels
 			
 			if (_exploring && _hud.timeLeft <= 0)
 			{
+				// INSERT_SOUND PLAYER HERIDO POR TIMEOUT
+				
 				_player.hurt();
 			}
 		}
 		
 		public function startExploration():void
 		{
+			// INSERT_SOUND ENTRAR AL NIVEL
+			
 			GameManager.getInstance().play(onPlaySuccess);
 		}
 		
@@ -188,8 +192,11 @@ package space_digger.levels
 			GameManager.getInstance().takeOff(diggingSession, exit, function():void	{
 				if (retryCounter <= 3)
 					TweenLite.delayedCall(retrySeconds, endExploration, [takeOff]);
-				else
+				else {
+					// INSERT_SOUND SALIR DEL NIVEL
+					
 					exit();
+				}
 				
 				retryCounter++;
 			});
