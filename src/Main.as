@@ -23,9 +23,9 @@ package
 		
 		public function Main():void 
 		{
-			if (stage)
-				init();
-			else 
+			//if (stage)
+			//	init();
+			//else 
 				addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
@@ -44,6 +44,8 @@ package
 					[LevelDig, "../swf/levels/Level3.swf"],
 					[LevelDig, "../swf/levels/Level4.swf"],
 					[LevelDig, "../swf/levels/Level5.swf"],
+					
+					[LevelDigOffline, "../swf/levels/Level1.swf"],
 				];
 		
 			//if (Main.DEBUG)
@@ -54,6 +56,7 @@ package
 			GameManager.getInstance().loggedOut.add(goToLevelRegister);
 			GameManager.getInstance().startFailed.add(goToLevelRegister);
 			GameManager.getInstance().changeLevelRequest.add(travelToMine);
+			GameManager.getInstance().changeOfflineRequest.add(travelToOfflineMine);
 			GameManager.getInstance().start();
 			
 			GameManager.getInstance().stateUpdated.add(onStateUpdated);
@@ -93,6 +96,12 @@ package
 			
 			changeLevel(GameManager.getInstance().getClientMapIndexFromServerMapId(mine.map));
 		}
+		
+		private function travelToOfflineMine():void
+		{
+			changeLevel(8);
+		}
+		
 		
 		/*private function nextLevel():void
 		{

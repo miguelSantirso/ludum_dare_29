@@ -79,9 +79,14 @@ package space_digger.levels
 			(getObjectByName("exit") as Sensor).onBeginContact.add(onEnteredExit);
 			(getObjectByName("exit") as Sensor).onEndContact.add(onExitedExit);
 			
-			diggingSession.mine = DataManager.getInstance().currentMine;
+			setDiggingSession();
 			
 			stage.addChild(_hud);
+		}
+		
+		protected function setDiggingSession():void
+		{
+			diggingSession.mine = DataManager.getInstance().currentMine;
 		}
 		
 		
@@ -130,9 +135,12 @@ package space_digger.levels
 		
 		public function startExploration():void
 		{
-			GameManager.getInstance().play(function(payload:Object):void {
-				
-				view.camera.bounds = null;
+			GameManager.getInstance().play(onPlaySuccess);
+		}
+		
+		protected function onPlaySuccess(payload:Object):void
+		{
+			view.camera.bounds = null;
 				var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
 				var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
 				view.camera.camPos.x = ship.x;
@@ -143,7 +151,6 @@ package space_digger.levels
 				_hud.startCountdown(payload.stopwatch * 1000);
 				
 				_exploring = true;
-			});
 		}
 		
 		public function endExploration(takeOff:Boolean = true):void

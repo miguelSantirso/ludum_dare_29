@@ -17,6 +17,7 @@ package managers
 		private static var instantiated:Boolean = false;
 		
 		public var changeLevelRequest:Signal;
+		public var changeOfflineRequest:Signal;
 		
 		public var ready:Signal;
 		public var startFailed:Signal;
@@ -34,6 +35,7 @@ package managers
 				instantiated = false;
 				
 				changeLevelRequest = new Signal();
+				changeOfflineRequest = new Signal();
 				
 				ready = new Signal();
 				startFailed = new Signal();
@@ -190,6 +192,11 @@ package managers
 		public function getClientMapIndexFromServerMapId(serverMapId:int):int
 		{
 			return serverMapId + 2;
+		}
+		
+		public function changeToOffline():void
+		{
+			changeOfflineRequest.dispatch();
 		}
 		
 		public function testRemoteOperations():void
