@@ -52,6 +52,16 @@ package space_digger.popups
 			}
 			
 			_asset.button_close.addEventListener(MouseEvent.CLICK, onButtonCloseHandler);
+			
+			_asset.label_free.visible =
+			_asset.label_occupied.visible = 
+			_asset.label_occupied_company.visible = 
+			_asset.label_richness_level.visible =
+			_asset.label_richness_level_value.visible =
+			_asset.label_deaths.visible =
+			_asset.label_deaths_value.visible =
+			_asset.panel_info_bg.visible = 
+			_asset.label_no_companies.visible = false;
 		}
 		
 		public function dispose():void
@@ -165,13 +175,14 @@ package space_digger.popups
 			var numOfDeaths:int = _planet.mines[mineIndex].deaths.length;
 			_asset.label_deaths_value.text = numOfDeaths.toString();
 			
-			_asset.label_richness_level.visible = true;
-			_asset.label_richness_level_value.visible = true;
-			_asset.label_deaths.visible = true;
+			_asset.label_richness_level.visible =
+			_asset.label_richness_level_value.visible =
+			_asset.label_deaths.visible =
 			_asset.label_deaths_value.visible = true;
 			_asset.label_occupied.visible =
 				_asset.label_occupied_company.visible = _planet.mines[mineIndex].occupant != null;
 			_asset.label_free.visible = _planet.mines[mineIndex].occupant == null;
+			_asset.panel_info_bg.visible = true;
 			
 			if (_planet.mines[mineIndex].occupant != null)
 			{
@@ -184,12 +195,13 @@ package space_digger.popups
 		{
 			(e.currentTarget as MovieClip).gotoAndStop(1);
 			
-			_asset.label_richness_level.visible = false;
-			_asset.label_richness_level_value.visible = false;
-			_asset.label_deaths.visible = false;
-			_asset.label_deaths_value.visible = false;
-			_asset.label_occupied.visible = _asset.label_occupied_company.visible = false;
-			_asset.label_free.visible = false;
+			_asset.label_richness_level.visible =
+			_asset.label_richness_level_value.visible =
+			_asset.label_deaths.visible =
+			_asset.label_deaths_value.visible =
+			_asset.label_occupied.visible = _asset.label_occupied_company.visible =
+			_asset.label_free.visible =
+			_asset.panel_info_bg.visible = false;
 		}
 		
 		private function onClickMineHandler(e:MouseEvent):void

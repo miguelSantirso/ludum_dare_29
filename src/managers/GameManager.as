@@ -186,7 +186,7 @@ package managers
 		
 		public function jump():void
 		{
-			RemoteManager.getInstance().jump(DataManager.getInstance().mySystem, systemChanged.dispatch);
+			RemoteManager.getInstance().jump(DataManager.getInstance().mySystem, 0, systemChanged.dispatch);
 		}
 		
 		public function getRanking():void

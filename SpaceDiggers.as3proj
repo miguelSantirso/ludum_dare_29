@@ -74,6 +74,7 @@
     <element path="lib\Happy_enemy_actions.swc" />
     <element path="lib\water_creeper.swc" />
     <element path="lib\Water_enemy_actions.swc" />
+    <element path="lib\loading_icon.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>

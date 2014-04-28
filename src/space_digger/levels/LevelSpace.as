@@ -11,6 +11,7 @@ package space_digger.levels
 	import flash.events.MouseEvent;
 	import space_digger.popups.PopupPlanet;
 	import space_digger.popups.PopupRanking;
+	import space_digger.popups.PopupSettings;
 	import space_digger.Seam;
 	import utils.Text;
 	import managers.DataManager;
@@ -31,6 +32,7 @@ package space_digger.levels
 		protected var _ongoingOpsScroller:Scroller;
 		protected var _popupPlanet:PopupPlanet;
 		protected var _popupRanking:PopupRanking;
+		protected var _popupSettings:PopupSettings;
 		private var popupModal:Sprite;
 		
 		public function LevelSpace(_level:MovieClip) 
