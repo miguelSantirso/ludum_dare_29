@@ -13,10 +13,9 @@ package space_digger.popups
 	{
 		public var closePopup:Signal;
 		private var _asset:AssetPopupGeneric;
-		protected var _overlaid:Boolean;
 		protected var _closeCallback:Function;
 		
-		public function PopupGeneric(message:String = "", buttonLabel:String = "CLOSE", closeCallback:Function = null, overlaid:Boolean = false) 
+		public function PopupGeneric(message:String = "", buttonLabel:String = "CLOSE", closeCallback:Function = null) 
 		{
 			_asset = new AssetPopupGeneric();
 			closePopup = new Signal();
@@ -32,7 +31,6 @@ package space_digger.popups
 			Text.truncateText(_asset.button_generic.label_text);
 			
 			_closeCallback = closeCallback;
-			_overlaid = overlaid;
 			
 			init();
 		}
@@ -55,11 +53,6 @@ package space_digger.popups
 		public function get closeCallback():Function
 		{
 			return _closeCallback;
-		}
-		
-		public function get overlaid():Boolean
-		{
-			return _overlaid;
 		}
 		
 		public function set message(text:String):void

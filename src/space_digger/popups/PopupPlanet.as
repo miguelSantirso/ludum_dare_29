@@ -7,12 +7,14 @@ package space_digger.popups
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import utils.scroller.Scroller;
 	import utils.Text;
 	import data.PlanetRichness;
 	import managers.DataManager;
 	import data.PlanetRichness;
 	import data.PlanetToxicity;
 	import managers.GameManager;
+	import space_digger.item_renderers.OperatingCompanyIR;
 	
 	/**
 	 * ...
@@ -20,9 +22,11 @@ package space_digger.popups
 	 */
 	public class PopupPlanet extends Sprite
 	{
-		public static const EVENT_CLOSE:String = "eventClose";
+		public static const EVENT_CLOSE:String = "eventClose"; // cambiar por Signal
 		private var _asset:AssetPopupPlanet;
 		private var _planet:Planet;
+		private var _operatingCompaniesScroller:Scroller;
+		
 		public var planetIndex:int;
 		
 		public function PopupPlanet() 
@@ -120,18 +124,33 @@ package space_digger.popups
 			_asset.label_richness_level_value.text = richnessValue;
 		}
 		
-		public function set planetVisitedTimes(value:int):void
+		public function set planetCompanies(values:Array):void
 		{
-			_asset.label_visited_value.text = value.toString();
+			if (values.length > 0)
+			{
+				_operatingCompaniesScroller = new Scroller(false, 6, OperatingCompanyIR, 0, values);
+				_operatingCompaniesScroller.init();
+				_operatingCompaniesScroller.enableInteractions = false;
+				_asset.slot_companies_list.addChild(_operatingCompaniesScroller);
+			}
+			
+			_asset.label_no_companies.visible = values.length == 0;
 		}
 		
 		public function set planet(value:Planet):void
 		{
 			_planet = value;
 			
+			var operatingCompanies:Array = new Array();
+			for each(var mine:Mine in _planet.mines)
+			{
+				if (mine.occupant) operatingCompanies.push(mine.occupant.name);
+			}
+			
 			planetName = _planet.name;
 			planetToxicity = _planet.toxicity;
 			planetRichness = _planet.richness;
+			planetCompanies = operatingCompanies;
 		}
 
 		private function highlightSector(e:MouseEvent):void
