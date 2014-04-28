@@ -26,6 +26,11 @@ package space_digger
 		
 		private var _hack_damageSignalAdded:Boolean = false;
 		
+		public function get hudRef():GameplayHud
+		{
+			return (_ce.state as LevelDig).hud;
+		}
+		
 		public function Seam(name:String, params:Object=null) 
 		{
 			super("seam", params);
@@ -81,7 +86,7 @@ package space_digger
 					breakMachine();
 				}
 				else
-					(_ce.state as LevelDig).hud.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
+					hudRef.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
 			}
 			else 
 				appear();
@@ -108,7 +113,8 @@ package space_digger
 			(_ce.state as LevelDig).deploySeamMachine(_index);
 			
 			_owner = DataManager.getInstance().myState.company ? DataManager.getInstance().myState.company.name : "It's 'mine'";
-			(_ce.state as LevelDig).hud.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
+			hudRef.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
+			hudRef.hideClaimHint();
 			
 			_animation = "appears";
 			setTimeout(function():void {
@@ -123,7 +129,8 @@ package space_digger
 			var player:PlayerCharacter = Box2DUtils.CollisionGetOther(this, contact) as PlayerCharacter;
 			if (player)
 			{
-				(_ce.state as LevelDig).hud.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
+				hudRef.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
+				if (!_machineInPlace) hudRef.showClaimHint();
 				
 				if (!_hack_damageSignalAdded)
 				{
@@ -144,8 +151,11 @@ package space_digger
 			
 			if (Box2DUtils.CollisionGetOther(this, contact) is PlayerCharacter)
 			{
-				if((_ce.state is LevelDig))
-					(_ce.state as LevelDig).hud.hideMineralHud();
+				if ((_ce.state is LevelDig))
+				{
+					hudRef.hideClaimHint();
+					hudRef.hideMineralHud();
+				}
 				
 				_playerInArea = false;
 				if (!_machineInPlace) _animation = "idle";
