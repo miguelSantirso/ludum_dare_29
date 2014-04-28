@@ -158,11 +158,12 @@ package
 			var numberOfLevels:int = 25;
 			var randomLevel:int = Math.ceil(Math.random()*numberOfLevels);
 			
-			randomLevel = offlineLevel;
+			// Uncomment to get ordered offline levels
+			//randomLevel = offlineLevel;
+			//offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
+			//trace("current offline level",offlineLevel);
 			
 			changeLevel(numberOfLevels + 2 + randomLevel);
-			
-			offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
 		}
 		
 		private function restartLevel():void
@@ -254,6 +255,8 @@ package
 			
 			if(stage.contains(loadingClip))
 				stage.removeChild(loadingClip);
+				
+			
 		}
 		
 		protected function disableLevel():void
@@ -265,7 +268,7 @@ package
 			var clipHeight:Number = loadingClip.height;
 			
 			loadingClip.x =  width - clipWidth*0.5 - 25;
-			loadingClip.y = clipHeight*0.5 + 25;
+			loadingClip.y = clipHeight * 0.5 + 25;
 			
 			stage.addChildAt(loadingClip, stage.numChildren);
 		}

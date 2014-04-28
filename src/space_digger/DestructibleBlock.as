@@ -18,6 +18,8 @@ package space_digger
 		{
 			_animation = "explosion";
 			
+			// INSERT_SOUND BLOQUE DESTRUIDO
+			
 			setTimeout(function():void {
 				die();
 			}, 500);

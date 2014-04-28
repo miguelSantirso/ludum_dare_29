@@ -62,6 +62,7 @@
       <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\water_creeper.swc</library>
       <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\Water_enemy_actions.swc</library>
       <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\loading_icon.swc</library>
+      <library>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\main_char_actions_water.swc</library>
     </include-libraries>
     <library-path append="true">
       <path-element>C:\Users\Albert\Desktop\ludumdare\ludum_dare_29\lib\greensock.swc</path-element>

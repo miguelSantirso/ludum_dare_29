@@ -187,7 +187,7 @@ package space_digger.popups
 			if (_planet.mines[mineIndex].occupant != null)
 			{
 				_asset.label_occupied_company.text = _planet.mines[mineIndex].occupant.name;
-				Text.truncateText(_asset.label_occupied_company);
+				//Text.truncateText(_asset.label_occupied_company);
 			}
 		}
 		

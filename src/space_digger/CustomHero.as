@@ -277,11 +277,15 @@ package space_digger
 					onJump.dispatch();
 					_onGround = false; // also removed in the handleEndContact. Useful here if permanent contact e.g. box on hero.
 					_framesToKickJetpack = JETPACK_DELAY;
+					
+					// INSERT_SOUND PLAY JETPACK SOUND
 				}
 				
 				_jetpackEnabled = false;
 				if (_framesToKickJetpack <= 0 && _ce.input.isDoing("jump", inputChannel))
 				{
+					// INSERT_SOUND STOP JETPACK SOUND
+					
 					_jetpackEnabled = true;
 					velocity.y -= jumpAcceleration;
 				}

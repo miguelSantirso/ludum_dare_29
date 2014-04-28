@@ -11,7 +11,7 @@ package space_digger.levels
 	import flash.events.MouseEvent;
 	import space_digger.popups.PopupPlanet;
 	import space_digger.popups.PopupRanking;
-	import space_digger.popups.PopupSettings;
+	import space_digger.popups.PopupInfo;
 	import space_digger.Seam;
 	import utils.Text;
 	import managers.DataManager;
@@ -32,7 +32,7 @@ package space_digger.levels
 		protected var _ongoingOpsScroller:Scroller;
 		protected var _popupPlanet:PopupPlanet;
 		protected var _popupRanking:PopupRanking;
-		protected var _popupSettings:PopupSettings;
+		protected var _popupInfo:PopupInfo;
 		private var popupModal:Sprite;
 		
 		public function LevelSpace(_level:MovieClip)
@@ -67,6 +67,11 @@ package space_digger.levels
 			_popupRanking.y = (stage.stageHeight - _popupRanking.height) * 0.5;
 			_popupRanking.addEventListener(PopupRanking.EVENT_CLOSE, closeRankingPopup);
 			
+			_popupInfo = new PopupInfo();
+			_popupInfo.x = (stage.stageWidth - _popupInfo.width) * 0.5;
+			_popupInfo.y = (stage.stageHeight - _popupInfo.height) * 0.5;
+			_popupInfo.closePopup.add(closeInfoPopup);
+			
 			popupModal = new Sprite();
 			popupModal.graphics.beginFill(0x000000, 0.85);
 			popupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
@@ -79,6 +84,8 @@ package space_digger.levels
 			
 			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
 			level.button_view_ranking.addEventListener(MouseEvent.CLICK, setRankingPopupData);
+			
+			level.button_info.addEventListener(MouseEvent.CLICK, openInfoPopup);
 		}
 		
 		public override function update(timeDelta:Number):void
@@ -325,6 +332,24 @@ package space_digger.levels
 			{
 				removeChild(popupModal);
 				removeChild(_popupRanking);
+			}
+		}
+		
+		public function openInfoPopup(e:MouseEvent = null):void
+		{
+			if (!contains(_popupInfo))
+			{
+				addChild(popupModal);
+				addChild(_popupInfo);
+			}
+		}
+		
+		public function closeInfoPopup(e:Event = null):void
+		{
+			if (contains(_popupInfo))
+			{
+				removeChild(popupModal);
+				removeChild(_popupInfo);
 			}
 		}
 		
