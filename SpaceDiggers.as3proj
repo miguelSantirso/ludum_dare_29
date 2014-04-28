@@ -66,6 +66,14 @@
     <element path="lib\nave_animaciones_fire.swc" />
     <element path="lib\nave_animaciones_forest.swc" />
     <element path="lib\nave_animaciones_water.swc" />
+    <element path="lib\fire_creeper.swc" />
+    <element path="lib\Fire_enemy_actions.swc" />
+    <element path="lib\forest_creeper.swc" />
+    <element path="lib\Forest_enemy_actions.swc" />
+    <element path="lib\happy_creeper.swc" />
+    <element path="lib\Happy_enemy_actions.swc" />
+    <element path="lib\water_creeper.swc" />
+    <element path="lib\Water_enemy_actions.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
