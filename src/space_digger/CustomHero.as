@@ -346,6 +346,9 @@ package space_digger
 			_hurtTimeoutID = setTimeout(endHurtState, hurtDuration);
 			onTakeDamage.dispatch();
 
+			// INSERT_SOUND PLAYER HERIDO POR ENEMIGO
+			_ce.sound.playSound("GetHit");
+			
 			//Makes sure that the hero is not frictionless while his control is disabled
 			if (_playerMovingHero)
 			{
