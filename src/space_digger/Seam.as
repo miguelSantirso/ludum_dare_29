@@ -25,7 +25,6 @@ package space_digger
 		private var _owner:String = "unclaimed";
 		
 		private var _hack_damageSignalAdded:Boolean = false;
-		private var _hack_deploySignalAdded:Boolean = false;
 		
 		public function Seam(name:String, params:Object=null) 
 		{
@@ -84,20 +83,10 @@ package space_digger
 				else
 					(_ce.state as LevelDig).hud.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
 			}
-		}
-		
-		private function onPlayerDeploySeam():void
-		{
-			trace("OnPlayerDeploySeam invoked");
-			if (!_playerInArea) return;
-			
-			if (!_machineInPlace)
-			{
-				trace("OnPlayerDeploySeam appearing");
+			else 
 				appear();
-			}
 		}
-		
+
 		private function breakMachine():void
 		{
 			_machineInPlace = false;
@@ -140,12 +129,6 @@ package space_digger
 				{
 					player.onGiveDamage.add(onPlayerDealDamage);
 					_hack_damageSignalAdded = true;
-				}
-				
-				if (_hack_deploySignalAdded)
-				{
-					player.onDeploySeam.add(onPlayerDeploySeam);
-					_hack_deploySignalAdded = true;
 				}
 				
 				_playerInArea = true;
