@@ -277,23 +277,11 @@ package space_digger
 					onJump.dispatch();
 					_onGround = false; // also removed in the handleEndContact. Useful here if permanent contact e.g. box on hero.
 					_framesToKickJetpack = JETPACK_DELAY;
-					
-					if (!_ce.sound.soundIsPlaying("JetPack"))
-					{
-						// INSERT_SOUND PLAY JETPACK SOUND
-						_ce.sound.playSound("JetPack");
-					}
 				}
 				
 				_jetpackEnabled = false;
 				if (_framesToKickJetpack <= 0 && _ce.input.isDoing("jump", inputChannel))
 				{
-					if (_ce.sound.soundIsPlaying("JetPack"))
-					{
-						// INSERT_SOUND STOP JETPACK SOUND
-						_ce.sound.stopSound("JetPack");
-					}
-					
 					_jetpackEnabled = true;
 					velocity.y -= jumpAcceleration;
 				}
@@ -490,11 +478,24 @@ package space_digger
 			else if (_jetpackEnabled)
 			{
 				_animation = "up";
+				
+				if (!_ce.sound.soundIsPlaying("JetPack"))
+				{
+					// INSERT_SOUND PLAY JETPACK SOUND
+					_ce.sound.playSound("JetPack");
+				}
 			}
 			else if (!_onGround) {
 
 				_animation = velocity.y < 0 ? "jump" : "down";
 
+				if (_animation == "down" && _ce.sound.soundIsPlaying("JetPack"))
+				{
+					// INSERT_SOUND STOP JETPACK SOUND
+					_ce.sound.stopSound("JetPack");
+				}
+					
+					
 			} else if (_ducking)
 				_animation = "duck";
 
