@@ -143,7 +143,7 @@ package
 
 			//sound added with asset manager
 			sound.addSound("Hypnothis", { sound:"../res/sounds/hypnothis.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
-			sound.addSound("JetPack", { sound:"../res/sounds/jetpack.mp3" , group:CitrusSoundGroup.SFX, loops:int.MAX_VALUE } );
+			sound.addSound("JetPack", { sound:"../res/sounds/jetpack.mp3" , permanent:true, volume:0.2 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
 
 			//sounds added with url
 			sound.addSound("BreakBlock", { sound:"../res/sounds/break_block.mp3" , group:CitrusSoundGroup.SFX } );
