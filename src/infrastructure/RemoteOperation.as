@@ -40,6 +40,8 @@ package infrastructure
 		protected var _httpStatusCode:int;
 		protected var _errorMessage:String;
 		
+		protected var _disablesView:Boolean;
+		
 		public var successSignal:Signal;
 		public var faultSignal:Signal;
 		
@@ -49,7 +51,8 @@ package infrastructure
 										object:Object = null, 
 										populateStructures:Array = null,
 										successCallback:Function = null,
-										faultCallback:Function = null)
+										faultCallback:Function = null,
+										disablesView:Boolean = false)
 		{
 			successSignal = new Signal();
 			faultSignal = new Signal();
@@ -70,6 +73,7 @@ package infrastructure
 			_successCallback = successCallback;
 			_faultCallback = faultCallback;
 			_requestObject = object;
+			_disablesView = disablesView;
 		}
 		
 		public function send():void
@@ -166,7 +170,7 @@ package infrastructure
 				}
 			}
 			if(successSignal)
-				successSignal.dispatch(this);		
+				successSignal.dispatch(this);	
 		}
 		
 		private function onFaultHandler(event:IOErrorEvent):void
@@ -243,6 +247,11 @@ package infrastructure
 		public function get errorMessage():String
 		{
 			return _errorMessage;
+		}
+		
+		public function get disablesView():Boolean 
+		{
+			return _disablesView;
 		}
 	}
 }

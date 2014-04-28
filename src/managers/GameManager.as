@@ -30,6 +30,9 @@ package managers
 		public var systemChanged:Signal;
 		public var rankingUpdated:Signal;
 		
+		public var enableView:Signal;
+		public var disableView:Signal;
+		
 		public function GameManager() 
 		{
 			if (instantiated) {
@@ -48,6 +51,9 @@ package managers
 				systemUpdated = new Signal();
 				systemChanged = new Signal();
 				rankingUpdated = new Signal();
+				
+				enableView = new Signal();
+				disableView = new Signal();
 				
 				RemoteManager.getInstance().authorizationFailed.add(reset);
 			}else {
@@ -199,6 +205,16 @@ package managers
 		public function changeToOffline():void
 		{
 			changeOfflineRequest.dispatch();
+		}
+		
+		public function enableInterface():void
+		{
+			enableView.dispatch();
+		}
+		
+		public function disableInterface():void
+		{
+			disableView.dispatch();
 		}
 		
 		public function testRemoteOperations():void

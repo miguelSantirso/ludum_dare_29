@@ -20,7 +20,8 @@ package
 	{
 		public static const DEBUG:Boolean = CONFIG::debug;
 		
-		private var _currentLevelIndex:int = 0;
+		public static var currentLevelIndex:int;
+		public static var loadingClip:Sprite;
 		private var _genericPopup:PopupGeneric;
 		
 		public function Main():void 
@@ -67,6 +68,14 @@ package
 			GameManager.getInstance().rankingUpdated.add(onRankingUpdated);
 			
 			GameManager.getInstance().displayPopup.add(openGenericPopup);
+			
+			GameManager.getInstance().enableView.add(enableLevel);
+			GameManager.getInstance().disableView.add(disableLevel);
+			
+			loadingClip = new Sprite();
+			loadingClip.graphics.beginFill(0xff0000,0.75);
+			loadingClip.graphics.drawCircle(0, 0, 20);
+			loadingClip.graphics.endFill();
 		}
 		
 		private function goToLevelRegister():void
@@ -113,10 +122,10 @@ package
 		
 		public function changeLevel(levelIndex:int):void
 		{
-			if (levelIndex != _currentLevelIndex)
+			if (levelIndex != currentLevelIndex)
 			{
 				levelManager.gotoLevel(levelIndex);
-				_currentLevelIndex = levelIndex;
+				currentLevelIndex = levelIndex;
 			}
 		}
 		
@@ -140,7 +149,8 @@ package
 			var levelSpace:LevelSpace = state as LevelSpace;
 			
 			if (levelSpace){
-				levelSpace.setSystemData();
+				levelSpace.setSystemData(false);
+				
 				if (levelSpace.popupPlanet && levelSpace.contains(levelSpace.popupPlanet))
 					levelSpace.setPlanetPopupData(levelSpace.popupPlanet.planetIndex);
 			}
@@ -182,6 +192,29 @@ package
 			_genericPopup.dispose();
 			
 			removeChild(_genericPopup);
+		}
+		
+		protected function enableLevel():void
+		{
+			if (state is GameLevel)
+				(state as GameLevel).enableInput();
+			
+			if(stage.contains(loadingClip))
+				stage.removeChild(loadingClip);
+		}
+		
+		protected function disableLevel():void
+		{
+			if (state is GameLevel)
+				(state as GameLevel).disableInput();
+				
+			var clipWidth:Number = 40;
+			var clipHeight:Number = 40;
+			
+			loadingClip.x =  900 - clipWidth;
+			loadingClip.y = clipHeight;
+			
+			stage.addChildAt(loadingClip, stage.numChildren);
 		}
 	}
 }

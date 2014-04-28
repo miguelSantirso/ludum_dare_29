@@ -125,7 +125,7 @@ package space_digger.levels
 		{
 			super.update(timeDelta);
 			
-			if (_inExitArea && _ce.input.justDid("attack"))
+			if (_exploring && _inExitArea && _ce.input.justDid("attack"))
 			{
 				endExploration();
 			}

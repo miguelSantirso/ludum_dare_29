@@ -56,5 +56,19 @@ package
 		{
 			removeChild(level);
 		}
+		
+		public function enableInput():void
+		{
+			mouseEnabled = true;
+			mouseChildren = true;
+			_input.enabled = true;
+		}
+		
+		public function disableInput():void
+		{
+			mouseEnabled = false;
+			mouseChildren = false;
+			_input.enabled = false;
+		}
 	}
 }

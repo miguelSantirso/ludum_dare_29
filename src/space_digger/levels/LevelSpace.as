@@ -152,7 +152,7 @@ package space_digger.levels
 			GameManager.getInstance().getRanking();
 		}
 		
-		public function setSystemData():void
+		public function setSystemData(refreshPlanetMC:Boolean = true):void
 		{
 			var currentPlanetMC:MovieClip;
 			
@@ -164,10 +164,14 @@ package space_digger.levels
 				var richnessValue:String;
 				
 				currentPlanetMC = level.getChildByName("planet_" + i) as MovieClip;
-				currentPlanetMC.icon_planet.gotoAndStop(iconIndex);
-				currentPlanetMC.icon_planet.width = currentPlanetMC.icon_planet.height = iconRadius;
-				currentPlanetMC.label_name.text = DataManager.getInstance().mySystem.planets[i].name;
+					
+				if(refreshPlanetMC){
+					currentPlanetMC.icon_planet.gotoAndStop(iconIndex);
+					currentPlanetMC.icon_planet.width = currentPlanetMC.icon_planet.height = iconRadius;
+				}
 				
+				currentPlanetMC.label_name.text = DataManager.getInstance().mySystem.planets[i].name;
+					
 				switch(DataManager.getInstance().mySystem.planets[i].toxicity)
 				{
 					case PlanetToxicity.LOW:

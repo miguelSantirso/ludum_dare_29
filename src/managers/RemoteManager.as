@@ -73,9 +73,10 @@ package managers
 			populateStructures:Array = null,
 			successCallback:Function = null,
 			faultCallback:Function = null,
+			disablesView:Boolean = false,
 			highPriority:Boolean = false):void
 		{
-			var remoteOperation:RemoteOperation = new RemoteOperation(tag, url, method, object, populateStructures, successCallback, faultCallback);
+			var remoteOperation:RemoteOperation = new RemoteOperation(tag, url, method, object, populateStructures, successCallback, faultCallback,disablesView);
 													
 			queueOperation(remoteOperation, highPriority);
 			
@@ -91,6 +92,9 @@ package managers
 			operation.faultSignal.add(onRemoteOperationFault);
 			
 			operation.send();
+		
+			if (operation.disablesView)
+				GameManager.getInstance().disableInterface();
 		}
 		
 		protected function queueOperation(operation:RemoteOperation, inFront:Boolean = true):void
@@ -109,6 +113,9 @@ package managers
 		
 		protected function onRemoteOperationSuccess(operation:RemoteOperation):void
 		{
+			if (operation.disablesView)
+				GameManager.getInstance().enableInterface();
+				
 			_currentRemoteOperation.successSignal.remove(onRemoteOperationSuccess);
 			_currentRemoteOperation.faultSignal.remove(onRemoteOperationFault);
 			
@@ -120,6 +127,9 @@ package managers
 		
 		protected function onRemoteOperationFault(operation:RemoteOperation):void
 		{
+			if (operation.disablesView)
+				GameManager.getInstance().enableInterface();
+				
 			_currentRemoteOperation.successSignal.remove(onRemoteOperationSuccess);
 			_currentRemoteOperation.faultSignal.remove(onRemoteOperationFault);
 			
@@ -176,46 +186,46 @@ package managers
 			var requestObject:Object = { username: SessionManager.getInstance().registrationInfo.data.username,
 										password: SessionManager.getInstance().registrationInfo.data.password};
 			
-			sendOperation(LOGIN, RemoteURL.LOGIN, RemoteOperation.TYPE_POST, requestObject, null, successCallback, faultCallback, true);
+			sendOperation(LOGIN, RemoteURL.LOGIN, RemoteOperation.TYPE_POST, requestObject, null, successCallback, faultCallback, true, true);
 		}
 		
 		public function register(companyName:String, color1:uint, color2:uint, succesCallback:Function = null, faultCallback:Function = null):void
 		{
 			var requestObject:Object = { name: companyName, color1: color1, color2: color2 };
 			
-			sendOperation(REGISTER, RemoteURL.REGISTER, RemoteOperation.TYPE_POST, requestObject, null, succesCallback, faultCallback);
+			sendOperation(REGISTER, RemoteURL.REGISTER, RemoteOperation.TYPE_POST, requestObject, null, succesCallback, faultCallback,true);
 		}
 		
 		public function logout(successCallback:Function = null, faultCallback:Function = null):void
 		{
-			sendOperation(LOGOUT,RemoteURL.LOGOUT,RemoteOperation.TYPE_POST,null,null,successCallback,faultCallback);
+			sendOperation(LOGOUT,RemoteURL.LOGOUT,RemoteOperation.TYPE_POST,null,null,successCallback,faultCallback,true);
 		}
 		
 		public function getCore(core:Core, successCallback:Function = null, faultCallback:Function = null ):void
 		{
-			sendOperation(CORE, RemoteURL.CORE, RemoteOperation.TYPE_POST, null,[core],successCallback,faultCallback);
+			sendOperation(CORE, RemoteURL.CORE, RemoteOperation.TYPE_POST, null,[core],successCallback,faultCallback,true);
 		}
 		
 		public function getState(state:CompanyState, successCallback:Function = null, faultCallback:Function = null ):void
 		{
-			sendOperation(STATE, RemoteURL.STATE, RemoteOperation.TYPE_POST, null,[state],successCallback,faultCallback);
+			sendOperation(STATE, RemoteURL.STATE, RemoteOperation.TYPE_POST, null,[state],successCallback,faultCallback,false);
 		}
 		
 		public function getSystem(system:System, successCallback:Function = null, faultCallback:Function = null):void
 		{
-			sendOperation(SYSTEM, RemoteURL.SYSTEM, RemoteOperation.TYPE_POST, null, [system], successCallback,faultCallback);
+			sendOperation(SYSTEM, RemoteURL.SYSTEM, RemoteOperation.TYPE_POST, null, [system], successCallback,faultCallback,false);
 		}
 		
 		public function land(mineId:int, mine:Mine,successCallback:Function = null, faultCallback:Function = null):void
 		{
 			var requestObject:Object = { mine: mineId };
 			
-			sendOperation(LAND, RemoteURL.LAND, RemoteOperation.TYPE_POST, requestObject, [mine], successCallback, faultCallback);
+			sendOperation(LAND, RemoteURL.LAND, RemoteOperation.TYPE_POST, requestObject, [mine], successCallback, faultCallback,true);
 		}
 		
 		public function play(successCallback:Function = null, faultCallback:Function = null):void
 		{
-			sendOperation(PLAY, RemoteURL.PLAY, RemoteOperation.TYPE_POST, null, null, successCallback, faultCallback);
+			sendOperation(PLAY, RemoteURL.PLAY, RemoteOperation.TYPE_POST, null, null, successCallback, faultCallback,true);
 		}
 		
 		public function takeOff(diggingSession:DiggingSession, successCallback:Function = null, faultCallback:Function = null):void
@@ -232,17 +242,17 @@ package managers
 				requestObject["y"] = diggingSession.death.y;
 			}
 			
-			sendOperation(TAKE_OFF, RemoteURL.TAKE_OFF, RemoteOperation.TYPE_POST, requestObject, null, successCallback, faultCallback);
+			sendOperation(TAKE_OFF, RemoteURL.TAKE_OFF, RemoteOperation.TYPE_POST, requestObject, null, successCallback, faultCallback,true);
 		}
 		
 		public function jump(system:System, successCallback:Function = null, faultCallback:Function = null):void
 		{
-			sendOperation(JUMP, RemoteURL.JUMP, RemoteOperation.TYPE_POST, null, [system], successCallback, faultCallback);
+			sendOperation(JUMP, RemoteURL.JUMP, RemoteOperation.TYPE_POST, null, [system], successCallback, faultCallback,true);
 		}
 		
 		public function ranking(rankingFillerCallback:Function, faultCallback:Function = null):void
 		{
-			sendOperation(RANKING, RemoteURL.RANKING, RemoteOperation.TYPE_POST, null, null, rankingFillerCallback, faultCallback);
+			sendOperation(RANKING, RemoteURL.RANKING, RemoteOperation.TYPE_POST, null, null, rankingFillerCallback, faultCallback,false);
 		}
 		
 		protected function onLoginFault():void
