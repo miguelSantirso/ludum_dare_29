@@ -18,7 +18,7 @@ package space_digger.enemies
 		private var _enemyType:int;
 		private var _CntFoes:int = 0;
 		
-		private static const MAX_FOES:int = 5;
+		private static const MAX_FOES:int = 1;
 		private static const SPAWN_TIME:int = 5;
 		
 		public function SpawnSpot(name:String, params:Object=null) 
@@ -78,6 +78,46 @@ package space_digger.enemies
 				case EnemyType.SPIKE:
 				{
 					addFoe(new Spike(""));
+					break;
+				}
+				case EnemyType.FIRE1:
+				{
+					addFoe(new Fire1(""));
+					break;
+				}
+				case EnemyType.FIRE2:
+				{
+					addFoe(new Fire2(""));
+					break;
+				}
+				case EnemyType.FOREST1:
+				{
+					addFoe(new Forest1(""));
+					break;
+				}
+				case EnemyType.FOREST2:
+				{
+					addFoe(new Forest2(""));
+					break;
+				}
+				case EnemyType.HAPPY1:
+				{
+					addFoe(new Happy1(""));
+					break;
+				}
+				case EnemyType.HAPPY2:
+				{
+					addFoe(new Happy2(""));
+					break;
+				}
+				case EnemyType.WATER1:
+				{
+					addFoe(new Water1(""));
+					break;
+				}
+				case EnemyType.WATER2:
+				{
+					addFoe(new Water2(""));
 					break;
 				}
 			}
