@@ -149,7 +149,10 @@ package space_digger.levels
 				if (i < seamsData.length) 
 					seam.init(seamsData[i]);
 				else 
+				{
 					seam.visible = false;
+					seam.kill = true;
+				}
 			}
 		}
 		
