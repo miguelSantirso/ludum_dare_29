@@ -78,7 +78,11 @@ package space_digger.levels
 		// ACTION HANDLERS:
 		private function onStartButtonHandler(e:MouseEvent):void
 		{
-			GameManager.getInstance().register(companyNameInput + " " + companyTypeInput, 0x000000, 0x000000);
+			if (companyNameInput != "")
+			{
+				GameManager.getInstance().register(companyNameInput + " " + companyTypeInput, 0x000000, 0x000000);
+			}
+			else GameManager.getInstance().displayMessagePopUp("You need to introduce a company name");
 		}
 		
 		protected function onOfflineButtonHandler(e:MouseEvent):void
