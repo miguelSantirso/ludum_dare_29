@@ -24,6 +24,7 @@ package managers
 		public var needsRegistration:Signal;
 		public var loggedOut:Signal;
 		public var displayPopup:Signal;
+		public var displayTutorialPopup:Signal;
 		
 		public var stateUpdated:Signal;
 		public var systemUpdated:Signal;
@@ -46,6 +47,7 @@ package managers
 				needsRegistration = new Signal();
 				loggedOut = new Signal();
 				displayPopup = new Signal();
+				displayTutorialPopup = new Signal();
 				
 				stateUpdated = new Signal();
 				systemUpdated = new Signal();
@@ -207,6 +209,11 @@ package managers
 		public function displayMessagePopUp(message:String, buttonLabel:String = "Close", closeCallback:Function = null):void
 		{
 			displayPopup.dispatch(message, buttonLabel, closeCallback);
+		}
+		
+		public function displayMessageTutorialPopup(state:String):void
+		{
+			displayTutorialPopup.dispatch(state);
 		}
 		
 		public function getClientMapIndexFromServerMapId(serverMapId:int):int

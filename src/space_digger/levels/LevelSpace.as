@@ -22,6 +22,7 @@ package space_digger.levels
 	import data.PlanetToxicity;
 	import data.PlanetRichness;
 	import space_digger.OngoingOpEvent;
+	import space_digger.popups.PopupTutorial;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -86,6 +87,7 @@ package space_digger.levels
 			level.button_view_ranking.addEventListener(MouseEvent.CLICK, setRankingPopupData);
 			
 			level.button_info.addEventListener(MouseEvent.CLICK, openInfoPopup);
+			level.button_tutorial.addEventListener(MouseEvent.CLICK, openTutorialPopup);
 			
 			if (!_ce.sound.soundIsPlaying("BasementFloor"))
 			{
@@ -138,6 +140,7 @@ package space_digger.levels
 		private function onVisitOngoingPlanet(e:OngoingOpEvent):void
 		{
 			GameManager.getInstance().jump(e.planetID);
+			setOngoingOperations();
 		}
 		
 		public function setCompanyData():void
@@ -359,6 +362,17 @@ package space_digger.levels
 				removeChild(popupModal);
 				removeChild(_popupInfo);
 			}
+		}
+		
+		public function openTutorialPopup(e:MouseEvent = null):void
+		{
+			trace("asdasdasdKSKDSKD");
+			//GameManager.getInstance().displayMessageTutorialPopup(PopupTutorial.STATE_SPACE);
+		}
+		
+		public function closeTutorialPopup(e:Event = null):void
+		{
+			
 		}
 		
 		public function get popupPlanet():PopupPlanet 

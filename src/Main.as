@@ -11,6 +11,7 @@ package
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	import space_digger.popups.PopupGeneric;
+	import space_digger.popups.PopupTutorial;
 	import utils.Stats;
 	import space_digger.levels.*;
 	import data.Mine;
@@ -29,6 +30,7 @@ package
 		public static var currentLevelIndex:int;
 		public static var loadingClip:LoadingIcon;
 		private var _genericPopup:PopupGeneric;
+		private var _tutorialPopup:PopupTutorial;
 		private var _splashScreen:AssetSplashScreen;
 		private var _splashScreenTimer:Timer;
 		
@@ -129,6 +131,7 @@ package
 			GameManager.getInstance().rankingUpdated.add(onRankingUpdated);
 			
 			GameManager.getInstance().displayPopup.add(openGenericPopup);
+			GameManager.getInstance().displayTutorialPopup.add(openTutorialPopup);
 			
 			GameManager.getInstance().enableView.add(enableLevel);
 			GameManager.getInstance().disableView.add(disableLevel);
@@ -350,6 +353,18 @@ package
 		{
 			if(stage.contains(loadingClip))
 				stage.removeChild(loadingClip);
+		}
+		
+		public function openTutorialPopup(state:String):void
+		{
+			_tutorialPopup = new PopupTutorial(state);
+			
+			if(!contains(_tutorialPopup)) addChild(_tutorialPopup);
+		}
+		
+		public function closeTutorialPopup():void
+		{
+			if(contains(_tutorialPopup)) removeChild(_tutorialPopup);
 		}
 	}
 }
