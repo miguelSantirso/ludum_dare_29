@@ -43,7 +43,7 @@ package data
 				throw new Error("You didn't set the mine object!");
 			
 			if (seamIndex >= 0 && seamIndex < mine.seams.length) {
-				var index:int = _activatedSeams.indexOf(mine.seams[seamIndex]);
+				var index:int = _activatedSeams.indexOf(mine.seams[seamIndex].id);
 				
 				if (index >= 0)
 					_activatedSeams.splice(index, 1);

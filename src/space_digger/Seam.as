@@ -85,6 +85,7 @@ package space_digger
 			_animation = "defeat";
 			setTimeout(function():void {
 				_animation = "idle";
+				appear();
 			}, 400);
 		}
 		

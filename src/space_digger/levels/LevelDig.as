@@ -90,6 +90,8 @@ package space_digger.levels
 		protected function setDiggingSession():void
 		{
 			diggingSession.mine = DataManager.getInstance().currentMine;
+			
+			initializeMine();
 		}
 		
 		
