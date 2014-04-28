@@ -21,9 +21,6 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			level.button_debug_dig.visible =
-			level.button_debug_space.visible = Main.DEBUG;
-			
 			setActionListeners();
 		}
 		
@@ -53,24 +50,12 @@ package space_digger.levels
 		{
 			level.button_start.addEventListener(MouseEvent.CLICK, onStartButtonHandler,false,0,true);
 			level.button_offline.addEventListener(MouseEvent.CLICK, onOfflineButtonHandler,false,0,true);
-			
-			if (Main.DEBUG)
-			{
-				level.button_debug_dig.addEventListener(MouseEvent.CLICK, onDebugButtonDigHandler,false,0,true);
-				level.button_debug_space.addEventListener(MouseEvent.CLICK, onDebugButtonSpaceHandler,false,0,true);
-			}
 		}
 		
 		protected function removeActionListeners():void
 		{
 			level.button_start.removeEventListener(MouseEvent.CLICK, onStartButtonHandler);
 			level.button_offline.removeEventListener(MouseEvent.CLICK, onOfflineButtonHandler);
-			
-			if (Main.DEBUG)
-			{
-				level.button_debug_dig.removeEventListener(MouseEvent.CLICK, onDebugButtonDigHandler);
-				level.button_debug_space.removeEventListener(MouseEvent.CLICK, onDebugButtonSpaceHandler);
-			}
 		}
 		
 		// ACTION HANDLERS:
