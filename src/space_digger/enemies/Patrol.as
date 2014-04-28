@@ -1,6 +1,7 @@
 package space_digger.enemies 
 {
 	import Box2D.Dynamics.Contacts.b2Contact;
+	import citrus.objects.platformer.box2d.Sensor;
 	import citrus.physics.box2d.Box2DUtils;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.math.MathVector;
@@ -49,6 +50,8 @@ package space_digger.enemies
 				var collisionAngle:Number = new MathVector(normalPoint.x, normalPoint.y).angle * 180 / Math.PI;
 
 				if ((collider is Platform && collisionAngle != 90))
+					turnAround();
+				else if (collider is Sensor)
 					turnAround();
 				else if (collider is Foe)
 					turnAround();
