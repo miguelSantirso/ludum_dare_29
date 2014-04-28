@@ -83,9 +83,10 @@ package space_digger
 				else
 					(_ce.state as LevelDig).hud.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
 			}
-			else appear();
+			else 
+				appear();
 		}
-		
+
 		private function breakMachine():void
 		{
 			_machineInPlace = false;
@@ -106,7 +107,7 @@ package space_digger
 			
 			(_ce.state as LevelDig).diggingSession.deploySeamMachine(_index);
 			
-			_owner = DataManager.getInstance().myState.company.name;
+			_owner = DataManager.getInstance().myState.company ? DataManager.getInstance().myState.company.name : "It's 'mine'";
 			(_ce.state as LevelDig).hud.showMineralHud(_owner, (_lifes / MAX_LIFES) * 100);
 			
 			_animation = "appears";
