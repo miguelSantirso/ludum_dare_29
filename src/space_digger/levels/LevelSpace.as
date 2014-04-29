@@ -96,19 +96,18 @@ package space_digger.levels
 			}
 		}
 		
-		public override function update(timeDelta:Number):void
+		override public function destroy():void 
 		{
-			super.update(timeDelta);
-		}
-		
-		public override function dispose():void
-		{
+			super.destroy();
+			
 			level.button_logout.removeEventListener(MouseEvent.CLICK, logout);
 			level.button_jump.removeEventListener(MouseEvent.CLICK, jumpToAnotherSystem);
 			
 			level.slot_activity_list.removeChild(_recentActivityScroller);
 			level.slot_ongoing_list.removeChild(_ongoingOpsScroller);
-			removeChild(_popupPlanet);
+			
+			if(_popupPlanet && contains(_popupPlanet))
+				removeChild(_popupPlanet);
 			
 			_popupPlanet.dispose();
 			_popupRanking.dispose();
@@ -118,8 +117,11 @@ package space_digger.levels
 			
 			_ongoingOpsScroller = null;
 			_recentActivityScroller = null;
-			
-			super.dispose();
+		}
+		
+		public override function update(timeDelta:Number):void
+		{
+			super.update(timeDelta);
 		}
 		
 		private function logout(e:MouseEvent):void

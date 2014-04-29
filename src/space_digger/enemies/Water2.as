@@ -13,8 +13,8 @@ package space_digger.enemies
 			
 			view = "WaterCreeper";
 			height = 63;
-			width = 64;
-			offsetY = -16;
+			width = 60;
+			offsetY = -30;
 		}
 		
 	}

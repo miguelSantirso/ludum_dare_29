@@ -7,6 +7,7 @@ package space_digger.levels
 	import managers.GameManager;
 	import managers.DataManager;
 	import flash.events.KeyboardEvent;
+	import com.greensock.TweenLite;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -14,6 +15,7 @@ package space_digger.levels
 	public class LevelRegister extends GameLevel
 	{
 		private var _suffixIndex:int = 0;
+		private var _offlineStarted:Boolean = false;
 		
 		public function LevelRegister(_level:MovieClip) 
 		{
@@ -48,11 +50,13 @@ package space_digger.levels
 			super.update(timeDelta);
 		}
 		
-		public override function dispose():void
+		override public function destroy():void 
 		{
+			super.destroy();
+			
 			removeActionListeners();
 			
-			super.dispose();
+			TweenLite.killDelayedCallsTo(resetOfflineFlag);
 		}
 		
 		public function get companyNameInput():String
@@ -91,7 +95,12 @@ package space_digger.levels
 		
 		protected function onOfflineButtonHandler(e:MouseEvent):void
 		{
-			GameManager.getInstance().changeToOffline();
+			if(!_offlineStarted){
+				_offlineStarted = true;
+				GameManager.getInstance().changeToOffline();
+				
+				TweenLite.delayedCall(10,resetOfflineFlag);
+			}
 		}
 		
 		private function onPreviousCompanySuffix(e:MouseEvent = null):void
@@ -118,6 +127,11 @@ package space_digger.levels
 				_suffixIndex = DataManager.getInstance().core.companySuffixes.length - 1;
 			
 			level.input_company_type.text = DataManager.getInstance().core.companySuffixes[_suffixIndex];
+		}
+		
+		protected function resetOfflineFlag():void
+		{
+			_offlineStarted = false;
 		}
 	}
 }

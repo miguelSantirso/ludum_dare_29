@@ -12,9 +12,10 @@ package space_digger.enemies
 			super(name, params);
 			
 			view = "FireCreeper";
-			height = 63;
-			width = 64;
-			offsetY = -16;
+			height = 50;
+			width = 40;
+			offsetY = -25;
+			offsetX = -5;
 		}
 		
 	}

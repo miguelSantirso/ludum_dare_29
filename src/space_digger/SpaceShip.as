@@ -29,9 +29,9 @@ package space_digger
 				(_ce.state as LevelDig).startExploration();
 			}
 			
-			if (_animation == "exit" && ++_frameCounter >= 99 && visible)
+			if (_animation == "exit" && ++_frameCounter >= 99)
 			{
-				_animation = "empty";
+				_animation = "Empty";
 				(_ce.state as LevelDig).endMission();
 			}
 		}

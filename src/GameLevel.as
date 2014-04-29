@@ -54,11 +54,6 @@ package
 			super.update(timeDelta);
 		}
 		
-		public function dispose():void
-		{
-			removeChild(level);
-		}
-		
 		public function enableInput():void
 		{
 			mouseEnabled = true;
