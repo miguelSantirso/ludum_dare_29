@@ -38,6 +38,7 @@ package space_digger.levels
 	import managers.DataManager;
 	import data.SeamData;
 	import com.greensock.TweenLite;
+	import citrus.physics.box2d.Box2DUtils;
 	
 	/**
 	 * ...
@@ -256,12 +257,16 @@ package space_digger.levels
 		{
 			if (!_exploring) return;
 			
+			if (!(Box2DUtils.CollisionGetOther(_exit, c) is PlayerCharacter)) return;
+			
 			_inExitArea = true;
 			_hud.showLeavePlanetHint();
 			_exit.animation = "exit";
 		}
 		private function onExitedExit(c:b2Contact):void
 		{
+			if (!(Box2DUtils.CollisionGetOther(_exit, c) is PlayerCharacter)) return;
+			
 			_inExitArea = false;
 			_hud.hideLeavePlanetHint();
 			_exit.animation = "empty";
