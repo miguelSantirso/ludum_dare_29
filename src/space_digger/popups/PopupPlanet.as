@@ -140,6 +140,8 @@ package space_digger.popups
 		{
 			if (values.length > 0)
 			{
+				_asset.slot_companies_list.removeChildren();
+				
 				_operatingCompaniesScroller = new Scroller(false, 6, OperatingCompanyIR, 0, values);
 				_operatingCompaniesScroller.init();
 				_operatingCompaniesScroller.enableInteractions = false;
