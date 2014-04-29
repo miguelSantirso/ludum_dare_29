@@ -22,6 +22,7 @@ package space_digger.levels
 	import data.PlanetToxicity;
 	import data.PlanetRichness;
 	import space_digger.OngoingOpEvent;
+	import space_digger.popups.PopupGeneric;
 	import space_digger.popups.PopupTutorial;
 	/**
 	 * ...
@@ -47,7 +48,7 @@ package space_digger.levels
 		{
 			super.initialize();
 			
-			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
+			level.button_logout.addEventListener(MouseEvent.CLICK, openLogoutPopup);
 			level.button_jump.addEventListener(MouseEvent.CLICK, jumpToAnotherSystem,false,0,true);
 			
 			_recentActivityScroller = new Scroller(false, 4.2, ActivityIR, 5);
@@ -83,7 +84,6 @@ package space_digger.levels
 			setOngoingOperations();
 			setRecentActivity();
 			
-			level.button_logout.addEventListener(MouseEvent.CLICK, logout);
 			level.button_view_ranking.addEventListener(MouseEvent.CLICK, setRankingPopupData);
 			
 			level.button_info.addEventListener(MouseEvent.CLICK, openInfoPopup);
@@ -100,7 +100,7 @@ package space_digger.levels
 		{
 			super.destroy();
 			
-			level.button_logout.removeEventListener(MouseEvent.CLICK, logout);
+			level.button_logout.removeEventListener(MouseEvent.CLICK, openLogoutPopup);
 			level.button_jump.removeEventListener(MouseEvent.CLICK, jumpToAnotherSystem);
 			
 			level.slot_activity_list.removeChild(_recentActivityScroller);
@@ -124,7 +124,7 @@ package space_digger.levels
 			super.update(timeDelta);
 		}
 		
-		private function logout(e:MouseEvent):void
+		private function logout(e:MouseEvent = null):void
 		{
 			GameManager.getInstance().logout();
 		}
@@ -369,6 +369,14 @@ package space_digger.levels
 		public function openTutorialPopup(e:MouseEvent = null):void
 		{
 			GameManager.getInstance().displayMessageTutorialPopup(PopupTutorial.STATE_SPACE);
+		}
+		
+		public function openLogoutPopup(e:MouseEvent = null):void
+		{
+			GameManager.getInstance().displayMessagePopUp("Do you really want to log out and loose your current company?",
+														PopupGeneric.TYPE_DUAL,
+														"Accept", "Cancel",
+														logout);
 		}
 		
 		public function get popupPlanet():PopupPlanet 

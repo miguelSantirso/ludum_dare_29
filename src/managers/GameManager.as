@@ -8,6 +8,8 @@ package managers
 	import org.osflash.signals.Signal;
 	import utils.ServerTime;
 	import com.greensock.TweenLite;
+	import space_digger.popups.PopupGeneric;
+	import space_digger.popups.PopupTutorial;
 	
 	/**
 	 * ...
@@ -215,9 +217,14 @@ package managers
 			changeLevelRequest.dispatch(selectedMine);
 		}
 		
-		public function displayMessagePopUp(message:String, buttonLabel:String = "Close", closeCallback:Function = null):void
+		public function displayMessagePopUp(message:String, 
+											type:String = PopupGeneric.TYPE_MONO,
+											buttonAcceptLabel:String = "Close", 
+											buttonCancelLabel:String = "Cancel",
+											acceptCallback:Function = null,
+											cancelCallback:Function = null):void
 		{
-			displayPopup.dispatch(message, buttonLabel, closeCallback);
+			displayPopup.dispatch(message, type, buttonAcceptLabel, buttonCancelLabel, acceptCallback, cancelCallback);
 		}
 		
 		public function displayMessageTutorialPopup(state:String):void

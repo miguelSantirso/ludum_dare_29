@@ -7,6 +7,7 @@ package space_digger.levels
 	import managers.GameManager;
 	import managers.DataManager;
 	import flash.events.KeyboardEvent;
+	import space_digger.popups.PopupGeneric;
 	import com.greensock.TweenLite;
 	/**
 	 * ...
@@ -90,7 +91,11 @@ package space_digger.levels
 		// ACTION HANDLERS:
 		private function onStartButtonHandler(e:MouseEvent):void
 		{
-			GameManager.getInstance().register(companyNameInput + " " + companyTypeInput, 0x000000, 0x000000);
+			if (companyNameInput != "")
+			{
+				GameManager.getInstance().register(companyNameInput + " " + companyTypeInput, 0x000000, 0x000000);
+			}
+			else GameManager.getInstance().displayMessagePopUp("You need to introduce a company name", PopupGeneric.TYPE_MONO);
 		}
 		
 		protected function onOfflineButtonHandler(e:MouseEvent):void

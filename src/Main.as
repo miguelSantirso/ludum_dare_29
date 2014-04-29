@@ -31,7 +31,7 @@ package
 		public static var loadingClip:LoadingIcon;
 		private var _genericPopup:PopupGeneric;
 		private var _tutorialPopup:PopupTutorial;
-		private var _tutorialPopupModal:Sprite;
+		private var _popupModalBg:Sprite;
 		private var _splashScreen:AssetSplashScreen;
 		private var _splashScreenTimer:Timer;
 		
@@ -177,6 +177,11 @@ package
 			//_splashScreenTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onStartGame, false, 0, true);
 			//_splashScreenTimer.start();
 			
+			_popupModalBg = new Sprite();
+			_popupModalBg.graphics.beginFill(0x000000, 0.85);
+			_popupModalBg.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+			_popupModalBg.graphics.endFill();
+			
 			enableLoading();
 		}
 		
@@ -305,25 +310,6 @@ package
 			}
 		}
 		
-		protected function openGenericPopup(message:String, buttonLabel:String, closeCallback:Function):void
-		{
-			_genericPopup = new PopupGeneric(message, buttonLabel, closeCallback);
-			addChild(_genericPopup);
-			
-			_genericPopup.x = (stage.stageWidth - _genericPopup.width) * 0.5;
-			_genericPopup.y = (stage.stageHeight - _genericPopup.height) * 0.5;
-			
-			_genericPopup.closePopup.add(closeGenericPopup);
-		}
-		
-		protected function closeGenericPopup():void
-		{
-			if(_genericPopup.closeCallback != null) _genericPopup.closeCallback();
-			_genericPopup.dispose();
-			
-			removeChild(_genericPopup);
-		}
-		
 		protected function enableLevel():void
 		{
 			if (state is GameLevel)
@@ -357,20 +343,55 @@ package
 				stage.removeChild(loadingClip);
 		}
 		
+		protected function openGenericPopup(message:String, 
+											type:String,
+											buttonAcceptLabel:String, 
+											buttonCancelLabel:String, 
+											acceptCallback:Function,
+											cancelCallback:Function):void
+		{
+			_genericPopup = new PopupGeneric(message, type, buttonAcceptLabel, buttonCancelLabel, acceptCallback, cancelCallback);
+			
+			addChild(_popupModalBg);
+			addChild(_genericPopup);
+			
+			_genericPopup.x = (stage.stageWidth - _genericPopup.width) * 0.5;
+			_genericPopup.y = (stage.stageHeight - _genericPopup.height) * 0.5;
+			
+			_genericPopup.acceptPopup.add(acceptGenericPopup);
+			_genericPopup.cancelPopup.add(cancelGenericPopup);
+		}
+		
+		protected function acceptGenericPopup():void
+		{
+			if(_genericPopup.acceptCallback != null) _genericPopup.acceptCallback();
+			closeGenericPopup();
+		}
+		
+		protected function cancelGenericPopup():void
+		{
+			if(_genericPopup.cancelCallback != null) _genericPopup.cancelCallback();
+			closeGenericPopup();
+		}
+		
+		protected function closeGenericPopup():void
+		{
+			_genericPopup.dispose();
+			
+			removeChild(_popupModalBg);
+			removeChild(_genericPopup);
+		}
+		
 		public function openTutorialPopup(state:String):void
 		{
 			_tutorialPopup = new PopupTutorial(state);
 			_tutorialPopup.closePopup.add(closeTutorialPopup);
 			_tutorialPopup.x = (stage.stageWidth - _tutorialPopup.width) * 0.5;
 			_tutorialPopup.y = (stage.stageHeight - _tutorialPopup.height) * 0.5;
-			_tutorialPopupModal = new Sprite();
-			_tutorialPopupModal.graphics.beginFill(0x000000, 0.85);
-			_tutorialPopupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
-			_tutorialPopupModal.graphics.endFill();
 			
 			if (!contains(_tutorialPopup))
 			{
-				addChild(_tutorialPopupModal);
+				addChild(_popupModalBg);
 				addChild(_tutorialPopup);
 			}
 		}
@@ -380,7 +401,7 @@ package
 			if (contains(_tutorialPopup))
 			{
 				removeChild(_tutorialPopup);
-				removeChild(_tutorialPopupModal);
+				removeChild(_popupModalBg);
 			}
 		}
 	}
