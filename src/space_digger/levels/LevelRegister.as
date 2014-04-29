@@ -37,7 +37,6 @@ package space_digger.levels
 			level.input_company_type.text = suffixes.length > 0 ? suffixes[_suffixIndex] : "INC.";
 			
 			level.button_start.label_text.text = "LAUNCH";
-			level.button_offline.label_text.text = "TRAIN";
 			
 			if (!_ce.sound.soundIsPlaying("BasementFloor"))
 			{
