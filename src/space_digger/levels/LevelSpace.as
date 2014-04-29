@@ -164,6 +164,9 @@ package space_digger.levels
 		{
 			var currentPlanetMC:MovieClip;
 			
+			if(refreshPlanetMC)
+				level.planets_layout.gotoAndStop(1 + Math.round(Math.random() * level.planets_layout.totalFrames));
+			
 			for (var i:int = 0; i < 5; i++)
 			{
 				var iconIndex:int = 1 + Math.round(Math.random() * 4);
@@ -171,7 +174,7 @@ package space_digger.levels
 				var toxicityValue:String;
 				var richnessValue:String;
 				
-				currentPlanetMC = level.getChildByName("planet_" + i) as MovieClip;
+				currentPlanetMC = level.planets_layout.getChildByName("planet_" + i) as MovieClip;
 					
 				if(refreshPlanetMC){
 					currentPlanetMC.icon_planet.gotoAndStop(iconIndex);
