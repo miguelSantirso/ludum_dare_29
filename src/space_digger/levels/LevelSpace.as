@@ -163,16 +163,19 @@ package space_digger.levels
 		public function setSystemData(refreshPlanetMC:Boolean = true):void
 		{
 			var currentPlanetMC:MovieClip;
+			var systemLayout:int = 1 + Math.round(Math.random() * 6);
 			
-			if(refreshPlanetMC)
-				level.planets_layout.gotoAndStop(1 + Math.round(Math.random() * level.planets_layout.totalFrames));
+			if (refreshPlanetMC)
+			{
+				level.planets_layout.gotoAndStop(systemLayout);
+			}
 			
 			for (var i:int = 0; i < 5; i++)
 			{
 				var iconIndex:int = 1 + Math.round(Math.random() * 4);
 				var iconRadiusScale:Number = 0.65 + (Math.random() * 0.75);
 				var toxicityValue:String;
-				var richnessValue:String;
+				var richnessValue:String; 
 				
 				currentPlanetMC = level.planets_layout.getChildByName("planet_" + i) as MovieClip;
 					
@@ -217,8 +220,8 @@ package space_digger.levels
 				Text.truncateText(currentPlanetMC.label_name);
 				
 				currentPlanetMC.addEventListener(MouseEvent.CLICK, openPlanetPopup, false, 0, true);
-				currentPlanetMC.addEventListener(MouseEvent.MOUSE_OVER, onMouseOverPlanet, false, 0, true);
-				currentPlanetMC.addEventListener(MouseEvent.MOUSE_OUT, onMouseOutPlanet, false, 0, true);
+				//currentPlanetMC.addEventListener(MouseEvent.MOUSE_OVER, onMouseOverPlanet, false, 0, true);
+				//currentPlanetMC.addEventListener(MouseEvent.MOUSE_OUT, onMouseOutPlanet, false, 0, true);
 			}
 		}
 		
@@ -404,16 +407,20 @@ package space_digger.levels
 		
 		private function onMouseOverPlanet(e:MouseEvent):void
 		{
-			(e.currentTarget as MovieClip).scaleX = 
-			(e.currentTarget as MovieClip).scaleY = 
-				(e.currentTarget as MovieClip).scaleX * 1.1;
+			(e.currentTarget as MovieClip).width = 
+				(e.currentTarget as MovieClip).width *= 1.1;
+				
+			(e.currentTarget as MovieClip).height = 
+				(e.currentTarget as MovieClip).height *= 1.1;
 		}
 		
 		private function onMouseOutPlanet(e:MouseEvent):void
 		{
-			(e.currentTarget as MovieClip).scaleX = 
-			(e.currentTarget as MovieClip).scaleY = 
-				(e.currentTarget as MovieClip).scaleX / 1.1;
+			(e.currentTarget as MovieClip).width = 
+				(e.currentTarget as MovieClip).width /= 1.1;
+				
+			(e.currentTarget as MovieClip).height = 
+				(e.currentTarget as MovieClip).height /= 1.1;
 		}
 	}
 }
