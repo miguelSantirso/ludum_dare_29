@@ -15,12 +15,12 @@ package space_digger.popups
 		public static const STATE_DIG:String = "state_dig";
 		
 		public var closePopup:Signal;
-		private var _asset:AssetPopupGeneric;
+		private var _asset:AssetPopupTutorial;
 		protected var _closeCallback:Function;
 		
 		public function PopupTutorial(state:String) 
 		{
-			_asset = new AssetPopupGeneric();
+			_asset = new AssetPopupTutorial();
 			closePopup = new Signal();
 			
 			addChild(_asset);
@@ -32,12 +32,12 @@ package space_digger.popups
 		
 		public function init():void
 		{
-			_asset.button_generic.addEventListener(MouseEvent.CLICK, onButtonCloseHandler);
+			_asset.button_close.addEventListener(MouseEvent.CLICK, onButtonCloseHandler);
 		}
 		
 		public function dispose():void
 		{
-			_asset.button_generic.removeEventListener(MouseEvent.CLICK, onButtonCloseHandler);
+			_asset.button_close.removeEventListener(MouseEvent.CLICK, onButtonCloseHandler);
 			
 			closePopup.removeAll();
 			closePopup = null;

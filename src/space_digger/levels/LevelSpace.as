@@ -140,7 +140,7 @@ package space_digger.levels
 		private function onVisitOngoingPlanet(e:OngoingOpEvent):void
 		{
 			GameManager.getInstance().jump(e.planetID);
-			setOngoingOperations();
+			GameManager.getInstance().systemChanged.add(setOngoingOperations);
 		}
 		
 		public function setCompanyData():void
@@ -366,13 +366,7 @@ package space_digger.levels
 		
 		public function openTutorialPopup(e:MouseEvent = null):void
 		{
-			trace("asdasdasdKSKDSKD");
-			//GameManager.getInstance().displayMessageTutorialPopup(PopupTutorial.STATE_SPACE);
-		}
-		
-		public function closeTutorialPopup(e:Event = null):void
-		{
-			
+			GameManager.getInstance().displayMessageTutorialPopup(PopupTutorial.STATE_SPACE);
 		}
 		
 		public function get popupPlanet():PopupPlanet 

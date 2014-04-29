@@ -54,6 +54,8 @@ package data
 			var seamsArray:Array = data as Array ? data as Array : [data];
 			var tempSeam:SeamData;
 			
+			_workingSeams.splice(0, _workingSeams.length);
+			
 			if (seamsArray)
 			{
 				for each(var seamObject:Object in seamsArray) {

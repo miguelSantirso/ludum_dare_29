@@ -37,20 +37,49 @@ package space_digger
 		{
 			super(name, params);
 			
-			// Forest config
+			width = 20;
+			height = 35;
+			offsetX = -5
+			offsetY = -10;
+			
+			// Happy config
 			minVelocityY = -10;
-			maxVelocity = 5;
-			acceleration = 20;
-			friction = 20;
-			jumpAcceleration = 2;
+			maxVelocity = 3.5;
+			acceleration = 40;
+			friction = 80;
+			jumpAcceleration = 3;
 			jumpHeight = 10;
 			
 			// Ice config
 			minVelocityY = -10;
-			maxVelocity = 7;
+			maxVelocity = 6;
 			acceleration = 1;
 			friction = 0.25;
-			jumpAcceleration = 2;
+			jumpAcceleration = 3;
+			jumpHeight = 10;
+			
+			// Water config
+			minVelocityY = -10;
+			maxVelocity = 2.5;
+			acceleration = 2;
+			friction = 1;
+			jumpAcceleration = 5;
+			jumpHeight = 25;
+			
+			// Fire config
+			minVelocityY = -10;
+			maxVelocity = 4;
+			acceleration = 50;
+			friction = 40;
+			jumpAcceleration = 5;
+			jumpHeight = 10;
+			
+			// Forest config BASE
+			minVelocityY = -10;
+			maxVelocity = 4;
+			acceleration = 50;
+			friction = 40;
+			jumpAcceleration = 3;
 			jumpHeight = 10;
 			
 			group = 1;
@@ -69,7 +98,7 @@ package space_digger
 		{
 			super.createShape();
 			
-			var sensorWidth:Number = 45 / _box2D.scale;
+			var sensorWidth:Number = 40 / _box2D.scale;
 			var sensorHeight:Number = 30 / _box2D.scale;
 			var sensorOffset:b2Vec2 = new b2Vec2( -_width / 2 - (sensorWidth / 2), _height / 2 - (20 / _box2D.scale));
 			
@@ -228,6 +257,7 @@ package space_digger
 			if (isDead)
 			{
 				// INSERT_SOUND PLAYER MUERE
+				_ce.sound.playSound("Death");
 				
 				(_ce.state as LevelDig).diggingSession.died(x, y);
 				(_ce.state as LevelDig).endExploration();

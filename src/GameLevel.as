@@ -47,8 +47,6 @@ package
 			add(physics);
 			
 			ObjectMaker2D.FromMovieClip(level);
-			
-			_ce.sound.playSound("Hypnothis");
 		}
 		
 		public override function update(timeDelta:Number):void
