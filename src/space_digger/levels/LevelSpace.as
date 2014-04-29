@@ -98,7 +98,6 @@ package space_digger.levels
 			for (var i:int = 0; i < 5; i++)
 			{
 				(level.planets_layout.getChildByName("planet_" + i) as MovieClip).icon_planet_hover.visible = false;
-				(level.planets_layout.getChildByName("planet_" + i) as MovieClip).icon_planet_toxicity.visible = false;
 			}
 			
 			// tutorial
@@ -148,7 +147,6 @@ package space_digger.levels
 			for (var i:int = 0; i < 5; i++)
 			{
 				(level.planets_layout.getChildByName("planet_" + i) as MovieClip).icon_planet_hover.visible = false;
-				(level.planets_layout.getChildByName("planet_" + i) as MovieClip).icon_planet_toxicity.visible = false;
 			}
 		}
 		
@@ -196,11 +194,12 @@ package space_digger.levels
 				var richnessValue:String;
 				
 				currentPlanetMC = level.planets_layout.getChildByName("planet_" + i) as MovieClip;
-				currentPlanetMC.icon_planet_hover.visible = false;
-				currentPlanetMC.icon_planet_toxicity.visible = false;
+				//currentPlanetMC.icon_planet_hover.visible = false;
+				//currentPlanetMC.icon_planet_toxicity.visible = false;
 					
 				if(refreshPlanetMC){
 					currentPlanetMC.icon_planet.gotoAndStop(iconIndex);
+					currentPlanetMC.icon_planet_hover.gotoAndStop(iconIndex);
 					currentPlanetMC.icon_planet.scaleX = currentPlanetMC.icon_planet.scaleY = iconRadiusScale;
 					currentPlanetMC.icon_planet_hover.scaleX = currentPlanetMC.icon_planet_hover.scaleY = iconRadiusScale;
 					currentPlanetMC.icon_planet_toxicity.scaleX = currentPlanetMC.icon_planet_toxicity.scaleY = iconRadiusScale;
@@ -243,8 +242,6 @@ package space_digger.levels
 				
 				currentPlanetMC.label_toxicity.text = toxicityValue;
 				currentPlanetMC.label_richness.text = richnessValue;
-				
-				currentPlanetMC.icon_planet_hover.gotoAndStop(iconIndex);
 				
 				Text.truncateText(currentPlanetMC.label_name);
 				
