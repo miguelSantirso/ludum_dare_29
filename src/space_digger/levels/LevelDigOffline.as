@@ -89,6 +89,11 @@ package space_digger.levels
 			if (_claimedSeamIndexes.indexOf(seamIndex) >= 0)
 				_claimedSeamIndexes.splice(_claimedSeamIndexes.indexOf(seamIndex),1);
 		}
+		
+		protected override function showTutorial():void
+		{
+			// nothing
+		}
 	}
 
 }

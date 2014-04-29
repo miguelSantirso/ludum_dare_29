@@ -40,6 +40,7 @@ package space_digger.levels
 	import com.greensock.TweenLite;
 	import citrus.physics.box2d.Box2DUtils;
 	import space_digger.popups.PopupGeneric;
+	import space_digger.popups.PopupTutorial;
 	
 	/**
 	 * ...
@@ -110,6 +111,8 @@ package space_digger.levels
 			
 			// INSERT_SOUND ENTRAR AL NIVEL
 			_ce.sound.playSound("Aterrizaje");
+				
+			showTutorial();
 		}
 		
 		protected function setDiggingSession():void
@@ -317,5 +320,13 @@ package space_digger.levels
 			
 		}
 		
+		protected function showTutorial():void
+		{
+			// tutorial
+			if (!GameManager.getInstance().checkTutorial(GameManager.TUTORIAL_DIG)) {
+				GameManager.getInstance().markTutorial(GameManager.TUTORIAL_DIG);
+				GameManager.getInstance().displayMessageTutorialPopup(PopupTutorial.STATE_DIG);
+			}
+		}	
 	}
 }
