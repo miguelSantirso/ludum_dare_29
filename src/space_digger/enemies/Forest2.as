@@ -13,7 +13,8 @@ package space_digger.enemies
 			
 			view = "ForestCreeper";
 			height = 63;
-			width = 64;
+			width = 30;
+			offsetX = -10;
 			offsetY = -16;
 		}
 		

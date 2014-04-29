@@ -1,8 +1,10 @@
 package managers 
 {
+	import adobe.utils.CustomActions;
 	import data.DiggingSession;
 	import data.Mine;
 	import data.System;
+	import flash.net.SharedObject;
 	import org.osflash.signals.Signal;
 	import utils.ServerTime;
 	import com.greensock.TweenLite;
@@ -36,6 +38,11 @@ package managers
 		public var enableView:Signal;
 		public var disableView:Signal;
 		
+		protected var _tutorialObject:SharedObject;
+		
+		public static const TUTORIAL_SPACE:int = 1;
+		public static const TUTORIAL_DIG:int = 2;
+		
 		public function GameManager() 
 		{
 			if (instantiated) {
@@ -60,6 +67,8 @@ package managers
 				disableView = new Signal();
 				
 				RemoteManager.getInstance().authorizationFailed.add(reset);
+				
+				_tutorialObject = SharedObject.getLocal("tutorial");
 			}else {
 				throw new Error("Use getInstance()");
 			}
@@ -243,12 +252,15 @@ package managers
 			disableView.dispatch();
 		}
 		
-		public function testRemoteOperations():void
+		public function checkTutorial(tutorialId:int):Boolean
 		{
-			//RemoteManager.getInstance().logout();
-			//RemoteManager.getInstance().register("Team " + (new Date()).time, 255, 255);
-			//RemoteManager.getInstance().getSystem();
-			//RemoteManager.getInstance().getCore();
+			return _tutorialObject.data[tutorialId];
+		}
+		
+		public function markTutorial(tutorialId:int):void
+		{
+			_tutorialObject.data[tutorialId] = true;
+			_tutorialObject.flush();
 		}
 	}
 

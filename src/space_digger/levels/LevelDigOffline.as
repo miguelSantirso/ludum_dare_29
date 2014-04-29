@@ -20,6 +20,14 @@ package space_digger.levels
 			_claimedSeamIndexes = new Array();
 		}
 		
+		override public function destroy():void 
+		{
+			super.destroy();
+			
+			_claimedSeamIndexes.splice(0, _claimedSeamIndexes.length);
+			_claimedSeamIndexes = null;
+		}
+		
 		protected override function setDiggingSession():void
 		{
 			var mine:Mine = new Mine();

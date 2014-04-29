@@ -12,8 +12,9 @@ package space_digger.enemies
 			super(name, params);
 			
 			view = "ForestEnemy";
-			height = 45;
-			width = 50;
+			height = 30;
+			width = 35;
+			offsetY = -12;
 		}
 		
 	}

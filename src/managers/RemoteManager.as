@@ -172,7 +172,7 @@ package managers
 					GameManager.getInstance().displayMessagePopUp(operation.errorMessage, PopupGeneric.TYPE_MONO);
 					break;
 				default:
-					GameManager.getInstance().displayMessagePopUp("You seem to lack internet connection at the moment. You can play an Offline Training mission in the meantime", PopupGeneric.TYPE_MONO);
+					GameManager.getInstance().displayMessagePopUp("The Server can't be reached, check your internet connection. Meanwhile, you can play an Offline Training mission", PopupGeneric.TYPE_MONO);
 					
 					_currentRemoteOperation.dispose();
 					_currentRemoteOperation = null;
