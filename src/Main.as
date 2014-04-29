@@ -31,6 +31,7 @@ package
 		public static var loadingClip:LoadingIcon;
 		private var _genericPopup:PopupGeneric;
 		private var _tutorialPopup:PopupTutorial;
+		private var _tutorialPopupModal:Sprite;
 		private var _splashScreen:AssetSplashScreen;
 		private var _splashScreenTimer:Timer;
 		
@@ -357,13 +358,28 @@ package
 		public function openTutorialPopup(state:String):void
 		{
 			_tutorialPopup = new PopupTutorial(state);
+			_tutorialPopup.closePopup.add(closeTutorialPopup);
+			_tutorialPopup.x = (stage.stageWidth - _tutorialPopup.width) * 0.5;
+			_tutorialPopup.y = (stage.stageHeight - _tutorialPopup.height) * 0.5;
+			_tutorialPopupModal = new Sprite();
+			_tutorialPopupModal.graphics.beginFill(0x000000, 0.85);
+			_tutorialPopupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+			_tutorialPopupModal.graphics.endFill();
 			
-			if(!contains(_tutorialPopup)) addChild(_tutorialPopup);
+			if (!contains(_tutorialPopup))
+			{
+				addChild(_tutorialPopupModal);
+				addChild(_tutorialPopup);
+			}
 		}
 		
 		public function closeTutorialPopup():void
 		{
-			if(contains(_tutorialPopup)) removeChild(_tutorialPopup);
+			if (contains(_tutorialPopup))
+			{
+				removeChild(_tutorialPopup);
+				removeChild(_tutorialPopupModal);
+			}
 		}
 	}
 }
