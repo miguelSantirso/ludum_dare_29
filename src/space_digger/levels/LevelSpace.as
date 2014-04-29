@@ -95,6 +95,12 @@ package space_digger.levels
 				_ce.sound.playSound("BasementFloor");
 			}
 			
+			for (var i:int = 0; i < 5; i++)
+			{
+				(level.planets_layout.getChildByName("planet_" + i) as MovieClip).icon_planet_hover.visible = false;
+				(level.planets_layout.getChildByName("planet_" + i) as MovieClip).icon_planet_toxicity.visible = false;
+			}
+			
 			// tutorial
 			if (!GameManager.getInstance().checkTutorial(GameManager.TUTORIAL_SPACE)) {
 				GameManager.getInstance().markTutorial(GameManager.TUTORIAL_SPACE);
@@ -138,6 +144,12 @@ package space_digger.levels
 		protected function jumpToAnotherSystem(e:MouseEvent):void
 		{
 			GameManager.getInstance().jump();
+			
+			for (var i:int = 0; i < 5; i++)
+			{
+				(level.planets_layout.getChildByName("planet_" + i) as MovieClip).icon_planet_hover.visible = false;
+				(level.planets_layout.getChildByName("planet_" + i) as MovieClip).icon_planet_toxicity.visible = false;
+			}
 		}
 		
 		private function onUpdateMyCompanyRank():void
@@ -181,30 +193,39 @@ package space_digger.levels
 				var iconIndex:int = 1 + Math.round(Math.random() * 4);
 				var iconRadiusScale:Number = 0.65 + (Math.random() * 0.75);
 				var toxicityValue:String;
-				var richnessValue:String; 
+				var richnessValue:String;
 				
 				currentPlanetMC = level.planets_layout.getChildByName("planet_" + i) as MovieClip;
+				currentPlanetMC.icon_planet_hover.visible = false;
+				currentPlanetMC.icon_planet_toxicity.visible = false;
 					
 				if(refreshPlanetMC){
 					currentPlanetMC.icon_planet.gotoAndStop(iconIndex);
 					currentPlanetMC.icon_planet.scaleX = currentPlanetMC.icon_planet.scaleY = iconRadiusScale;
+					currentPlanetMC.icon_planet_hover.scaleX = currentPlanetMC.icon_planet_hover.scaleY = iconRadiusScale;
+					currentPlanetMC.icon_planet_toxicity.scaleX = currentPlanetMC.icon_planet_toxicity.scaleY = iconRadiusScale;
 				}
 				
 				currentPlanetMC.label_name.text = DataManager.getInstance().mySystem.planets[i].name;
-					
+				
 				switch(DataManager.getInstance().mySystem.planets[i].toxicity)
 				{
 					case PlanetToxicity.LOW:
 						toxicityValue = "low";
+						currentPlanetMC.icon_planet_toxicity.visible = false;
 						break;
 						
 					case PlanetToxicity.MEDIUM:
 						toxicityValue = "med";
+						currentPlanetMC.icon_planet_toxicity.visible = true;
+						currentPlanetMC.icon_planet_toxicity.gotoAndStop(1);
 						break;
 						
 					case PlanetToxicity.HIGH:
 					default:
 						toxicityValue = "high";
+						currentPlanetMC.icon_planet_toxicity.visible = true;
+						currentPlanetMC.icon_planet_toxicity.gotoAndStop(2);
 						break;
 				}
 
@@ -223,11 +244,13 @@ package space_digger.levels
 				currentPlanetMC.label_toxicity.text = toxicityValue;
 				currentPlanetMC.label_richness.text = richnessValue;
 				
+				currentPlanetMC.icon_planet_hover.gotoAndStop(iconIndex);
+				
 				Text.truncateText(currentPlanetMC.label_name);
 				
 				currentPlanetMC.addEventListener(MouseEvent.CLICK, openPlanetPopup, false, 0, true);
-				//currentPlanetMC.addEventListener(MouseEvent.MOUSE_OVER, onMouseOverPlanet, false, 0, true);
-				//currentPlanetMC.addEventListener(MouseEvent.MOUSE_OUT, onMouseOutPlanet, false, 0, true);
+				currentPlanetMC.addEventListener(MouseEvent.MOUSE_OVER, onMouseOverPlanet, false, 0, true);
+				currentPlanetMC.addEventListener(MouseEvent.MOUSE_OUT, onMouseOutPlanet, false, 0, true);
 			}
 		}
 		
@@ -413,20 +436,12 @@ package space_digger.levels
 		
 		private function onMouseOverPlanet(e:MouseEvent):void
 		{
-			(e.currentTarget as MovieClip).width = 
-				(e.currentTarget as MovieClip).width *= 1.1;
-				
-			(e.currentTarget as MovieClip).height = 
-				(e.currentTarget as MovieClip).height *= 1.1;
+			(e.currentTarget as MovieClip).icon_planet_hover.visible = true;
 		}
 		
 		private function onMouseOutPlanet(e:MouseEvent):void
 		{
-			(e.currentTarget as MovieClip).width = 
-				(e.currentTarget as MovieClip).width /= 1.1;
-				
-			(e.currentTarget as MovieClip).height = 
-				(e.currentTarget as MovieClip).height /= 1.1;
+			(e.currentTarget as MovieClip).icon_planet_hover.visible = false;
 		}
 	}
 }
