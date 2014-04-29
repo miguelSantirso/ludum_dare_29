@@ -7,6 +7,7 @@ package space_digger.levels
 	import managers.GameManager;
 	import managers.DataManager;
 	import flash.events.KeyboardEvent;
+	import space_digger.popups.PopupGeneric;
 	/**
 	 * ...
 	 * @author 10 2  Live Team
@@ -90,7 +91,7 @@ package space_digger.levels
 			{
 				GameManager.getInstance().register(companyNameInput + " " + companyTypeInput, 0x000000, 0x000000);
 			}
-			else GameManager.getInstance().displayMessagePopUp("You need to introduce a company name");
+			else GameManager.getInstance().displayMessagePopUp("You need to introduce a company name", PopupGeneric.TYPE_MONO);
 		}
 		
 		protected function onOfflineButtonHandler(e:MouseEvent):void

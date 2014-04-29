@@ -8,6 +8,7 @@ package managers
 	import infrastructure.RemoteOperation;
 	import infrastructure.RemoteURL;
 	import org.osflash.signals.Signal;
+	import space_digger.popups.PopupGeneric;
 	/**
 	 * ...
 	 * @author Luis Miguel Blanco
@@ -153,7 +154,7 @@ package managers
 				case RemoteOperation.STATUS_INVALID :
 					// show popup with error
 					if(operation.errorMessage)
-						GameManager.getInstance().displayMessagePopUp(operation.errorMessage);
+						GameManager.getInstance().displayMessagePopUp(operation.errorMessage, PopupGeneric.TYPE_MONO);
 					
 					_currentRemoteOperation.dispose();
 					_currentRemoteOperation = null;
@@ -168,10 +169,10 @@ package managers
 					_currentRemoteOperation = null;
 					// show popup with server is down
 					
-					GameManager.getInstance().displayMessagePopUp(operation.errorMessage);
+					GameManager.getInstance().displayMessagePopUp(operation.errorMessage, PopupGeneric.TYPE_MONO);
 					break;
 				default:
-					GameManager.getInstance().displayMessagePopUp("You seem to lack internet connection at the moment. You can play an Offline Training mission in the meantime");
+					GameManager.getInstance().displayMessagePopUp("You seem to lack internet connection at the moment. You can play an Offline Training mission in the meantime", PopupGeneric.TYPE_MONO);
 					
 					_currentRemoteOperation.dispose();
 					_currentRemoteOperation = null;

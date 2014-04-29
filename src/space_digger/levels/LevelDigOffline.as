@@ -3,6 +3,7 @@ package space_digger.levels
 	import data.Mine;
 	import flash.display.MovieClip;
 	import managers.GameManager;
+	import space_digger.popups.PopupGeneric;
 	
 	/**
 	 * ...
@@ -51,7 +52,7 @@ package space_digger.levels
 		
 		protected function showResults():void
 		{
-				var numClaimed:int = _claimedSeamIndexes.length;
+			var numClaimed:int = _claimedSeamIndexes.length;
 			var message:String = "";
 			
 			if (diggingSession.death){
@@ -66,7 +67,7 @@ package space_digger.levels
 					message = "You deployed " + _claimedSeamIndexes.length + " machines. You can do better."
 			}
 			
-			GameManager.getInstance().displayMessagePopUp(message, "Got it", goToRegister); // exit here is really important
+			GameManager.getInstance().displayMessagePopUp(message, PopupGeneric.TYPE_MONO, "Got it", "", goToRegister); // exit here is really important
 		}
 		
 		protected function goToRegister():void

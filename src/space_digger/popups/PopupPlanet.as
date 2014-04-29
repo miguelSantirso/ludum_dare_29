@@ -219,7 +219,7 @@ package space_digger.popups
 			}
 			else
 			{
-				GameManager.getInstance().displayMessagePopUp("This mine is currently being digged by '" + selectedMine.occupant.name + "'!");
+				GameManager.getInstance().displayMessagePopUp("This mine is currently being digged by '" + selectedMine.occupant.name + "'!", PopupGeneric.TYPE_MONO);
 			}
 		}
 		
