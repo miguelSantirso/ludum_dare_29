@@ -42,11 +42,11 @@ package
 			var physics:Box2D = new Box2D("physics");
 			physics.timeStep = 1 / 30.0;
 			physics.visible = Main.DEBUG;
+			// 15 is deffault
+			physics.gravity.y = 30;
 			add(physics);
 			
 			ObjectMaker2D.FromMovieClip(level);
-			
-			_ce.sound.playSound("ShowYourMoves");
 		}
 		
 		public override function update(timeDelta:Number):void

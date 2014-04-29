@@ -277,15 +277,11 @@ package space_digger
 					onJump.dispatch();
 					_onGround = false; // also removed in the handleEndContact. Useful here if permanent contact e.g. box on hero.
 					_framesToKickJetpack = JETPACK_DELAY;
-					
-					// INSERT_SOUND PLAY JETPACK SOUND
 				}
 				
 				_jetpackEnabled = false;
 				if (_framesToKickJetpack <= 0 && _ce.input.isDoing("jump", inputChannel))
 				{
-					// INSERT_SOUND STOP JETPACK SOUND
-					
 					_jetpackEnabled = true;
 					velocity.y -= jumpAcceleration;
 				}
@@ -344,6 +340,9 @@ package space_digger
 			_hurtTimeoutID = setTimeout(endHurtState, hurtDuration);
 			onTakeDamage.dispatch();
 
+			// INSERT_SOUND PLAYER HERIDO POR ENEMIGO
+			_ce.sound.playSound("GetHit");
+			
 			//Makes sure that the hero is not frictionless while his control is disabled
 			if (_playerMovingHero)
 			{
@@ -479,11 +478,24 @@ package space_digger
 			else if (_jetpackEnabled)
 			{
 				_animation = "up";
+				
+				if (!_ce.sound.soundIsPlaying("JetPack"))
+				{
+					// INSERT_SOUND PLAY JETPACK SOUND
+					_ce.sound.playSound("JetPack");
+				}
 			}
 			else if (!_onGround) {
 
 				_animation = velocity.y < 0 ? "jump" : "down";
 
+				if (_animation == "down" && _ce.sound.soundIsPlaying("JetPack"))
+				{
+					// INSERT_SOUND STOP JETPACK SOUND
+					_ce.sound.stopSound("JetPack");
+				}
+					
+					
 			} else if (_ducking)
 				_animation = "duck";
 
@@ -493,11 +505,11 @@ package space_digger
 				{
 					_animation = "idle";
 				}
-				else if (walkingSpeed < -acceleration) {
+				else if (walkingSpeed < 0) {
 					_inverted = true;
 					_animation = "walk";
 
-				} else if (walkingSpeed > acceleration) {
+				} else if (walkingSpeed > 0) {
 
 					_inverted = false;
 					_animation = "walk";

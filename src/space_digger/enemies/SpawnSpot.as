@@ -25,6 +25,8 @@ package space_digger.enemies
 		{
 			super("spawn", params);
 			
+			view = "hueco";
+			
 			var nameComponents:Array = name.split('_');
 			if (nameComponents.length != 2 || nameComponents[0] != "spawn")
 			{
@@ -51,6 +53,7 @@ package space_digger.enemies
 		public function removeFoe():void
 		{
 			--_CntFoes;
+			_elapsedTime = 0;
 		}
 		
 		override public function update(timeDelta:Number):void

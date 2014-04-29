@@ -11,6 +11,7 @@ package
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	import space_digger.popups.PopupGeneric;
+	import space_digger.popups.PopupTutorial;
 	import utils.Stats;
 	import space_digger.levels.*;
 	import data.Mine;
@@ -29,6 +30,8 @@ package
 		public static var currentLevelIndex:int;
 		public static var loadingClip:LoadingIcon;
 		private var _genericPopup:PopupGeneric;
+		private var _tutorialPopup:PopupTutorial;
+		private var _tutorialPopupModal:Sprite;
 		private var _splashScreen:AssetSplashScreen;
 		private var _splashScreenTimer:Timer;
 		
@@ -38,6 +41,15 @@ package
 				init();
 			else 
 				addEventListener(Event.ADDED_TO_STAGE, init);
+		}
+		
+		override protected function handleStageActivated(e:Event):void 
+		{
+			
+		}
+		override protected function handleStageDeactivated(e:Event):void 
+		{
+			
 		}
 		
 		private function init(e:Event = null):void
@@ -120,6 +132,7 @@ package
 			GameManager.getInstance().rankingUpdated.add(onRankingUpdated);
 			
 			GameManager.getInstance().displayPopup.add(openGenericPopup);
+			GameManager.getInstance().displayTutorialPopup.add(openTutorialPopup);
 			
 			GameManager.getInstance().enableView.add(enableLevel);
 			GameManager.getInstance().disableView.add(disableLevel);
@@ -133,13 +146,19 @@ package
 			CitrusSoundInstance.startPositionOffset = 80;
 
 			//sound added with asset manager
-			sound.addSound("ShowYourMoves", { sound:"../res/sounds/show_your_moves.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
+			sound.addSound("BasementFloor", { sound:"../res/sounds/basement_floor.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
+			sound.addSound("Hypnothis", { sound:"../res/sounds/hypnothis.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
 
 			//sounds added with url
-			//sound.addSound("BreakBlock", { sound:"../res/sounds/break_block.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("Aterrizaje", { sound:"../res/sounds/aterrizaje.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("BreakBlock", { sound:"../res/sounds/break_block.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("Death", { sound:"../res/sounds/death.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("Deploy", { sound:"../res/sounds/deploy.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("Despegue", { sound:"../res/sounds/despegue.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("DestroySeam", { sound:"../res/sounds/destroy_seam.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("GetHit", { sound:"../res/sounds/get_hit.mp3" , group:CitrusSoundGroup.SFX } );
 			sound.addSound("HitEnemy", { sound:"../res/sounds/hit_enemy.mp3" , group:CitrusSoundGroup.SFX } );
-			//sound.addSound("Deploy", { sound:"../res/sounds/deploy.mp3" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("Landing", { sound:"../res/sounds/landing.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("JetPack", { sound:"../res/sounds/jetpack.mp3" , permanent:true, volume:0.2 , loops:int.MAX_VALUE , group:CitrusSoundGroup.SFX } );
 
 			sound.getGroup(CitrusSoundGroup.SFX).addEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED, function(e:CitrusSoundEvent):void
 			{
@@ -208,9 +227,9 @@ package
 			var randomLevel:int = Math.ceil(Math.random()*numberOfLevels);
 			
 			// Uncomment to get ordered offline levels
-			//randomLevel = offlineLevel;
-			//offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
-			//trace("current offline level",offlineLevel);
+			/*randomLevel = offlineLevel;
+			offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
+			trace("current offline level",offlineLevel);*/
 			
 			changeLevel(numberOfLevels + 2 + randomLevel);
 		}
@@ -334,6 +353,33 @@ package
 		{
 			if(stage.contains(loadingClip))
 				stage.removeChild(loadingClip);
+		}
+		
+		public function openTutorialPopup(state:String):void
+		{
+			_tutorialPopup = new PopupTutorial(state);
+			_tutorialPopup.closePopup.add(closeTutorialPopup);
+			_tutorialPopup.x = (stage.stageWidth - _tutorialPopup.width) * 0.5;
+			_tutorialPopup.y = (stage.stageHeight - _tutorialPopup.height) * 0.5;
+			_tutorialPopupModal = new Sprite();
+			_tutorialPopupModal.graphics.beginFill(0x000000, 0.85);
+			_tutorialPopupModal.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+			_tutorialPopupModal.graphics.endFill();
+			
+			if (!contains(_tutorialPopup))
+			{
+				addChild(_tutorialPopupModal);
+				addChild(_tutorialPopup);
+			}
+		}
+		
+		public function closeTutorialPopup():void
+		{
+			if (contains(_tutorialPopup))
+			{
+				removeChild(_tutorialPopup);
+				removeChild(_tutorialPopupModal);
+			}
 		}
 	}
 }

@@ -17,6 +17,7 @@ package space_digger
 			mineral_hud.visible = false;
 			claim_hint.visible = false;
 			leave_planet_hint.visible = false;
+			corpse_hud.visible = false;
 		}
 		
 		

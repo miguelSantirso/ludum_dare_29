@@ -28,11 +28,19 @@ package space_digger.levels
 			
 			setActionListeners();
 			
+			var suffixes:Vector.<String> = DataManager.getInstance().core.companySuffixes;
+			
 			(level.input_company_name as TextField).maxChars = 16;
-			level.input_company_type.text = DataManager.getInstance().core.companySuffixes[_suffixIndex];
+			level.input_company_type.text = suffixes.length > 0 ? suffixes[_suffixIndex] : "INC.";
 			
 			level.button_start.label_text.text = "LAUNCH";
 			level.button_offline.label_text.text = "TRAIN";
+			
+			if (!_ce.sound.soundIsPlaying("BasementFloor"))
+			{
+				_ce.sound.stopAllPlayingSounds();
+				_ce.sound.playSound("BasementFloor");
+			}
 		}
 		
 		public override function update(timeDelta:Number):void
@@ -92,6 +100,9 @@ package space_digger.levels
 		
 		private function onPreviousCompanySuffix(e:MouseEvent = null):void
 		{
+			if (DataManager.getInstance().core.companySuffixes.length <= 0)
+				return;
+				
 			_suffixIndex++;
 			
 			if (_suffixIndex == DataManager.getInstance().core.companySuffixes.length)
@@ -102,6 +113,9 @@ package space_digger.levels
 		
 		private function onNextCompanySuffix(e:MouseEvent = null):void
 		{
+			if (DataManager.getInstance().core.companySuffixes.length <= 0)
+				return;
+				
 			_suffixIndex--;
 			
 			if (_suffixIndex == -1)
