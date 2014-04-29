@@ -33,7 +33,7 @@
 		html, body { height:100%; }
 		body { width: 900px; margin:0 auto; font-family: sans-serif; position: relative; }
 		
-		#logo { width: 900px; }
+		#logo { width: 900px; display: block; height: 90px; }
 		#logo img { height: 112px; visibility: hidden; }
 		
 		#OneArrow { border: 2px solid #181818; margin-top: 0; }
@@ -48,14 +48,16 @@
 		#caption {  }
 		
 		.actions { margin: 15px 0; text-align: center; width: 900px; }
-		.actions a { min-width: 90px; text-align: center; padding: 9px 7px; text-decoration: none; border-radius: 10px; border: 3px solid #EA759D; color: #EA759D; background-color: #181818; margin: 0 4px; display: inline-block; }
-			.actions a:hover { border-color: #E35C8A; color: #E35C8A; }
-		.actions a.accent { background-color: #EA759D; color: #FACFD1; }
-			#actions a.accent:hover { background-color: #E35C8A; border-color: #E35C8A; color: #E35C8A; }
+		.actions a { min-width: 90px; text-align: center; padding: 9px 7px; text-decoration: none; border-radius: 10px; border: 3px solid #00DAD1; color: #00DAD1; background-color: #181818; margin: 0 4px; display: inline-block; }
+			.actions a:hover { border-color: #00A69F; color: #00A69F; }
+		.actions a.accent { background-color: #99F7F3; color: #054D4A; }
 			
 		a:hover #live { display:none; }
 		#die { display:none; }
 		a:hover #die{ display: inline; }
+		
+		#shots { text-align: center; }
+		#shots img { margin: 10px 0; }
 		
 		
 	</style>
@@ -72,15 +74,16 @@
 	<div class="actions">
 		<a>Marc Terris</a>
 		<a>Xavi Terris</a>
-		<a>Alberto Moreno</a>
+		<a href="http://twitter.com/albertomm">@albertomm</a>
 		<a href="http://twitter.com/luismb55">@luismb55</a>
+		<a href="http://twitter.com/oforcat">@oforcat</a>
+		<a href="http://twitter.com/abadosa">@abadosa</a>
 		<a href="http://twitter.com/miguelSantirso">@miguelSantirso</a>
-		<a href="http://twitter.com/q2design">Albert Badosa</a>
 	</div>
 	
 	<div class="actions">
 		<a href="screenshots.html">Screenshots</a>
-		<a class="accent" href="http://www.ludumdare.com/compo/ludum-dare-28/?action=preview&uid=31847">Vote Us!</a>
+		<a class="accent" href="http://www.ludumdare.com/compo/ludum-dare-29/?action=preview&uid=31847">Vote Us!</a>
 		<a class="" href="https://github.com/miguelSantirso/ludum_dare_29">Source Code</a>
 	</div>
 </body>

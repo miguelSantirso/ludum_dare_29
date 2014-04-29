@@ -1,40 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8"/>
-	<title>One Arrow</title>
-	<meta name="description" content="" />
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+	<meta charset="utf-8">
+	<title>Space Diggers by 7 Elephants (Ludum Dare 29)</title>
+	<meta name="description" content="">
 	
-	<script src="js/swfobject.js"></script>
-	<script>
-		var flashvars = {
-		};
-		var params = {
-			menu: "false",
-			scale: "noScale",
-			allowFullscreen: "false",
-			allowScriptAccess: "always",
-			bgcolor: "",
-			wmode: "direct" // can cause issues with FP settings & webcam
-		};
-		var attributes = {
-			id:"OneArrow",
-			width:1000,
-			height:700
-		};
-		swfobject.embedSWF(
-			"OneArrow.swf", 
-			"altContent", "1000", "700", "10.0.0", 
-			"expressInstall.swf", 
-			flashvars, params, attributes);
-	</script>
 	<style>
-		html { background: url(img/bg.jpg) top center no-repeat;  background-color: #181818;}
+		html { background: url(img/bg.png) top center no-repeat;  background-color: #181818;}
 		html, body { height:100%; }
-		body { width: 1000px; margin:0 auto; font-family: sans-serif; position: relative; }
+		body { width: 900px; margin:0 auto; font-family: sans-serif; position: relative; }
 		
-		#logo { width: 1000px; }
-		#logo img { height: 52px; }
+		#logo { width: 900px; display: block; height: 90px; }
+		#logo img { height: 112px; visibility: hidden; }
 		
 		#OneArrow { border: 2px solid #181818; margin-top: 0; }
 		
@@ -47,45 +24,45 @@
 
 		#caption {  }
 		
-		.actions { margin: 15px 0; text-align: center; width: 1000px; }
-		.actions a { min-width: 90px; text-align: center; padding: 9px 7px; text-decoration: none; border-radius: 10px; border: 3px solid #EA759D; color: #EA759D; background-color: #181818; margin: 0 4px; display: inline-block; }
-			.actions a:hover { border-color: #E35C8A; color: #E35C8A; }
-		.actions a.accent { background-color: #EA759D; color: #FACFD1; }
-			#actions a.accent:hover { background-color: #E35C8A; border-color: #E35C8A; color: #E35C8A; }
+		.actions { margin: 15px 0; text-align: center; width: 900px; }
+		.actions a { min-width: 90px; text-align: center; padding: 9px 7px; text-decoration: none; border-radius: 10px; border: 3px solid #00DAD1; color: #00DAD1; background-color: #181818; margin: 0 4px; display: inline-block; }
+			.actions a:hover { border-color: #00A69F; color: #00A69F; }
+		.actions a.accent { background-color: #99F7F3; color: #054D4A; }
 			
 		a:hover #live { display:none; }
 		#die { display:none; }
 		a:hover #die{ display: inline; }
 		
 		#shots { text-align: center; }
-		#shots img { margin: 10px 0; border: 3px solid #181818; }
+		#shots img { margin: 10px 0; }
+		
 		
 	</style>
 </head>
 <body>
 	
-	<p id="logo"><img src="img/logo.png" alt="One Arrow" /></p>
+	<p id="logo"><img src="" alt="Space Diggers"></p>
 	
 	<div id="shots">
-		<img src="img/ss00.png" />
-		<img src="img/ss01.png" />
-		<img src="img/ss02.png" />
-		<img src="img/ss03.png" />
-		<img src="img/ss05.png" />
+		<img src="img/ss00.png">
+		<img src="img/ss01.jpg">
+		<img src="img/ss02.jpg">
 	</div>
 	
 	<div class="actions">
-		<a>Xavi Terris</a>
 		<a>Marc Terris</a>
-		<a href="http://twitter.com/miguelSantirso">@miguelSantirso</a>
-		<a href="http://twitter.com/q2design">@q2design</a>
+		<a>Xavi Terris</a>
+		<a href="http://twitter.com/albertomm">@albertomm</a>
 		<a href="http://twitter.com/luismb55">@luismb55</a>
+		<a href="http://twitter.com/oforcat">@oforcat</a>
+		<a href="http://twitter.com/abadosa">@abadosa</a>
+		<a href="http://twitter.com/miguelSantirso">@miguelSantirso</a>
 	</div>
 	
 	<div class="actions">
-		<a href="index.html">Back to Game</a>
-		<a class="accent" href="http://www.ludumdare.com/compo/ludum-dare-28/?uid=31847">Vote Us!</a>
-		<a class="" href="https://github.com/miguelSantirso/one_arrow">Source Code</a>
+		<a href="index.html">Play Game</a>
+		<a class="accent" href="http://www.ludumdare.com/compo/ludum-dare-29/?action=preview&uid=31847">Vote Us!</a>
+		<a class="" href="https://github.com/miguelSantirso/ludum_dare_29">Source Code (Client)</a>
 	</div>
-</body>
-</html>
+
+</body></html>
