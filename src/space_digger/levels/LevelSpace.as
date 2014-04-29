@@ -94,6 +94,12 @@ package space_digger.levels
 				_ce.sound.stopAllPlayingSounds();
 				_ce.sound.playSound("BasementFloor");
 			}
+			
+			// tutorial
+			if (!GameManager.getInstance().checkTutorial(GameManager.TUTORIAL_SPACE)) {
+				GameManager.getInstance().markTutorial(GameManager.TUTORIAL_SPACE);
+				GameManager.getInstance().displayMessageTutorialPopup(PopupTutorial.STATE_SPACE);
+			}
 		}
 		
 		override public function destroy():void 

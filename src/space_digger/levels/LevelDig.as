@@ -39,6 +39,7 @@ package space_digger.levels
 	import data.SeamData;
 	import com.greensock.TweenLite;
 	import citrus.physics.box2d.Box2DUtils;
+	import space_digger.popups.PopupGeneric;
 	
 	/**
 	 * ...
@@ -246,12 +247,36 @@ package space_digger.levels
 		
 		public function endMission():void
 		{
+			showResults();
+		}
+		
+		protected function showResults():void
+		{
+			var numClaimed:int = diggingSession.activatedSeams.length;
+			var message:String = "";
+			
+			if (diggingSession.death){
+				if (numClaimed > 0)
+					message = "Your worker didn't make it! But at least he deployed " + numClaimed + " machine"+(numClaimed > 1 ? "s" : "")+" before passing.";
+				else
+					message = "What a shame. Your worker didn't deploy any machines. You've got to try harder.";
+			}else {
+				if (numClaimed > 4)
+					message = "You deployed " + numClaimed + " machines. What a great job!";
+				else
+					message = "You deployed " + numClaimed + " machine" + (numClaimed > 1 ? "s" : "") + ".";
+			}
+			
+			GameManager.getInstance().displayMessagePopUp(message, PopupGeneric.TYPE_MONO, "OK", "", goToSpaceLevel); // exit here is really important
+		}
+		
+		protected function goToSpaceLevel():void
+		{
 			GameManager.getInstance().updateState();
 			GameManager.getInstance().updateSystem();
 			
 			changeLevel.dispatch(2);
 		}
-		
 		
 		private function onEnteredExit(c:b2Contact):void
 		{

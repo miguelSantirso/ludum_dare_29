@@ -53,12 +53,7 @@ package space_digger.levels
 			exit();
 		}
 		
-		public override function endMission():void
-		{
-			showResults();
-		}
-		
-		protected function showResults():void
+		protected override function showResults():void
 		{
 			var numClaimed:int = _claimedSeamIndexes.length;
 			var message:String = "";
