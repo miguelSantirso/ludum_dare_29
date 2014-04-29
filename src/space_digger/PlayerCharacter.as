@@ -43,7 +43,7 @@ package space_digger
 			offsetY = -10;
 			
 			// Happy config
-			minVelocityY = -10;
+			/*minVelocityY = -10;
 			maxVelocity = 3.5;
 			acceleration = 40;
 			friction = 80;
@@ -73,7 +73,7 @@ package space_digger
 			friction = 40;
 			jumpAcceleration = 5;
 			jumpHeight = 10;
-			
+			*/
 			// Forest config BASE
 			minVelocityY = -10;
 			maxVelocity = 4;

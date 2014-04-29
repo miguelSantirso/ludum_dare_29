@@ -25,6 +25,8 @@ package space_digger.enemies
 		{
 			super("spawn", params);
 			
+			view = "hueco";
+			
 			var nameComponents:Array = name.split('_');
 			if (nameComponents.length != 2 || nameComponents[0] != "spawn")
 			{
