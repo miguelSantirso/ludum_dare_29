@@ -217,6 +217,8 @@ package space_digger.levels
 			if (!takeOff)
 				return;
 				
+			disablePlayer();
+				
 			GameManager.getInstance().takeOff(diggingSession, exit, function():void	{
 				if (retryCounter <= 3)
 					TweenLite.delayedCall(retrySeconds, endExploration, [takeOff]);
@@ -305,6 +307,11 @@ package space_digger.levels
 			return _hud;
 		}
 		
+		public function get exploring():Boolean 
+		{
+			return _exploring;
+		}
+		
 		public function deploySeamMachine(seamIndex:int):void
 		{
 			diggingSession.deploySeamMachine(seamIndex);
@@ -327,6 +334,12 @@ package space_digger.levels
 				GameManager.getInstance().markTutorial(GameManager.TUTORIAL_DIG);
 				GameManager.getInstance().displayMessageTutorialPopup(PopupTutorial.STATE_DIG);
 			}
-		}	
+		}
+		
+		protected function disablePlayer():void
+		{
+			_player.updateCallEnabled = false;
+			_player.stopCharacter();
+		}
 	}
 }

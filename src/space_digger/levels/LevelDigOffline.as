@@ -50,6 +50,8 @@ package space_digger.levels
 			_exploring = false;
 			_hud.stopCountdown();
 			
+			disablePlayer();
+			
 			exit();
 		}
 		
