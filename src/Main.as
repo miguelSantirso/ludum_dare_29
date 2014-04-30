@@ -169,7 +169,9 @@ package
 				onStartGame();
 			});
 
-			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.5;
+			sound.getGroup(CitrusSoundGroup.BGM).volume = 0.0;
+			
+			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.0;
 			sound.getGroup(CitrusSoundGroup.SFX).preloadSounds();
 
 			
@@ -236,7 +238,7 @@ package
 			offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
 			trace("current offline level",offlineLevel);*/
 			
-			//randomLevel = 2;
+			randomLevel = 1;
 			
 			changeLevel(numberOfLevels + 2 + randomLevel);
 		}

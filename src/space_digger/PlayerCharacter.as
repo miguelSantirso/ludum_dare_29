@@ -259,8 +259,10 @@ package space_digger
 				// INSERT_SOUND PLAYER MUERE
 				_ce.sound.playSound("Death");
 				
-				(_ce.state as LevelDig).diggingSession.died(x, y);
-				(_ce.state as LevelDig).endExploration();
+				if((_ce.state as LevelDig).exploring){
+					(_ce.state as LevelDig).diggingSession.died(x, y);
+					(_ce.state as LevelDig).endExploration();
+				}
 				
 				_animation = "defeat";
 				updateCallEnabled = false;
@@ -270,6 +272,14 @@ package space_digger
 			}
 		}
 		
+		public function stopCharacter():void
+		{
+			_fixture.SetFriction(_friction);
+			
+			if (_animation != "idle"){
+				onAnimationChange.dispatch();
+			}
+		}
 	}
 
 }

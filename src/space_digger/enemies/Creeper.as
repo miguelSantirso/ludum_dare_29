@@ -16,8 +16,9 @@ package space_digger.enemies
 			
 			view = "IceCreeper";
 			height = 63;
-			width = 64;
+			width = 45;
 			offsetY = -16;
+			offsetX = -5;
 
 			(_ce.state as LevelDig).startedDigging.add(onDigStart);
 			
