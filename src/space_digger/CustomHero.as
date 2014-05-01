@@ -23,10 +23,11 @@ package space_digger
 	 */
 	public class CustomHero extends Box2DPhysicsObject
 	{
+		public static const MAX_LIFES:int = 3;
 		private static const JETPACK_DELAY:int = 10;
 		
 		public function get nLifes():int { return _nLifes; }
-		protected var _nLifes:int = 3;
+		protected var _nLifes:int = MAX_LIFES;
 		
 		private var _framesToKickJetpack:int;
 		

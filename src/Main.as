@@ -6,6 +6,7 @@ package
 	import citrus.sounds.CitrusSoundInstance;
 	import citrus.events.CitrusSoundEvent;
 	import citrus.utils.LevelManager;
+	import data.Planet;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.TimerEvent;
@@ -169,9 +170,9 @@ package
 				onStartGame();
 			});
 
-			sound.getGroup(CitrusSoundGroup.BGM).volume = 0.0;
+			sound.getGroup(CitrusSoundGroup.BGM).volume = 0.4;
 			
-			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.0;
+			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.4;
 			sound.getGroup(CitrusSoundGroup.SFX).preloadSounds();
 
 			
@@ -219,8 +220,9 @@ package
 			onRankingUpdated();
 		}
 		
-		protected function travelToMine(mine:Mine):void
+		protected function travelToMine(planet:Planet, mine:Mine):void
 		{
+			DataManager.getInstance().currentPlanet = planet;
 			DataManager.getInstance().currentMine = mine;
 			
 			changeLevel(GameManager.getInstance().getClientMapIndexFromServerMapId(mine.map));
@@ -238,7 +240,7 @@ package
 			offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
 			trace("current offline level",offlineLevel);*/
 			
-			randomLevel = 1;
+			//randomLevel = 1;
 			
 			changeLevel(numberOfLevels + 2 + randomLevel);
 		}

@@ -59,6 +59,11 @@ package managers
 			_registrationInfo.clear();
 			_registrationInfo.flush();
 		}
+		
+		public function get username():String
+		{
+			return _registrationInfo.data.username;
+		}
 	}
 
 }
