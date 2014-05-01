@@ -271,7 +271,7 @@ package space_digger.levels
 				if (numClaimed > 4)
 					message = "You deployed " + numClaimed + " machines. What a great job!";
 				else
-					message = "You deployed " + numClaimed + " machine" + (numClaimed > 1 ? "s" : "") + ".";
+					message = "You deployed " + numClaimed + " machine" + (numClaimed == 0 || numClaimed > 1 ? "s" : "") + ".";
 			}
 
 			var planet_name:String = DataManager.getInstance().currentPlanet.name;

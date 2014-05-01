@@ -3,6 +3,7 @@ package
 	import citrus.sounds.CitrusSoundGroup;
 	import citrus.sounds.CitrusSoundInstance;
 	import citrus.events.CitrusSoundEvent;
+	import flash.display.MovieClip;
 	
 	import citrus.core.CitrusEngine;
 	import citrus.core.IState;
@@ -195,6 +196,8 @@ package
 		
 		protected function travelToMine(planet:Planet, mine:Mine):void
 		{
+			enableLoading();
+			
 			DataManager.getInstance().currentPlanet = planet;
 			DataManager.getInstance().currentMine = mine;
 			
