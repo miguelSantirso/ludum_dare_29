@@ -12,9 +12,10 @@ package space_digger.enemies
 			super(name, params);
 			
 			view = "HappyCreeper";
-			height = 63;
-			width = 64;
-			offsetY = -16;
+			height = 60;
+			width = 40;
+			offsetY = -20;
+			offsetX = -15;
 		}
 		
 	}

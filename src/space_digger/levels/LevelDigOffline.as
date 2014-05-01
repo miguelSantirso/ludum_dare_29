@@ -3,6 +3,7 @@ package space_digger.levels
 	import data.Mine;
 	import flash.display.MovieClip;
 	import managers.GameManager;
+	import space_digger.popups.PopupGeneric;
 	
 	/**
 	 * ...
@@ -17,6 +18,14 @@ package space_digger.levels
 			super(_level);
 			
 			_claimedSeamIndexes = new Array();
+		}
+		
+		override public function destroy():void 
+		{
+			super.destroy();
+			
+			_claimedSeamIndexes.splice(0, _claimedSeamIndexes.length);
+			_claimedSeamIndexes = null;
 		}
 		
 		protected override function setDiggingSession():void
@@ -41,17 +50,14 @@ package space_digger.levels
 			_exploring = false;
 			_hud.stopCountdown();
 			
+			disablePlayer();
+			
 			exit();
 		}
 		
-		public override function endMission():void
+		protected override function showResults():void
 		{
-			showResults();
-		}
-		
-		protected function showResults():void
-		{
-				var numClaimed:int = _claimedSeamIndexes.length;
+			var numClaimed:int = _claimedSeamIndexes.length;
 			var message:String = "";
 			
 			if (diggingSession.death){
@@ -66,7 +72,7 @@ package space_digger.levels
 					message = "You deployed " + _claimedSeamIndexes.length + " machines. You can do better."
 			}
 			
-			GameManager.getInstance().displayMessagePopUp(message, "Got it", goToRegister); // exit here is really important
+			GameManager.getInstance().displayMessagePopUp(message, PopupGeneric.TYPE_MONO, "Got it", "", goToRegister); // exit here is really important
 		}
 		
 		protected function goToRegister():void
@@ -84,6 +90,11 @@ package space_digger.levels
 		{	
 			if (_claimedSeamIndexes.indexOf(seamIndex) >= 0)
 				_claimedSeamIndexes.splice(_claimedSeamIndexes.indexOf(seamIndex),1);
+		}
+		
+		protected override function showTutorial():void
+		{
+			// nothing
 		}
 	}
 

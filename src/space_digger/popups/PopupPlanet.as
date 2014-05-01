@@ -3,10 +3,12 @@ package space_digger.popups
 	import away3d.events.MouseEvent3D;
 	import data.Mine;
 	import data.Planet;
+	import data.SeamData;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import space_digger.Seam;
 	import utils.scroller.Scroller;
 	import utils.Text;
 	import data.PlanetRichness;
@@ -138,6 +140,8 @@ package space_digger.popups
 		{
 			if (values.length > 0)
 			{
+				_asset.slot_companies_list.removeChildren();
+				
 				_operatingCompaniesScroller = new Scroller(false, 6, OperatingCompanyIR, 0, values);
 				_operatingCompaniesScroller.init();
 				_operatingCompaniesScroller.enableInteractions = false;
@@ -154,7 +158,14 @@ package space_digger.popups
 			var operatingCompanies:Array = new Array();
 			for each(var mine:Mine in _planet.mines)
 			{
-				if (mine.occupant) operatingCompanies.push(mine.occupant.name);
+				for each(var seam:SeamData in mine.seams)
+				{
+					if (seam.owner)
+					{
+						if(operatingCompanies.indexOf(seam.owner.name) == -1)
+							operatingCompanies.push(seam.owner.name);
+					}
+				}
 			}
 			
 			planetName = _planet.name;
@@ -219,7 +230,7 @@ package space_digger.popups
 			}
 			else
 			{
-				GameManager.getInstance().displayMessagePopUp("This mine is currently being digged by '" + selectedMine.occupant.name + "'!");
+				GameManager.getInstance().displayMessagePopUp("This mine is currently being digged by '" + selectedMine.occupant.name + "'!", PopupGeneric.TYPE_MONO);
 			}
 		}
 		

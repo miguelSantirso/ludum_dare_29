@@ -12,8 +12,9 @@ package space_digger.enemies
 			super(name, params);
 			
 			view = "HappyEnemy";
-			height = 45;
-			width = 50;
+			height = 30;
+			width = 30;
+			offsetY = -10;
 		}
 		
 	}

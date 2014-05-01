@@ -38,6 +38,9 @@ package space_digger.levels
 	import managers.DataManager;
 	import data.SeamData;
 	import com.greensock.TweenLite;
+	import citrus.physics.box2d.Box2DUtils;
+	import space_digger.popups.PopupGeneric;
+	import space_digger.popups.PopupTutorial;
 	
 	/**
 	 * ...
@@ -108,6 +111,8 @@ package space_digger.levels
 			
 			// INSERT_SOUND ENTRAR AL NIVEL
 			_ce.sound.playSound("Aterrizaje");
+				
+			showTutorial();
 		}
 		
 		protected function setDiggingSession():void
@@ -212,6 +217,8 @@ package space_digger.levels
 			if (!takeOff)
 				return;
 				
+			disablePlayer();
+				
 			GameManager.getInstance().takeOff(diggingSession, exit, function():void	{
 				if (retryCounter <= 3)
 					TweenLite.delayedCall(retrySeconds, endExploration, [takeOff]);
@@ -245,16 +252,42 @@ package space_digger.levels
 		
 		public function endMission():void
 		{
+			showResults();
+		}
+		
+		protected function showResults():void
+		{
+			var numClaimed:int = diggingSession.activatedSeams.length;
+			var message:String = "";
+			
+			if (diggingSession.death){
+				if (numClaimed > 0)
+					message = "Your worker didn't make it! But at least he deployed " + numClaimed + " machine"+(numClaimed > 1 ? "s" : "")+" before passing.";
+				else
+					message = "What a shame. Your worker didn't deploy any machines. You've got to try harder.";
+			}else {
+				if (numClaimed > 4)
+					message = "You deployed " + numClaimed + " machines. What a great job!";
+				else
+					message = "You deployed " + numClaimed + " machine" + (numClaimed > 1 ? "s" : "") + ".";
+			}
+			
+			GameManager.getInstance().displayMessagePopUp(message, PopupGeneric.TYPE_MONO, "OK", "", goToSpaceLevel); // exit here is really important
+		}
+		
+		protected function goToSpaceLevel():void
+		{
 			GameManager.getInstance().updateState();
 			GameManager.getInstance().updateSystem();
 			
 			changeLevel.dispatch(2);
 		}
 		
-		
 		private function onEnteredExit(c:b2Contact):void
 		{
 			if (!_exploring) return;
+			
+			if (!(Box2DUtils.CollisionGetOther(_exit, c) is PlayerCharacter)) return;
 			
 			_inExitArea = true;
 			_hud.showLeavePlanetHint();
@@ -262,6 +295,8 @@ package space_digger.levels
 		}
 		private function onExitedExit(c:b2Contact):void
 		{
+			if (!(Box2DUtils.CollisionGetOther(_exit, c) is PlayerCharacter)) return;
+			
 			_inExitArea = false;
 			_hud.hideLeavePlanetHint();
 			_exit.animation = "empty";
@@ -270,6 +305,11 @@ package space_digger.levels
 		public function get hud():GameplayHud 
 		{
 			return _hud;
+		}
+		
+		public function get exploring():Boolean 
+		{
+			return _exploring;
 		}
 		
 		public function deploySeamMachine(seamIndex:int):void
@@ -287,5 +327,19 @@ package space_digger.levels
 			
 		}
 		
+		protected function showTutorial():void
+		{
+			// tutorial
+			if (!GameManager.getInstance().checkTutorial(GameManager.TUTORIAL_DIG)) {
+				GameManager.getInstance().markTutorial(GameManager.TUTORIAL_DIG);
+				GameManager.getInstance().displayMessageTutorialPopup(PopupTutorial.STATE_DIG);
+			}
+		}
+		
+		protected function disablePlayer():void
+		{
+			_player.updateCallEnabled = false;
+			_player.stopCharacter();
+		}
 	}
 }

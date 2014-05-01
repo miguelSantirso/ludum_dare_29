@@ -54,23 +54,18 @@ package
 			super.update(timeDelta);
 		}
 		
-		public function dispose():void
-		{
-			removeChild(level);
-		}
-		
 		public function enableInput():void
 		{
 			mouseEnabled = true;
 			mouseChildren = true;
-			_input.enabled = true;
+			//_input.enabled = true;
 		}
 		
 		public function disableInput():void
 		{
 			mouseEnabled = false;
 			mouseChildren = false;
-			_input.enabled = false;
+			//_input.enabled = false;
 		}
 	}
 }
