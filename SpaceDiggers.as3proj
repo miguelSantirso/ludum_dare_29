@@ -8,8 +8,8 @@
     <movie fps="30" />
     <movie width="900" />
     <movie height="600" />
-    <movie version="11" />
-    <movie minorVersion="7" />
+    <movie version="12" />
+    <movie minorVersion="0" />
     <movie platform="Flash Player" />
     <movie background="#29313E" />
     <movie preferredSDK="Flex 4.6.0, AIR 3.8;4.6.0, 3.8;" />
