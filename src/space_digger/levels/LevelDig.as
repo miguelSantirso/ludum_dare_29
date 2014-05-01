@@ -41,6 +41,7 @@ package space_digger.levels
 	import citrus.physics.box2d.Box2DUtils;
 	import space_digger.popups.PopupGeneric;
 	import space_digger.popups.PopupTutorial;
+	import managers.AnalyticsManager;
 	
 	/**
 	 * ...
@@ -271,6 +272,14 @@ package space_digger.levels
 				else
 					message = "You deployed " + numClaimed + " machine" + (numClaimed > 1 ? "s" : "") + ".";
 			}
+			
+			var planet_name:String = DataManager.getInstance().currentPlanet.name;
+			var mine_id:int = DataManager.getInstance().currentMine.id;
+			
+			// Report the amoun of claimed seams after the digging session
+			AnalyticsManager.getInstance().logDesignEvent("digging_session:claimed_seams:" + planet_name+":" + mine_id,
+														  numClaimed,
+														  "LevelDig");
 			
 			GameManager.getInstance().displayMessagePopUp(message, PopupGeneric.TYPE_MONO, "OK", "", goToSpaceLevel); // exit here is really important
 		}

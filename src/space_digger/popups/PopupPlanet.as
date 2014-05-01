@@ -225,7 +225,7 @@ package space_digger.popups
 			{
 				GameManager.getInstance().land(selectedMine, 
 					function():void {
-						GameManager.getInstance().changeLevel(selectedMine);
+						GameManager.getInstance().changeLevel(_planet, selectedMine);
 					});
 			}
 			else

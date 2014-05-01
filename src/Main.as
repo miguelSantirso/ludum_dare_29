@@ -6,6 +6,7 @@ package
 	import citrus.sounds.CitrusSoundInstance;
 	import citrus.events.CitrusSoundEvent;
 	import citrus.utils.LevelManager;
+	import data.Planet;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.TimerEvent;
@@ -219,8 +220,9 @@ package
 			onRankingUpdated();
 		}
 		
-		protected function travelToMine(mine:Mine):void
+		protected function travelToMine(planet:Planet, mine:Mine):void
 		{
+			DataManager.getInstance().currentPlanet = planet;
 			DataManager.getInstance().currentMine = mine;
 			
 			changeLevel(GameManager.getInstance().getClientMapIndexFromServerMapId(mine.map));
