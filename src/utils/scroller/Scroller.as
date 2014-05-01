@@ -74,6 +74,7 @@ package utils.scroller
 		public function init(event:Event = null):void
 		{
 			addEventListener(MouseEvent.MOUSE_DOWN, onMouseHandler, false, 0, true);
+			addEventListener(MouseEvent.MOUSE_WHEEL, onMouseHandler, false, 0, true);
 
 			_dragDeltaTimer = new Timer(50, 0);
 			_dragDeltaTimer.addEventListener(TimerEvent.TIMER, onCalculateCurrentDragDelta, false, 0, true);
@@ -204,10 +205,14 @@ package utils.scroller
 
 				_scrollerCanvas.addChild(newIR);
 			}
+			
+			//_scrollerCanvas 
 
 			_scrollerCanvas.graphics.beginFill(_scrollerCanvasBgColor, _scrollerCanvasBgAlpha);
 			_scrollerCanvas.graphics.drawRect(0, 0, _scrollerCanvas.width, _scrollerCanvas.height);
 			_scrollerCanvas.graphics.endFill();
+			
+			refreshMask();
 		}
 
 		private function onMouseHandler(e:MouseEvent):void
@@ -254,6 +259,23 @@ package utils.scroller
 								auxScrollerCanvasSize - ((_scrollerItemsToShow * auxIRSize) + (_scrollerGap * (_scrollerItemsToShow - 1)))));
 						}
 					break;
+					
+				case MouseEvent.MOUSE_WHEEL:
+					if (_scrollerCanvas.numChildren > 0)
+					{
+						var sampleIR:Sprite = _scrollerCanvas.getChildAt(0) as Sprite;
+						var irSize:Number = _scrollerLayout ? sampleIR.width : sampleIR.height;
+						
+						irSize += _scrollerGap;
+						
+						_scrollerLayout
+							? _scrollerCanvas.x += irSize * (e.delta > 0 ? 1 : -1)
+							: _scrollerCanvas.y += irSize * (e.delta > 0 ? 1 : -1)
+						
+						onUpdateTween("_scrollerCanvas");
+					}
+					
+					break;
 
 				case MouseEvent.MOUSE_OUT:
 				case MouseEvent.MOUSE_UP:
@@ -280,7 +302,7 @@ package utils.scroller
 								inertiaFactor = SCROLLER_SPEED_FACTOR_X;
 							}
 
-							/*if (_scrollerLayout)
+							if (_scrollerLayout)
 							{
 								var toX:Number = _currentDragPosition + (deltaPosition * inertiaFactor);
 
@@ -293,7 +315,7 @@ package utils.scroller
 
 								TweenMax.to(_scrollerCanvas, _scrollerInertiaMaxDuration, 
 									{ x:_scrollerCanvas.x, y:toY, onUpdateParams: ["_scrollerCanvas"], onUpdate: onUpdateTween } );
-							}*/
+							}
 						}
 					}
 
