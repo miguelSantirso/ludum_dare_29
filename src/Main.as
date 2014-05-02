@@ -63,6 +63,15 @@ package
 			
 		}
 		
+		private function levelParams(template:String, tileset:String):XML
+		{
+			var xml:XML = <level_params />;
+			xml.template = template;
+			xml.tileset = tileset;
+			
+			return xml;
+		}
+		
 		private function init(e:Event = null):void
 		{
 			_errorController = new ErrorController();
@@ -80,14 +89,15 @@ package
 				[
 					[LevelRegister, "../swf/levels/LevelRegister.swf"],
 					[LevelSpace, "../swf/levels/LevelSpace.swf"],
-					[LevelDig, "../res/levels/level_fire_small_1.tmx"],
 					
-					[LevelDigOffline, "../res/levels/level_fire_small_1.tmx"]
+					[LevelDig, levelParams('small', 'fire')],
+					
+					[LevelDigOffline, levelParams('small', 'fire')]
 				];
 			
 			
-			//if (Main.DEBUG)
-			//	addChild(new Stats());
+			if (Main.DEBUG)
+				addChild(new Stats());
 
 			GameManager.getInstance().needsRegistration.add(goToLevelRegister);
 			GameManager.getInstance().ready.add(goToLevelSpace);

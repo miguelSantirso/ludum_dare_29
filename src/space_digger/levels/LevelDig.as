@@ -1,48 +1,35 @@
 package space_digger.levels 
 {
-	import Box2D.Collision.b2ContactID;
 	import Box2D.Dynamics.Contacts.b2Contact;
-	import Box2D.Dynamics.Contacts.b2PolygonContact;
-	import citrus.core.State;
-	import citrus.objects.Box2DPhysicsObject;
-	import data.Death;
-	import data.DiggingSession;
-	import data.Mine;
-	import flash.display.MovieClip;
+	import citrus.core.CitrusObject;
 	import citrus.objects.CitrusSprite;
-	import citrus.objects.CitrusSpritePool;
-	import citrus.objects.platformer.box2d.Sensor;
-	import citrus.physics.box2d.Box2D;
-	import flash.display.MovieClip;
+	import citrus.objects.platformer.box2d.Cannon;
+	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
-	import citrus.objects.platformer.box2d.Coin;
-	import citrus.objects.platformer.box2d.Cannon;
-	import citrus.utils.objectmakers.ObjectMaker2D;
-	import flash.geom.Rectangle;
-	import infrastructure.RemoteOperation;
-	import org.osflash.signals.Signal;
-	import space_digger.GameplayHud;
-	import space_digger.CustomHero;
-	import space_digger.PlayerCharacter;
-	import space_digger.Seam;
-	import space_digger.enemies.Patrol;
-	import space_digger.enemies.Creeper;
-	import space_digger.enemies.Spike;
-	import space_digger.enemies.SpawnSpot;
-	import citrus.core.CitrusObject;
-	import space_digger.SpaceShip;
-	import managers.GameManager;
-	import flash.utils.setTimeout;
-	import space_digger.DestructibleBlock;
-	import managers.GameManager;
-	import managers.DataManager;
-	import data.SeamData;
-	import com.greensock.TweenLite;
+	import citrus.objects.platformer.box2d.Sensor;
 	import citrus.physics.box2d.Box2DUtils;
+	import com.greensock.TweenLite;
+	import data.Death;
+	import data.DiggingSession;
+	import data.SeamData;
+	import flash.geom.Rectangle;
+	import managers.AnalyticsManager;
+	import managers.DataManager;
+	import managers.GameManager;
+	import org.osflash.signals.Signal;
+	import space_digger.CustomHero;
+	import space_digger.DestructibleBlock;
+	import space_digger.enemies.Creeper;
+	import space_digger.enemies.Patrol;
+	import space_digger.enemies.SpawnSpot;
+	import space_digger.enemies.Spike;
+	import space_digger.GameplayHud;
+	import space_digger.PlayerCharacter;
 	import space_digger.popups.PopupGeneric;
 	import space_digger.popups.PopupTutorial;
-	import managers.AnalyticsManager;
+	import space_digger.Seam;
+	import space_digger.SpaceShip;
 	
 	/**
 	 * ...
@@ -62,9 +49,9 @@ package space_digger.levels
 		
 		protected var _hud:GameplayHud = new GameplayHud();
 		
-		public function LevelDig(_tiledMap:XML) 
+		public function LevelDig(levelConfig:Object) 
 		{
-			super(_tiledMap);
+			super(GameplayLevelsConfig.tiledMap(levelConfig.template, levelConfig.tileset), GameplayLevelsConfig.tileset(levelConfig.tileset));
 			
 			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
 		}

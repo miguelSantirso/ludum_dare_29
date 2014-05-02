@@ -11,16 +11,15 @@ package
 	 */
 	public class StateGameplay extends SDState 
 	{
-		[Embed(source="../res/tilesets/tileset_fire.png")]
-		private var TilesetFire:Class;
-		
 		private var _tiledMap:XML;
+		private var _tileset:Bitmap;
 		
-		public function StateGameplay(tiledMap:XML) 
+		public function StateGameplay(tiledMap:XML, tileset:Bitmap) 
 		{
 			super();
 			
 			_tiledMap = tiledMap;
+			_tileset = tileset;
 		}
 		
 		override public function initialize():void 
@@ -34,10 +33,7 @@ package
 			physics.gravity.y = 30;
 			add(physics);
 			
-			var bitmapView:Bitmap = new TilesetFire();     
-            bitmapView.name = "tileset_fire.png";  
-			
-			ObjectMaker2D.FromTiledMap(_tiledMap, [bitmapView]);
+			ObjectMaker2D.FromTiledMap(_tiledMap, [_tileset]);
 		}
 		
 	}
