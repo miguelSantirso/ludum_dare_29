@@ -210,19 +210,19 @@ package space_digger.levels
 				switch(DataManager.getInstance().mySystem.planets[i].toxicity)
 				{
 					case PlanetToxicity.LOW:
-						toxicityValue = "low";
+						toxicityValue = "LOW";
 						currentPlanetMC.icon_planet_toxicity.visible = false;
 						break;
 						
 					case PlanetToxicity.MEDIUM:
-						toxicityValue = "med";
+						toxicityValue = "MED";
 						currentPlanetMC.icon_planet_toxicity.visible = true;
 						currentPlanetMC.icon_planet_toxicity.gotoAndStop(1);
 						break;
 						
 					case PlanetToxicity.HIGH:
 					default:
-						toxicityValue = "high";
+						toxicityValue = "HIGH";
 						currentPlanetMC.icon_planet_toxicity.visible = true;
 						currentPlanetMC.icon_planet_toxicity.gotoAndStop(2);
 						break;
@@ -231,12 +231,12 @@ package space_digger.levels
 				switch(DataManager.getInstance().mySystem.planets[i].richness)
 				{
 					case PlanetRichness.POOR:
-						richnessValue = "poor";
+						richnessValue = "POOR";
 						break;
 						
 					case PlanetRichness.RICH:
 					default:
-						richnessValue = "rich";
+						richnessValue = "RICH";
 						break;
 				}
 				
@@ -249,6 +249,9 @@ package space_digger.levels
 				currentPlanetMC.addEventListener(MouseEvent.MOUSE_OVER, onMouseOverPlanet, false, 0, true);
 				currentPlanetMC.addEventListener(MouseEvent.MOUSE_OUT, onMouseOutPlanet, false, 0, true);
 			}
+			
+			level.label_system_name.text = DataManager.getInstance().mySystem.name.toUpperCase();
+			Text.truncateText(level.label_system_name);
 		}
 		
 		public function setOngoingOperations():void
@@ -405,7 +408,7 @@ package space_digger.levels
 		
 		public function openLogoutPopup(e:MouseEvent = null):void
 		{
-			GameManager.getInstance().displayMessagePopUp("Do you really want to log out and loose your current company?",
+			GameManager.getInstance().displayMessagePopUp("Do you really want to abandon and lose your current company?",
 														PopupGeneric.TYPE_DUAL,
 														"Accept", "Cancel",
 														logout);

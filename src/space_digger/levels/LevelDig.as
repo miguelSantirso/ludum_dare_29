@@ -23,6 +23,7 @@ package space_digger.levels
 	import infrastructure.RemoteOperation;
 	import org.osflash.signals.Signal;
 	import space_digger.GameplayHud;
+	import space_digger.CustomHero;
 	import space_digger.PlayerCharacter;
 	import space_digger.Seam;
 	import space_digger.enemies.Patrol;
@@ -41,6 +42,7 @@ package space_digger.levels
 	import citrus.physics.box2d.Box2DUtils;
 	import space_digger.popups.PopupGeneric;
 	import space_digger.popups.PopupTutorial;
+	import managers.AnalyticsManager;
 	
 	/**
 	 * ...
@@ -269,8 +271,21 @@ package space_digger.levels
 				if (numClaimed > 4)
 					message = "You deployed " + numClaimed + " machines. What a great job!";
 				else
-					message = "You deployed " + numClaimed + " machine" + (numClaimed > 1 ? "s" : "") + ".";
+					message = "You deployed " + numClaimed + " machine" + (numClaimed == 0 || numClaimed > 1 ? "s" : "") + ".";
 			}
+
+			var planet_name:String = DataManager.getInstance().currentPlanet.name;
+			var mine_id:int = DataManager.getInstance().currentMine.id;
+			
+			// Report the amoun of claimed seams after the digging session
+			AnalyticsManager.getInstance().logDesignEvent("digging_session:claimed_seams:" + planet_name+":" + mine_id,
+														  numClaimed,
+														  "LevelDig");
+														  
+			var player:PlayerCharacter = _player = getObjectByName("player_char") as PlayerCharacter;
+			AnalyticsManager.getInstance().logDesignEvent("digging_session:consumed_lifes:" + planet_name+":" + mine_id,
+														  CustomHero.MAX_LIFES - player.nLifes,
+														  "LevelDig");
 			
 			GameManager.getInstance().displayMessagePopUp(message, PopupGeneric.TYPE_MONO, "OK", "", goToSpaceLevel); // exit here is really important
 		}

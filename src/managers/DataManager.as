@@ -23,6 +23,7 @@ package managers
 		protected var _mySystem:System;
 		protected var _ranking:Vector.<RankingEntry>;
 		
+		public var currentPlanet:Planet;
 		public var currentMine:Mine;
 		
 		public function DataManager() 

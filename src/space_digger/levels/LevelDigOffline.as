@@ -40,7 +40,7 @@ package space_digger.levels
 		{
 			var minMinutes:int = 3;
 			var maxMinutes:int = 10;
-		var randomSeconds:int = Math.max(minMinutes * 60, Math.floor(Math.random() * maxMinutes * 60));
+			var randomSeconds:int = Math.max(minMinutes * 60, Math.floor(Math.random() * maxMinutes * 60));
 			
 			onPlaySuccess( { stopwatch:randomSeconds } );
 		}

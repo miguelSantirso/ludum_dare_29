@@ -64,6 +64,8 @@ package space_digger.popups
 			_asset.label_deaths_value.visible =
 			_asset.panel_info_bg.visible = 
 			_asset.label_no_companies.visible = false;
+			
+			_asset.slot_companies_list.removeChildren();
 		}
 		
 		public function dispose():void
@@ -138,13 +140,13 @@ package space_digger.popups
 		
 		public function set planetCompanies(values:Array):void
 		{
+			_asset.slot_companies_list.removeChildren();
+			
 			if (values.length > 0)
 			{
-				_asset.slot_companies_list.removeChildren();
-				
 				_operatingCompaniesScroller = new Scroller(false, 6, OperatingCompanyIR, 0, values);
 				_operatingCompaniesScroller.init();
-				_operatingCompaniesScroller.enableInteractions = false;
+				_operatingCompaniesScroller.enableInteractions = values.length > 6;
 				_asset.slot_companies_list.addChild(_operatingCompaniesScroller);
 			}
 			
@@ -225,12 +227,12 @@ package space_digger.popups
 			{
 				GameManager.getInstance().land(selectedMine, 
 					function():void {
-						GameManager.getInstance().changeLevel(selectedMine);
+						GameManager.getInstance().changeLevel(_planet, selectedMine);
 					});
 			}
 			else
 			{
-				GameManager.getInstance().displayMessagePopUp("This mine is currently being digged by '" + selectedMine.occupant.name + "'!", PopupGeneric.TYPE_MONO);
+				GameManager.getInstance().displayMessagePopUp("This mine is currently being digged by '" + selectedMine.occupant.name + "'. Choose another one.", PopupGeneric.TYPE_MONO);
 			}
 		}
 		

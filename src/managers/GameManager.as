@@ -3,6 +3,7 @@ package managers
 	import adobe.utils.CustomActions;
 	import data.DiggingSession;
 	import data.Mine;
+	import data.Planet;
 	import data.System;
 	import flash.net.SharedObject;
 	import org.osflash.signals.Signal;
@@ -108,6 +109,8 @@ package managers
 			ready.dispatch();
 		
 			startRefreshCalls();
+			
+			AnalyticsManager.getInstance().init(DataManager.getInstance().myState.company.name);
 		}
 		
 		public function startRefreshCalls():void
@@ -212,9 +215,9 @@ package managers
 			);
 		}
 		
-		public function changeLevel(selectedMine:Mine):void
+		public function changeLevel(selectedPlanet:Planet, selectedMine:Mine):void
 		{
-			changeLevelRequest.dispatch(selectedMine);
+			changeLevelRequest.dispatch(selectedPlanet, selectedMine);
 		}
 		
 		public function displayMessagePopUp(message:String, 

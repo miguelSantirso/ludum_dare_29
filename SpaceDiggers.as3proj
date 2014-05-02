@@ -77,6 +77,7 @@
     <element path="lib\Water_enemy_actions.swc" />
     <element path="lib\loading_icon.swc" />
     <element path="lib\main_char_actions_water.swc" />
+    <element path="lib\GameAnalytics.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>

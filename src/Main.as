@@ -1,11 +1,14 @@
 package 
 {
-	import citrus.core.CitrusEngine;
-	import citrus.core.IState;
 	import citrus.sounds.CitrusSoundGroup;
 	import citrus.sounds.CitrusSoundInstance;
 	import citrus.events.CitrusSoundEvent;
+	import flash.display.MovieClip;
+	
+	import citrus.core.CitrusEngine;
+	import citrus.core.IState;
 	import citrus.utils.LevelManager;
+	import data.Planet;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.TimerEvent;
@@ -142,38 +145,10 @@ package
 			_splashScreen = new AssetSplashScreen();
 			addChild(_splashScreen);
 
-			//offset the sounds (less gap in the looping sound)
-			CitrusSoundInstance.startPositionOffset = 80;
-
-			//sound added with asset manager
-			sound.addSound("BasementFloor", { sound:"../res/sounds/basement_floor.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
-			sound.addSound("Hypnothis", { sound:"../res/sounds/hypnothis.mp3" ,permanent:true, volume:0.4 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
-
-			//sounds added with url
-			sound.addSound("Aterrizaje", { sound:"../res/sounds/aterrizaje.mp3" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("BreakBlock", { sound:"../res/sounds/break_block.mp3" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("Death", { sound:"../res/sounds/death.mp3" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("Deploy", { sound:"../res/sounds/deploy.mp3" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("Despegue", { sound:"../res/sounds/despegue.mp3" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("DestroySeam", { sound:"../res/sounds/destroy_seam.mp3" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("GetHit", { sound:"../res/sounds/get_hit.mp3" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("HitEnemy", { sound:"../res/sounds/hit_enemy.mp3" , group:CitrusSoundGroup.SFX } );
-			sound.addSound("JetPack", { sound:"../res/sounds/jetpack.mp3" , permanent:true, volume:0.2 , loops:int.MAX_VALUE , group:CitrusSoundGroup.SFX } );
-
-			sound.getGroup(CitrusSoundGroup.SFX).addEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED, function(e:CitrusSoundEvent):void
-			{
-				e.currentTarget.removeEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED,arguments.callee);
-				trace("SOUND EFFECTS ARE PRELOADED");
-
-				//state = new AdvancedSoundsState();
-				onStartGame();
-			});
-
-			sound.getGroup(CitrusSoundGroup.BGM).volume = 0.4;
-			
-			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.4;
-			sound.getGroup(CitrusSoundGroup.SFX).preloadSounds();
-
+			SoundManager.getInstance().soundsLoaded.add(onStartGame);
+			SoundManager.getInstance().preLoadSounds();
+			// TODO Fix this, the signal is not dispatched correctly
+			onStartGame();
 			
 			//_splashScreenTimer = new Timer(SPLASH_SCREEN_DURATION_IN_SECS * 1000, 1);
 			//_splashScreenTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onStartGame, false, 0, true);
@@ -219,8 +194,11 @@ package
 			onRankingUpdated();
 		}
 		
-		protected function travelToMine(mine:Mine):void
+		protected function travelToMine(planet:Planet, mine:Mine):void
 		{
+			enableLoading();
+			
+			DataManager.getInstance().currentPlanet = planet;
 			DataManager.getInstance().currentMine = mine;
 			
 			changeLevel(GameManager.getInstance().getClientMapIndexFromServerMapId(mine.map));
