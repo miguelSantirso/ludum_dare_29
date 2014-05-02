@@ -36,7 +36,6 @@ package space_digger
 			super("seam", params);
 			
 			// 1 tile x 1 tile - Hardcoded size makes it easier to place seams on Tiled editor
-			width = height = 33; 
 			offsetX = Math.ceil(33 * 0.5);
 			offsetY = Math.ceil(33 * 1.5);
 			

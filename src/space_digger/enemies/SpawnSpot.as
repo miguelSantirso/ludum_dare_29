@@ -1,8 +1,6 @@
 package space_digger.enemies 
 {
-	import Box2D.Collision.b2Distance;
 	import citrus.objects.CitrusSprite;
-	import citrus.objects.platformer.box2d.Enemy;
 	import flash.geom.Point;
 	import org.osflash.signals.Signal;
 	import space_digger.enemies.EnemyType;
@@ -31,14 +29,13 @@ package space_digger.enemies
 		{
 			super("spawn", params);
 			
-			view = "hueco";
-			group = 0;
-			
 			var nameComponents:Array = name.split('_');
 			if (nameComponents.length != 2 || nameComponents[0] != "spawn")
 			{
 				throw new Error("Incorrectly named spawn");
 			}
+			
+			visible = false;
 			
 			updateCallEnabled = true;
 			
