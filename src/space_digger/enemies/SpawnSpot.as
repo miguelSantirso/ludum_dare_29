@@ -1,9 +1,12 @@
 package space_digger.enemies 
 {
+	import Box2D.Collision.b2Distance;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.box2d.Enemy;
+	import flash.geom.Point;
 	import org.osflash.signals.Signal;
 	import space_digger.enemies.EnemyType;
+	import space_digger.PlayerCharacter;
 	
 	/**
 	 * ...
@@ -17,6 +20,9 @@ package space_digger.enemies
 		private var _nextSpawnTime:Number = 0;
 		private var _enemyType:int;
 		private var _CntFoes:int = 0;
+		private var _player:PlayerCharacter;
+		private var _player_pos:Point;
+		private var _spawnspot_pos:Point;
 		
 		private static const MAX_FOES:int = 1;
 		private static const SPAWN_TIME:int = 5;
@@ -37,6 +43,12 @@ package space_digger.enemies
 			updateCallEnabled = true;
 			
 			_enemyType = EnemyType.fromString(nameComponents[1]);
+			
+			_player_pos = new Point();
+			
+			_spawnspot_pos = new Point();
+			_spawnspot_pos.x = this.x;
+			_spawnspot_pos.y = this.y;
 		}
 		
 		public function addFoe(foe:Foe):void
@@ -66,6 +78,20 @@ package space_digger.enemies
 				
 			if (_nextSpawnTime!= 0 && _elapsedTime < _nextSpawnTime)
 				return;
+
+			if (!_player)
+			{
+				_player = _ce.state.getObjectByName("player_char") as PlayerCharacter;
+			}
+			
+			_player_pos.x = _player.x;
+			_player_pos.y = _player.y;
+			
+			if (Point.distance(_player_pos, _spawnspot_pos) <= 300)
+			{
+				_nextSpawnTime = _elapsedTime + SPAWN_TIME;
+				return;
+			}
 			
 			switch(_enemyType)
 			{
