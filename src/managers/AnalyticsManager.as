@@ -48,14 +48,15 @@ package managers
 			trace(e.text);
 		}
 
-		public function logErrorEvent(message:String, severity:String, area:String = null,
-									  x:Number = NaN, y:Number = NaN, z:Number = NaN):void
+		public function triggerErrorEvent(message:String, severity:String = GAErrorSeverity.ERROR, 
+										  area:String = null, x:Number = NaN, y:Number = NaN, 
+										  z:Number = NaN):void
 		{
 				GameAnalytics.newErrorEvent(message, severity, area, x, y, z);
 		}
 		
-		public function logDesignEvent(eventId:String, value:Number, area:String = null,
-									   x:Number = NaN, y:Number = NaN, z:Number = NaN):void
+		public function triggerDesignEvent(eventId:String, value:Number, area:String = null,
+										   x:Number = NaN, y:Number = NaN, z:Number = NaN):void
 		{
 			GameAnalytics.newDesignEvent(eventId, value, area, x, y, z);
 		}
