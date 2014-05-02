@@ -124,6 +124,7 @@
   <object type="citrus.objects.platformer.box2d.Platform" x="990" y="330" width="99" height="33"/>
   <object name="ship" type="space_digger.SpaceShip" x="644" y="-243" width="33" height="33">
    <properties>
+    <property name="group" value="2"/>
     <property name="view" value="FireSpaceShip"/>
    </properties>
    <ellipse/>
