@@ -10,7 +10,7 @@ package space_digger.levels
 	{
 		// TILED MAP FILES
 		
-		[Embed(source="../../../res/levels/level_sdgeneric_small_1.tmx", mimeType="application/octet-stream")]
+		[Embed(source="../../../res/levels/level_fire_small_1.tmx", mimeType="application/octet-stream")]
 		private static var TiledMapSmall:Class;
 		
 		
@@ -32,11 +32,9 @@ package space_digger.levels
 		}
 		
 		
-		public static function tiledMap(templateName:String, tilesetName):XML
+		public static function tiledMap(templateName:String):XML
 		{
-			var mapTxt:String = new TiledMapsByName[templateName];
-			mapTxt = mapTxt.replace(/sdgeneric/g, tilesetName);
-			return XML(mapTxt);
+			return XML(new TiledMapsByName[templateName]);
 		}
 		
 		public static function tileset(name:String):Bitmap

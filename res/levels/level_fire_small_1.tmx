@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="40" height="13" tilewidth="33" tileheight="33">
- <tileset firstgid="1" name="tileset_sdgeneric" tilewidth="33" tileheight="33">
-  <image source="../tilesets/tileset_sdgeneric.png" width="297" height="132"/>
+ <tileset firstgid="1" name="tileset_fire" tilewidth="33" tileheight="33">
+  <image source="../tilesets/tileset_fire.png" width="297" height="132"/>
   <tile id="12">
    <properties>
     <property name="" value=""/>
@@ -34,43 +34,43 @@
   </object>
   <object type="citrus.objects.CitrusSprite" x="80" y="30">
    <properties>
-    <property name="view" value="Liana1_sdgeneric"/>
+    <property name="view" value="Liana1_fire"/>
    </properties>
    <ellipse/>
   </object>
   <object type="citrus.objects.CitrusSprite" x="166" y="228">
    <properties>
-    <property name="view" value="Liana2_sdgeneric"/>
+    <property name="view" value="Liana2_fire"/>
    </properties>
    <ellipse/>
   </object>
   <object type="citrus.objects.CitrusSprite" x="387" y="228">
    <properties>
-    <property name="view" value="Liana3_sdgeneric"/>
+    <property name="view" value="Liana3_fire"/>
    </properties>
    <ellipse/>
   </object>
   <object type="citrus.objects.CitrusSprite" x="327" y="229">
    <properties>
-    <property name="view" value="Liana2_sdgeneric"/>
+    <property name="view" value="Liana2_fire"/>
    </properties>
    <ellipse/>
   </object>
   <object type="citrus.objects.CitrusSprite" x="753" y="229">
    <properties>
-    <property name="view" value="Liana1_sdgeneric"/>
+    <property name="view" value="Liana1_fire"/>
    </properties>
    <ellipse/>
   </object>
   <object type="citrus.objects.CitrusSprite" x="927" y="131">
    <properties>
-    <property name="view" value="Liana1_sdgeneric"/>
+    <property name="view" value="Liana1_fire"/>
    </properties>
    <ellipse/>
   </object>
   <object type="citrus.objects.CitrusSprite" x="1196" y="129">
    <properties>
-    <property name="view" value="Liana2_sdgeneric"/>
+    <property name="view" value="Liana2_fire"/>
    </properties>
    <ellipse/>
   </object>
@@ -125,7 +125,7 @@
   <object name="ship" type="space_digger.SpaceShip" x="644" y="-243" width="33" height="33">
    <properties>
     <property name="group" value="2"/>
-    <property name="view" value="SpaceShip_sdgeneric"/>
+    <property name="view" value="SpaceShip_fire"/>
    </properties>
    <ellipse/>
   </object>
@@ -133,27 +133,27 @@
  <objectgroup color="#ff5500" name="breakable blocks" width="40" height="13">
   <object type="space_digger.DestructibleBlock" x="1089" y="33" width="33" height="33">
    <properties>
-    <property name="view" value="BreakableBlock_sdgeneric"/>
+    <property name="view" value="BreakableBlock_fire"/>
    </properties>
   </object>
   <object type="space_digger.DestructibleBlock" x="1089" y="66" width="33" height="33">
    <properties>
-    <property name="view" value="BreakableBlock_sdgeneric"/>
+    <property name="view" value="BreakableBlock_fire"/>
    </properties>
   </object>
   <object type="space_digger.DestructibleBlock" x="1155" y="297" width="33" height="33">
    <properties>
-    <property name="view" value="BreakableBlock_sdgeneric"/>
+    <property name="view" value="BreakableBlock_fire"/>
    </properties>
   </object>
   <object type="space_digger.DestructibleBlock" x="1155" y="231" width="33" height="33">
    <properties>
-    <property name="view" value="BreakableBlock_sdgeneric"/>
+    <property name="view" value="BreakableBlock_fire"/>
    </properties>
   </object>
   <object type="space_digger.DestructibleBlock" x="1155" y="264" width="33" height="33">
    <properties>
-    <property name="view" value="BreakableBlock_sdgeneric"/>
+    <property name="view" value="BreakableBlock_fire"/>
    </properties>
   </object>
  </objectgroup>
@@ -172,32 +172,32 @@
  <objectgroup color="#00aa00" name="seams" width="40" height="13">
   <object name="seam_4" type="space_digger.Seam" x="627" y="297" width="33" height="33">
    <properties>
-    <property name="view" value="Seam_sdgeneric"/>
+    <property name="view" value="Seam_fire"/>
    </properties>
   </object>
   <object name="seam_0" type="space_digger.Seam" x="792" y="66" width="33" height="33">
    <properties>
-    <property name="view" value="Seam_sdgeneric"/>
+    <property name="view" value="Seam_fire"/>
    </properties>
   </object>
   <object name="seam_1" type="space_digger.Seam" x="1254" y="66" width="33" height="33">
    <properties>
-    <property name="view" value="Seam_sdgeneric"/>
+    <property name="view" value="Seam_fire"/>
    </properties>
   </object>
   <object name="seam_2" type="space_digger.Seam" x="660" y="297" width="33" height="33">
    <properties>
-    <property name="view" value="Seam_sdgeneric"/>
+    <property name="view" value="Seam_fire"/>
    </properties>
   </object>
   <object name="seam_4" type="space_digger.Seam" x="99" y="66" width="33" height="33">
    <properties>
-    <property name="view" value="Seam_sdgeneric"/>
+    <property name="view" value="Seam_fire"/>
    </properties>
   </object>
   <object name="seam_4" type="space_digger.Seam" x="481" y="165" width="33" height="33">
    <properties>
-    <property name="view" value="Seam_sdgeneric"/>
+    <property name="view" value="Seam_fire"/>
    </properties>
   </object>
  </objectgroup>

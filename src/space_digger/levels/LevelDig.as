@@ -51,7 +51,7 @@ package space_digger.levels
 		
 		public function LevelDig(levelConfig:Object) 
 		{
-			super(GameplayLevelsConfig.tiledMap(levelConfig.template, levelConfig.tileset), GameplayLevelsConfig.tileset(levelConfig.tileset));
+			super(GameplayLevelsConfig.tiledMap(levelConfig.template), GameplayLevelsConfig.tileset(levelConfig.tileset));
 			
 			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
 		}
