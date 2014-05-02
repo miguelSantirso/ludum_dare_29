@@ -13,9 +13,9 @@ package space_digger.levels
 	{
 		protected var _claimedSeamIndexes:Array;
 		
-		public function LevelDigOffline(_level:MovieClip) 
+		public function LevelDigOffline(_tiledMap:XML) 
 		{
-			super(_level);
+			super(_tiledMap);
 			
 			_claimedSeamIndexes = new Array();
 		}

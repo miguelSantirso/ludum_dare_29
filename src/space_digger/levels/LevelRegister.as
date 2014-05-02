@@ -13,7 +13,7 @@ package space_digger.levels
 	 * ...
 	 * @author 10 2  Live Team
 	 */
-	public class LevelRegister extends GameLevel
+	public class LevelRegister extends StateMenu
 	{
 		private var _suffixIndex:int = 0;
 		private var _offlineStarted:Boolean = false;

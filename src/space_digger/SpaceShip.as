@@ -16,6 +16,7 @@ package space_digger
 			
 			updateCallEnabled = true;
 			_animation = "enter";
+			registration = "center";
 		}
 		
 		

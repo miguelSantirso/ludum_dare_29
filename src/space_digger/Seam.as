@@ -35,10 +35,10 @@ package space_digger
 		{
 			super("seam", params);
 			
-			/*width = 36;
-			height = 67;
-			offsetX = 115;
-			offsetY = 2;*/
+			// 1 tile x 1 tile - Hardcoded size makes it easier to place seams on Tiled editor
+			width = height = 33; 
+			offsetX = Math.ceil(33 * 0.5);
+			offsetY = Math.ceil(33 * 1.5);
 			
 			var nameComponents:Array = name.split('_');
 			if (nameComponents.length != 2 || nameComponents[0] != "seam")

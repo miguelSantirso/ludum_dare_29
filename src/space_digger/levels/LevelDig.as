@@ -48,7 +48,7 @@ package space_digger.levels
 	 * ...
 	 * @author 10 2  Live Team
 	 */
-	public class LevelDig extends GameLevel
+	public class LevelDig extends StateGameplay
 	{
 		public var startedDigging:Signal = new Signal(Number, Number);
 		
@@ -62,9 +62,9 @@ package space_digger.levels
 		
 		protected var _hud:GameplayHud = new GameplayHud();
 		
-		public function LevelDig(_level:MovieClip) 
+		public function LevelDig(_tiledMap:XML) 
 		{
-			super(_level);
+			super(_tiledMap);
 			
 			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
 		}
@@ -94,7 +94,7 @@ package space_digger.levels
 			_player.onTakeDamage.add(onPlayerTakeDamage);
 			
 			_ship = getObjectByName("ship") as SpaceShip;
-			view.camera.setUp(_ship, new Rectangle(0, -500, 1000, 530));
+			view.camera.setUp(_ship, new Rectangle( -2000, -500, 5000, 530));
 			
 			_exit = getObjectByName("exit") as Sensor;
 			_exit.view = "FxExit";

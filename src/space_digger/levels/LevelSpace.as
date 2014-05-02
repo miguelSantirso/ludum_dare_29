@@ -28,7 +28,7 @@ package space_digger.levels
 	 * ...
 	 * @author 10 2  Live Team
 	 */
-	public class LevelSpace extends GameLevel
+	public class LevelSpace extends StateMenu
 	{
 		protected var _recentActivityScroller:Scroller;
 		protected var _ongoingOpsScroller:Scroller;

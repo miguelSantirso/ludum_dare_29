@@ -59,63 +59,15 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			levelManager = new LevelManager(GameLevel);
+			levelManager = new LevelManager(SDState);
 			levelManager.onLevelChanged.add(onLevelChanged);
 			levelManager.levels = 
 				[
 					[LevelRegister, "../swf/levels/LevelRegister.swf"],
 					[LevelSpace, "../swf/levels/LevelSpace.swf"],
-					[LevelDig, "../swf/levels/Level1.swf"],
-					[LevelDig, "../swf/levels/Level2.swf"],
-					[LevelDig, "../swf/levels/Level3.swf"],
-					[LevelDig, "../swf/levels/Level4.swf"],
-					[LevelDig, "../swf/levels/Level5.swf"],
-					[LevelDig, "../swf/levels/Level6.swf"],
-					[LevelDig, "../swf/levels/Level7.swf"],
-					[LevelDig, "../swf/levels/Level8.swf"],
-					[LevelDig, "../swf/levels/Level9.swf"],
-					[LevelDig, "../swf/levels/Level10.swf"],
-					[LevelDig, "../swf/levels/Level11.swf"],
-					[LevelDig, "../swf/levels/Level12.swf"],
-					[LevelDig, "../swf/levels/Level13.swf"],
-					[LevelDig, "../swf/levels/Level14.swf"],
-					[LevelDig, "../swf/levels/Level15.swf"],
-					[LevelDig, "../swf/levels/Level16.swf"],
-					[LevelDig, "../swf/levels/Level17.swf"],
-					[LevelDig, "../swf/levels/Level18.swf"],
-					[LevelDig, "../swf/levels/Level19.swf"],
-					[LevelDig, "../swf/levels/Level20.swf"],
-					[LevelDig, "../swf/levels/Level21.swf"],
-					[LevelDig, "../swf/levels/Level22.swf"],
-					[LevelDig, "../swf/levels/Level23.swf"],
-					[LevelDig, "../swf/levels/Level24.swf"],
-					[LevelDig, "../swf/levels/Level25.swf"],
+					[LevelDig, "../res/levels/level_fire_small_1.tmx"],
 					
-					[LevelDigOffline, "../swf/levels/Level1.swf"],
-					[LevelDigOffline, "../swf/levels/Level2.swf"],
-					[LevelDigOffline, "../swf/levels/Level3.swf"],
-					[LevelDigOffline, "../swf/levels/Level4.swf"],
-					[LevelDigOffline, "../swf/levels/Level5.swf"],
-					[LevelDigOffline, "../swf/levels/Level6.swf"],
-					[LevelDigOffline, "../swf/levels/Level7.swf"],
-					[LevelDigOffline, "../swf/levels/Level8.swf"],
-					[LevelDigOffline, "../swf/levels/Level9.swf"],
-					[LevelDigOffline, "../swf/levels/Level10.swf"],
-					[LevelDigOffline, "../swf/levels/Level11.swf"],
-					[LevelDigOffline, "../swf/levels/Level12.swf"],
-					[LevelDigOffline, "../swf/levels/Level13.swf"],
-					[LevelDigOffline, "../swf/levels/Level14.swf"],
-					[LevelDigOffline, "../swf/levels/Level15.swf"],
-					[LevelDigOffline, "../swf/levels/Level16.swf"],
-					[LevelDigOffline, "../swf/levels/Level17.swf"],
-					[LevelDigOffline, "../swf/levels/Level18.swf"],
-					[LevelDigOffline, "../swf/levels/Level19.swf"],
-					[LevelDigOffline, "../swf/levels/Level20.swf"],
-					[LevelDigOffline, "../swf/levels/Level21.swf"],
-					[LevelDigOffline, "../swf/levels/Level22.swf"],
-					[LevelDigOffline, "../swf/levels/Level23.swf"],
-					[LevelDigOffline, "../swf/levels/Level24.swf"],
-					[LevelDigOffline, "../swf/levels/Level25.swf"],
+					[LevelDigOffline, "../res/levels/level_fire_small_1.tmx"]
 				];
 			
 			
@@ -179,7 +131,7 @@ package
 			changeLevel(2);
 		}
 		
-		private function onLevelChanged(level:GameLevel):void
+		private function onLevelChanged(level:SDState):void
 		{
 			state = level;
 			
@@ -208,7 +160,7 @@ package
 		
 		private function travelToOfflineMine():void
 		{
-			var numberOfLevels:int = 25;
+			var numberOfLevels:int = 1;
 			var randomLevel:int = Math.ceil(Math.random()*numberOfLevels);
 			
 			// Uncomment to get ordered offline levels
@@ -216,7 +168,7 @@ package
 			offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
 			trace("current offline level",offlineLevel);*/
 			
-			//randomLevel = 1;
+			randomLevel = 1;
 			
 			changeLevel(numberOfLevels + 2 + randomLevel);
 		}
@@ -292,16 +244,16 @@ package
 		
 		protected function enableLevel():void
 		{
-			if (state is GameLevel)
-				(state as GameLevel).enableInput();
+			if (state is SDState)
+				(state as SDState).enableInput();
 			
 			disableLoading();
 		}
 		
 		protected function disableLevel():void
 		{
-			if (state is GameLevel)
-				(state as GameLevel).disableInput();
+			if (state is SDState)
+				(state as SDState).disableInput();
 			
 			enableLoading();
 		}
