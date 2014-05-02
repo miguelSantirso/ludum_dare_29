@@ -1,5 +1,9 @@
 package 
 {
+	import flash.events.UncaughtErrorEvent;
+	
+	import citrus.core.CitrusEngine;
+	import citrus.core.IState;
 	import citrus.sounds.CitrusSoundGroup;
 	import citrus.sounds.CitrusSoundInstance;
 	import citrus.events.CitrusSoundEvent;
@@ -13,6 +17,7 @@ package
 	import flash.events.Event;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
+	import space_digger.debug.ErrorController;
 	import space_digger.popups.PopupGeneric;
 	import space_digger.popups.PopupTutorial;
 	import utils.Stats;
@@ -38,6 +43,9 @@ package
 		private var _splashScreen:AssetSplashScreen;
 		private var _splashScreenTimer:Timer;
 		
+		//keeps track of the uncaughtErrors
+		private var _errorController:ErrorController;
+
 		public function Main():void 
 		{
 			if (stage)
@@ -57,6 +65,13 @@ package
 		
 		private function init(e:Event = null):void
 		{
+			_errorController = new ErrorController();
+			
+			loaderInfo.uncaughtErrorEvents.addEventListener(
+				UncaughtErrorEvent.UNCAUGHT_ERROR, 
+				_errorController.uncaughtError
+			);
+			
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			levelManager = new LevelManager(SDState);
@@ -97,9 +112,7 @@ package
 			_splashScreen = new AssetSplashScreen();
 			addChild(_splashScreen);
 
-			SoundManager.getInstance().soundsLoaded.add(onStartGame);
-			SoundManager.getInstance().preLoadSounds();
-			// TODO Fix this, the signal is not dispatched correctly
+			SoundManager.getInstance().init();
 			onStartGame();
 			
 			//_splashScreenTimer = new Timer(SPLASH_SCREEN_DURATION_IN_SECS * 1000, 1);

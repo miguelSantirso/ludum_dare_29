@@ -44,10 +44,7 @@ package managers
 
 		private var _ce:CitrusEngine = null;
 		private static var instance:SoundManager;
-		private static var instantiated:Boolean = false;
-		
-		public var soundsLoaded:Signal;
-		
+		private static var instantiated:Boolean = false;	
 		
 		public static function getInstance():SoundManager
 		{
@@ -62,7 +59,6 @@ package managers
 		{
 			if (instantiated) {
 				instantiated = false;
-				init();
 			}else {
 				throw new Error("Use getInstance()");
 			}
@@ -71,7 +67,6 @@ package managers
 		public function init():void 
 		{
 			_ce = CitrusEngine.getInstance();
-			soundsLoaded = new Signal();
 			
 			//offset the sounds (less gap in the looping sound)
 			CitrusSoundInstance.startPositionOffset = 80;
@@ -90,27 +85,11 @@ package managers
 			_ce.sound.addSound("GetHit", { sound:SND_GET_HIT , group:CitrusSoundGroup.SFX } );
 			_ce.sound.addSound("HitEnemy", { sound:SND_HIT_ENEMY , group:CitrusSoundGroup.SFX } );
 			_ce.sound.addSound("JetPack", { sound:SND_JETPACK , permanent:true, volume:0.2 , loops:int.MAX_VALUE , group:CitrusSoundGroup.SFX } );
-		}
-		
-		public function preLoadSounds():void
-		{
-			_ce.sound.getGroup(CitrusSoundGroup.SFX).addEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED, 
-				function(e:CitrusSoundEvent):void
-				{
-					e.currentTarget.removeEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED,arguments.callee);
-					trace("SOUND EFFECTS ARE PRELOADED");
-
-					//state = new AdvancedSoundsState();
-					soundsLoaded.dispatch();
-					
-					trace("Sounds loaded");
-				});
-
+			
 			_ce.sound.getGroup(CitrusSoundGroup.BGM).volume = 0.4;
 			
 			_ce.sound.getGroup(CitrusSoundGroup.SFX).volume = 0.4;
 			_ce.sound.getGroup(CitrusSoundGroup.SFX).preloadSounds();
 		}
 	}
-
 }
