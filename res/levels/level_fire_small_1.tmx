@@ -57,5 +57,25 @@
     <property name="view" value="SeamFire"/>
    </properties>
   </object>
+  <object name="seam_1" type="space_digger.Seam" x="1254" y="66" width="33" height="33">
+   <properties>
+    <property name="view" value="SeamFire"/>
+   </properties>
+  </object>
+  <object name="seam_2" type="space_digger.Seam" x="660" y="297" width="33" height="33">
+   <properties>
+    <property name="view" value="SeamFire"/>
+   </properties>
+  </object>
+  <object name="seam_4" type="space_digger.Seam" x="627" y="297" width="33" height="33">
+   <properties>
+    <property name="view" value="SeamFire"/>
+   </properties>
+  </object>
+  <object name="seam_4" type="space_digger.Seam" x="82" y="66" width="33" height="33">
+   <properties>
+    <property name="view" value="SeamFire"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
