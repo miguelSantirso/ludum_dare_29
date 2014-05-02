@@ -278,14 +278,14 @@ package space_digger.levels
 			var mine_id:int = DataManager.getInstance().currentMine.id;
 			
 			// Report the amoun of claimed seams after the digging session
-			AnalyticsManager.getInstance().logDesignEvent("digging_session:claimed_seams:" + planet_name+":" + mine_id,
-														  numClaimed,
-														  "LevelDig");
+			AnalyticsManager.getInstance().triggerDesignEvent("digging_session:claimed_seams:" + planet_name+":" + mine_id,
+															  numClaimed,
+															  "LevelDig");
 														  
 			var player:PlayerCharacter = _player = getObjectByName("player_char") as PlayerCharacter;
-			AnalyticsManager.getInstance().logDesignEvent("digging_session:consumed_lifes:" + planet_name+":" + mine_id,
-														  CustomHero.MAX_LIFES - player.nLifes,
-														  "LevelDig");
+			AnalyticsManager.getInstance().triggerDesignEvent("digging_session:consumed_lifes:" + planet_name + ":" + mine_id,
+															  CustomHero.MAX_LIFES - player.nLifes,
+															  "LevelDig");
 			
 			GameManager.getInstance().displayMessagePopUp(message, PopupGeneric.TYPE_MONO, "OK", "", goToSpaceLevel); // exit here is really important
 		}

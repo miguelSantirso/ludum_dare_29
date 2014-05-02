@@ -1,5 +1,7 @@
 package 
 {
+	import flash.events.UncaughtErrorEvent;
+	
 	import citrus.core.CitrusEngine;
 	import citrus.core.IState;
 	import citrus.sounds.CitrusSoundGroup;
@@ -11,6 +13,7 @@ package
 	import flash.events.Event;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
+	import space_digger.debug.ErrorController;
 	import space_digger.popups.PopupGeneric;
 	import space_digger.popups.PopupTutorial;
 	import utils.Stats;
@@ -36,6 +39,9 @@ package
 		private var _splashScreen:AssetSplashScreen;
 		private var _splashScreenTimer:Timer;
 		
+		//keeps track of the uncaughtErrors
+		private var _errorController:ErrorController;
+
 		public function Main():void 
 		{
 			if (stage)
@@ -55,6 +61,13 @@ package
 		
 		private function init(e:Event = null):void
 		{
+			_errorController = new ErrorController();
+			
+			loaderInfo.uncaughtErrorEvents.addEventListener(
+				UncaughtErrorEvent.UNCAUGHT_ERROR, 
+				_errorController.uncaughtError
+			);
+			
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			levelManager = new LevelManager(GameLevel);
