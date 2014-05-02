@@ -160,9 +160,7 @@ package
 			_splashScreen = new AssetSplashScreen();
 			addChild(_splashScreen);
 
-			SoundManager.getInstance().soundsLoaded.add(onStartGame);
-			SoundManager.getInstance().preLoadSounds();
-			// TODO Fix this, the signal is not dispatched correctly
+			SoundManager.getInstance().init();
 			onStartGame();
 			
 			//_splashScreenTimer = new Timer(SPLASH_SCREEN_DURATION_IN_SECS * 1000, 1);
