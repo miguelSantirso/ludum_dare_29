@@ -28,6 +28,90 @@
   <properties>
    <property name="group" value="0"/>
   </properties>
+  <object type="citrus.objects.CitrusSprite" x="363" y="132">
+   <properties>
+    <property name="view" value="Liana1_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="330" y="396">
+   <properties>
+    <property name="view" value="Liana1_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="519" y="622">
+   <properties>
+    <property name="view" value="Liana1_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="1010" y="229">
+   <properties>
+    <property name="view" value="Liana1_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="48" y="815">
+   <properties>
+    <property name="view" value="Liana1_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="545" y="132">
+   <properties>
+    <property name="view" value="Liana2_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="322" y="378">
+   <properties>
+    <property name="view" value="Liana2_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="743" y="803">
+   <properties>
+    <property name="view" value="Liana2_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="675" y="1337">
+   <properties>
+    <property name="view" value="Liana2_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="544" y="802">
+   <properties>
+    <property name="view" value="Liana3_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="84" y="617">
+   <properties>
+    <property name="view" value="Liana3_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="449" y="392">
+   <properties>
+    <property name="view" value="Liana3_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="612" y="130">
+   <properties>
+    <property name="view" value="Liana3_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="citrus.objects.CitrusSprite" x="618" y="391">
+   <properties>
+    <property name="view" value="Liana2_forest"/>
+   </properties>
+   <ellipse/>
+  </object>
  </objectgroup>
  <layer name="layout" width="40" height="45">
   <properties>
