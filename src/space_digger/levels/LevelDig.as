@@ -180,19 +180,19 @@ package space_digger.levels
 		
 		protected function onPlaySuccess(payload:Object):void
 		{
-			view.camera.bounds = null;
-				var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
-				var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
-				view.camera.camPos.x = ship.x;
-				view.camera.camPos.y = ship.y - 40;
-				player.x = ship.x;
-				view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 2.3);
-				
-				_hud.startCountdown(payload.stopwatch * 1000);
-				
-				_exploring = true;
-				
-				retryCounter = 0;
+			view.camera.bounds = new Rectangle(0, -500, 1320, 3000);
+			var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
+			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
+			view.camera.camPos.x = ship.x;
+			view.camera.camPos.y = ship.y - 40;
+			player.x = ship.x;
+			view.camera.tweenSwitchToTarget(getObjectByName("player_char"), 2.3);
+			
+			_hud.startCountdown(payload.stopwatch * 1000);
+			
+			_exploring = true;
+			
+			retryCounter = 0;
 		}
 		
 		protected var retryCounter:int = 0;
