@@ -28,7 +28,7 @@
   <object name="sky" type="citrus.objects.CitrusSprite" x="644" y="-330" width="33" height="33">
    <properties>
     <property name="registration" value="center"/>
-    <property name="view" value="BkgHappy2"/>
+    <property name="view" value="Sky_fire"/>
    </properties>
    <ellipse/>
   </object>
