@@ -6,14 +6,14 @@ package space_digger.levels
 	 * ...
 	 * @author Miguel
 	 */
-	internal final class GameplayLevelsConfig 
+	public final class Levels 
 	{
 		// TILED MAP FILES
 		
 		[Embed(source="../../../res/levels/level_fire_small_1.tmx", mimeType="application/octet-stream")]
-		private static var TiledMapSmall:Class;
+		public static var TiledMapFireSmall1:Class;
 		[Embed(source="../../../res/levels/level_forest_large_1.tmx", mimeType="application/octet-stream")]
-		private static var TiledMapLarge:Class;
+		public static var TiledMapForestLarge1:Class;
 		
 		// TILESETS
 		
@@ -22,29 +22,19 @@ package space_digger.levels
 		[Embed(source="../../../res/tilesets/tileset_forest.png")]
 		private static var TilesetForest:Class;
 		
-		private static const TiledMapsByName:Dictionary = new Dictionary();
 		private static const TilesetsByName:Dictionary = new Dictionary();
 		
 		{
-			TiledMapsByName['small'] = TiledMapSmall;
-			TiledMapsByName['large'] = TiledMapLarge;
-			// ...
-			
-			TilesetsByName['fire'] = TilesetFire;
-			TilesetsByName['forest'] = TilesetForest;
+			TilesetsByName['tileset_fire'] = TilesetFire;
+			TilesetsByName['tileset_forest'] = TilesetForest;
 			// ...
 		}
 		
-		
-		public static function tiledMap(templateName:String):XML
-		{
-			return XML(new TiledMapsByName[templateName]);
-		}
 		
 		public static function tileset(name:String):Bitmap
 		{
 			var tileset:Bitmap = new TilesetsByName[name];
-			tileset.name = "tileset_" + name + ".png";
+			tileset.name = name + ".png";
 			return tileset;
 		}
 		

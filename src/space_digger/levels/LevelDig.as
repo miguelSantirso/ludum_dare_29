@@ -49,9 +49,9 @@ package space_digger.levels
 		
 		protected var _hud:GameplayHud = new GameplayHud();
 		
-		public function LevelDig(levelConfig:Object) 
+		public function LevelDig(tiledMap:XML) 
 		{
-			super(GameplayLevelsConfig.tiledMap(levelConfig.template), GameplayLevelsConfig.tileset(levelConfig.tileset));
+			super(tiledMap, Levels.tileset(tiledMap.tileset[0].@name));
 			
 			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
 		}
@@ -180,7 +180,7 @@ package space_digger.levels
 		
 		protected function onPlaySuccess(payload:Object):void
 		{
-			view.camera.bounds = new Rectangle(0, -500, 1320, 3000);
+			view.camera.bounds = new Rectangle(0, -1000, 1320, 3500);
 			var ship:CitrusSprite = getObjectByName("ship") as CitrusSprite;
 			var player:PlayerCharacter = getObjectByName("player_char") as PlayerCharacter;
 			view.camera.camPos.x = ship.x;

@@ -1,30 +1,28 @@
 package 
 {
-	import flash.events.UncaughtErrorEvent;
-	
-	import citrus.core.CitrusEngine;
-	import citrus.core.IState;
-	import citrus.sounds.CitrusSoundGroup;
-	import citrus.sounds.CitrusSoundInstance;
-	import citrus.events.CitrusSoundEvent;
-	import flash.display.MovieClip;
-	
 	import citrus.core.CitrusEngine;
 	import citrus.core.IState;
 	import citrus.utils.LevelManager;
+	import data.Mine;
 	import data.Planet;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.TimerEvent;
+	import flash.events.UncaughtErrorEvent;
 	import flash.utils.Timer;
+	import managers.*;
 	import space_digger.debug.ErrorController;
+	import space_digger.levels.LevelDig;
+	import space_digger.levels.LevelDigOffline;
+	import space_digger.levels.LevelRegister;
+	import space_digger.levels.Levels;
+	import space_digger.levels.LevelSpace;
 	import space_digger.popups.PopupGeneric;
 	import space_digger.popups.PopupTutorial;
 	import utils.Stats;
-	import space_digger.levels.*;
-	import data.Mine;
 	
-	import managers.*;
+	
+	
 	
 	/**
 	 * ...
@@ -63,15 +61,6 @@ package
 			
 		}
 		
-		private function levelParams(template:String, tileset:String):XML
-		{
-			var xml:XML = <level_params />;
-			xml.template = template;
-			xml.tileset = tileset;
-			
-			return xml;
-		}
-		
 		private function init(e:Event = null):void
 		{
 			_errorController = new ErrorController();
@@ -90,9 +79,9 @@ package
 					[LevelRegister, "../swf/levels/LevelRegister.swf"],
 					[LevelSpace, "../swf/levels/LevelSpace.swf"],
 					
-					[LevelDig, levelParams('small', 'fire')],
+					[LevelDig, XML(new Levels.TiledMapForestLarge1())],
 					
-					[LevelDigOffline, levelParams('large', 'forest')]
+					[LevelDigOffline, XML(new Levels.TiledMapForestLarge1())]
 				];
 			
 			
