@@ -122,13 +122,6 @@
   <object type="citrus.objects.platformer.box2d.Platform" x="627" y="330" width="66" height="33"/>
   <object type="citrus.objects.platformer.box2d.Platform" x="825" y="330" width="66" height="33"/>
   <object type="citrus.objects.platformer.box2d.Platform" x="990" y="330" width="99" height="33"/>
-  <object name="ship" type="space_digger.SpaceShip" x="644" y="-243" width="33" height="33">
-   <properties>
-    <property name="group" value="2"/>
-    <property name="view" value="SpaceShip_fire"/>
-   </properties>
-   <ellipse/>
-  </object>
  </objectgroup>
  <objectgroup color="#ff5500" name="breakable blocks" width="40" height="13">
   <object type="space_digger.DestructibleBlock" x="1089" y="33" width="33" height="33">
@@ -167,6 +160,13 @@
    <properties>
     <property name="view" value="FxExit"/>
    </properties>
+  </object>
+  <object name="ship" type="space_digger.SpaceShip" x="644" y="-243" width="33" height="33">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="view" value="SpaceShip_fire"/>
+   </properties>
+   <ellipse/>
   </object>
  </objectgroup>
  <objectgroup color="#00aa00" name="seams" width="40" height="13">

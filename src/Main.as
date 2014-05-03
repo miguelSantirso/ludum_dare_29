@@ -92,11 +92,11 @@ package
 					
 					[LevelDig, levelParams('small', 'fire')],
 					
-					[LevelDigOffline, levelParams('small', 'fire')]
+					[LevelDigOffline, levelParams('large', 'forest')]
 				];
 			
 			
-			if (Main.DEBUG)
+			//if (Main.DEBUG)
 				addChild(new Stats());
 
 			GameManager.getInstance().needsRegistration.add(goToLevelRegister);
