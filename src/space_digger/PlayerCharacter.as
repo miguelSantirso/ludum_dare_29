@@ -7,7 +7,6 @@ package space_digger
 	import Box2D.Dynamics.b2Fixture;
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.Contacts.b2Contact;
-	import citrus.objects.platformer.box2d.Enemy;
 	import flash.utils.setTimeout;
 	import citrus.input.controllers.Keyboard;
 	import citrus.physics.PhysicsCollisionCategories;
@@ -30,7 +29,7 @@ package space_digger
 		private var _rightSensorFixture:b2Fixture;
 		private var _rightSensorShape:b2PolygonShape;
 		
-		private var _contactingEnemies:Vector.<Enemy> = new Vector.<Enemy>();
+		private var _contactingEnemies:Vector.<CustomEnemy> = new Vector.<CustomEnemy>();
 		private var _contactingBlocks:Vector.<DestructibleBlock> = new Vector.<DestructibleBlock>();
 		
 		public function PlayerCharacter(name:String, params:Object=null) 
@@ -181,7 +180,7 @@ package space_digger
 		
 		private function attackEnemiesInRange():void
 		{
-			for each (var enemy:Enemy in _contactingEnemies)
+			for each (var enemy:CustomEnemy in _contactingEnemies)
 			{
 				if ((!inverted && enemy.x > x) || (_inverted && enemy.x < x))
 				{
@@ -217,7 +216,7 @@ package space_digger
 			}
 
 			var other:* = Box2DUtils.CollisionGetOther(this, contact);
-			var enemy:Enemy = other as Enemy;
+			var enemy:CustomEnemy = other as CustomEnemy;
 			if (enemy && _contactingEnemies.indexOf(enemy) < 0)
 			{
 				_contactingEnemies.push(enemy);
@@ -237,7 +236,7 @@ package space_digger
 		{
 			super.handleEndContact(contact);
 			
-			var enemy:Enemy = Box2DUtils.CollisionGetOther(this, contact) as Enemy;
+			var enemy:CustomEnemy = Box2DUtils.CollisionGetOther(this, contact) as CustomEnemy;
 			if (enemy)
 			{
 				var enemyIndex:int = _contactingEnemies.indexOf(enemy);

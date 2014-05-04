@@ -9,9 +9,9 @@
     <movie width="900" />
     <movie height="600" />
     <movie version="11" />
-    <movie minorVersion="1" />
+    <movie minorVersion="7" />
     <movie platform="Flash Player" />
-    <movie background="#000000" />
+    <movie background="#29313E" />
     <movie preferredSDK="Flex 4.6.0, AIR 3.8;4.6.0, 3.8;" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
@@ -25,6 +25,7 @@
     <option allowSourcePathOverlap="False" />
     <option benchmark="False" />
     <option es="False" />
+    <option inline="False" />
     <option locale="" />
     <option loadConfig="" />
     <option optimize="True" />
@@ -76,13 +77,13 @@
     <element path="lib\Water_enemy_actions.swc" />
     <element path="lib\loading_icon.swc" />
     <element path="lib\main_char_actions_water.swc" />
+    <element path="lib\GameAnalytics.swc" />
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="lib\greensock.swc" />
     <element path="lib\CEV3-1-9-ALL.swc" />
     <element path="lib\as3-signals-v0.9-BETA.swc" />
-    <element path="lib\GameAnalytics.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
@@ -116,6 +117,7 @@
   <options>
     <option showHiddenPaths="False" />
     <option testMovie="Default" />
+    <option testMovieCommand="" />
   </options>
   <!-- Plugin storage -->
   <storage />

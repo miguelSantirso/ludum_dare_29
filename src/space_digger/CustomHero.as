@@ -14,8 +14,8 @@ package space_digger
 	import flash.utils.getDefinitionByName;
 	import flash.utils.setTimeout;
 	import org.osflash.signals.Signal;
-	import citrus.objects.platformer.box2d.Enemy;
 	import citrus.objects.platformer.box2d.Sensor;
+	import space_digger.enemies.Spike;
 	
 	/**
 	 * ...
@@ -128,7 +128,7 @@ package space_digger
 		public var onAnimationChange:Signal;
 
 		protected var _groundContacts:Array = [];//Used to determine if he's on ground or not.
-		protected var _enemyClass:Class = Enemy;
+		protected var _enemyClass:Class = CustomEnemy;
 		protected var _onGround:Boolean = true;
 		protected var _springOffEnemy:Number = -1;
 		protected var _hurtTimeoutID:uint;
@@ -203,13 +203,16 @@ package space_digger
 		 * "citrus.objects.platformer.Enemy", or Enemy (with no quotes). Only String
 		 * form will work when creating objects via a level editor.
 		 */
-		[Inspectable(defaultValue="citrus.objects.platformer.box2d.Enemy",type="String")]
+		[Inspectable(defaultValue="space_diggers.CustomEnemy",type="String")]
 		public function set enemyClass(value:*):void
 		{
+			// TODO Enemy should be space_diggers.CustomEnemy instead of citrus.objects.platformer.Enemy
+			/*
 			if (value is String)
 				_enemyClass = getDefinitionByName(value as String) as Class;
 			else if (value is Class)
 				_enemyClass = value;
+			*/
 		}
 		
 		/**
@@ -394,7 +397,7 @@ package space_digger
 
 			if (_enemyClass && collider is _enemyClass)
 			{
-				if (_body.GetLinearVelocity().y < killVelocity && !_hurt)
+      	 		if (_body.GetLinearVelocity().y < killVelocity && !_hurt)
 				{
 					hurt();
 
