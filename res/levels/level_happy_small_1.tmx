@@ -124,27 +124,12 @@
   <object type="citrus.objects.platformer.box2d.Platform" x="990" y="330" width="99" height="33"/>
  </objectgroup>
  <objectgroup color="#ff5500" name="breakable blocks" width="40" height="13">
-  <object type="space_digger.DestructibleBlock" x="1089" y="33" width="33" height="33">
-   <properties>
-    <property name="view" value="BreakableBlock_happy"/>
-   </properties>
-  </object>
   <object type="space_digger.DestructibleBlock" x="1089" y="66" width="33" height="33">
    <properties>
     <property name="view" value="BreakableBlock_happy"/>
    </properties>
   </object>
   <object type="space_digger.DestructibleBlock" x="1155" y="297" width="33" height="33">
-   <properties>
-    <property name="view" value="BreakableBlock_happy"/>
-   </properties>
-  </object>
-  <object type="space_digger.DestructibleBlock" x="1155" y="231" width="33" height="33">
-   <properties>
-    <property name="view" value="BreakableBlock_happy"/>
-   </properties>
-  </object>
-  <object type="space_digger.DestructibleBlock" x="1155" y="264" width="33" height="33">
    <properties>
     <property name="view" value="BreakableBlock_happy"/>
    </properties>
