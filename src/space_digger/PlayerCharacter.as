@@ -184,7 +184,7 @@ package space_digger
 			{
 				if (contact is CustomEnemy)
 				{
-					_ce.sound.playSound("HitCustomEnemy");
+					_ce.sound.playSound("HitEnemy");
 					(contact as CustomEnemy).hurt();
 				}
 				else if (contact is DestructibleBlock)
