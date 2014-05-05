@@ -27,19 +27,19 @@ package managers
 		[Embed(source="/../res/sounds/death.mp3")]
 		public static const SND_DEATH:Class;
 		
-		[Embed(source="/../res/sounds/deploy_resampled.mp3")]
+		[Embed(source="/../res/sounds/deploy.mp3")]
 		public static const SND_DEPLOY_SEAM:Class;
 		
-		[Embed(source="/../res/sounds/destroy_seam_resampled.mp3")]
+		[Embed(source="/../res/sounds/destroy_seam.mp3")]
 		public static const SND_DESTROY_SEAM:Class;
 		
 		[Embed(source="/../res/sounds/get_hit.mp3")]
 		public static const SND_GET_HIT:Class;
 		
-		[Embed(source="/../res/sounds/hit_enemy_resampled.mp3")]
+		[Embed(source="/../res/sounds/hit_enemy.mp3")]
 		public static const SND_HIT_ENEMY:Class;
 		
-		[Embed(source="/../res/sounds/jetpack_resampled.mp3")]
+		[Embed(source="/../res/sounds/jetpack.mp3")]
 		public static const SND_JETPACK:Class;
 
 		private var _ce:CitrusEngine = null;
