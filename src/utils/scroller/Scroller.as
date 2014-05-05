@@ -94,6 +94,11 @@ package utils.scroller
 		{
 			// TO-DO
 		}
+		
+		public function get scrollerCanvas():Sprite
+		{
+			return _scrollerCanvas;
+		}
 
 		public function set scrollerLayout(layout:Boolean):void
 		{

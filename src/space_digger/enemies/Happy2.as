@@ -4,7 +4,7 @@ package space_digger.enemies
 	 * ...
 	 * @author oforcat
 	 */
-	public class Happy2 extends Patrol 
+	public class Happy2 extends Creeper 
 	{
 		
 		public function Happy2(name:String, params:Object=null) 

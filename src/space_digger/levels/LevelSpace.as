@@ -42,22 +42,23 @@ package space_digger.levels
 			super(_level);
 			
 			addChild(level);
+			
+			_recentActivityScroller = new Scroller(false, 4.2, ActivityIR, 5);
+			_ongoingOpsScroller = new Scroller(false, 3.8, OperationIR);
+			
+			level.slot_activity_list.addChild(_recentActivityScroller);
+			level.slot_ongoing_list.addChild(_ongoingOpsScroller);
+			
+			_recentActivityScroller.init();
+			_ongoingOpsScroller.init();
 		}
 		
 		public override function initialize():void
 		{
 			super.initialize();
-			
-			level.button_logout.addEventListener(MouseEvent.CLICK, openLogoutPopup);
-			level.button_jump.addEventListener(MouseEvent.CLICK, jumpToAnotherSystem,false,0,true);
-			
-			_recentActivityScroller = new Scroller(false, 4.2, ActivityIR, 5);
-			_recentActivityScroller.init();
-			level.slot_activity_list.addChild(_recentActivityScroller);
-			
-			_ongoingOpsScroller = new Scroller(false, 3.8, OperationIR);
-			_ongoingOpsScroller.init();
-			level.slot_ongoing_list.addChild(_ongoingOpsScroller);
+
+			level.button_logout.addEventListener(MouseEvent.CLICK, openLogoutPopup, false, 0, true);
+			level.button_jump.addEventListener(MouseEvent.CLICK, jumpToAnotherSystem, false, 0, true);
 			
 			_popupPlanet = new PopupPlanet();
 			_popupPlanet.x = (stage.stageWidth - _popupPlanet.width) * 0.5;

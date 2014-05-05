@@ -1,19 +1,17 @@
 package space_digger 
 {
-	import Box2D.Collision.b2Manifold;
 	import Box2D.Collision.Shapes.b2PolygonShape;
-	import Box2D.Collision.Shapes.b2Shape;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.b2Fixture;
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.Contacts.b2Contact;
-	import citrus.objects.Box2DPhysicsObject;
-	import citrus.objects.platformer.box2d.Enemy;
-	import flash.utils.setTimeout;
 	import citrus.input.controllers.Keyboard;
-	import citrus.physics.PhysicsCollisionCategories;
+	import citrus.objects.Box2DPhysicsObject;
 	import citrus.physics.box2d.Box2DUtils;
+	import citrus.physics.PhysicsCollisionCategories;
+	import flash.utils.setTimeout;
 	import space_digger.levels.LevelDig;
+	import space_digger.CustomEnemy;
 	
 	/**
 	 * ...
@@ -33,9 +31,6 @@ package space_digger
 		
 		private var _contactsLeft:Vector.<Box2DPhysicsObject> = new Vector.<Box2DPhysicsObject>();
 		private var _contactsRight:Vector.<Box2DPhysicsObject> = new Vector.<Box2DPhysicsObject>();
-		
-		/*private var _contactingEnemies:Vector.<Enemy> = new Vector.<Enemy>();
-		private var _contactingBlocks:Vector.<DestructibleBlock> = new Vector.<DestructibleBlock>();*/
 		
 		public function PlayerCharacter(name:String, params:Object=null) 
 		{
@@ -187,10 +182,10 @@ package space_digger
 			var relevantContacts:Vector.<Box2DPhysicsObject> = _inverted ? _contactsLeft : _contactsRight;
 			for each (var contact:Box2DPhysicsObject in relevantContacts)
 			{
-				if (contact is Enemy)
+				if (contact is CustomEnemy)
 				{
-					_ce.sound.playSound("HitEnemy");
-					(contact as Enemy).hurt();
+					_ce.sound.playSound("HitCustomEnemy");
+					(contact as CustomEnemy).hurt();
 				}
 				else if (contact is DestructibleBlock)
 				{
@@ -220,7 +215,7 @@ package space_digger
 
 			var other:* = Box2DUtils.CollisionGetOther(this, contact);
 			var relevantContacts:Vector.<Box2DPhysicsObject> = rightContact ? _contactsRight : _contactsLeft;
-			if (other is Enemy || other is DestructibleBlock && relevantContacts.indexOf(other) < 0)
+			if (other is CustomEnemy || other is DestructibleBlock && relevantContacts.indexOf(other) < 0)
 			{
 				relevantContacts.push(other);
 			}
@@ -241,7 +236,7 @@ package space_digger
 
 			var other:* = Box2DUtils.CollisionGetOther(this, contact);
 			var relevantContacts:Vector.<Box2DPhysicsObject> = rightContact ? _contactsRight : _contactsLeft;
-			if (other is Enemy || other is DestructibleBlock)
+			if (other is CustomEnemy || other is DestructibleBlock)
 			{
 				var contactIndex:int = relevantContacts.indexOf(other);
 				if (contactIndex >= 0) relevantContacts.splice(contactIndex, 1);

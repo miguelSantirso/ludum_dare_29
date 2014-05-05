@@ -2,7 +2,6 @@ package space_digger.enemies
 {
 	import Box2D.Collision.b2Distance;
 	import citrus.objects.CitrusSprite;
-	import citrus.objects.platformer.box2d.Enemy;
 	import flash.geom.Point;
 	import org.osflash.signals.Signal;
 	import space_digger.enemies.EnemyType;

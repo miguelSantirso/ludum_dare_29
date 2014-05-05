@@ -26,6 +26,7 @@ package space_digger.levels
 	import space_digger.CustomHero;
 	import space_digger.PlayerCharacter;
 	import space_digger.Seam;
+	import space_digger.CustomEnemy;
 	import space_digger.enemies.Patrol;
 	import space_digger.enemies.Creeper;
 	import space_digger.enemies.Spike;
@@ -66,7 +67,7 @@ package space_digger.levels
 		{
 			super(_level);
 			
-			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
+			var objectsUsed:Array = [CustomEnemy, SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
 		}
 		
 		override public function destroy():void 

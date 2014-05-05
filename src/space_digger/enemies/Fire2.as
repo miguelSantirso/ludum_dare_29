@@ -4,7 +4,7 @@ package space_digger.enemies
 	 * ...
 	 * @author oforcat
 	 */
-	public class Fire2 extends Patrol 
+	public class Fire2 extends Creeper 
 	{
 		
 		public function Fire2(name:String, params:Object=null) 

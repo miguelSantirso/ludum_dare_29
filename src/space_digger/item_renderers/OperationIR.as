@@ -27,7 +27,7 @@ package space_digger.item_renderers
 		{
 			super.init();
 			
-			asset.addEventListener(MouseEvent.CLICK, onVisitPlanetClick);
+			asset.button_visit.addEventListener(MouseEvent.CLICK, onVisitPlanetClick, false, 0, true);
 		}
 
 		public override function update(event:Event = null):void
@@ -38,6 +38,8 @@ package space_digger.item_renderers
 		public override function dispose(event:Event = null):void
 		{
 			super.dispose();
+			
+			asset.button_visit.removeEventListener(MouseEvent.CLICK, onVisitPlanetClick);
 		}
 
 		public override function set dataValue(value:Object):void
