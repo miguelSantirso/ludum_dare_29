@@ -22,7 +22,7 @@ package space_digger.enemies
 		{
 			if (value == 'spike')
 				return SPIKE;
-			else if (value == 'creeper')
+			else if (value == 'ice2')
 				return CREEPER;
 			else if (value == 'fire1')
 				return FIRE1;
