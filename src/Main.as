@@ -81,7 +81,7 @@ package
 					
 					[LevelDig, XML(new Levels.TiledMapForestLarge1())],
 					
-					[LevelDigOffline, XML(new Levels.TiledMapForestLarge1())]
+					[LevelDigOffline, XML(new Levels.TiledMapFireLarge1())]
 				];
 			
 			

@@ -12,6 +12,8 @@ package space_digger.levels
 		
 		[Embed(source="../../../res/levels/level_fire_small_1.tmx", mimeType="application/octet-stream")]
 		public static var TiledMapFireSmall1:Class;
+		[Embed(source="../../../res/levels/level_fire_large_1.tmx", mimeType="application/octet-stream")]
+		public static var TiledMapFireLarge1:Class;
 		[Embed(source="../../../res/levels/level_forest_large_1.tmx", mimeType="application/octet-stream")]
 		public static var TiledMapForestLarge1:Class;
 		
