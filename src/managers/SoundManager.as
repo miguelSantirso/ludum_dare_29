@@ -4,7 +4,6 @@ package managers
 	import citrus.sounds.CitrusSoundGroup;
 	import citrus.sounds.CitrusSoundInstance;
 	import citrus.events.CitrusSoundEvent;
-	import citrus.sounds.SoundManager;
 	import flash.media.Sound;
 	import org.osflash.signals.Signal;
 	
