@@ -1,5 +1,6 @@
 package space_digger.enemies 
 {
+	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.Contacts.b2Contact;
 	import citrus.objects.platformer.box2d.Sensor;
 	import citrus.physics.box2d.Box2DUtils;
@@ -13,7 +14,7 @@ package space_digger.enemies
 	 * ...
 	 * @author ...
 	 */
-	public class Patrol  extends Foe
+	public class Patrol extends Foe
 	{
 		public function Patrol(name:String, params:Object=null) 
 		{
@@ -26,9 +27,24 @@ package space_digger.enemies
 			speed = 1.0;
 		}
 		
-		override public function update(timeDelta:Number):void {
-
+		override public function update(timeDelta:Number):void
+		{	
 			super.update(timeDelta);
+			
+			var position:b2Vec2 = _body.GetPosition();
+			
+			//Turn around when they pass their left/right bounds
+			if ((_inverted && position.x * _box2D.scale < leftBound) || (!_inverted && position.x * _box2D.scale > rightBound))
+				turnAround();
+			
+			var velocity:b2Vec2 = _body.GetLinearVelocity();
+			
+			if (!_hurt)
+				velocity.x = _inverted ? -speed : speed;
+			else
+				velocity.x = 0;
+			
+			updateAnimation();
 		}
 		
 		override public function handleBeginContact(contact:b2Contact):void {

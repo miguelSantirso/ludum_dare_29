@@ -1,13 +1,13 @@
 package space_digger.enemies 
 {
-	import citrus.objects.platformer.box2d.Enemy;
 	import org.osflash.signals.Signal;
+	import space_digger.CustomEnemy;
 	
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class Foe extends Enemy 
+	public class Foe extends CustomEnemy 
 	{
 		public var justHurt:Signal = new Signal();
 		

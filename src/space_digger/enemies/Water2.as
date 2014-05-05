@@ -4,7 +4,7 @@ package space_digger.enemies
 	 * ...
 	 * @author oforcat
 	 */
-	public class Water2 extends Patrol 
+	public class Water2 extends Creeper 
 	{
 		
 		public function Water2(name:String, params:Object=null) 

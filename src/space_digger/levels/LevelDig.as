@@ -18,6 +18,7 @@ package space_digger.levels
 	import managers.DataManager;
 	import managers.GameManager;
 	import org.osflash.signals.Signal;
+	import space_digger.CustomEnemy;
 	import space_digger.CustomHero;
 	import space_digger.DestructibleBlock;
 	import space_digger.enemies.Creeper;
@@ -53,7 +54,7 @@ package space_digger.levels
 		{
 			super(tiledMap, Levels.tileset(tiledMap.tileset[0].@name));
 			
-			var objectsUsed:Array = [SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
+			var objectsUsed:Array = [CustomEnemy, SpaceShip, SpawnSpot, Hero, Platform, Coin, Cannon, PlayerCharacter, Seam, Spike, Patrol, Creeper, DestructibleBlock];
 		}
 		
 		override public function destroy():void 

@@ -1,5 +1,6 @@
 package space_digger.enemies 
 {
+	import Box2D.Common.Math.b2Vec2;
 	/**
 	 * ...
 	 * @author ...
@@ -18,6 +19,14 @@ package space_digger.enemies
 		override public function  hurt():void {
 
 			// Hurting spikes is not allowed
+		}
+		
+		override public function update(timeDelta:Number):void
+		{	
+			super.update(timeDelta);
+			
+			var velocity:b2Vec2 = _body.GetLinearVelocity();
+			velocity.x =  speed;
 		}
 	}
 

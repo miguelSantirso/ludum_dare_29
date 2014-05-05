@@ -4,7 +4,7 @@ package space_digger.enemies
 	 * ...
 	 * @author oforcat
 	 */
-	public class Forest2 extends Patrol 
+	public class Forest2 extends Creeper 
 	{
 		
 		public function Forest2(name:String, params:Object=null) 
