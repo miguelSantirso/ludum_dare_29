@@ -169,7 +169,7 @@ package
 			changeLevel(GameManager.getInstance().getClientMapIndexFromServerMapId(mine.map));
 		}
 		
-		protected var offlineLevel:int = 1;
+		protected var offlineLevel:int = 18;
 		
 		private function travelToOfflineMine():void
 		{
@@ -178,10 +178,8 @@ package
 			
 			// Uncomment to get ordered offline levels
 			randomLevel = offlineLevel;
-			offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
+			offlineLevel = offlineLevel + 1 > numberOfLevels ? 1 : offlineLevel + 1;
 			trace("current offline level",offlineLevel);
-			
-			randomLevel = 17;
 			
 			changeLevel(numberOfLevels + 2 + randomLevel);
 		}
