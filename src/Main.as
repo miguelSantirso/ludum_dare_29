@@ -77,15 +77,16 @@ package
 			levelManager.levels = 
 				[
 					[LevelRegister, "../swf/levels/LevelRegister.swf"],
-					[LevelSpace, "../swf/levels/LevelSpace.swf"],
-					
-					[LevelDig, XML(new Levels.TiledMapForestLarge1())],
-					
-					[LevelDigOffline, XML(new Levels.TiledMapWaterLarge1())]
+					[LevelSpace, "../swf/levels/LevelSpace.swf"]
 				];
 			
+			var i:int;
+			for (i = 0; i < Levels.nMaps; ++i)
+				levelManager.levels.push([LevelDig, Levels.tiledMap(i)]);
+			for (i = 0; i < Levels.nMaps; ++i)
+				levelManager.levels.push([LevelDigOffline, Levels.tiledMap(i)]);
 			
-			//if (Main.DEBUG)
+			if (Main.DEBUG)
 				addChild(new Stats());
 
 			GameManager.getInstance().needsRegistration.add(goToLevelRegister);
@@ -172,15 +173,13 @@ package
 		
 		private function travelToOfflineMine():void
 		{
-			var numberOfLevels:int = 1;
+			var numberOfLevels:int = Levels.nMaps;
 			var randomLevel:int = Math.ceil(Math.random()*numberOfLevels);
 			
 			// Uncomment to get ordered offline levels
-			/*randomLevel = offlineLevel;
+			randomLevel = offlineLevel;
 			offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
-			trace("current offline level",offlineLevel);*/
-			
-			randomLevel = 1;
+			trace("current offline level",offlineLevel);
 			
 			changeLevel(numberOfLevels + 2 + randomLevel);
 		}

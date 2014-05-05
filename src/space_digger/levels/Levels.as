@@ -36,6 +36,7 @@ package space_digger.levels
 		[Embed(source="../../../res/tilesets/tileset_water.png")]
 		private static var TilesetWater:Class;
 		
+		private static const TiledMaps:Vector.<Class> = new Vector.<Class>;
 		private static const TilesetsByName:Dictionary = new Dictionary();
 		
 		{
@@ -44,8 +45,23 @@ package space_digger.levels
 			TilesetsByName['tileset_forest'] = TilesetForest;
 			TilesetsByName['tileset_happy'] = TilesetHappy;
 			TilesetsByName['tileset_water'] = TilesetWater;
+			
+			TiledMaps.push(TiledMapIceLarge1);
+			TiledMaps.push(TiledMapFireLarge1);
+			TiledMaps.push(TiledMapForestLarge1);
+			TiledMaps.push(TiledMapHappyLarge1);
+			TiledMaps.push(TiledMapWaterLarge1);
 		}
 		
+		
+		public static function get nMaps():int
+		{
+			return TiledMaps.length;
+		}
+		public static function tiledMap(levelIndex:int):XML
+		{
+			return XML(new TiledMaps[levelIndex]);
+		}
 		
 		public static function tileset(name:String):Bitmap
 		{
