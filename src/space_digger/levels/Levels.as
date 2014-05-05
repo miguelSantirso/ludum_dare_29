@@ -58,6 +58,12 @@ package space_digger.levels
 		public static var TiledMapIceMedium2:Class;
 		[Embed(source="../../../res/levels/level_happy_medium_2.tmx", mimeType="application/octet-stream")]
 		public static var TiledMapHappyMedium2:Class;
+		[Embed(source="../../../res/levels/level_water_medium_2.tmx", mimeType="application/octet-stream")]
+		public static var TiledMapWaterMedium2:Class;
+		[Embed(source="../../../res/levels/level_fire_medium_2.tmx", mimeType="application/octet-stream")]
+		public static var TiledMapFireMedium2:Class;
+		[Embed(source="../../../res/levels/level_forest_medium_2.tmx", mimeType="application/octet-stream")]
+		public static var TiledMapForestMedium2:Class;
 		
 		
 		// TILESETS
@@ -105,6 +111,9 @@ package space_digger.levels
 			TiledMaps.push(TiledMapForestSmall2); // 20
 			TiledMaps.push(TiledMapIceMedium2);
 			TiledMaps.push(TiledMapHappyMedium2);
+			TiledMaps.push(TiledMapWaterMedium2);
+			TiledMaps.push(TiledMapFireMedium2);
+			TiledMaps.push(TiledMapForestMedium2);
 		}
 		
 		

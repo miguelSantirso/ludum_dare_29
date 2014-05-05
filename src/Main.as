@@ -169,7 +169,7 @@ package
 			changeLevel(GameManager.getInstance().getClientMapIndexFromServerMapId(mine.map));
 		}
 		
-		protected var offlineLevel:int = 22;
+		protected var offlineLevel:int = 23;
 		
 		private function travelToOfflineMine():void
 		{
