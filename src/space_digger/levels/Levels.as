@@ -20,6 +20,8 @@ package space_digger.levels
 		public static var TiledMapForestLarge1:Class;
 		[Embed(source="../../../res/levels/level_happy_large_1.tmx", mimeType="application/octet-stream")]
 		public static var TiledMapHappyLarge1:Class;
+		[Embed(source="../../../res/levels/level_water_large_1.tmx", mimeType="application/octet-stream")]
+		public static var TiledMapWaterLarge1:Class;
 		
 		// TILESETS
 		
@@ -31,6 +33,8 @@ package space_digger.levels
 		private static var TilesetForest:Class;
 		[Embed(source="../../../res/tilesets/tileset_happy.png")]
 		private static var TilesetHappy:Class;
+		[Embed(source="../../../res/tilesets/tileset_water.png")]
+		private static var TilesetWater:Class;
 		
 		private static const TilesetsByName:Dictionary = new Dictionary();
 		
@@ -39,7 +43,7 @@ package space_digger.levels
 			TilesetsByName['tileset_fire'] = TilesetFire;
 			TilesetsByName['tileset_forest'] = TilesetForest;
 			TilesetsByName['tileset_happy'] = TilesetHappy;
-			// ...
+			TilesetsByName['tileset_water'] = TilesetWater;
 		}
 		
 		
