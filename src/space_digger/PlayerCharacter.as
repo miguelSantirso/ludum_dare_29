@@ -133,7 +133,7 @@ package space_digger
 		
 		public function get isDead():Boolean
 		{
-			return _nLifes < 0;
+			return _nLifes <= 0;
 		}
 		
 		override public function update(timeDelta:Number):void 
