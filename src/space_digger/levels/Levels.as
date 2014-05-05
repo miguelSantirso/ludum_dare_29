@@ -54,6 +54,9 @@ package space_digger.levels
 		[Embed(source="../../../res/levels/level_forest_small_2.tmx", mimeType="application/octet-stream")]
 		public static var TiledMapForestSmall2:Class;
 		
+		[Embed(source="../../../res/levels/level_ice_medium_2.tmx", mimeType="application/octet-stream")]
+		public static var TiledMapIceMedium2:Class;
+		
 		
 		// TILESETS
 		
@@ -98,6 +101,7 @@ package space_digger.levels
 			TiledMaps.push(TiledMapWaterSmall2);
 			TiledMaps.push(TiledMapFireSmall2);
 			TiledMaps.push(TiledMapForestSmall2); // 20
+			TiledMaps.push(TiledMapIceMedium2);
 		}
 		
 		
