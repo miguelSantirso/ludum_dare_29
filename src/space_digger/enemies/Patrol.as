@@ -50,11 +50,6 @@ package space_digger.enemies
 		override public function handleBeginContact(contact:b2Contact):void {
 
 			var collider:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(this, contact);
-
-			if (collider is _enemyClass && collider.body.GetLinearVelocity().y > enemyKillVelocity)
-			{
-				hurt();
-			}
 			
 			if (_body.GetLinearVelocity().x < 0 && (contact.GetFixtureA() == _rightSensorFixture || contact.GetFixtureB() == _rightSensorFixture))
 				return;

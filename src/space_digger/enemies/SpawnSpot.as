@@ -64,7 +64,11 @@ package space_digger.enemies
 		
 		public function removeFoe():void
 		{
-			--_CntFoes;
+			if (0 < _CntFoes)
+			{
+				--_CntFoes;
+			}
+			
 			_elapsedTime = 0;
 		}
 		
