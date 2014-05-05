@@ -30,6 +30,8 @@ package space_digger.levels
 		public static var TiledMapHappyMedium1:Class;
 		[Embed(source="../../../res/levels/level_water_medium_1.tmx", mimeType="application/octet-stream")]
 		public static var TiledMapWaterMedium1:Class;
+		[Embed(source="../../../res/levels/level_fire_medium_1.tmx", mimeType="application/octet-stream")]
+		public static var TiledMapFireMedium1:Class;
 		
 		
 		// TILESETS
@@ -63,6 +65,7 @@ package space_digger.levels
 			TiledMaps.push(TiledMapIceMedium1); // 5
 			TiledMaps.push(TiledMapHappyMedium1);
 			TiledMaps.push(TiledMapWaterMedium1);
+			TiledMaps.push(TiledMapFireMedium1);
 		}
 		
 		
