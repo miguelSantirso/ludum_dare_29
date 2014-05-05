@@ -7,6 +7,7 @@ package space_digger
 	import Box2D.Dynamics.b2Fixture;
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.Contacts.b2Contact;
+	import citrus.objects.Box2DPhysicsObject;
 	import citrus.objects.platformer.box2d.Enemy;
 	import flash.utils.setTimeout;
 	import citrus.input.controllers.Keyboard;
@@ -30,8 +31,11 @@ package space_digger
 		private var _rightSensorFixture:b2Fixture;
 		private var _rightSensorShape:b2PolygonShape;
 		
-		private var _contactingEnemies:Vector.<Enemy> = new Vector.<Enemy>();
-		private var _contactingBlocks:Vector.<DestructibleBlock> = new Vector.<DestructibleBlock>();
+		private var _contactsLeft:Vector.<Box2DPhysicsObject> = new Vector.<Box2DPhysicsObject>();
+		private var _contactsRight:Vector.<Box2DPhysicsObject> = new Vector.<Box2DPhysicsObject>();
+		
+		/*private var _contactingEnemies:Vector.<Enemy> = new Vector.<Enemy>();
+		private var _contactingBlocks:Vector.<DestructibleBlock> = new Vector.<DestructibleBlock>();*/
 		
 		public function PlayerCharacter(name:String, params:Object=null) 
 		{
@@ -161,8 +165,7 @@ package space_digger
 				
 				if (++_attackAnimationFrame == 7)
 				{
-					attackEnemiesInRange();
-					attackBlocksInRange();
+					attackContactsInRange();
 					onGiveDamage.dispatch();
 					
 					(_ce.state as LevelDig).startedDigging.dispatch(x, y);
@@ -179,28 +182,24 @@ package space_digger
 		}
 		
 		
-		private function attackEnemiesInRange():void
+		private function attackContactsInRange():void
 		{
-			for each (var enemy:Enemy in _contactingEnemies)
+			var relevantContacts:Vector.<Box2DPhysicsObject> = _inverted ? _contactsLeft : _contactsRight;
+			for each (var contact:Box2DPhysicsObject in relevantContacts)
 			{
-				if ((!inverted && enemy.x > x) || (_inverted && enemy.x < x))
+				if (contact is Enemy)
 				{
-					// INSERT_SOUND ENEMIGO HERIDO
 					_ce.sound.playSound("HitEnemy");
-					
-					enemy.hurt();
+					(contact as Enemy).hurt();
+				}
+				else if (contact is DestructibleBlock)
+				{
+					(contact as DestructibleBlock).explode();
 				}
 			}
 		}
 		
-		private function attackBlocksInRange():void
-		{
-			for each (var block:DestructibleBlock in _contactingBlocks)
-			{
-				if ((!inverted && block.x > x) || (_inverted && block.x < x))
-					block.explode();
-			}
-		}
+		
 		override public function handleBeginContact(contact:b2Contact):void 
 		{
 			var ignoreContact:Boolean = false;
@@ -208,6 +207,7 @@ package space_digger
 			if (isDead)
 				ignoreContact = true;
 			
+			// Ignore the contact if it's against one of the left/right sensors
 			var fixtureA:b2Fixture = contact.GetFixtureA();
 			var fixtureB:b2Fixture = contact.GetFixtureB();
 			if (fixtureA == _leftSensorFixture || fixtureB == _leftSensorFixture 
@@ -215,18 +215,14 @@ package space_digger
 			{
 				ignoreContact = true;
 			}
+			
+			var rightContact:Boolean = fixtureA == _rightSensorFixture || fixtureB == _rightSensorFixture;
 
 			var other:* = Box2DUtils.CollisionGetOther(this, contact);
-			var enemy:Enemy = other as Enemy;
-			if (enemy && _contactingEnemies.indexOf(enemy) < 0)
+			var relevantContacts:Vector.<Box2DPhysicsObject> = rightContact ? _contactsRight : _contactsLeft;
+			if (other is Enemy || other is DestructibleBlock && relevantContacts.indexOf(other) < 0)
 			{
-				_contactingEnemies.push(enemy);
-			}
-			
-			var block:DestructibleBlock = other as DestructibleBlock;
-			if (block)
-			{
-				_contactingBlocks.push(block);
+				relevantContacts.push(other);
 			}
 			
 			if (!ignoreContact) super.handleBeginContact(contact);
@@ -237,18 +233,18 @@ package space_digger
 		{
 			super.handleEndContact(contact);
 			
-			var enemy:Enemy = Box2DUtils.CollisionGetOther(this, contact) as Enemy;
-			if (enemy)
+			// Check if it's colliding with the right sensor or the left sensor
+			// There's probably some easier way to do this, but I couldn't find it...
+			var fixtureA:b2Fixture = contact.GetFixtureA();
+			var fixtureB:b2Fixture = contact.GetFixtureB();
+			var rightContact:Boolean = fixtureA == _rightSensorFixture || fixtureB == _rightSensorFixture;
+
+			var other:* = Box2DUtils.CollisionGetOther(this, contact);
+			var relevantContacts:Vector.<Box2DPhysicsObject> = rightContact ? _contactsRight : _contactsLeft;
+			if (other is Enemy || other is DestructibleBlock)
 			{
-				var enemyIndex:int = _contactingEnemies.indexOf(enemy);
-				if (enemyIndex >= 0) _contactingEnemies.splice(enemyIndex, 1);
-			}
-			
-			var block:DestructibleBlock = Box2DUtils.CollisionGetOther(this, contact) as DestructibleBlock;
-			if (block)
-			{
-				var blockIndex:int = _contactingBlocks.indexOf(block);
-				if (blockIndex >= 0) _contactingBlocks.splice(blockIndex, 1);
+				var contactIndex:int = relevantContacts.indexOf(other);
+				if (contactIndex >= 0) relevantContacts.splice(contactIndex, 1);
 			}
 		}
 		
