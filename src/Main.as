@@ -181,7 +181,7 @@ package
 			offlineLevel = offlineLevel + 1 > 25 ? 1 : offlineLevel + 1;
 			trace("current offline level",offlineLevel);
 			
-			randomLevel = 14;
+			randomLevel = 15;
 			
 			changeLevel(numberOfLevels + 2 + randomLevel);
 		}
